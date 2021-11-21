@@ -14,12 +14,17 @@ namespace Code.Scripts
             _playerMovement.OnMove += IdleMoveRunAnimate;
         }
 
-        private void IdleMoveRunAnimate(Vector2 input)
+        private void IdleMoveRunAnimate(float clampedInput, bool sprint)
         {
             var hor = 0;
-            var vert = Mathf.Clamp01(Mathf.Abs(input.x) + Mathf.Abs(input.y));
             var snappedHorizontal = SnappingForMovement(hor);
-            var snappedVertical = SnappingForMovement(vert);
+            var snappedVertical = SnappingForMovement(clampedInput);
+
+            if (sprint)
+            {
+                snappedHorizontal = hor;
+                snappedVertical = 2;
+            }
 
             _animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
             _animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);

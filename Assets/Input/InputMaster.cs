@@ -52,9 +52,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Rotation"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""172f4ba9-7e21-4fca-beb3-daef09f7b1c0"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Sprinting"",
+                    ""type"": ""Button"",
+                    ""id"": ""3143a5cc-f778-4f8c-99a9-c64f8ec27993"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -158,6 +166,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""772a787f-f6b9-4b7b-9f7d-4751c36df21b"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and keyboard"",
+                    ""action"": ""Sprinting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -188,6 +207,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         m_Player_Rotation = m_Player.FindAction("Rotation", throwIfNotFound: true);
+        m_Player_Sprinting = m_Player.FindAction("Sprinting", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -242,6 +262,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Block;
     private readonly InputAction m_Player_Rotation;
+    private readonly InputAction m_Player_Sprinting;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -251,6 +272,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Block => m_Wrapper.m_Player_Block;
         public InputAction @Rotation => m_Wrapper.m_Player_Rotation;
+        public InputAction @Sprinting => m_Wrapper.m_Player_Sprinting;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -275,6 +297,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Rotation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
                 @Rotation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
                 @Rotation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
+                @Sprinting.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprinting;
+                @Sprinting.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprinting;
+                @Sprinting.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprinting;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -294,6 +319,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Rotation.started += instance.OnRotation;
                 @Rotation.performed += instance.OnRotation;
                 @Rotation.canceled += instance.OnRotation;
+                @Sprinting.started += instance.OnSprinting;
+                @Sprinting.performed += instance.OnSprinting;
+                @Sprinting.canceled += instance.OnSprinting;
             }
         }
     }
@@ -314,5 +342,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnBlock(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
+        void OnSprinting(InputAction.CallbackContext context);
     }
 }

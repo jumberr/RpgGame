@@ -39,9 +39,17 @@
                 },
                 {
                     "name": "Rotation",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "172f4ba9-7e21-4fca-beb3-daef09f7b1c0",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Sprinting",
+                    "type": "Button",
+                    "id": "3143a5cc-f778-4f8c-99a9-c64f8ec27993",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -143,6 +151,17 @@
                     "processors": "",
                     "groups": "Mouse and keyboard",
                     "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "772a787f-f6b9-4b7b-9f7d-4751c36df21b",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and keyboard",
+                    "action": "Sprinting",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

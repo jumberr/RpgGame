@@ -7,28 +7,63 @@ namespace Code.Scripts
     {
         [SerializeField] private CharacterController _cc;
         [SerializeField] private Transform cam;
-        private Vector2 moveInput;
-        private Vector3 moveDirection;
-        private const float playerSpeed = 5f;
-        private float rotationSpeed = 15f;
 
-        public Action<Vector2> OnMove;
+        private bool isSprinting;
+
+        [Header("Movement Speeds:")] [SerializeField]
+        private float walkingSpeed = 1.5f;
+
+        [SerializeField] private float runningSpeed = 5f;
+        [SerializeField] private float sprintSpeed = 7f;
+        [SerializeField] private float rotationSpeed = 15f;
+
+        private Vector2 input;
+        private float clampedInput;
+        private Vector3 moveDirection;
+
+        public Action<float, bool> OnMove;
 
         private void Start()
         {
             InputManager.Instance.OnMove += UpdateDirection;
+            InputManager.Instance.OnSprint += UpdateSprintState;
         }
 
         private void UpdateDirection(Vector2 dir)
         {
-            moveInput = dir;
+            input = dir;
+        }
+
+        private void UpdateSprintState(bool sprint)
+        {
+            if (clampedInput >= 0.5f && sprint)
+            {
+                isSprinting = true;
+            }
+            else if (!sprint)
+            {
+                isSprinting = false;
+            }
         }
 
         private void HandleMovement()
         {
             moveDirection = CalculateDirection();
-            moveDirection *= playerSpeed;
 
+            clampedInput = Mathf.Clamp01(Mathf.Abs(input.x) + Mathf.Abs(input.y));
+
+            if (isSprinting)
+            {
+                moveDirection *= sprintSpeed;
+            }
+            else
+            {
+                if (clampedInput >= 0.5f)
+                    moveDirection *= runningSpeed;
+                else
+                    moveDirection *= walkingSpeed;
+            }
+            
             _cc.Move(moveDirection * Time.deltaTime);
         }
 
@@ -47,8 +82,8 @@ namespace Code.Scripts
 
         private Vector3 CalculateDirection()
         {
-            var direction = cam.forward * moveInput.y;
-            direction += cam.right * moveInput.x;
+            var direction = cam.forward * input.y;
+            direction += cam.right * input.x;
             direction.Normalize();
             direction.y = 0;
             return direction;
@@ -59,7 +94,7 @@ namespace Code.Scripts
             HandleMovement();
             HandleRotation();
 
-            OnMove?.Invoke(moveInput);
+            OnMove?.Invoke(clampedInput, isSprinting);
         }
     }
 }
