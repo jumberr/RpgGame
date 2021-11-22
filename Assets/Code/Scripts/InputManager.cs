@@ -10,6 +10,7 @@ namespace Code.Scripts
         public Action<Vector2> OnMove;
         public Action<Vector2> OnRotate;
         public Action<bool> OnSprint;
+        public Action OnJump;
 
         public static InputManager Instance => _inputManager;
 
@@ -28,7 +29,7 @@ namespace Code.Scripts
 
             _input.Enable();
         }
-        
+
         private void Subscribe()
         {
             // Move
@@ -41,6 +42,9 @@ namespace Code.Scripts
             // Sprint
             _input.Player.Sprinting.performed += ctx => OnSprint?.Invoke(true);
             _input.Player.Sprinting.canceled += ctx => OnSprint?.Invoke(false);
+            
+            // Jump
+            _input.Player.Jump.performed += ctx => OnJump?.Invoke();
         }
 
         private void OnDisable()

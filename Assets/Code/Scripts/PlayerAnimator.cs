@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Code.Scripts
 {
@@ -6,10 +7,10 @@ namespace Code.Scripts
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private PlayerMovement _playerMovement;
-        private int horizontal = Animator.StringToHash("Horizontal");
-        private int vertical = Animator.StringToHash("Vertical");
+        private readonly int horizontal = Animator.StringToHash("Horizontal");
+        private readonly int vertical = Animator.StringToHash("Vertical");
 
-        public void Start()
+        private void Start()
         {
             _playerMovement.OnMove += IdleMoveRunAnimate;
         }

@@ -10,9 +10,15 @@ namespace Code.Scripts
 
         private bool isSprinting;
 
-        [Header("Movement Speeds:")] [SerializeField]
-        private float walkingSpeed = 1.5f;
+        [Header("Jump:")]
+        [SerializeField] private float jumpForce = 5f;
+        
+        [Header("Falling:")] 
+        [SerializeField] private float gravity = 9.81f;
+        private Vector3 velocity;
 
+        [Header("Movement Speeds:")] 
+        [SerializeField] private float walkingSpeed = 1.5f;
         [SerializeField] private float runningSpeed = 5f;
         [SerializeField] private float sprintSpeed = 7f;
         [SerializeField] private float rotationSpeed = 15f;
@@ -27,6 +33,7 @@ namespace Code.Scripts
         {
             InputManager.Instance.OnMove += UpdateDirection;
             InputManager.Instance.OnSprint += UpdateSprintState;
+            InputManager.Instance.OnJump += JumpAction;
         }
 
         private void UpdateDirection(Vector2 dir)
@@ -63,7 +70,7 @@ namespace Code.Scripts
                 else
                     moveDirection *= walkingSpeed;
             }
-            
+
             _cc.Move(moveDirection * Time.deltaTime);
         }
 
@@ -80,6 +87,21 @@ namespace Code.Scripts
             transform.rotation = playerRotation;
         }
 
+        private void JumpAction()
+        {
+            if (_cc.isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+                // apply animation
+            }
+        }
+
+        private void ApplyGravity()
+        {
+            velocity.y += gravity * Time.deltaTime;
+            _cc.Move(velocity * Time.deltaTime);
+        }
+
         private Vector3 CalculateDirection()
         {
             var direction = cam.forward * input.y;
@@ -91,8 +113,12 @@ namespace Code.Scripts
 
         private void FixedUpdate()
         {
+            if (_cc.isGrounded && velocity.y < 0)
+                velocity.y = -2f; //We're standing at the floor
+
             HandleMovement();
             HandleRotation();
+            ApplyGravity();
 
             OnMove?.Invoke(clampedInput, isSprinting);
         }
