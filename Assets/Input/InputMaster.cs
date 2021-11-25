@@ -15,7 +15,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     ""name"": ""InputMaster"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""PlayerMovement"",
             ""id"": ""08b22d77-2a2f-4dc6-9e4d-75b7711dad3e"",
             ""actions"": [
                 {
@@ -23,30 +23,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""f8e5f44b-d601-4200-9d82-0fadc7a5f8a4"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Rolling"",
-                    ""type"": ""Button"",
-                    ""id"": ""df6a5aa9-1637-406d-932c-cec5089169bd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""c1e054af-7cae-4ed6-8651-c43e350f486a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Block"",
-                    ""type"": ""Button"",
-                    ""id"": ""fcb451ab-17bb-48dc-8027-1c2fbaf63d61"",
-                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -70,6 +46,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""669a8b6a-b961-437c-a010-2e2e72ef612b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Rolling"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b3b57a3-2502-4b37-935b-9dabfca1a51e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -133,39 +117,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6e0c70ed-180a-4325-ae07-e0d7da7db10c"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rolling"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4523971e-98b0-4915-a53e-49d4f6196a9c"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse and keyboard"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7b88178d-1c15-4b75-913f-bf9bc0f4b428"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse and keyboard"",
-                    ""action"": ""Block"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""7334a0e7-a1e7-44b8-a1f7-d9b7ed3897b9"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
@@ -196,6 +147,82 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13db63bd-07f5-42f0-9f4a-e08dc22b5cd6"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and keyboard"",
+                    ""action"": ""Rolling"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerFight"",
+            ""id"": ""5b441bc6-1c1f-4e89-807b-e48513b26b25"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""2cd00b5b-b2fa-40a8-bd56-0d3862245537"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""04efe2f9-1deb-423c-b140-e86700021d36"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""93710eff-776a-43c8-b19f-dd83dad633ae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f334aa73-4600-407d-9998-a54f4e00ae5d"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and keyboard"",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b817a065-5089-4725-a4f6-e69a50103c2a"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and keyboard"",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""647e2107-4973-49d7-8d9c-1bb87aa7bb99"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and keyboard"",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -219,15 +246,18 @@ public class @InputMaster : IInputActionCollection, IDisposable
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Rolling = m_Player.FindAction("Rolling", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-        m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
-        m_Player_Rotation = m_Player.FindAction("Rotation", throwIfNotFound: true);
-        m_Player_Sprinting = m_Player.FindAction("Sprinting", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        // PlayerMovement
+        m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
+        m_PlayerMovement_Move = m_PlayerMovement.FindAction("Move", throwIfNotFound: true);
+        m_PlayerMovement_Rotation = m_PlayerMovement.FindAction("Rotation", throwIfNotFound: true);
+        m_PlayerMovement_Sprinting = m_PlayerMovement.FindAction("Sprinting", throwIfNotFound: true);
+        m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerMovement_Rolling = m_PlayerMovement.FindAction("Rolling", throwIfNotFound: true);
+        // PlayerFight
+        m_PlayerFight = asset.FindActionMap("PlayerFight", throwIfNotFound: true);
+        m_PlayerFight_Newaction = m_PlayerFight.FindAction("New action", throwIfNotFound: true);
+        m_PlayerFight_Block = m_PlayerFight.FindAction("Block", throwIfNotFound: true);
+        m_PlayerFight_Attack = m_PlayerFight.FindAction("Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -274,73 +304,54 @@ public class @InputMaster : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Rolling;
-    private readonly InputAction m_Player_Attack;
-    private readonly InputAction m_Player_Block;
-    private readonly InputAction m_Player_Rotation;
-    private readonly InputAction m_Player_Sprinting;
-    private readonly InputAction m_Player_Jump;
-    public struct PlayerActions
+    // PlayerMovement
+    private readonly InputActionMap m_PlayerMovement;
+    private IPlayerMovementActions m_PlayerMovementActionsCallbackInterface;
+    private readonly InputAction m_PlayerMovement_Move;
+    private readonly InputAction m_PlayerMovement_Rotation;
+    private readonly InputAction m_PlayerMovement_Sprinting;
+    private readonly InputAction m_PlayerMovement_Jump;
+    private readonly InputAction m_PlayerMovement_Rolling;
+    public struct PlayerMovementActions
     {
         private @InputMaster m_Wrapper;
-        public PlayerActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Rolling => m_Wrapper.m_Player_Rolling;
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
-        public InputAction @Block => m_Wrapper.m_Player_Block;
-        public InputAction @Rotation => m_Wrapper.m_Player_Rotation;
-        public InputAction @Sprinting => m_Wrapper.m_Player_Sprinting;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public PlayerMovementActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_PlayerMovement_Move;
+        public InputAction @Rotation => m_Wrapper.m_PlayerMovement_Rotation;
+        public InputAction @Sprinting => m_Wrapper.m_PlayerMovement_Sprinting;
+        public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
+        public InputAction @Rolling => m_Wrapper.m_PlayerMovement_Rolling;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(PlayerMovementActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerMovementActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayerMovementActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Rolling.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRolling;
-                @Rolling.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRolling;
-                @Rolling.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRolling;
-                @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Block.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
-                @Block.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
-                @Block.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
-                @Rotation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
-                @Rotation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
-                @Rotation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
-                @Sprinting.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprinting;
-                @Sprinting.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprinting;
-                @Sprinting.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprinting;
-                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Move.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMove;
+                @Rotation.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRotation;
+                @Rotation.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRotation;
+                @Rotation.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRotation;
+                @Sprinting.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSprinting;
+                @Sprinting.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSprinting;
+                @Sprinting.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSprinting;
+                @Jump.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJump;
+                @Rolling.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRolling;
+                @Rolling.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRolling;
+                @Rolling.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRolling;
             }
-            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Rolling.started += instance.OnRolling;
-                @Rolling.performed += instance.OnRolling;
-                @Rolling.canceled += instance.OnRolling;
-                @Attack.started += instance.OnAttack;
-                @Attack.performed += instance.OnAttack;
-                @Attack.canceled += instance.OnAttack;
-                @Block.started += instance.OnBlock;
-                @Block.performed += instance.OnBlock;
-                @Block.canceled += instance.OnBlock;
                 @Rotation.started += instance.OnRotation;
                 @Rotation.performed += instance.OnRotation;
                 @Rotation.canceled += instance.OnRotation;
@@ -350,10 +361,62 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Rolling.started += instance.OnRolling;
+                @Rolling.performed += instance.OnRolling;
+                @Rolling.canceled += instance.OnRolling;
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
+
+    // PlayerFight
+    private readonly InputActionMap m_PlayerFight;
+    private IPlayerFightActions m_PlayerFightActionsCallbackInterface;
+    private readonly InputAction m_PlayerFight_Newaction;
+    private readonly InputAction m_PlayerFight_Block;
+    private readonly InputAction m_PlayerFight_Attack;
+    public struct PlayerFightActions
+    {
+        private @InputMaster m_Wrapper;
+        public PlayerFightActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_PlayerFight_Newaction;
+        public InputAction @Block => m_Wrapper.m_PlayerFight_Block;
+        public InputAction @Attack => m_Wrapper.m_PlayerFight_Attack;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerFight; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerFightActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerFightActions instance)
+        {
+            if (m_Wrapper.m_PlayerFightActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnNewaction;
+                @Block.started -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnBlock;
+                @Block.performed -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnBlock;
+                @Block.canceled -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnBlock;
+                @Attack.started -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnAttack;
+            }
+            m_Wrapper.m_PlayerFightActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+                @Block.started += instance.OnBlock;
+                @Block.performed += instance.OnBlock;
+                @Block.canceled += instance.OnBlock;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
+            }
+        }
+    }
+    public PlayerFightActions @PlayerFight => new PlayerFightActions(this);
     private int m_MouseandkeyboardSchemeIndex = -1;
     public InputControlScheme MouseandkeyboardScheme
     {
@@ -363,14 +426,18 @@ public class @InputMaster : IInputActionCollection, IDisposable
             return asset.controlSchemes[m_MouseandkeyboardSchemeIndex];
         }
     }
-    public interface IPlayerActions
+    public interface IPlayerMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnRolling(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
-        void OnBlock(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
         void OnSprinting(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnRolling(InputAction.CallbackContext context);
+    }
+    public interface IPlayerFightActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
+        void OnBlock(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
 }

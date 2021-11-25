@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Code.Scripts
@@ -10,9 +11,27 @@ namespace Code.Scripts
         private readonly int horizontal = Animator.StringToHash("Horizontal");
         private readonly int vertical = Animator.StringToHash("Vertical");
 
+        public static int Jump = Animator.StringToHash("Jump");
+        public static int Roll = Animator.StringToHash("Roll");
+        
         private void Start()
         {
             _playerMovement.OnMove += IdleMoveRunAnimate;
+        }
+
+        public void PlayTargetAnimation(int animHash, bool applyRootMotion)
+        {
+            _animator.applyRootMotion = applyRootMotion;
+            _animator.CrossFade(animHash, 0.2f);
+            StartCoroutine(OnEndAnimation());
+        }
+
+        private IEnumerator OnEndAnimation()
+        {
+            var length = _animator.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSecondsRealtime(length);
+            _playerMovement.InAction = false;
+            _animator.applyRootMotion = false;
         }
 
         private void IdleMoveRunAnimate(float clampedInput, bool sprint)

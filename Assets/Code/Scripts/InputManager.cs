@@ -11,6 +11,7 @@ namespace Code.Scripts
         public Action<Vector2> OnRotate;
         public Action<bool> OnSprint;
         public Action OnJump;
+        public Action OnRoll;
 
         public static InputManager Instance => _inputManager;
 
@@ -33,18 +34,21 @@ namespace Code.Scripts
         private void Subscribe()
         {
             // Move
-            _input.Player.Move.performed += ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>());
-            _input.Player.Move.canceled += ctx => OnMove?.Invoke(Vector2.zero);
+            _input.PlayerMovement.Move.performed += ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>());
+            _input.PlayerMovement.Move.canceled += ctx => OnMove?.Invoke(Vector2.zero);
 
             // Rotate
-            _input.Player.Rotation.performed += ctx => OnRotate?.Invoke(ctx.ReadValue<Vector2>());
+            _input.PlayerMovement.Rotation.performed += ctx => OnRotate?.Invoke(ctx.ReadValue<Vector2>());
 
             // Sprint
-            _input.Player.Sprinting.performed += ctx => OnSprint?.Invoke(true);
-            _input.Player.Sprinting.canceled += ctx => OnSprint?.Invoke(false);
+            _input.PlayerMovement.Sprinting.performed += ctx => OnSprint?.Invoke(true);
+            _input.PlayerMovement.Sprinting.canceled += ctx => OnSprint?.Invoke(false);
             
             // Jump
-            _input.Player.Jump.performed += ctx => OnJump?.Invoke();
+            _input.PlayerMovement.Jump.performed += ctx => OnJump?.Invoke();
+
+            // Second half of roll
+            _input.PlayerMovement.Rolling.performed += ctx => OnRoll?.Invoke();
         }
 
         private void OnDisable()

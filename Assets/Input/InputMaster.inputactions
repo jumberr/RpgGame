@@ -2,7 +2,7 @@
     "name": "InputMaster",
     "maps": [
         {
-            "name": "Player",
+            "name": "PlayerMovement",
             "id": "08b22d77-2a2f-4dc6-9e4d-75b7711dad3e",
             "actions": [
                 {
@@ -10,30 +10,6 @@
                     "type": "PassThrough",
                     "id": "f8e5f44b-d601-4200-9d82-0fadc7a5f8a4",
                     "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Rolling",
-                    "type": "Button",
-                    "id": "df6a5aa9-1637-406d-932c-cec5089169bd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "c1e054af-7cae-4ed6-8651-c43e350f486a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Block",
-                    "type": "Button",
-                    "id": "fcb451ab-17bb-48dc-8027-1c2fbaf63d61",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -57,6 +33,14 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "669a8b6a-b961-437c-a010-2e2e72ef612b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Rolling",
+                    "type": "Button",
+                    "id": "6b3b57a3-2502-4b37-935b-9dabfca1a51e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -120,39 +104,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6e0c70ed-180a-4325-ae07-e0d7da7db10c",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rolling",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4523971e-98b0-4915-a53e-49d4f6196a9c",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse and keyboard",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7b88178d-1c15-4b75-913f-bf9bc0f4b428",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse and keyboard",
-                    "action": "Block",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7334a0e7-a1e7-44b8-a1f7-d9b7ed3897b9",
                     "path": "<Mouse>/delta",
                     "interactions": "",
@@ -181,6 +132,82 @@
                     "processors": "",
                     "groups": "Mouse and keyboard",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13db63bd-07f5-42f0-9f4a-e08dc22b5cd6",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and keyboard",
+                    "action": "Rolling",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerFight",
+            "id": "5b441bc6-1c1f-4e89-807b-e48513b26b25",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "2cd00b5b-b2fa-40a8-bd56-0d3862245537",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Block",
+                    "type": "Button",
+                    "id": "04efe2f9-1deb-423c-b140-e86700021d36",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "93710eff-776a-43c8-b19f-dd83dad633ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f334aa73-4600-407d-9998-a54f4e00ae5d",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and keyboard",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b817a065-5089-4725-a4f6-e69a50103c2a",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and keyboard",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "647e2107-4973-49d7-8d9c-1bb87aa7bb99",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and keyboard",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

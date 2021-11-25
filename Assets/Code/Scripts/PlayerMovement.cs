@@ -10,15 +10,14 @@ namespace Code.Scripts
 
         private bool isSprinting;
 
-        [Header("Jump:")]
-        [SerializeField] private float jumpForce = 5f;
-        
-        [Header("Falling:")] 
-        [SerializeField] private float gravity = 9.81f;
+        [Header("Jump:")] [SerializeField] private float jumpForce = 5f;
+
+        [Header("Falling:")] [SerializeField] private float gravity = 9.81f;
         private Vector3 velocity;
 
-        [Header("Movement Speeds:")] 
-        [SerializeField] private float walkingSpeed = 1.5f;
+        [Header("Movement Speeds:")] [SerializeField]
+        private float walkingSpeed = 1.5f;
+
         [SerializeField] private float runningSpeed = 5f;
         [SerializeField] private float sprintSpeed = 7f;
         [SerializeField] private float rotationSpeed = 15f;
@@ -29,11 +28,16 @@ namespace Code.Scripts
 
         public Action<float, bool> OnMove;
 
+        // Rolling
+        public bool InAction { get; set; }
+
         private void Start()
         {
             InputManager.Instance.OnMove += UpdateDirection;
             InputManager.Instance.OnSprint += UpdateSprintState;
             InputManager.Instance.OnJump += JumpAction;
+
+            InputManager.Instance.OnRoll += RollingAction;
         }
 
         private void UpdateDirection(Vector2 dir)
@@ -53,7 +57,19 @@ namespace Code.Scripts
             }
         }
 
-        private void HandleMovement()
+        private void FixedUpdate()
+        {
+            if (_cc.isGrounded && velocity.y <= 0)
+                velocity.y = 0f; //We're standing at the floor
+
+            MovementAction();
+            RotationAction();
+            ApplyGravity();
+            
+            OnMove?.Invoke(clampedInput, isSprinting);
+        }
+
+        private void MovementAction()
         {
             moveDirection = CalculateDirection();
 
@@ -74,7 +90,7 @@ namespace Code.Scripts
             _cc.Move(moveDirection * Time.deltaTime);
         }
 
-        private void HandleRotation()
+        private void RotationAction()
         {
             var targetDirection = CalculateDirection();
 
@@ -87,12 +103,22 @@ namespace Code.Scripts
             transform.rotation = playerRotation;
         }
 
+        private void RollingAction()
+        {
+            if (!InAction)
+            {
+                InAction = true;
+                Player.Instance.PlayerAnimator.PlayTargetAnimation(PlayerAnimator.Roll, false);
+            }
+        }
+
         private void JumpAction()
         {
-            if (_cc.isGrounded)
+            if (!InAction && _cc.isGrounded)
             {
+                InAction = true;
                 velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
-                // apply animation
+                Player.Instance.PlayerAnimator.PlayTargetAnimation(PlayerAnimator.Jump, false);
             }
         }
 
@@ -109,18 +135,6 @@ namespace Code.Scripts
             direction.Normalize();
             direction.y = 0;
             return direction;
-        }
-
-        private void FixedUpdate()
-        {
-            if (_cc.isGrounded && velocity.y < 0)
-                velocity.y = -2f; //We're standing at the floor
-
-            HandleMovement();
-            HandleRotation();
-            ApplyGravity();
-
-            OnMove?.Invoke(clampedInput, isSprinting);
         }
     }
 }
