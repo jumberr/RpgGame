@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Code.Scripts
 {
+    public delegate void CustomCallback();
+    
     public class PlayerAnimator : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
@@ -19,19 +20,24 @@ namespace Code.Scripts
             _playerMovement.OnMove += IdleMoveRunAnimate;
         }
 
-        public void PlayTargetAnimation(int animHash, bool applyRootMotion)
+        public void PlayTargetAnimation(int animHash, bool applyRootMotion, params CustomCallback[] callbacks)
         {
             _animator.applyRootMotion = applyRootMotion;
             _animator.CrossFade(animHash, 0.2f);
-            StartCoroutine(OnEndAnimation());
+            StartCoroutine(OnEndAnimation(callbacks));
         }
 
-        private IEnumerator OnEndAnimation()
+        private IEnumerator OnEndAnimation(params CustomCallback[] callbacks)
         {
+            var delay = 1.2f;
             var length = _animator.GetCurrentAnimatorStateInfo(0).length;
-            yield return new WaitForSecondsRealtime(length);
+            yield return new WaitForSecondsRealtime(length * delay);
             _playerMovement.InAction = false;
             _animator.applyRootMotion = false;
+            foreach (var i in callbacks)
+            {
+                i?.Invoke();
+            }
         }
 
         private void IdleMoveRunAnimate(float clampedInput, bool sprint)

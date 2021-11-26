@@ -30,19 +30,21 @@ namespace Code.Scripts
 
         // Rolling
         public bool InAction { get; set; }
+        public bool OneMoveDirection { get; set; }
 
         private void Start()
         {
             InputManager.Instance.OnMove += UpdateDirection;
             InputManager.Instance.OnSprint += UpdateSprintState;
-            InputManager.Instance.OnJump += JumpAction;
 
+            InputManager.Instance.OnJump += JumpAction;
             InputManager.Instance.OnRoll += RollingAction;
         }
 
         private void UpdateDirection(Vector2 dir)
         {
-            input = dir;
+            if (!OneMoveDirection)
+                input = dir;
         }
 
         private void UpdateSprintState(bool sprint)
@@ -65,7 +67,7 @@ namespace Code.Scripts
             MovementAction();
             RotationAction();
             ApplyGravity();
-            
+
             OnMove?.Invoke(clampedInput, isSprinting);
         }
 
@@ -107,8 +109,10 @@ namespace Code.Scripts
         {
             if (!InAction)
             {
+                OneMoveDirection = true;
                 InAction = true;
-                Player.Instance.PlayerAnimator.PlayTargetAnimation(PlayerAnimator.Roll, false);
+                Player.Instance.PlayerAnimator.PlayTargetAnimation(PlayerAnimator.Roll, false,
+                    () => OneMoveDirection = false);
             }
         }
 
@@ -116,9 +120,11 @@ namespace Code.Scripts
         {
             if (!InAction && _cc.isGrounded)
             {
+                OneMoveDirection = true;
                 InAction = true;
                 velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
-                Player.Instance.PlayerAnimator.PlayTargetAnimation(PlayerAnimator.Jump, false);
+                Player.Instance.PlayerAnimator.PlayTargetAnimation(PlayerAnimator.Jump, false,
+                    () => OneMoveDirection = false);
             }
         }
 

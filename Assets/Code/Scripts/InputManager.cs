@@ -7,9 +7,11 @@ namespace Code.Scripts
     {
         private static InputManager _inputManager;
         private InputMaster _input;
+        
         public Action<Vector2> OnMove;
         public Action<Vector2> OnRotate;
         public Action<bool> OnSprint;
+        
         public Action OnJump;
         public Action OnRoll;
 
@@ -47,7 +49,7 @@ namespace Code.Scripts
             // Jump
             _input.PlayerMovement.Jump.performed += ctx => OnJump?.Invoke();
 
-            // Second half of roll
+            // Roll
             _input.PlayerMovement.Rolling.performed += ctx => OnRoll?.Invoke();
         }
 

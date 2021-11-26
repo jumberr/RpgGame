@@ -151,7 +151,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""13db63bd-07f5-42f0-9f4a-e08dc22b5cd6"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse and keyboard"",
