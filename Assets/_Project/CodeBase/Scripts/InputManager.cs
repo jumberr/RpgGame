@@ -5,7 +5,6 @@ namespace _Project.CodeBase.Scripts
 {
     public class InputManager : MonoBehaviour
     {
-        private static InputManager _inputManager;
         private InputMaster _input;
         
         public Action<Vector2> OnMove;
@@ -14,13 +13,6 @@ namespace _Project.CodeBase.Scripts
         
         public Action OnJump;
         public Action OnRoll;
-
-        public static InputManager Instance => _inputManager;
-
-        private void Awake()
-        {
-            _inputManager = this;
-        }
 
         private void OnEnable()
         {
@@ -38,7 +30,7 @@ namespace _Project.CodeBase.Scripts
             // Move
             _input.PlayerMovement.Move.performed += ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>());
             _input.PlayerMovement.Move.canceled += ctx => OnMove?.Invoke(Vector2.zero);
-
+            
             // Rotate
             _input.PlayerMovement.Rotation.performed += ctx => OnRotate?.Invoke(ctx.ReadValue<Vector2>());
 

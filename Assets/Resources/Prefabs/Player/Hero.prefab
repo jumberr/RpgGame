@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2069869355385823021}
   - component: {fileID: 2069869355385823023}
   - component: {fileID: 2069869355385823018}
+  - component: {fileID: -5153033021530062026}
   m_Layer: 8
   m_Name: Hero
   m_TagString: Untagged
@@ -65,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195faadad75f4d3fb9262c711cea6bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputManager: {fileID: -5153033021530062026}
   _characterController: {fileID: 2069869355385823021}
   jumpForce: 1
   gravity: -9.81
@@ -85,6 +87,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 2744769680646410951}
+--- !u!114 &-5153033021530062026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069869355385823009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506f9a2bf3fc42a4b297719a261de849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7950303267500564366
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8532388be40eb4e8ca7b03c9811c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputManager: {fileID: -5153033021530062026}
   target: {fileID: 2069869355385823022}
   pivot: {fileID: 7950303268650152245}
   cam: {fileID: 7950303267749795199}

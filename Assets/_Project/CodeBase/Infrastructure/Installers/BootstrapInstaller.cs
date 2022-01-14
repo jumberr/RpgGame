@@ -61,6 +61,11 @@ namespace _Project.CodeBase.Infrastructure.Installers
                 .Bind<IGameFactory>()
                 .To<GameFactory>()
                 .AsSingle();
+            
+            Container
+                .Bind<IUIFactory>()
+                .To<UIFactory>()
+                .AsSingle();
 
             Container
                 .Bind<IAssetProvider>()

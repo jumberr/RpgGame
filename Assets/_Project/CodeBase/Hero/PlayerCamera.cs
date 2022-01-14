@@ -5,7 +5,8 @@ namespace _Project.CodeBase.Hero
 {
     public class PlayerCamera : MonoBehaviour
     {
-        public Transform target;
+        [SerializeField] private InputManager inputManager;
+        [SerializeField] private Transform target;
         [SerializeField] private Transform pivot;
         [SerializeField] private Transform cam;
         [SerializeField] private LayerMask collisionLayer;
@@ -28,14 +29,12 @@ namespace _Project.CodeBase.Hero
 
         private void Start()
         {
-            InputManager.Instance.OnRotate += UpdateInput;
+            inputManager.OnRotate += UpdateInput;
             defaultPosition = cam.localPosition.z;
         }
 
-        private void UpdateInput(Vector2 dir)
-        {
+        private void UpdateInput(Vector2 dir) => 
             input = dir;
-        }
 
         private void FollowTarget()
         {

@@ -6,7 +6,7 @@ namespace _Project.CodeBase.Infrastructure
 {
     public class SceneLoader
     {
-        private ICoroutineRunner _coroutineRunner;
+        private readonly ICoroutineRunner _coroutineRunner;
 
         public SceneLoader(ICoroutineRunner coroutineRunner) => 
             _coroutineRunner = coroutineRunner;

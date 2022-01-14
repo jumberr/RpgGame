@@ -9,15 +9,21 @@ namespace _Project.CodeBase.Infrastructure.States
         private const string NextScene = "Game";
         private const string InitialPoint = "InitialPoint";
 
-        private SceneLoader _sceneLoader;
-        private LoadingCurtain _loadingCurtain;
-        private IGameFactory _gameFactory;
+        private readonly SceneLoader _sceneLoader;
+        private readonly LoadingCurtain _loadingCurtain;
+        private readonly IGameFactory _gameFactory;
+        private readonly IUIFactory _uiFactory;
 
-        public InitializeGameSceneState(SceneLoader sceneLoader, LoadingCurtain loadingCurtain, IGameFactory gameFactory)
+        public InitializeGameSceneState(
+            SceneLoader sceneLoader,
+            LoadingCurtain loadingCurtain,
+            IGameFactory gameFactory,
+            IUIFactory uiFactory)
         {
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
             _gameFactory = gameFactory;
+            _uiFactory = uiFactory;
         }
 
         public void Enter()
@@ -28,12 +34,25 @@ namespace _Project.CodeBase.Infrastructure.States
 
         private void OnLoaded()
         {
-            InitializePlayer();
+            InitializeGameWorld();
             _loadingCurtain.Hide();
+        }
+
+        private void InitializeGameWorld()
+        {
+            InitializePlayer();
+            InitializeUIRoot();
+            InitializeHud();
         }
 
         private void InitializePlayer() => 
             _gameFactory.CreateHero(GameObject.FindWithTag(InitialPoint));
+        
+        private void InitializeUIRoot() => 
+            _uiFactory.CreateUIRoot();
+        
+        private void InitializeHud() => 
+            _uiFactory.CreateHud();
 
         public void Exit() { }
     }

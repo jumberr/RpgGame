@@ -6,6 +6,7 @@ namespace _Project.CodeBase.Hero
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [SerializeField] private InputManager inputManager;
         [SerializeField] private CharacterController _characterController;
         private Transform _cam;
 
@@ -47,11 +48,11 @@ namespace _Project.CodeBase.Hero
         {
             _characterController = GetComponent<CharacterController>();
             
-            InputManager.Instance.OnMove += UpdateDirection;
-            InputManager.Instance.OnSprint += UpdateSprintState;
+            inputManager.OnMove += UpdateDirection;
+            inputManager.OnSprint += UpdateSprintState;
 
-            InputManager.Instance.OnJump += JumpAction;
-            InputManager.Instance.OnRoll += RollingAction;
+            inputManager.OnJump += JumpAction;
+            inputManager.OnRoll += RollingAction;
         }
 
         private void UpdateDirection(Vector2 dir)

@@ -7,6 +7,9 @@ namespace _Project.CodeBase.Infrastructure
     {
         [SerializeField] private CanvasGroup _curtain;
         
+        private void Awake() => 
+            DontDestroyOnLoad(this);
+
         public void Show()
         {
             gameObject.SetActive(true);
