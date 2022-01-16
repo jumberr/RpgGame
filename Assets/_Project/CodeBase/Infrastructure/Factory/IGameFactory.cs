@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 namespace _Project.CodeBase.Infrastructure.Factory
 {
     public interface IGameFactory
     {
-        GameObject CreateHero(GameObject at);
+        Task<GameObject> CreateHero(GameObject at);
     }
 }

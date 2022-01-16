@@ -1,160 +1,66 @@
-﻿using System;
-using _Project.CodeBase.Scripts;
+﻿using _Project.CodeBase.Scripts;
 using UnityEngine;
 
 namespace _Project.CodeBase.Hero
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private InputManager inputManager;
-        [SerializeField] private CharacterController _characterController;
-        private Transform _cam;
-
-        private PlayerAnimator _playerAnimator;
-        private bool isSprinting;
-
+        private const float Gravity = -9.81f;
+        
         [Header("Jump:")] 
         [SerializeField] private float jumpForce = 5f;
-
-        [Header("Falling:")] 
-        [SerializeField] private float gravity = 9.81f;
-        private Vector3 velocity;
-
-
-        [Header("Movement Speeds:")]
-        [SerializeField] private float walkingSpeed = 1.5f;
+        [Header("Movement Speed:")]
         [SerializeField] private float runningSpeed = 5f;
-        [SerializeField] private float sprintSpeed = 7f;
-        [SerializeField] private float rotationSpeed = 15f;
-
-        private Vector2 input;
-        private float clampedInput;
-        private Vector3 moveDirection;
-
-        public Action<float, bool> OnMove;
-
-        // Rolling
-        public bool InAction { get; set; }
-        public bool OneMoveDirection { get; set; }
-
-        public void Construct(PlayerAnimator playerAnimator, Transform camera)
-        {
-            _playerAnimator = playerAnimator;
-            _cam = camera;
-            
-        }
         
+        [SerializeField] private InputManager inputManager;
+        [SerializeField] private CharacterController characterController;
+
+        private PlayerAnimator _playerAnimator;
+        private Transform cachedTransform;
+        private Vector3 velocity;
+        private Vector2 input;
+
+        public void Construct(PlayerAnimator playerAnimator) =>
+            _playerAnimator = playerAnimator;
+
         private void Start()
         {
-            _characterController = GetComponent<CharacterController>();
-            
+            cachedTransform = transform;
             inputManager.OnMove += UpdateDirection;
-            inputManager.OnSprint += UpdateSprintState;
-
             inputManager.OnJump += JumpAction;
-            inputManager.OnRoll += RollingAction;
-        }
-
-        private void UpdateDirection(Vector2 dir)
-        {
-            if (!OneMoveDirection)
-                input = dir;
-        }
-
-        private void UpdateSprintState(bool sprint)
-        {
-            if (clampedInput >= 0.5f && sprint)
-            {
-                isSprinting = true;
-            }
-            else if (!sprint)
-            {
-                isSprinting = false;
-            }
         }
 
         private void FixedUpdate()
         {
-            if (_characterController.isGrounded && velocity.y <= 0)
+            if (characterController.isGrounded && velocity.y <= 0)
                 velocity.y = 0f; //We're standing at the floor
 
             MovementAction();
-            RotationAction();
             ApplyGravity();
-
-            OnMove?.Invoke(clampedInput, isSprinting);
         }
+
+        private void UpdateDirection(Vector2 dir) => 
+            input = dir;
 
         private void MovementAction()
         {
-            moveDirection = CalculateDirection();
-
-            clampedInput = Mathf.Clamp01(Mathf.Abs(input.x) + Mathf.Abs(input.y));
-
-            if (isSprinting)
-            {
-                moveDirection *= sprintSpeed;
-            }
-            else
-            {
-                if (clampedInput >= 0.5f)
-                    moveDirection *= runningSpeed;
-                else
-                    moveDirection *= walkingSpeed;
-            }
-
-            _characterController.Move(moveDirection * Time.deltaTime);
+            var moveDirection = CalculateDirection();
+            characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
         }
 
-        private void RotationAction()
-        {
-            var targetDirection = CalculateDirection();
-
-            if (targetDirection == Vector3.zero)
-                targetDirection = transform.forward;
-
-            var targetRotation = Quaternion.LookRotation(targetDirection);
-            var playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-            transform.rotation = playerRotation;
-        }
-
-        private void RollingAction()
-        {
-            if (!InAction)
-            {
-                OneMoveDirection = true;
-                InAction = true;
-                _playerAnimator.PlayTargetAnimation(PlayerAnimator.Roll, false,
-                    () => OneMoveDirection = false);
-            }
-        }
+        private Vector3 CalculateDirection() => 
+            cachedTransform.right * input.x + cachedTransform.forward * input.y;
 
         private void JumpAction()
         {
-            if (!InAction && _characterController.isGrounded)
-            {
-                OneMoveDirection = true;
-                InAction = true;
-                velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
-                _playerAnimator.PlayTargetAnimation(PlayerAnimator.Jump, false,
-                    () => OneMoveDirection = false);
-            }
+            if (characterController.isGrounded) 
+                velocity.y = Mathf.Sqrt(jumpForce * -2f * Gravity);
         }
 
         private void ApplyGravity()
         {
-            velocity.y += gravity * Time.deltaTime;
-            _characterController.Move(velocity * Time.deltaTime);
-        }
-
-        private Vector3 CalculateDirection()
-        {
-            var direction = _cam.forward * input.y;
-            direction += _cam.right * input.x;
-            direction.Normalize();
-            direction.y = 0;
-            return direction;
+            velocity.y += Gravity * Time.deltaTime;
+            characterController.Move(velocity * Time.deltaTime);
         }
     }
 }

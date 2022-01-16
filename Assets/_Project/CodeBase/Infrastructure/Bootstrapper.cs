@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using _Project.CodeBase.Infrastructure.States;
+﻿using _Project.CodeBase.Infrastructure.States;
 using Zenject;
 
 namespace _Project.CodeBase.Infrastructure
@@ -8,16 +7,10 @@ namespace _Project.CodeBase.Infrastructure
     {
         private readonly GameStateMachine _gameStateMachine;
 
-        public Bootstrapper(
-            GameStateMachine gameStateMachine)
-        {
+        public Bootstrapper(GameStateMachine gameStateMachine) =>
             _gameStateMachine = gameStateMachine;
-        }
-        
-        public async void Initialize()
-        {
-            await Task.Delay(10000);
+
+        public void Initialize() => 
             _gameStateMachine.Enter<BootstrapState>();
-        }
     }
 }

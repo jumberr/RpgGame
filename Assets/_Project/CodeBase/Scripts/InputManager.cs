@@ -9,10 +9,7 @@ namespace _Project.CodeBase.Scripts
         
         public Action<Vector2> OnMove;
         public Action<Vector2> OnRotate;
-        public Action<bool> OnSprint;
-        
         public Action OnJump;
-        public Action OnRoll;
 
         private void OnEnable()
         {
@@ -34,15 +31,8 @@ namespace _Project.CodeBase.Scripts
             // Rotate
             _input.PlayerMovement.Rotation.performed += ctx => OnRotate?.Invoke(ctx.ReadValue<Vector2>());
 
-            // Sprint
-            _input.PlayerMovement.Sprinting.performed += ctx => OnSprint?.Invoke(true);
-            _input.PlayerMovement.Sprinting.canceled += ctx => OnSprint?.Invoke(false);
-            
             // Jump
             _input.PlayerMovement.Jump.performed += ctx => OnJump?.Invoke();
-
-            // Roll
-            _input.PlayerMovement.Rolling.performed += ctx => OnRoll?.Invoke();
         }
 
         private void OnDisable()

@@ -10,13 +10,13 @@ namespace _Project.CodeBase.Infrastructure.Factory
         private Transform _uiRoot;
         private Transform _hud;
 
-        public UIFactory(IAssetProvider assetProvider) => 
+        public UIFactory(IAssetProvider assetProvider) =>
             _assetProvider = assetProvider;
 
-        public void CreateUIRoot() =>
+        public  void CreateUIRoot() =>
             _uiRoot = _assetProvider.Instantiate(AssetPath.UIRootPath).transform;
 
-        public void CreateHud() => 
+        public void CreateHud() =>
             _hud = _assetProvider.Instantiate(AssetPath.HudPath, _uiRoot).transform;
     }
 }

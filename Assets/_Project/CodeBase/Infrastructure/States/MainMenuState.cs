@@ -13,11 +13,8 @@ namespace _Project.CodeBase.Infrastructure.States
             _loadingCurtain = loadingCurtain;
         }
 
-        public void Enter()
-        {
-            //_loadingCurtain.Show();
+        public void Enter() => 
             _gameStateMachine.Value.Enter<InitializeGameSceneState>();
-        }
 
         public void Exit() { }
     }

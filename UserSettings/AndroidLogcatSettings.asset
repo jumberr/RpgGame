@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "ztskmftseuy9lnz5",
         "name": "com.moremountains.topdownengine",
-        "processId": 13358,
+        "processId": 32106,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -30,6 +30,12 @@
             "deviceId": "ztskmftseuy9lnz5",
             "name": "com.moremountains.topdownengine",
             "processId": 13358,
+            "exited": false
+        },
+        {
+            "deviceId": "ztskmftseuy9lnz5",
+            "name": "com.moremountains.topdownengine",
+            "processId": 32106,
             "exited": false
         }
     ],
