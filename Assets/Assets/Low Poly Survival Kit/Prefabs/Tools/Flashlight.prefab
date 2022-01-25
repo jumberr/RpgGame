@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 504459678592226441}
   - component: {fileID: 3372493799544736352}
   - component: {fileID: 1304899271375005489}
-  - component: {fileID: 5165064403703794825}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flashlight_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &504459678592226441
 Transform:
@@ -49,12 +48,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113291997751657051}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,20 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5165064403703794825
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113291997751657051}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -8811377214031796749, guid: 2880ffba247d82740a54f5e1a8eeb159, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3347162547193606437
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,12 +92,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1740882335334761270}
   - component: {fileID: 530662943048531482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1740882335334761270
 Transform:
@@ -176,13 +164,12 @@ GameObject:
   - component: {fileID: 450745453307432966}
   - component: {fileID: 5062204011725498122}
   - component: {fileID: 3607704614185765720}
-  - component: {fileID: 8156870415022542837}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flashlight_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &450745453307432966
 Transform:
@@ -220,6 +207,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -245,20 +234,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8156870415022542837
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3392531259951574434}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 1880976239401016655, guid: 2880ffba247d82740a54f5e1a8eeb159, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4385717147773481386
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,13 +246,12 @@ GameObject:
   - component: {fileID: 3803563805287760152}
   - component: {fileID: 1487901713591675499}
   - component: {fileID: 7470704842748223931}
-  - component: {fileID: 3196683147489143457}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flashlight_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3803563805287760152
 Transform:
@@ -308,12 +283,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4385717147773481386}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -339,20 +316,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3196683147489143457
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4385717147773481386}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 2685483687842931082, guid: 2880ffba247d82740a54f5e1a8eeb159, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4743740103631521527
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,13 +328,12 @@ GameObject:
   - component: {fileID: 7620706549862230262}
   - component: {fileID: 3306588107918540935}
   - component: {fileID: 3990533459731018778}
-  - component: {fileID: 3046319636397608729}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flashlight_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7620706549862230262
 Transform:
@@ -408,6 +371,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -433,20 +398,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3046319636397608729
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4743740103631521527}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -2841840893362770046, guid: 2880ffba247d82740a54f5e1a8eeb159, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5318439403752786844
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,13 +410,12 @@ GameObject:
   - component: {fileID: 3615622463000229727}
   - component: {fileID: 1467314295928717816}
   - component: {fileID: 1764587450804527466}
-  - component: {fileID: 6906599179009090997}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flashlight_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3615622463000229727
 Transform:
@@ -502,6 +453,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -527,17 +480,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6906599179009090997
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5318439403752786844}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -1805905189193657330, guid: 2880ffba247d82740a54f5e1a8eeb159, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}

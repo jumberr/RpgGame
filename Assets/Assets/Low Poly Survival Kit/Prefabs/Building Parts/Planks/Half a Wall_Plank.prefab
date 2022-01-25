@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 1798782927058573824}
   - component: {fileID: 4417192969563892408}
   - component: {fileID: 8097874382117065521}
-  - component: {fileID: 1567836528976302308}
-  m_Layer: 0
+  - component: {fileID: 3240832129157807956}
+  m_Layer: 9
   m_Name: Half_a_Wall_Plank_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1798782927058573824
 Transform:
@@ -55,6 +55,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,8 +81,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1567836528976302308
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3240832129157807956
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -89,10 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 759985083004445891, guid: efe07ca124a15f34ca7e7a7c12c2e468, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5000005, y: 0.9375, z: 0.103431374}
+  m_Center: {x: 0, y: 0.46875, z: -0.000000003725291}
 --- !u!1 &1835381622235602250
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +106,13 @@ GameObject:
   - component: {fileID: 556909981556634976}
   - component: {fileID: 6348141347787783099}
   - component: {fileID: 7180020349929471484}
-  - component: {fileID: 1480896209155800644}
-  m_Layer: 0
+  - component: {fileID: 416445832661673380}
+  m_Layer: 9
   m_Name: Half_a_Wall_Plank_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &556909981556634976
 Transform:
@@ -142,12 +144,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835381622235602250}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,8 +176,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1480896209155800644
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &416445832661673380
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -182,10 +187,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 9146516484844662331, guid: efe07ca124a15f34ca7e7a7c12c2e468, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5000517, y: 0.9338571, z: 0.09516387}
+  m_Center: {x: -0.000013768677, y: 0.472045, z: 0.00043635082}
 --- !u!1 &1841723717288342780
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,13 +201,13 @@ GameObject:
   - component: {fileID: 1605907343837118473}
   - component: {fileID: 26597998775090620}
   - component: {fileID: 7268065428961921221}
-  - component: {fileID: 5788504692449514945}
-  m_Layer: 0
+  - component: {fileID: 5202387710742902417}
+  m_Layer: 9
   m_Name: Half_a_Wall_Plank_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1605907343837118473
 Transform:
@@ -235,12 +239,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841723717288342780}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -265,8 +271,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5788504692449514945
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5202387710742902417
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -275,10 +282,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -2926479036635252238, guid: efe07ca124a15f34ca7e7a7c12c2e468, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5000005, y: 0.97501916, z: 0.0928462}
+  m_Center: {x: 0, y: 0.4688628, z: 0.00093299546}
 --- !u!1 &1900939570554352386
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,13 +296,13 @@ GameObject:
   - component: {fileID: 6053332700852979575}
   - component: {fileID: 4327242207362173734}
   - component: {fileID: 2878525857937850685}
-  - component: {fileID: 7965632826045065053}
-  m_Layer: 0
+  - component: {fileID: 7281714925524627407}
+  m_Layer: 9
   m_Name: Half_a_Wall_Plank_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &6053332700852979575
 Transform:
@@ -334,6 +340,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -358,8 +366,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7965632826045065053
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7281714925524627407
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -368,10 +377,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 6771157595579985858, guid: efe07ca124a15f34ca7e7a7c12c2e468, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5000517, y: 0.9375, z: 0.10367673}
+  m_Center: {x: -0.000013768677, y: 0.46875, z: 0.00012268315}
 --- !u!1 &6407845892381368911
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,12 +390,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7977673996130881628}
   - component: {fileID: 3348128394638171304}
-  m_Layer: 0
-  m_Name: 3 Planks Height Wall-Plank
+  m_Layer: 9
+  m_Name: Half a Wall_Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7977673996130881628
 Transform:
@@ -454,13 +462,13 @@ GameObject:
   - component: {fileID: 7245088555340137929}
   - component: {fileID: 6537577435528121562}
   - component: {fileID: 5500826633154763481}
-  - component: {fileID: 5440085302282656572}
-  m_Layer: 0
+  - component: {fileID: 1969114938327188113}
+  m_Layer: 9
   m_Name: Half_a_Wall_Plank_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7245088555340137929
 Transform:
@@ -498,6 +506,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,8 +532,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5440085302282656572
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1969114938327188113
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -532,7 +543,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 5201278404706243387, guid: efe07ca124a15f34ca7e7a7c12c2e468, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5000346, y: 0.9375, z: 0.10394333}
+  m_Center: {x: -0.000006079675, y: 0.46875, z: 0.00025597593}

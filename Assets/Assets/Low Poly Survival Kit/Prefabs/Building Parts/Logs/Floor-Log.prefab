@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 8994551333415674096}
   - component: {fileID: 5044330110462089575}
   - component: {fileID: 8876363460433950483}
-  - component: {fileID: 6303952351326857914}
-  m_Layer: 0
+  - component: {fileID: 6601220392572365560}
+  m_Layer: 9
   m_Name: Floor_Log_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8994551333415674096
 Transform:
@@ -55,6 +55,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,8 +81,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6303952351326857914
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6601220392572365560
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -89,10 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5325895888402830127, guid: efb7d29e048175e4395600a61cd3c047, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 0.50693995, z: 2.5}
+  m_Center: {x: -0.034838974, y: 0.25346902, z: -0.0011770129}
 --- !u!1 &2546854942133872609
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +106,13 @@ GameObject:
   - component: {fileID: 9016854741369402029}
   - component: {fileID: 6461530358390748566}
   - component: {fileID: 8557044224146670395}
-  - component: {fileID: 1708068661945724807}
-  m_Layer: 0
+  - component: {fileID: 5992681601706901177}
+  m_Layer: 9
   m_Name: Floor_Log_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &9016854741369402029
 Transform:
@@ -148,6 +150,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,8 +176,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1708068661945724807
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5992681601706901177
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -182,10 +187,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 7326349688862372977, guid: efb7d29e048175e4395600a61cd3c047, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.499377, y: 0.49667984, z: 2.5}
+  m_Center: {x: -0.03448105, y: 0.24836978, z: -0.0011770129}
 --- !u!1 &2631506856141196699
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,12 +200,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1359986293036810120}
   - component: {fileID: 8137073627214988426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor-Log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1359986293036810120
 Transform:
@@ -268,13 +272,13 @@ GameObject:
   - component: {fileID: 8226207613283570209}
   - component: {fileID: 4884734021089592428}
   - component: {fileID: 997277785427649664}
-  - component: {fileID: 2419090677354181399}
-  m_Layer: 0
+  - component: {fileID: 7829270923475219639}
+  m_Layer: 9
   m_Name: Floor_Log_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8226207613283570209
 Transform:
@@ -306,12 +310,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4223313787591324390}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -336,8 +342,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2419090677354181399
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7829270923475219639
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -346,10 +353,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -1134930735640183597, guid: efb7d29e048175e4395600a61cd3c047, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.493897, y: 0.46203756, z: 2.4915974}
+  m_Center: {x: -0.03156519, y: 0.23107925, z: -0.0053782463}
 --- !u!1 &7343930821607531863
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,13 +367,13 @@ GameObject:
   - component: {fileID: 8946484694793668144}
   - component: {fileID: 500227131540344249}
   - component: {fileID: 5834887256033155167}
-  - component: {fileID: 3827566684196637571}
-  m_Layer: 0
+  - component: {fileID: 3716519210483795687}
+  m_Layer: 9
   m_Name: Floor_Log_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8946484694793668144
 Transform:
@@ -399,12 +405,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7343930821607531863}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,8 +437,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3827566684196637571
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3716519210483795687
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -439,10 +448,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 6541201015264850052, guid: efb7d29e048175e4395600a61cd3c047, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.4995527, y: 0.49664924, z: 2.491337}
+  m_Center: {x: -0.03439313, y: 0.24838509, z: -0.005508423}
 --- !u!1 &9221642339157793851
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,13 +462,13 @@ GameObject:
   - component: {fileID: 7062988742294464980}
   - component: {fileID: 8827483084610298659}
   - component: {fileID: 333342760582347184}
-  - component: {fileID: 2738904489861526425}
-  m_Layer: 0
+  - component: {fileID: 1924672632721477304}
+  m_Layer: 9
   m_Name: Floor_Log_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7062988742294464980
 Transform:
@@ -498,6 +506,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,8 +532,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2738904489861526425
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1924672632721477304
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -532,7 +543,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 2326764456940000726, guid: efb7d29e048175e4395600a61cd3c047, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 0.50693995, z: 2.5}
+  m_Center: {x: -0.031183302, y: 0.25346902, z: -0.0011770129}

@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 3109171545957941505}
   - component: {fileID: 5447348079657528658}
   - component: {fileID: 1078200867555861878}
-  - component: {fileID: 3428602284779776902}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compass_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3109171545957941505
 Transform:
@@ -55,6 +54,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,20 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3428602284779776902
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268993727626675424}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 3683857094676439384, guid: 916058bac5bec5f4da0ed7c6f2b6ada1, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3966549592327880815
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +92,12 @@ GameObject:
   - component: {fileID: 2670735490233019538}
   - component: {fileID: 7360606328278558216}
   - component: {fileID: 278883333018589807}
-  - component: {fileID: 4480304846514441651}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compass_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &2670735490233019538
 Transform:
@@ -148,6 +135,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,20 +161,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4480304846514441651
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966549592327880815}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -2681226919593513451, guid: 916058bac5bec5f4da0ed7c6f2b6ada1, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4076002469147795645
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,13 +173,12 @@ GameObject:
   - component: {fileID: 8803759694902930476}
   - component: {fileID: 3873682016308483203}
   - component: {fileID: 3884158049961666320}
-  - component: {fileID: 5921576422811265815}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compass_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8803759694902930476
 Transform:
@@ -241,6 +216,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -265,20 +242,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5921576422811265815
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4076002469147795645}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -4823903386414913854, guid: 916058bac5bec5f4da0ed7c6f2b6ada1, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4435159488279914133
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,13 +254,12 @@ GameObject:
   - component: {fileID: 8120965099636149165}
   - component: {fileID: 2421812992931994074}
   - component: {fileID: 682597920599279140}
-  - component: {fileID: 5522761524762098669}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compass_Arrow_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8120965099636149165
 Transform:
@@ -334,6 +297,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -358,20 +323,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5522761524762098669
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4435159488279914133}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -3927550007582292244, guid: 916058bac5bec5f4da0ed7c6f2b6ada1, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4582288300968036874
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,13 +335,12 @@ GameObject:
   - component: {fileID: 6985598262304968744}
   - component: {fileID: 8899098502853736959}
   - component: {fileID: 6640315215539409476}
-  - component: {fileID: 2598523547190720486}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compass_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &6985598262304968744
 Transform:
@@ -421,12 +372,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4582288300968036874}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -451,20 +404,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2598523547190720486
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4582288300968036874}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 2462954408068769531, guid: 916058bac5bec5f4da0ed7c6f2b6ada1, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5337786490056715715
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,13 +416,12 @@ GameObject:
   - component: {fileID: 8607420244005692103}
   - component: {fileID: 25653307588260034}
   - component: {fileID: 8307398933896382580}
-  - component: {fileID: 4701142124032240439}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compass_Arrow_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8607420244005692103
 Transform:
@@ -520,6 +459,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -544,20 +485,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4701142124032240439
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5337786490056715715}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 2160673490494399564, guid: 916058bac5bec5f4da0ed7c6f2b6ada1, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5529015425574793766
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,13 +497,12 @@ GameObject:
   - component: {fileID: 181038843797042362}
   - component: {fileID: 5327682623692374060}
   - component: {fileID: 3249626395066551838}
-  - component: {fileID: 898597445524556530}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compass_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &181038843797042362
 Transform:
@@ -607,12 +534,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5529015425574793766}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -637,20 +566,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &898597445524556530
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5529015425574793766}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -2937641448794708857, guid: 916058bac5bec5f4da0ed7c6f2b6ada1, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6015448363221851113
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,13 +578,12 @@ GameObject:
   - component: {fileID: 7343211829686956746}
   - component: {fileID: 8261173226120874804}
   - component: {fileID: 1619418689386805114}
-  - component: {fileID: 1880565397237255907}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compass_Arrow_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7343211829686956746
 Transform:
@@ -700,12 +615,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6015448363221851113}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -730,20 +647,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1880565397237255907
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6015448363221851113}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 1793847186660404524, guid: 916058bac5bec5f4da0ed7c6f2b6ada1, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6642180500646638325
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,13 +659,12 @@ GameObject:
   - component: {fileID: 5647111308713512976}
   - component: {fileID: 6965641125718375383}
   - component: {fileID: 5328954320077580861}
-  - component: {fileID: 6853198187965857618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compass_Arrow_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &5647111308713512976
 Transform:
@@ -793,12 +696,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6642180500646638325}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -823,20 +728,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6853198187965857618
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6642180500646638325}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -6457480110836773954, guid: 916058bac5bec5f4da0ed7c6f2b6ada1, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7509323124072810262
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,12 +739,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6804130073666024709}
   - component: {fileID: 3804717578162528947}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6804130073666024709
 Transform:
@@ -929,13 +821,12 @@ GameObject:
   - component: {fileID: 8722905614098321180}
   - component: {fileID: 8468812051368192654}
   - component: {fileID: 3365042655076630219}
-  - component: {fileID: 8607440331334391743}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compass_Arrow_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8722905614098321180
 Transform:
@@ -973,6 +864,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -997,17 +890,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8607440331334391743
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8233722623126632089}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 1410449120141525213, guid: 916058bac5bec5f4da0ed7c6f2b6ada1, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}

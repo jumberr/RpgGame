@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 1609196904329233910}
   - component: {fileID: 802625811834192455}
   - component: {fileID: 1029763727243578955}
-  - component: {fileID: 4359271641419519338}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Battery_5_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1609196904329233910
 Transform:
@@ -55,6 +54,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,20 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4359271641419519338
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36816064326274050}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4870215782769605632, guid: df0c225f3e2260246936f9e3e2853394, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3499400087557457412
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +92,12 @@ GameObject:
   - component: {fileID: 4450338949590940922}
   - component: {fileID: 6100590532306906816}
   - component: {fileID: 7552701909565138228}
-  - component: {fileID: 1433711308045648673}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Battery_5_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &4450338949590940922
 Transform:
@@ -148,6 +135,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,20 +161,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1433711308045648673
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3499400087557457412}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -1414757219995906944, guid: df0c225f3e2260246936f9e3e2853394, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4796495408163301156
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,13 +173,12 @@ GameObject:
   - component: {fileID: 6080081845677719991}
   - component: {fileID: 2885900723461543470}
   - component: {fileID: 6850713934638760065}
-  - component: {fileID: 3761297835631760723}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Battery_5_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &6080081845677719991
 Transform:
@@ -235,12 +210,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4796495408163301156}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -265,20 +242,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3761297835631760723
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4796495408163301156}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 8164373394183478170, guid: df0c225f3e2260246936f9e3e2853394, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5901816422325310727
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,12 +253,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7474901281951360788}
   - component: {fileID: 2958259947502809464}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Battery 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7474901281951360788
 Transform:
@@ -361,13 +325,12 @@ GameObject:
   - component: {fileID: 2364262272895950957}
   - component: {fileID: 966917681338988030}
   - component: {fileID: 8108198604992564332}
-  - component: {fileID: 9164875692444691565}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Battery_5_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &2364262272895950957
 Transform:
@@ -405,6 +368,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,20 +394,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &9164875692444691565
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7015787839797213290}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -4323330023354546539, guid: df0c225f3e2260246936f9e3e2853394, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8063227471938221949
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,13 +406,12 @@ GameObject:
   - component: {fileID: 4014768739373934124}
   - component: {fileID: 5713764511373117180}
   - component: {fileID: 2163072848224734212}
-  - component: {fileID: 8804805683041226075}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Battery_5_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &4014768739373934124
 Transform:
@@ -492,12 +443,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8063227471938221949}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,17 +475,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8804805683041226075
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8063227471938221949}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -2176858809205585491, guid: df0c225f3e2260246936f9e3e2853394, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}

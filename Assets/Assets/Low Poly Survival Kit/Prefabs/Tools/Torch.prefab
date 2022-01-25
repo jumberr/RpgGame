@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 2335450133756594088}
   - component: {fileID: 8127347219260460184}
   - component: {fileID: 68362508336650232}
-  - component: {fileID: 8713407914993555111}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torch_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &2335450133756594088
 Transform:
@@ -49,12 +48,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16300171127204081}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,20 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8713407914993555111
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16300171127204081}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -1990725759035065432, guid: 90c9cebbeeb1b5c4dbf98c0261d1d6ec, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4069362203703570389
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +92,12 @@ GameObject:
   - component: {fileID: 3956772043757482302}
   - component: {fileID: 4174416839406262417}
   - component: {fileID: 4429591444471997794}
-  - component: {fileID: 347881083320560448}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torch_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3956772043757482302
 Transform:
@@ -148,6 +135,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,20 +161,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &347881083320560448
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4069362203703570389}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -1996950951224065495, guid: 90c9cebbeeb1b5c4dbf98c0261d1d6ec, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5393446775579336837
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,13 +173,12 @@ GameObject:
   - component: {fileID: 888911566006701853}
   - component: {fileID: 9217911391452985741}
   - component: {fileID: 6699105904405257068}
-  - component: {fileID: 4055527265250575178}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torch_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &888911566006701853
 Transform:
@@ -241,6 +216,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -265,20 +242,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4055527265250575178
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5393446775579336837}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 272408049630976883, guid: 90c9cebbeeb1b5c4dbf98c0261d1d6ec, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5663075751239741968
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,12 +253,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8704350583052763139}
   - component: {fileID: 3949552052190832888}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8704350583052763139
 Transform:
@@ -361,13 +325,12 @@ GameObject:
   - component: {fileID: 7309106789871222074}
   - component: {fileID: 2454330815073778794}
   - component: {fileID: 4289541150124680622}
-  - component: {fileID: 1671051582848329874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torch_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7309106789871222074
 Transform:
@@ -399,12 +362,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7048143302607305859}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,20 +394,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1671051582848329874
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7048143302607305859}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 7537823744239580785, guid: 90c9cebbeeb1b5c4dbf98c0261d1d6ec, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8010419582657234856
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,13 +406,12 @@ GameObject:
   - component: {fileID: 2531640926797755496}
   - component: {fileID: 7640075131529150755}
   - component: {fileID: 615180642375815825}
-  - component: {fileID: 222528306185215104}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torch_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &2531640926797755496
 Transform:
@@ -498,6 +449,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,17 +475,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &222528306185215104
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8010419582657234856}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 1185100349623011410, guid: 90c9cebbeeb1b5c4dbf98c0261d1d6ec, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}

@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 3458463945192588845}
   - component: {fileID: 6076924977638077019}
   - component: {fileID: 848327432500445437}
-  - component: {fileID: 7843311621448750942}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Saw_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3458463945192588845
 Transform:
@@ -55,6 +54,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,20 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7843311621448750942
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1518921118909895643}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -3149802590353342167, guid: 200c180b9d719c04f8d2f293d97e9404, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2050214529449654540
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +92,12 @@ GameObject:
   - component: {fileID: 1963577159869157321}
   - component: {fileID: 5008537805579526605}
   - component: {fileID: 6703223525669619040}
-  - component: {fileID: 4868105234565353679}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chainsaw_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1963577159869157321
 Transform:
@@ -142,12 +129,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050214529449654540}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -173,20 +162,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4868105234565353679
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2050214529449654540}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -2459086293475069936, guid: 200c180b9d719c04f8d2f293d97e9404, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3526142667740626015
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,13 +174,12 @@ GameObject:
   - component: {fileID: 120661208389688607}
   - component: {fileID: 8661681119100218872}
   - component: {fileID: 3183314712148617389}
-  - component: {fileID: 6179075070812743103}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Saw_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &120661208389688607
 Transform:
@@ -242,6 +217,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -266,20 +243,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6179075070812743103
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3526142667740626015}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 1579312214911821691, guid: 200c180b9d719c04f8d2f293d97e9404, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5618830854690406284
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,13 +255,12 @@ GameObject:
   - component: {fileID: 2464376952450302762}
   - component: {fileID: 2108727897862559846}
   - component: {fileID: 3182760869815851377}
-  - component: {fileID: 2655354252378979794}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Saw_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &2464376952450302762
 Transform:
@@ -335,6 +298,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -359,20 +324,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2655354252378979794
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5618830854690406284}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -3676795138638633297, guid: 200c180b9d719c04f8d2f293d97e9404, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5783794031862838162
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,13 +336,12 @@ GameObject:
   - component: {fileID: 2038366365944859080}
   - component: {fileID: 4899647947414686970}
   - component: {fileID: 2157600775541980875}
-  - component: {fileID: 984036054810065639}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chainsaw_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &2038366365944859080
 Transform:
@@ -428,6 +379,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -453,20 +406,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &984036054810065639
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5783794031862838162}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -6492994951746722816, guid: 200c180b9d719c04f8d2f293d97e9404, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6394343673539532797
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,13 +418,12 @@ GameObject:
   - component: {fileID: 4471304174476591429}
   - component: {fileID: 4517525620928559769}
   - component: {fileID: 1681749884873205282}
-  - component: {fileID: 9010752410904210519}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Saw_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &4471304174476591429
 Transform:
@@ -516,12 +455,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6394343673539532797}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -546,20 +487,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &9010752410904210519
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6394343673539532797}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -6054555689455088393, guid: 200c180b9d719c04f8d2f293d97e9404, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6768503944310570313
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,13 +499,12 @@ GameObject:
   - component: {fileID: 9158076148624658630}
   - component: {fileID: 111172337034988906}
   - component: {fileID: 6869972109642127414}
-  - component: {fileID: 3025475752713730421}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Saw_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &9158076148624658630
 Transform:
@@ -609,12 +536,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6768503944310570313}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -639,20 +568,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3025475752713730421
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6768503944310570313}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4818428625953331283, guid: 200c180b9d719c04f8d2f293d97e9404, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8351886228843193101
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,13 +580,12 @@ GameObject:
   - component: {fileID: 6539829049206174603}
   - component: {fileID: 8053899950792126015}
   - component: {fileID: 2053449691067638006}
-  - component: {fileID: 7827811730791747993}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chainsaw_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &6539829049206174603
 Transform:
@@ -702,12 +617,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8351886228843193101}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -733,20 +650,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7827811730791747993
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8351886228843193101}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 192629225208423166, guid: 200c180b9d719c04f8d2f293d97e9404, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8440086542030463810
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,13 +662,12 @@ GameObject:
   - component: {fileID: 7254534393229991432}
   - component: {fileID: 426220758197016202}
   - component: {fileID: 5410170130258231372}
-  - component: {fileID: 5870086799263144279}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chainsaw_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7254534393229991432
 Transform:
@@ -802,6 +705,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -827,20 +732,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5870086799263144279
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8440086542030463810}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -8505151558208277320, guid: 200c180b9d719c04f8d2f293d97e9404, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8530014757870937926
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,13 +744,12 @@ GameObject:
   - component: {fileID: 189627147432080258}
   - component: {fileID: 8934269044607377890}
   - component: {fileID: 1641654326561226183}
-  - component: {fileID: 2339984197002286519}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chainsaw_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &189627147432080258
 Transform:
@@ -896,6 +787,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -921,20 +814,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2339984197002286519
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8530014757870937926}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 7518292259124596620, guid: 200c180b9d719c04f8d2f293d97e9404, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &9188864368846818074
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,12 +825,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5322760724996241673}
   - component: {fileID: 7958250805863670532}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chainsaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5322760724996241673
 Transform:

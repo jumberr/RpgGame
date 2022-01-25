@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2871718007988060225}
   - component: {fileID: 25728048160242138}
   - component: {fileID: 7534281129921274968}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Platform_with_pillars_Plank_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3725928285613190209
 Transform:
@@ -49,12 +49,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848464300586731323}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &7534281129921274968
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -89,9 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -4407851679094380620, guid: e79708043c863284f9fc8ed03bd19004, type: 3}
 --- !u!1 &986716684926837565
 GameObject:
@@ -105,12 +108,12 @@ GameObject:
   - component: {fileID: 1568355922072210967}
   - component: {fileID: 6276217162856741316}
   - component: {fileID: 8775430681919421316}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Platform_with_pillars_Plank_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &583358293196118126
 Transform:
@@ -148,6 +151,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,6 +177,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &8775430681919421316
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -182,9 +188,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -1187274316987955216, guid: e79708043c863284f9fc8ed03bd19004, type: 3}
 --- !u!1 &1514395738521341911
 GameObject:
@@ -196,12 +202,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2548878227879296452}
   - component: {fileID: 1400947024832264851}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Platform with pillars-Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2548878227879296452
 Transform:
@@ -269,12 +275,12 @@ GameObject:
   - component: {fileID: 8390335789935866263}
   - component: {fileID: 666928373626261204}
   - component: {fileID: 4885603714655479565}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Platform_with_pillars_Plank_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7711687091422306361
 Transform:
@@ -306,12 +312,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4379083559001538741}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -336,6 +344,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &4885603714655479565
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -346,9 +355,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -3638317709799412039, guid: e79708043c863284f9fc8ed03bd19004, type: 3}
 --- !u!1 &8505916133131277203
 GameObject:
@@ -362,12 +371,12 @@ GameObject:
   - component: {fileID: 80913899214992295}
   - component: {fileID: 4380760428132548093}
   - component: {fileID: 2464865901128523357}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Platform_with_pillars_Plank_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8025664097049035348
 Transform:
@@ -405,6 +414,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,6 +440,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &2464865901128523357
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -439,9 +451,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4074096780031840270, guid: e79708043c863284f9fc8ed03bd19004, type: 3}
 --- !u!1 &8896746340256014191
 GameObject:
@@ -455,12 +467,12 @@ GameObject:
   - component: {fileID: 505194750183780724}
   - component: {fileID: 5990834094206894384}
   - component: {fileID: 3895230289507690210}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Platform_with_pillars_Plank_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8222116428908901703
 Transform:
@@ -498,6 +510,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,6 +536,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &3895230289507690210
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -532,7 +547,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -2238782090819865562, guid: e79708043c863284f9fc8ed03bd19004, type: 3}

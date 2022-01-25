@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 5412805580844538821}
   - component: {fileID: 934960369445633083}
   - component: {fileID: 5936804676022588636}
-  - component: {fileID: 2730015779891297450}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lantern_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5412805580844538821
 Transform:
@@ -55,6 +54,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,20 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2730015779891297450
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 839668200652447331}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -6946280513939798017, guid: a4a5b3f3c5f4cff41b725176fe222acc, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1197113748109635455
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,12 +92,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2794018769844395372}
   - component: {fileID: 8687948796691587421}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lantern Lit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2794018769844395372
 Transform:
@@ -177,13 +165,12 @@ GameObject:
   - component: {fileID: 1501076407037005473}
   - component: {fileID: 4466405242949321895}
   - component: {fileID: 9048617305287837937}
-  - component: {fileID: 6744679018427013124}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lantern_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1501076407037005473
 Transform:
@@ -221,6 +208,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -246,20 +235,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6744679018427013124
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4477098560182790861}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -1492826020373256875, guid: a4a5b3f3c5f4cff41b725176fe222acc, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5295011150600948611
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,13 +247,12 @@ GameObject:
   - component: {fileID: 416164913218413705}
   - component: {fileID: 1887757624944403639}
   - component: {fileID: 8228289048095336791}
-  - component: {fileID: 6300230722186630899}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lantern_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &416164913218413705
 Transform:
@@ -315,6 +290,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -340,20 +317,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6300230722186630899
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5295011150600948611}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -8438079013414062058, guid: a4a5b3f3c5f4cff41b725176fe222acc, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5501708985615386980
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,13 +329,12 @@ GameObject:
   - component: {fileID: 8784268007770127354}
   - component: {fileID: 927585802288648580}
   - component: {fileID: 3351164770528507487}
-  - component: {fileID: 8341549155067758708}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lantern_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8784268007770127354
 Transform:
@@ -409,6 +372,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -434,20 +399,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8341549155067758708
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5501708985615386980}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -3542885575542495806, guid: a4a5b3f3c5f4cff41b725176fe222acc, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8373754754842733911
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,13 +411,12 @@ GameObject:
   - component: {fileID: 5399223317958513049}
   - component: {fileID: 7981526794918912834}
   - component: {fileID: 5021592695774940727}
-  - component: {fileID: 4314280125002881304}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lantern_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5399223317958513049
 Transform:
@@ -503,6 +454,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -528,20 +481,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4314280125002881304
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8373754754842733911}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -4411410578011655953, guid: a4a5b3f3c5f4cff41b725176fe222acc, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &9102023236872910841
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,12 +492,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9102023236872910842}
   - component: {fileID: 9102023236872910843}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9102023236872910842
 Transform:
@@ -581,8 +521,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9102023236872910841}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.9701196, b: 0.61960787, a: 1}
   m_Intensity: 2
   m_Range: 3
@@ -590,7 +531,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -621,9 +562,9 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -631,5 +572,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0

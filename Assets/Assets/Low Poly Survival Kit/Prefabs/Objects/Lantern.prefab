@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2896637666644484480}
   - component: {fileID: 80451754719357830}
   - component: {fileID: 4716725564035508176}
-  - component: {fileID: 7025580523232311077}
   m_Layer: 0
   m_Name: Lantern_LOD4
   m_TagString: Untagged
@@ -55,6 +54,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,20 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7025580523232311077
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 200358494114596332}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -1492826020373256875, guid: a4a5b3f3c5f4cff41b725176fe222acc, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3981481488878268738
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +93,6 @@ GameObject:
   - component: {fileID: 8644708314238219492}
   - component: {fileID: 3467679451920896794}
   - component: {fileID: 7963997962491739133}
-  - component: {fileID: 1802846630623630219}
   m_Layer: 0
   m_Name: Lantern_LOD1
   m_TagString: Untagged
@@ -149,6 +136,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -174,20 +163,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1802846630623630219
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3981481488878268738}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -6946280513939798017, guid: a4a5b3f3c5f4cff41b725176fe222acc, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5247683139300934262
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +175,6 @@ GameObject:
   - component: {fileID: 8506152450285715128}
   - component: {fileID: 5918325585235545187}
   - component: {fileID: 8743261925962014998}
-  - component: {fileID: 520569811196343865}
   m_Layer: 0
   m_Name: Lantern_LOD0
   m_TagString: Untagged
@@ -243,6 +218,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -268,20 +245,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &520569811196343865
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5247683139300934262}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -4411410578011655953, guid: a4a5b3f3c5f4cff41b725176fe222acc, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5440966642094878061
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +328,6 @@ GameObject:
   - component: {fileID: 4972524432087192795}
   - component: {fileID: 3474944691674889893}
   - component: {fileID: 1326225483134851454}
-  - component: {fileID: 5703012145146586965}
   m_Layer: 0
   m_Name: Lantern_LOD3
   m_TagString: Untagged
@@ -408,6 +371,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -433,20 +398,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5703012145146586965
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8124483531731330629}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -3542885575542495806, guid: a4a5b3f3c5f4cff41b725176fe222acc, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8475107095224001698
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +410,6 @@ GameObject:
   - component: {fileID: 4116442198988819368}
   - component: {fileID: 2798037296625863574}
   - component: {fileID: 5680948833123616374}
-  - component: {fileID: 7748693711908420050}
   m_Layer: 0
   m_Name: Lantern_LOD2
   m_TagString: Untagged
@@ -502,6 +453,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -527,17 +480,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7748693711908420050
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8475107095224001698}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -8438079013414062058, guid: a4a5b3f3c5f4cff41b725176fe222acc, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}

@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 1515300349702709866}
   - component: {fileID: 9097214177233414362}
   - component: {fileID: 6095132463548582263}
-  - component: {fileID: 1532396343352449422}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bonfire_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1515300349702709866
 Transform:
@@ -55,6 +54,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,20 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1532396343352449422
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117458333218065741}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -783043491928556885, guid: d9535dba29fef544da9c83a51b89306e, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4102573406429346408
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +92,12 @@ GameObject:
   - component: {fileID: 6978178026157702890}
   - component: {fileID: 6111672521054560633}
   - component: {fileID: 5732840420330983362}
-  - component: {fileID: 861353997155930441}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bonfire_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &6978178026157702890
 Transform:
@@ -142,12 +129,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4102573406429346408}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,20 +161,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &861353997155930441
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4102573406429346408}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 5969433815971094148, guid: d9535dba29fef544da9c83a51b89306e, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4406848971688973237
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,12 +172,12 @@ GameObject:
   m_Component:
   - component: {fileID: 825034022517727654}
   - component: {fileID: 6063012977053448119}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bonfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &825034022517727654
 Transform:
@@ -268,13 +244,12 @@ GameObject:
   - component: {fileID: 4550071555268146229}
   - component: {fileID: 4733706614589376254}
   - component: {fileID: 7341435392653896737}
-  - component: {fileID: 8545245973789222222}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bonfire_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &4550071555268146229
 Transform:
@@ -306,12 +281,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4844987462727290077}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -336,20 +313,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8545245973789222222
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4844987462727290077}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 2913874656252583921, guid: d9535dba29fef544da9c83a51b89306e, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5178255648109275581
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,13 +325,13 @@ GameObject:
   - component: {fileID: 679580085982130997}
   - component: {fileID: 950400851696536277}
   - component: {fileID: 6901279808658285229}
-  - component: {fileID: 7313691383313613280}
-  m_Layer: 0
+  - component: {fileID: 915416306458574178}
+  m_Layer: 9
   m_Name: Bonfire_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &679580085982130997
 Transform:
@@ -405,6 +369,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,8 +395,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7313691383313613280
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &915416306458574178
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -439,10 +406,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -6145445897182334913, guid: d9535dba29fef544da9c83a51b89306e, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.6543221, y: 1.7618699, z: 1.734274}
+  m_Center: {x: -0.062068406, y: 0.77901137, z: 0.046127506}
 --- !u!1 &8098880483068123932
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,13 +420,12 @@ GameObject:
   - component: {fileID: 673771529505637905}
   - component: {fileID: 3858435251888323774}
   - component: {fileID: 2826236527723080843}
-  - component: {fileID: 2193495989607860548}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bonfire_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &673771529505637905
 Transform:
@@ -498,6 +463,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,17 +489,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2193495989607860548
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8098880483068123932}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 8421170095218633684, guid: d9535dba29fef544da9c83a51b89306e, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}

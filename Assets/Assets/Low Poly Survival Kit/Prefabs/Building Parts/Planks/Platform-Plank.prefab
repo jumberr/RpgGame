@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3695654684079135241}
   - component: {fileID: 4715451046697866164}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Platform-Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3695654684079135241
 Transform:
@@ -82,13 +82,13 @@ GameObject:
   - component: {fileID: 3743851532055968162}
   - component: {fileID: 7055317231593338845}
   - component: {fileID: 2710631192342612655}
-  - component: {fileID: 8775277863769406335}
-  m_Layer: 0
+  - component: {fileID: 3546555803723429406}
+  m_Layer: 9
   m_Name: Platform_Plank_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3743851532055968162
 Transform:
@@ -126,6 +126,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -150,8 +152,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8775277863769406335
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3546555803723429406
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -160,10 +163,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 1861928304052462951, guid: e105be70031552e468098efbb304a8df, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.4974718, y: 0.32386136, z: 2.520233}
+  m_Center: {x: -0.004096806, y: 0.1578598, z: 0.00015223026}
 --- !u!1 &974063459695534684
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,13 +177,13 @@ GameObject:
   - component: {fileID: 2227341367517522054}
   - component: {fileID: 3322613827325356710}
   - component: {fileID: 3090260015354237358}
-  - component: {fileID: 662699560874055503}
-  m_Layer: 0
+  - component: {fileID: 1301139362884944759}
+  m_Layer: 9
   m_Name: Platform_Plank_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &2227341367517522054
 Transform:
@@ -219,6 +221,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -243,8 +247,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &662699560874055503
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1301139362884944759
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -253,10 +258,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 718881049811816767, guid: e105be70031552e468098efbb304a8df, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5010347, y: 0.3154403, z: 2.520233}
+  m_Center: {x: -0.0058783293, y: 0.16207033, z: 0.00015223026}
 --- !u!1 &3281297104486984196
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,13 +272,13 @@ GameObject:
   - component: {fileID: 3111637365383113299}
   - component: {fileID: 4321727423979763598}
   - component: {fileID: 3056303198419621447}
-  - component: {fileID: 8370734968470350807}
-  m_Layer: 0
+  - component: {fileID: 6241223364299187038}
+  m_Layer: 9
   m_Name: Platform_Plank_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3111637365383113299
 Transform:
@@ -312,6 +316,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -336,8 +342,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8370734968470350807
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6241223364299187038
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -346,10 +353,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -7201323083011861769, guid: e105be70031552e468098efbb304a8df, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5044577, y: 0.3154403, z: 2.520233}
+  m_Center: {x: -0.004166901, y: 0.16207033, z: 0.00015223026}
 --- !u!1 &3539711390515215017
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,13 +367,13 @@ GameObject:
   - component: {fileID: 9151674482706058607}
   - component: {fileID: 6020196022513606288}
   - component: {fileID: 2067622628586773467}
-  - component: {fileID: 6115198053963349711}
-  m_Layer: 0
+  - component: {fileID: 9122392149933656396}
+  m_Layer: 9
   m_Name: Platform_Plank_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &9151674482706058607
 Transform:
@@ -399,12 +405,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3539711390515215017}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,8 +437,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6115198053963349711
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9122392149933656396
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -439,10 +448,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 5441564585032303336, guid: e105be70031552e468098efbb304a8df, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.500782, y: 0.29621562, z: 2.514761}
+  m_Center: {x: 0.010283709, y: 0.152458, z: 0.0026543736}
 --- !u!1 &6156149093892162131
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,13 +462,13 @@ GameObject:
   - component: {fileID: 6300011889012546220}
   - component: {fileID: 1086929644838084955}
   - component: {fileID: 5326444255312511491}
-  - component: {fileID: 2343653522543818282}
-  m_Layer: 0
+  - component: {fileID: 5910652240564069096}
+  m_Layer: 9
   m_Name: Platform_Plank_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &6300011889012546220
 Transform:
@@ -492,12 +500,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6156149093892162131}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,8 +532,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2343653522543818282
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5910652240564069096
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -532,7 +543,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -3365490890882430911, guid: e105be70031552e468098efbb304a8df, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5006316, y: 0.25947356, z: 2.5110865}
+  m_Center: {x: -0.0008775592, y: 0.17082903, z: 0.0015228391}

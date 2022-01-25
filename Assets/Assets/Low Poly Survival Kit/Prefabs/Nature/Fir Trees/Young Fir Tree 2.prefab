@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6281102584086729006}
   - component: {fileID: 2483620817711314314}
   - component: {fileID: 6724160784700668571}
-  - component: {fileID: 4817380188872339280}
   m_Layer: 0
   m_Name: Young_Fi_ Tree_2_LOD2
   m_TagString: Untagged
@@ -55,6 +54,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,20 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4817380188872339280
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370414161548535625}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4713982438855620770, guid: 93b31ac35c5759f448b71739f3462afa, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &733932278806206149
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +93,6 @@ GameObject:
   - component: {fileID: 1775435706558742762}
   - component: {fileID: 4728247404681908855}
   - component: {fileID: 3757036238639578512}
-  - component: {fileID: 5578076835571905541}
   m_Layer: 0
   m_Name: Young_Fi_ Tree_2_LOD0
   m_TagString: Untagged
@@ -149,6 +136,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -174,20 +163,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5578076835571905541
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 733932278806206149}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -229050123623532736, guid: 93b31ac35c5759f448b71739f3462afa, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4818410444212913390
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +175,6 @@ GameObject:
   - component: {fileID: 245986775857469607}
   - component: {fileID: 213901042341572823}
   - component: {fileID: 5657598536329284769}
-  - component: {fileID: 4273268536803803355}
   m_Layer: 0
   m_Name: Young_Fi_ Tree_2_LOD3
   m_TagString: Untagged
@@ -237,12 +212,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4818410444212913390}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -268,20 +245,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4273268536803803355
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4818410444212913390}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 105932094014943180, guid: 93b31ac35c5759f448b71739f3462afa, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5108252115213076462
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +257,6 @@ GameObject:
   - component: {fileID: 1709417122905834795}
   - component: {fileID: 3266368318275739722}
   - component: {fileID: 8712509715312028713}
-  - component: {fileID: 7761194735376391801}
   m_Layer: 0
   m_Name: Young_Fi_ Tree_2_LOD4
   m_TagString: Untagged
@@ -331,12 +294,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5108252115213076462}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -362,20 +327,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7761194735376391801
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5108252115213076462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4845138361219398610, guid: 93b31ac35c5759f448b71739f3462afa, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6178317809012919991
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +339,6 @@ GameObject:
   - component: {fileID: 464686336437035558}
   - component: {fileID: 6292960472684649255}
   - component: {fileID: 7310999000904862616}
-  - component: {fileID: 458725867041986944}
   m_Layer: 0
   m_Name: Young_Fi_ Tree_2_LOD1
   m_TagString: Untagged
@@ -431,6 +382,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -456,20 +409,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &458725867041986944
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6178317809012919991}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 2367538109117486608, guid: 93b31ac35c5759f448b71739f3462afa, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7434621235856599277
 GameObject:
   m_ObjectHideFlags: 0

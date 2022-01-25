@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 3149038543453031967}
   - component: {fileID: 1691650865799013184}
   - component: {fileID: 9220274306867607860}
-  - component: {fileID: 4181286321785719048}
-  m_Layer: 0
+  - component: {fileID: 6477288137282603015}
+  m_Layer: 9
   m_Name: Door_Plank_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3149038543453031967
 Transform:
@@ -55,6 +55,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,8 +81,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4181286321785719048
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6477288137282603015
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -89,10 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -4009738414778104971, guid: b78e6dbd67591864b89f9508000b3c06, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.817462, y: 1.8999999, z: 0.21294992}
+  m_Center: {x: -0.38876566, y: 0.9362335, z: 0.037185512}
 --- !u!1 &1119296019253797011
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,12 +105,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4166902866540712576}
   - component: {fileID: 1469798313564292682}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door-Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4166902866540712576
 Transform:
@@ -175,13 +177,13 @@ GameObject:
   - component: {fileID: 4570607487862235228}
   - component: {fileID: 6765348615088985249}
   - component: {fileID: 1794900419186541570}
-  - component: {fileID: 4212122350975330888}
-  m_Layer: 0
+  - component: {fileID: 2624756502464918877}
+  m_Layer: 9
   m_Name: Door_Plank_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &4570607487862235228
 Transform:
@@ -213,12 +215,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2315839172351690586}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -243,8 +247,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4212122350975330888
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2624756502464918877
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -253,10 +258,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 1898442848346544378, guid: b78e6dbd67591864b89f9508000b3c06, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.79478204, y: 1.8967706, z: 0.20372441}
+  m_Center: {x: -0.39169323, y: 0.9367228, z: 0.03496459}
 --- !u!1 &3414155608062864242
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,13 +272,13 @@ GameObject:
   - component: {fileID: 1517982337487625632}
   - component: {fileID: 8099248303092800869}
   - component: {fileID: 4371603302848935293}
-  - component: {fileID: 4114063564409420935}
-  m_Layer: 0
+  - component: {fileID: 4050743965475156464}
+  m_Layer: 9
   m_Name: Door_Plank_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1517982337487625632
 Transform:
@@ -312,6 +316,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -336,8 +342,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4114063564409420935
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4050743965475156464
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -346,10 +353,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -8116414259897068949, guid: b78e6dbd67591864b89f9508000b3c06, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.817462, y: 1.8998566, z: 0.21231551}
+  m_Center: {x: -0.38876566, y: 0.93630517, z: 0.03686831}
 --- !u!1 &3686575001792464699
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,13 +367,13 @@ GameObject:
   - component: {fileID: 7997717396751154322}
   - component: {fileID: 5069131793922837379}
   - component: {fileID: 6697218520646145645}
-  - component: {fileID: 1222285704472958190}
-  m_Layer: 0
+  - component: {fileID: 326599533076706541}
+  m_Layer: 9
   m_Name: Door_Plank_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7997717396751154322
 Transform:
@@ -405,6 +411,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,8 +437,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1222285704472958190
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &326599533076706541
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -439,10 +448,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 7936010281219856900, guid: b78e6dbd67591864b89f9508000b3c06, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.8188323, y: 1.8979107, z: 0.21231551}
+  m_Center: {x: -0.3894508, y: 0.9366035, z: 0.03686831}
 --- !u!1 &6512916328849121171
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,13 +462,13 @@ GameObject:
   - component: {fileID: 4755423661756954880}
   - component: {fileID: 1699871773524314089}
   - component: {fileID: 5845317396524540519}
-  - component: {fileID: 2268880851885882243}
-  m_Layer: 0
+  - component: {fileID: 143834369728387814}
+  m_Layer: 9
   m_Name: Door_Plank_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &4755423661756954880
 Transform:
@@ -492,12 +500,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6512916328849121171}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,8 +532,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2268880851885882243
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &143834369728387814
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -532,7 +543,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -1562484313898174442, guid: b78e6dbd67591864b89f9508000b3c06, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.79945093, y: 1.8977176, z: 0.20611624}
+  m_Center: {x: -0.3893588, y: 0.9365069, z: 0.033768676}

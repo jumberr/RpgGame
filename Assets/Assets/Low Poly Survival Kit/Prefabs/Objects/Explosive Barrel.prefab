@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 8918525634328402365}
   - component: {fileID: 5520101302409397691}
   - component: {fileID: 4831509168454505411}
-  - component: {fileID: 6535715169999432106}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Explosive_Barrel_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8918525634328402365
 Transform:
@@ -49,12 +48,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2420318161834516656}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,20 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6535715169999432106
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2420318161834516656}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 2433240004199485851, guid: 89f6707dd2b55904eade67796b9b6e2b, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2478768677769363221
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,13 +93,12 @@ GameObject:
   - component: {fileID: 9002067838119537023}
   - component: {fileID: 7948933529364894794}
   - component: {fileID: 6535189882971402742}
-  - component: {fileID: 2437269304708927216}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Explosive_Barrel_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &9002067838119537023
 Transform:
@@ -149,6 +136,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -174,20 +163,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2437269304708927216
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2478768677769363221}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 7796924572159956531, guid: 89f6707dd2b55904eade67796b9b6e2b, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3460941313929231967
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,13 +175,12 @@ GameObject:
   - component: {fileID: 5166617727817872941}
   - component: {fileID: 8971985968853426170}
   - component: {fileID: 3024853182677742412}
-  - component: {fileID: 2205179329868302396}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Explosive_Barrel_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &5166617727817872941
 Transform:
@@ -243,6 +218,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -268,20 +245,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2205179329868302396
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3460941313929231967}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 7647355379898810320, guid: 89f6707dd2b55904eade67796b9b6e2b, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5742634815893842526
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,12 +256,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8785034308666677325}
   - component: {fileID: 8185618598387535497}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Explosive Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8785034308666677325
 Transform:
@@ -364,13 +328,13 @@ GameObject:
   - component: {fileID: 2659154924482631766}
   - component: {fileID: 728651642484417804}
   - component: {fileID: 3201016319199055568}
-  - component: {fileID: 1176270267176044549}
-  m_Layer: 0
+  - component: {fileID: 2367448014042217981}
+  m_Layer: 9
   m_Name: Explosive_Barrel_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &2659154924482631766
 Transform:
@@ -408,6 +372,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -433,8 +399,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1176270267176044549
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2367448014042217981
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -443,10 +410,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5713618870438182906, guid: 89f6707dd2b55904eade67796b9b6e2b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.67209494, y: 1.1002057, z: 0.70668244}
+  m_Center: {x: 0, y: 0.5464916, z: -0.0000038146973}
 --- !u!1 &8822351078735083536
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,13 +424,12 @@ GameObject:
   - component: {fileID: 4296956089767571529}
   - component: {fileID: 6745198947415866104}
   - component: {fileID: 3389268416314014538}
-  - component: {fileID: 1270506689681067040}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Explosive_Barrel_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &4296956089767571529
 Transform:
@@ -496,12 +461,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8822351078735083536}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -526,17 +493,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1270506689681067040
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8822351078735083536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5169270752902517622, guid: 89f6707dd2b55904eade67796b9b6e2b, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}

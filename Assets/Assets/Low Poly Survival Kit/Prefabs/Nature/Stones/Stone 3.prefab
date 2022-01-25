@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 3591601592265687660}
   - component: {fileID: 1825396479522504080}
   - component: {fileID: 3889089818139988701}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone_3_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8578144561978869034
 Transform:
@@ -49,12 +49,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571026235476383851}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &3889089818139988701
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -89,9 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -7747519851047172989, guid: b3d9105149eda1e44a70ed79edcf2dcb, type: 3}
 --- !u!1 &3810784648018136202
 GameObject:
@@ -103,12 +106,12 @@ GameObject:
   m_Component:
   - component: {fileID: 196462569508372121}
   - component: {fileID: 2286200090923203689}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &196462569508372121
 Transform:
@@ -175,13 +178,13 @@ GameObject:
   - component: {fileID: 8273240285896683831}
   - component: {fileID: 3281822640239459307}
   - component: {fileID: 4118352734988559584}
-  - component: {fileID: 7039780062422520447}
-  m_Layer: 0
+  - component: {fileID: 2567172682484091600}
+  m_Layer: 9
   m_Name: Stone_3_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8273240285896683831
 Transform:
@@ -213,12 +216,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4054221220710464214}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -243,7 +248,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7039780062422520447
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2567172682484091600
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,10 +259,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -7145067075335233301, guid: b3d9105149eda1e44a70ed79edcf2dcb, type: 3}
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7747519851047172989, guid: b3d9105149eda1e44a70ed79edcf2dcb, type: 3}
 --- !u!1 &6170870713949027302
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,13 +274,13 @@ GameObject:
   - component: {fileID: 8739282234663174062}
   - component: {fileID: 689054850180024854}
   - component: {fileID: 144626902073966529}
-  - component: {fileID: 9139188467465926714}
-  m_Layer: 0
+  - component: {fileID: 9080976108487373272}
+  m_Layer: 9
   m_Name: Stone_3_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &8739282234663174062
 Transform:
@@ -306,12 +312,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6170870713949027302}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -336,7 +344,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &9139188467465926714
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9080976108487373272
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,10 +355,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -7108614355969804841, guid: b3d9105149eda1e44a70ed79edcf2dcb, type: 3}
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7747519851047172989, guid: b3d9105149eda1e44a70ed79edcf2dcb, type: 3}
 --- !u!1 &6894121823754212171
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,13 +370,12 @@ GameObject:
   - component: {fileID: 4799100109522978519}
   - component: {fileID: 1576077940161440709}
   - component: {fileID: 2999778580928952091}
-  - component: {fileID: 1905608864123770790}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone_3_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &4799100109522978519
 Transform:
@@ -399,12 +407,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894121823754212171}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,20 +439,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1905608864123770790
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6894121823754212171}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4992762520675801822, guid: b3d9105149eda1e44a70ed79edcf2dcb, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8779735654196392452
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,13 +451,12 @@ GameObject:
   - component: {fileID: 5683911998601065995}
   - component: {fileID: 1359327687731011606}
   - component: {fileID: 5735896884757471615}
-  - component: {fileID: 7766857932604182865}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stone_3_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &5683911998601065995
 Transform:
@@ -492,12 +488,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8779735654196392452}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,17 +520,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7766857932604182865
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779735654196392452}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5026988311103138107, guid: b3d9105149eda1e44a70ed79edcf2dcb, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}

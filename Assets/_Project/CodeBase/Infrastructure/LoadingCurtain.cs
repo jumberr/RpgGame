@@ -7,8 +7,11 @@ namespace _Project.CodeBase.Infrastructure
     {
         [SerializeField] private CanvasGroup _curtain;
         
-        private void Awake() => 
+        private void Awake()
+        {
+            Application.targetFrameRate = 500;
             DontDestroyOnLoad(this);
+        }
 
         public void Show()
         {

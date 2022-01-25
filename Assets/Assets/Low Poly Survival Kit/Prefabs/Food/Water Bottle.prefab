@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 580085395553096097}
   - component: {fileID: 3279546707017059162}
   - component: {fileID: 3480459047968005478}
-  - component: {fileID: 7864026821516792941}
-  m_Layer: 0
+  - component: {fileID: 7041097505189314000}
+  m_Layer: 9
   m_Name: Water_Bottle_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &580085395553096097
 Transform:
@@ -49,12 +49,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2701875346032017988}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,8 +82,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7864026821516792941
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7041097505189314000
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,10 +93,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 1781546944394801567, guid: 2444000d3c99020438ad88cc66d1cadb, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.08817796, y: 0.3191888, z: 0.09033947}
+  m_Center: {x: -0.0010807441, y: 0.15713628, z: 0}
 --- !u!1 &4162660760303643273
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,13 +107,13 @@ GameObject:
   - component: {fileID: 7434641872993555567}
   - component: {fileID: 137270319304224738}
   - component: {fileID: 6135904936166482117}
-  - component: {fileID: 647435749277954602}
-  m_Layer: 0
+  - component: {fileID: 4793879732052653964}
+  m_Layer: 9
   m_Name: Water_Bottle_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7434641872993555567
 Transform:
@@ -143,12 +145,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4162660760303643273}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -174,8 +178,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &647435749277954602
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4793879732052653964
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -184,10 +189,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -7560599879301936165, guid: 2444000d3c99020438ad88cc66d1cadb, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.090213574, y: 0.3199646, z: 0.08848451}
+  m_Center: {x: -0.0009617378, y: 0.15674838, z: 0}
 --- !u!1 &5641154686769752096
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,13 +203,13 @@ GameObject:
   - component: {fileID: 1880291153160997945}
   - component: {fileID: 3352644377727852378}
   - component: {fileID: 498890927381507584}
-  - component: {fileID: 8395979389848303053}
-  m_Layer: 0
+  - component: {fileID: 138862268175826804}
+  m_Layer: 9
   m_Name: Water_Bottle_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1880291153160997945
 Transform:
@@ -237,12 +241,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5641154686769752096}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -268,8 +274,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8395979389848303053
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &138862268175826804
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -278,10 +285,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -3575296137836131599, guid: 2444000d3c99020438ad88cc66d1cadb, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.09343638, y: 0.32096925, z: 0.09130672}
+  m_Center: {x: 0, y: 0.15575017, z: -0.00048362656}
 --- !u!1 &6073594983128418508
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,13 +299,13 @@ GameObject:
   - component: {fileID: 4822658804101333620}
   - component: {fileID: 8954245630874057009}
   - component: {fileID: 4666359264681286030}
-  - component: {fileID: 3316377856607036135}
-  m_Layer: 0
+  - component: {fileID: 7911336042428737959}
+  m_Layer: 9
   m_Name: Water_Bottle_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &4822658804101333620
 Transform:
@@ -331,12 +337,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6073594983128418508}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -362,8 +370,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3316377856607036135
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7911336042428737959
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -372,10 +381,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -2849545063516359899, guid: 2444000d3c99020438ad88cc66d1cadb, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.09343638, y: 0.32123408, z: 0.09343638}
+  m_Center: {x: 0, y: 0.15629347, z: 0}
 --- !u!1 &7142169368389775932
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,13 +395,13 @@ GameObject:
   - component: {fileID: 2790971560836797611}
   - component: {fileID: 8111757406279871874}
   - component: {fileID: 7005769113214713776}
-  - component: {fileID: 110407147530788006}
-  m_Layer: 0
+  - component: {fileID: 8586725167909977194}
+  m_Layer: 9
   m_Name: Water_Bottle_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &2790971560836797611
 Transform:
@@ -425,12 +433,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7142169368389775932}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -456,8 +466,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &110407147530788006
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8586725167909977194
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -466,10 +477,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -648398432364424826, guid: 2444000d3c99020438ad88cc66d1cadb, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.09343638, y: 0.32055837, z: 0.09343638}
+  m_Center: {x: 0, y: 0.15595561, z: 0}
 --- !u!1 &9021066622959364532
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,12 +490,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5434188424740789159}
   - component: {fileID: 2605642037662613111}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Water Bottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5434188424740789159
 Transform:

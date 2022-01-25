@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 4596197469991107421}
   - component: {fileID: 3566990556446117092}
   - component: {fileID: 6280133754171779461}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor_Stairs_Log_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3933630784256007988
 Transform:
@@ -55,6 +55,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &6280133754171779461
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -89,9 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4236805244771092565, guid: b71fd6e2b8effea4da3e0650e87f1738, type: 3}
 --- !u!1 &3932338409363008231
 GameObject:
@@ -103,12 +106,12 @@ GameObject:
   m_Component:
   - component: {fileID: 56612934677305588}
   - component: {fileID: 9101557873529673310}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor Stairs-Log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &56612934677305588
 Transform:
@@ -176,12 +179,12 @@ GameObject:
   - component: {fileID: 1098781411208367709}
   - component: {fileID: 173711810092443705}
   - component: {fileID: 5075885512613468482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor_Stairs_Log_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &5882067489225126483
 Transform:
@@ -219,6 +222,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -243,6 +248,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &5075885512613468482
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -253,9 +259,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4766605455090695717, guid: b71fd6e2b8effea4da3e0650e87f1738, type: 3}
 --- !u!1 &6998742541341999645
 GameObject:
@@ -269,12 +275,12 @@ GameObject:
   - component: {fileID: 2142691865059268295}
   - component: {fileID: 2730625259101258036}
   - component: {fileID: 5581387794464381891}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor_Stairs_Log_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3760026077385512629
 Transform:
@@ -306,12 +312,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6998742541341999645}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -336,6 +344,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &5581387794464381891
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -346,9 +355,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 2624124954942753102, guid: b71fd6e2b8effea4da3e0650e87f1738, type: 3}
 --- !u!1 &7820321708426241004
 GameObject:
@@ -362,12 +371,12 @@ GameObject:
   - component: {fileID: 772122851860470979}
   - component: {fileID: 7678837472586965245}
   - component: {fileID: 8143463974207016255}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor_Stairs_Log_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3746823429530772339
 Transform:
@@ -399,12 +408,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7820321708426241004}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,6 +440,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &8143463974207016255
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -439,9 +451,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -5029366964148063999, guid: b71fd6e2b8effea4da3e0650e87f1738, type: 3}
 --- !u!1 &8785512948139386307
 GameObject:
@@ -455,12 +467,12 @@ GameObject:
   - component: {fileID: 1891808751461979366}
   - component: {fileID: 5233304433685515700}
   - component: {fileID: 6536040286663668705}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor_Stairs_Log_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7008633610633515698
 Transform:
@@ -498,6 +510,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,6 +536,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &6536040286663668705
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -532,7 +547,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -4545359726790989376, guid: b71fd6e2b8effea4da3e0650e87f1738, type: 3}

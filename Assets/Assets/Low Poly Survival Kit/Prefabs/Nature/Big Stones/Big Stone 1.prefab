@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 322797626238406485}
   - component: {fileID: 6021799842461208489}
   - component: {fileID: 1110269839057166958}
-  - component: {fileID: 7019681593748437567}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Big_Stone_1_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &322797626238406485
 Transform:
@@ -49,12 +48,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177887071011421398}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,20 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7019681593748437567
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1177887071011421398}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 3270520415627423208, guid: 798fe28f4d584dd45a1c964fdeca655d, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1582944417728804058
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +92,12 @@ GameObject:
   - component: {fileID: 6757319527266906375}
   - component: {fileID: 7411118829962917528}
   - component: {fileID: 4824790687271133257}
-  - component: {fileID: 8462049909653804909}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Big_Stone_1_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &6757319527266906375
 Transform:
@@ -142,12 +129,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582944417728804058}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,20 +161,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8462049909653804909
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582944417728804058}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -2917081035934647441, guid: 798fe28f4d584dd45a1c964fdeca655d, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1869174966453918875
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,12 +174,12 @@ GameObject:
   - component: {fileID: 8914404627017634919}
   - component: {fileID: 1096456138100982435}
   - component: {fileID: 6859468479084495857}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Big_Stone_1_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7246437944093772854
 Transform:
@@ -241,6 +217,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -265,6 +243,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &6859468479084495857
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -275,9 +254,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 1424339911249733792, guid: 798fe28f4d584dd45a1c964fdeca655d, type: 3}
 --- !u!1 &5055677540387363903
 GameObject:
@@ -290,13 +269,13 @@ GameObject:
   - component: {fileID: 2882043109571678714}
   - component: {fileID: 8665377375231824503}
   - component: {fileID: 3265916386254384268}
-  - component: {fileID: 8911713018146392099}
-  m_Layer: 0
+  - component: {fileID: 8935306812789301475}
+  m_Layer: 9
   m_Name: Big_Stone_1_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &2882043109571678714
 Transform:
@@ -334,6 +313,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -358,7 +339,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8911713018146392099
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8935306812789301475
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,10 +350,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 6468498717614621027, guid: 798fe28f4d584dd45a1c964fdeca655d, type: 3}
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1424339911249733792, guid: 798fe28f4d584dd45a1c964fdeca655d, type: 3}
 --- !u!1 &5914865127977665233
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,12 +364,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7227867997877219522}
   - component: {fileID: 8658307256335038550}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Big Stone 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7227867997877219522
 Transform:
@@ -454,13 +436,13 @@ GameObject:
   - component: {fileID: 743813182941306044}
   - component: {fileID: 2819798390287219794}
   - component: {fileID: 3281147937337097698}
-  - component: {fileID: 8254484343895439904}
-  m_Layer: 0
+  - component: {fileID: 740960246563110132}
+  m_Layer: 9
   m_Name: Big_Stone_1_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &743813182941306044
 Transform:
@@ -498,6 +480,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,7 +506,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8254484343895439904
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &740960246563110132
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -532,7 +517,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4268922527926642004, guid: 798fe28f4d584dd45a1c964fdeca655d, type: 3}
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1424339911249733792, guid: 798fe28f4d584dd45a1c964fdeca655d, type: 3}

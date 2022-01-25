@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 6230287496880971234}
   - component: {fileID: 1184605597948058636}
   - component: {fileID: 7578241378312770150}
-  - component: {fileID: 408804941116768144}
-  m_Layer: 0
+  - component: {fileID: 5191573421983922087}
+  m_Layer: 9
   m_Name: Half_a_Wall_Log_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &6230287496880971234
 Transform:
@@ -55,6 +55,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,8 +81,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &408804941116768144
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5191573421983922087
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -89,10 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -7746170126243114628, guid: 91a15a8ba958ceb46a6b18770ee64363, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 0.7499999, z: 0.3049358}
+  m_Center: {x: 0, y: 0.37499994, z: -0.021096073}
 --- !u!1 &2749593952966676752
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +106,13 @@ GameObject:
   - component: {fileID: 4401206284873024271}
   - component: {fileID: 2914507945078375407}
   - component: {fileID: 6906012633005984240}
-  - component: {fileID: 6823427823338776419}
-  m_Layer: 0
+  - component: {fileID: 8771443655717082265}
+  m_Layer: 9
   m_Name: Half_a_Wall_Log_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &4401206284873024271
 Transform:
@@ -142,12 +144,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2749593952966676752}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,8 +176,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6823427823338776419
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8771443655717082265
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -182,10 +187,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -7818764647636914740, guid: 91a15a8ba958ceb46a6b18770ee64363, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 0.6362537, z: 0.2765875}
+  m_Center: {x: 0, y: 0.3774802, z: -0.00047975034}
 --- !u!1 &2762172776190577346
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,13 +201,13 @@ GameObject:
   - component: {fileID: 7021531214468765569}
   - component: {fileID: 51320032311846749}
   - component: {fileID: 9074364808054345527}
-  - component: {fileID: 4492592818962739012}
-  m_Layer: 0
+  - component: {fileID: 3313439832490275119}
+  m_Layer: 9
   m_Name: Half_a_Wall_Log_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7021531214468765569
 Transform:
@@ -241,6 +245,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -265,8 +271,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4492592818962739012
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3313439832490275119
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -275,10 +282,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -9052550984547081420, guid: 91a15a8ba958ceb46a6b18770ee64363, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5000775, y: 0.75900424, z: 0.31350142}
+  m_Center: {x: 0.000007748604, y: 0.37886745, z: -0.008291036}
 --- !u!1 &5514920070069794374
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,13 +296,13 @@ GameObject:
   - component: {fileID: 5453923408444192948}
   - component: {fileID: 2389610869209367861}
   - component: {fileID: 808921475588118153}
-  - component: {fileID: 6852171171283170224}
-  m_Layer: 0
+  - component: {fileID: 6573296678297561894}
+  m_Layer: 9
   m_Name: Half_a_Wall_Log_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &5453923408444192948
 Transform:
@@ -328,12 +334,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5514920070069794374}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -358,8 +366,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6852171171283170224
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6573296678297561894
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -368,10 +377,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 5300431204451195348, guid: 91a15a8ba958ceb46a6b18770ee64363, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5000782, y: 0.7073061, z: 0.2765875}
+  m_Center: {x: -0.000019550323, y: 0.39252248, z: -0.00047975034}
 --- !u!1 &6999294610819559675
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,13 +391,13 @@ GameObject:
   - component: {fileID: 482348292181538360}
   - component: {fileID: 4698878464211688259}
   - component: {fileID: 3637873970435836328}
-  - component: {fileID: 2809966733666124802}
-  m_Layer: 0
+  - component: {fileID: 7866595525283991550}
+  m_Layer: 9
   m_Name: Half_a_Wall_Log_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &482348292181538360
 Transform:
@@ -427,6 +435,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -451,8 +461,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2809966733666124802
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7866595525283991550
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -461,10 +472,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -1914498259857229384, guid: 91a15a8ba958ceb46a6b18770ee64363, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5000625, y: 0.75781214, z: 0.30537963}
+  m_Center: {x: 0.00000017881393, y: 0.3782714, z: -0.020874158}
 --- !u!1 &8024649592048464026
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,12 +485,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6414834035626787465}
   - component: {fileID: 8792014754736657204}
-  m_Layer: 0
-  m_Name: 3 Logs Height Wall-Log
+  m_Layer: 9
+  m_Name: Half a Wall_Log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6414834035626787465
 Transform:

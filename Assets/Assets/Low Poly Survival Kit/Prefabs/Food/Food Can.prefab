@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 7798174781863916828}
   - component: {fileID: 7516088172905894095}
   - component: {fileID: 7112157482247498456}
-  - component: {fileID: 8036001061103902512}
-  m_Layer: 0
+  - component: {fileID: 850104820037199289}
+  m_Layer: 9
   m_Name: Food_Can_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7798174781863916828
 Transform:
@@ -49,12 +49,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13592674264389822}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,8 +81,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8036001061103902512
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &850104820037199289
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -89,10 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 1027735722581267027, guid: 16e41dbc747521c48a3adee3e89ab075, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.23861882, y: 0.04285868, z: 0.13778363}
+  m_Center: {x: 0, y: 0.018979127, z: 0.0000019073486}
 --- !u!1 &1740689664892656573
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +106,13 @@ GameObject:
   - component: {fileID: 3264894605621200018}
   - component: {fileID: 6538401868175563819}
   - component: {fileID: 2739783306241349551}
-  - component: {fileID: 5799161427366249972}
-  m_Layer: 0
+  - component: {fileID: 7265183945324463574}
+  m_Layer: 9
   m_Name: Food_Can_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &3264894605621200018
 Transform:
@@ -142,12 +144,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740689664892656573}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,8 +176,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5799161427366249972
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7265183945324463574
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -182,10 +187,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5207321116414138972, guid: 16e41dbc747521c48a3adee3e89ab075, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.22730461, y: 0.040579345, z: 0.1228335}
+  m_Center: {x: 0.004519742, y: 0.019080652, z: 0.0003620349}
 --- !u!1 &3431242590213218126
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,13 +201,13 @@ GameObject:
   - component: {fileID: 5506655181349022295}
   - component: {fileID: 6362914577355432903}
   - component: {fileID: 6214688949347432604}
-  - component: {fileID: 1398486866469750738}
-  m_Layer: 0
+  - component: {fileID: 5746167672227445700}
+  m_Layer: 9
   m_Name: Food_Can_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &5506655181349022295
 Transform:
@@ -235,12 +239,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3431242590213218126}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -265,8 +271,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1398486866469750738
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5746167672227445700
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -275,10 +282,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 3993783002725370952, guid: 16e41dbc747521c48a3adee3e89ab075, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.23542707, y: 0.041451454, z: 0.13586827}
+  m_Center: {x: 0, y: 0.019103695, z: 0.0000019073486}
 --- !u!1 &4080940312407187275
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,13 +296,13 @@ GameObject:
   - component: {fileID: 1002417779464567966}
   - component: {fileID: 4206253714133328306}
   - component: {fileID: 5156381654369534700}
-  - component: {fileID: 2911142726080894796}
-  m_Layer: 0
+  - component: {fileID: 2169062159137437469}
+  m_Layer: 9
   m_Name: Food_Can_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &1002417779464567966
 Transform:
@@ -328,12 +334,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4080940312407187275}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -358,8 +366,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2911142726080894796
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2169062159137437469
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -368,10 +377,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -7894100468850230034, guid: 16e41dbc747521c48a3adee3e89ab075, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.23819564, y: 0.04204417, z: 0.13688111}
+  m_Center: {x: 0, y: 0.019400056, z: 0.0000019073486}
 --- !u!1 &5373338614180621616
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,13 +391,13 @@ GameObject:
   - component: {fileID: 7472076487024786094}
   - component: {fileID: 6334543974929948008}
   - component: {fileID: 1395269439600653588}
-  - component: {fileID: 5893747744101488349}
-  m_Layer: 0
+  - component: {fileID: 8760253448375648073}
+  m_Layer: 9
   m_Name: Food_Can_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967294
   m_IsActive: 1
 --- !u!4 &7472076487024786094
 Transform:
@@ -421,12 +429,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5373338614180621616}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -451,8 +461,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5893747744101488349
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8760253448375648073
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -461,10 +472,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -6376319766864514281, guid: 16e41dbc747521c48a3adee3e89ab075, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.23834515, y: 0.042864498, z: 0.13763173}
+  m_Center: {x: 0, y: 0.018982036, z: 0.0000019073486}
 --- !u!1 &6725110782599737269
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,12 +485,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7714452275662904742}
   - component: {fileID: 5782993520100669265}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Food Can
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7714452275662904742
 Transform:
