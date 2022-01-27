@@ -4,13 +4,17 @@ namespace _Project.CodeBase.Infrastructure.States
 {
     public class BootstrapState : IState
     {
-        private const string NextScene = "Menu";
+        // TODO: Change const string to SO & static data
+        private const string InitialScene = "Initial";
 
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
-        private readonly LazyInject<GameStateMachine> _gameStateMachine;
+        private readonly LazyInject<IGameStateMachine> _gameStateMachine;
 
-        public BootstrapState(SceneLoader sceneLoader, LoadingCurtain loadingCurtain, LazyInject<GameStateMachine> gameStateMachine)
+        public BootstrapState(
+            SceneLoader sceneLoader,
+            LoadingCurtain loadingCurtain,
+            LazyInject<IGameStateMachine> gameStateMachine)
         {
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
@@ -18,17 +22,17 @@ namespace _Project.CodeBase.Infrastructure.States
         }
 
         public void Enter()
-        {
+        { 
             _loadingCurtain.Show();
-            _sceneLoader.Load(NextScene, OnLoaded);
+            _sceneLoader.Load(InitialScene, OnLoaded);
         }
 
         public void Exit() { }
         
         private void OnLoaded()
         {
-            _loadingCurtain.Hide();
-            _gameStateMachine.Value.Enter<MainMenuState>();
+            //_loadingCurtain.Hide();
+            _gameStateMachine.Value.Enter<LoadProgressState>();
         }
     }
 }

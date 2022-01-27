@@ -1,6 +1,9 @@
 ﻿using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Factory;
+using _Project.CodeBase.Infrastructure.SaveLoad;
+using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.States;
+using _Project.CodeBase.Services;
 using UnityEngine;
 using Zenject;
 
@@ -14,14 +17,15 @@ namespace _Project.CodeBase.Infrastructure.Installers
         {
             RegisterCompositionRoot();
             RegisterBootstrapState();
-
+            RegisterLoadProgressState();
             RegisterInitializeSceneState();
         }
 
         private void RegisterCompositionRoot()
         {
             Container
-                .Bind<GameStateMachine>()
+                .Bind<IGameStateMachine>()
+                .To<GameStateMachine>()
                 .AsSingle();
 
             Container.Bind<IExitableState>()
@@ -55,8 +59,26 @@ namespace _Project.CodeBase.Infrastructure.Installers
                 .AsSingle();
         }
 
+        private void RegisterLoadProgressState()
+        {
+            Container
+                .Bind<IPersistentProgressService>()
+                .To<PersistentProgressService>()
+                .AsSingle();
+
+            Container
+                .Bind<ISaveLoadService>()
+                .To<SaveLoadService>()
+                .AsSingle();
+        }
+
         private void RegisterInitializeSceneState()
         {
+            Container
+                .Bind<IStaticDataService>()
+                .To<StaticDataService>()
+                .AsSingle();
+            
             Container
                 .Bind<IGameFactory>()
                 .To<GameFactory>()

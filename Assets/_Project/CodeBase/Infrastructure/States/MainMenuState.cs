@@ -4,10 +4,10 @@ namespace _Project.CodeBase.Infrastructure.States
 {
     public class MainMenuState : IState
     {
-        private LazyInject<GameStateMachine> _gameStateMachine;
+        private LazyInject<IGameStateMachine> _gameStateMachine;
         private LoadingCurtain _loadingCurtain;
 
-        public MainMenuState(LazyInject<GameStateMachine> gameStateMachine, LoadingCurtain loadingCurtain)
+        public MainMenuState(LazyInject<IGameStateMachine> gameStateMachine, LoadingCurtain loadingCurtain)
         {
             _gameStateMachine = gameStateMachine;
             _loadingCurtain = loadingCurtain;

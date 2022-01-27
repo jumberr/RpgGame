@@ -82,7 +82,6 @@ GameObject:
   - component: {fileID: 8485739892361259307}
   - component: {fileID: 3771727352959803127}
   - component: {fileID: 5113714323686923696}
-  - component: {fileID: 8916525989897039192}
   m_Layer: 0
   m_Name: Iron_Oar_LOD4
   m_TagString: Untagged
@@ -153,20 +152,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8916525989897039192
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4088597161956006529}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8992362092403535137, guid: 13b14d52d19b6b647aba93e18b234089, type: 3}
 --- !u!1 &4824218535296967284
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +163,6 @@ GameObject:
   - component: {fileID: 4705607535388742215}
   - component: {fileID: 9037364200771919425}
   - component: {fileID: 7793699637500234999}
-  - component: {fileID: 6079169609372340049}
   m_Layer: 0
   m_Name: Iron_Oar_LOD1
   m_TagString: Untagged
@@ -249,20 +233,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6079169609372340049
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4824218535296967284}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4839429453377270322, guid: 13b14d52d19b6b647aba93e18b234089, type: 3}
 --- !u!1 &6202167084695745026
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +244,6 @@ GameObject:
   - component: {fileID: 2066272368358362005}
   - component: {fileID: 3419879995026389242}
   - component: {fileID: 8558034995437956597}
-  - component: {fileID: 2166160462203991057}
   m_Layer: 0
   m_Name: Iron_Oar_LOD0
   m_TagString: Untagged
@@ -345,20 +314,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2166160462203991057
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6202167084695745026}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5539255061701142629, guid: 13b14d52d19b6b647aba93e18b234089, type: 3}
 --- !u!1 &7465012233259887239
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +325,6 @@ GameObject:
   - component: {fileID: 3272561262864762467}
   - component: {fileID: 6141958698495009348}
   - component: {fileID: 3899209314248147091}
-  - component: {fileID: 5006478870644804663}
   m_Layer: 0
   m_Name: Iron_Oar_LOD3
   m_TagString: Untagged
@@ -441,20 +395,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5006478870644804663
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7465012233259887239}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5675927154386430582, guid: 13b14d52d19b6b647aba93e18b234089, type: 3}
 --- !u!1 &8047570815698058980
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +406,6 @@ GameObject:
   - component: {fileID: 3304328824803834964}
   - component: {fileID: 3130450987702740780}
   - component: {fileID: 3853827720945454847}
-  - component: {fileID: 4309222983521099837}
   m_Layer: 0
   m_Name: Iron_Oar_LOD2
   m_TagString: Untagged
@@ -537,17 +476,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4309222983521099837
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8047570815698058980}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2580943796122560564, guid: 13b14d52d19b6b647aba93e18b234089, type: 3}

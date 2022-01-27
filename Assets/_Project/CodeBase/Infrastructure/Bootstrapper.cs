@@ -5,9 +5,9 @@ namespace _Project.CodeBase.Infrastructure
 {
     public class Bootstrapper : IInitializable
     {
-        private readonly GameStateMachine _gameStateMachine;
+        private readonly IGameStateMachine _gameStateMachine;
 
-        public Bootstrapper(GameStateMachine gameStateMachine) =>
+        public Bootstrapper(IGameStateMachine gameStateMachine) =>
             _gameStateMachine = gameStateMachine;
 
         public void Initialize() => 

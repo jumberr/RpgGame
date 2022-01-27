@@ -5,7 +5,7 @@ using _Project.CodeBase.Infrastructure.States;
 
 namespace _Project.CodeBase.Infrastructure
 {
-    public class GameStateMachine
+    public class GameStateMachine : IGameStateMachine
     {
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _actualState;
@@ -16,7 +16,7 @@ namespace _Project.CodeBase.Infrastructure
         public void Enter<TState>() where TState : class, IState => 
             ChangeState<TState>().Enter();
 
-        private TState ChangeState<TState>() where TState : class, IExitableState
+        public TState ChangeState<TState>() where TState : class, IExitableState
         {
             _actualState?.Exit();
             var newState = GetState<TState>();

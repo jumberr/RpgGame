@@ -1,31 +1,41 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace _Project.CodeBase.Infrastructure.Services.InputService
 {
-    public abstract class InputService : IInputService
+    public class InputService : MonoBehaviour
     {
-        protected const string Horizontal = "Horizontal";
-        protected const string Vertical = "Vertical";
+        private InputMaster _input;
+        
+        public Action<Vector2> OnMove;
+        public Action<Vector2> OnRotate;
+        public Action OnJump;
 
-        protected const string CamHorizontal = "CameraHorizontal";
-        protected const string CamVertical = "CameraVertical";
+        private void OnEnable()
+        {
+            if (_input == null)
+            {
+                _input = new InputMaster();
+                Subscribe();
+            }
 
-        private const string Fire = "Fire";
-        private const string Jump = "Jump";
+            _input.Enable();
+        }
 
-        public abstract Vector2 MoveAxis { get; }
-        public abstract Vector2 RotationAxis { get; }
+        private void Subscribe()
+        {
+            // Move
+            _input.PlayerMovement.Move.performed += ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>());
+            _input.PlayerMovement.Move.canceled += ctx => OnMove?.Invoke(Vector2.zero);
+            
+            // Rotate
+            _input.PlayerMovement.Rotation.performed += ctx => OnRotate?.Invoke(ctx.ReadValue<Vector2>());
 
-        public bool IsAttackButtonUp() =>
-            SimpleInput.GetButtonUp(Fire);
+            // Jump
+            _input.PlayerMovement.Jump.performed += ctx => OnJump?.Invoke();
+        }
 
-        protected static Vector2 SimpleInputAxis() =>
-            new Vector2(SimpleInput.GetAxisRaw(Horizontal), SimpleInput.GetAxisRaw(Vertical));
-
-        protected static Vector2 RotationInputAxis() =>
-            new Vector2(SimpleInput.GetAxisRaw(CamHorizontal), SimpleInput.GetAxisRaw(CamVertical));
-
-        public bool IsJumpAction() =>
-            SimpleInput.GetButtonUp(Jump);
+        private void OnDisable() => 
+            _input.Disable();
     }
 }
