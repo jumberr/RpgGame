@@ -1,8 +1,9 @@
 using _Project.CodeBase.Infrastructure.AssetManagement;
+using _Project.CodeBase.Infrastructure.Factory;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace _Project.CodeBase.Infrastructure.Factory
+namespace _Project.CodeBase.UI.Services
 {
     public class UIFactory : IUIFactory
     {
@@ -16,22 +17,15 @@ namespace _Project.CodeBase.Infrastructure.Factory
 
         public async UniTask CreateUIRoot()
         {
-            var prefab = await _assetProvider.InstantiateAsync(AssetPath.UIRootPath);
-            _uiRoot = InstantiateRegistered(prefab).transform;
+            var uiRoot = await _assetProvider.InstantiateAsync(AssetPath.UIRootPath);
+            _uiRoot = uiRoot.transform;
         }
 
         public async UniTask<GameObject> CreateHud()
         {
-            var prefab = await _assetProvider.InstantiateAsync(AssetPath.HudPath);
-            var hud = InstantiateRegistered(prefab, _uiRoot);
+            var hud = await _assetProvider.InstantiateAsync(AssetPath.HudPath, _uiRoot);
             _hud = hud.transform;
             return hud;
         }
-
-        private GameObject InstantiateRegistered(GameObject prefab) => 
-            Object.Instantiate(prefab);
-
-        private GameObject InstantiateRegistered(GameObject prefab, Transform parent) => 
-            Object.Instantiate(prefab, parent);
     }
 }

@@ -29,10 +29,7 @@ namespace _Project.CodeBase.Infrastructure.States
 
         public void Exit() { }
         
-        private void OnLoaded()
-        {
-            //_loadingCurtain.Hide();
+        private void OnLoaded() => 
             _gameStateMachine.Value.Enter<LoadProgressState>();
-        }
     }
 }

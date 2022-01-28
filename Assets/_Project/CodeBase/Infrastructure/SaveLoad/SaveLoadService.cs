@@ -21,8 +21,7 @@ namespace _Project.CodeBase.Infrastructure.SaveLoad
             _gameFactory = gameFactory;
             _progressService = progressService;
         }
-
-        // TODO: Save progress near campfire
+        
         public void SaveProgress()
         {
             foreach (var progressWriter in _gameFactory.ProgressWriters)

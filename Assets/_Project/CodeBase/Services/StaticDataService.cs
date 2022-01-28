@@ -1,17 +1,21 @@
 using System;
+using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace _Project.CodeBase.Services
 {
     public class StaticDataService : IStaticDataService
     {
-        private const string PlayerPath = "StaticData/PlayerStaticData";
+        private readonly IAssetProvider _assetProvider;
+        
         private PlayerStaticData _playerStaticData;
 
+        public StaticDataService(IAssetProvider assetProvider) => 
+            _assetProvider = assetProvider;
+
         public async UniTask Load() => 
-            _playerStaticData = (PlayerStaticData) await Resources.LoadAsync<PlayerStaticData>(PlayerPath);
+            _playerStaticData = await _assetProvider.Load<PlayerStaticData>(StaticDataPath.PlayerStaticDataPath);
 
         public PlayerStaticData ForPlayer()
         {

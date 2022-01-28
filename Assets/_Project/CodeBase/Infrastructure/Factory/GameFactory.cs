@@ -22,8 +22,9 @@ namespace _Project.CodeBase.Infrastructure.Factory
 
         public async UniTask<GameObject> CreateHero(Vector3 at)
         {
-            var prefab = await _assetProvider.InstantiateAsync(AssetPath.HeroPath);
-            HeroGameObject = InstantiateRegistered(prefab, at);
+            HeroGameObject = await _assetProvider.InstantiateAsync(AssetPath.HeroPath, at);
+            RegisterProgressWatchers(HeroGameObject);
+            
             var playerMovement = HeroGameObject.GetComponent<HeroMovement>();
             var playerAnimator = HeroGameObject.GetComponent<HeroAnimator>();
             
@@ -62,13 +63,6 @@ namespace _Project.CodeBase.Infrastructure.Factory
         private GameObject InstantiateRegistered(GameObject prefab)
         {
             var instance = Object.Instantiate(prefab);
-            RegisterProgressWatchers(instance);
-            return instance;
-        }
-
-        private GameObject InstantiateRegistered(GameObject prefab, Vector3 at)
-        {
-            var instance = Object.Instantiate(prefab, at, Quaternion.identity);
             RegisterProgressWatchers(instance);
             return instance;
         }

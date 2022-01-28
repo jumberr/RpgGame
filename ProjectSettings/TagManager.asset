@@ -10,6 +10,8 @@ TagManager:
   - World
   - NoMask
   - InitialPoint
+  - ship
+  - asteroid
   layers:
   - Default
   - TransparentFX
@@ -17,11 +19,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Weapon
   - Player
   - Environment
   - SaveTrigger
+  - DamageTrigger
   - 
   - 
   - 
