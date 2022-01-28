@@ -57,14 +57,10 @@ namespace _Project.CodeBase.Infrastructure.States
 
         private async UniTask InitializeGameWorld()
         {
-            //var data = LoadPlayerStaticData();
             var hero = await InitializePlayer();
             await InitializeUIRoot();
             await InitializeHud(hero);
         }
-
-        //private PlayerStaticData LoadPlayerStaticData() =>
-        //    _staticDataService.ForPlayer();
 
         private void InformProgressReaders()
         {
@@ -72,10 +68,8 @@ namespace _Project.CodeBase.Infrastructure.States
                 reader.LoadProgress(_persistentProgressService.Progress);
         }
 
-        private async UniTask<GameObject> InitializePlayer()
-        {
-            return await _gameFactory.CreateHero(GameObject.FindWithTag(InitialPoint).transform.position);
-        }
+        private async UniTask<GameObject> InitializePlayer() => 
+            await _gameFactory.CreateHero(Vector3.zero);
 
         private async UniTask InitializeUIRoot() =>
             await _uiFactory.CreateUIRoot();

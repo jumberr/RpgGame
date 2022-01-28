@@ -6,8 +6,14 @@ namespace _Project.CodeBase.Data
     public class PlayerProgress
     {
         public HealthData HealthData;
+        public PositionData PositionData;
 
-        public PlayerProgress(HealthData healthData) => 
+        public PlayerProgress(
+            HealthData healthData,
+            PositionData positionData)
+        {
             HealthData = healthData;
+            PositionData = positionData;
+        }
     }
 }

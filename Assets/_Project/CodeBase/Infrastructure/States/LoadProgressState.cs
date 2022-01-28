@@ -13,6 +13,8 @@ namespace _Project.CodeBase.Infrastructure.States
         private readonly ISaveLoadService _saveLoadService;
         private readonly LazyInject<IGameStateMachine> _gameStateMachine;
         private readonly IStaticDataService _staticDataService;
+        
+        private PositionData defaultStartPosition = new PositionData(82, 4, 5);
 
         public LoadProgressState(IPersistentProgressService progressService,
             ISaveLoadService saveLoadService,
@@ -47,7 +49,8 @@ namespace _Project.CodeBase.Infrastructure.States
                 CurrentHP = playerData.HealthData.CurrentHP,
                 MaxHP = playerData.HealthData.MaxHP
             };
-            var progress = new PlayerProgress(healthData);
+
+            var progress = new PlayerProgress(healthData, defaultStartPosition);
             return progress;
         }
     }

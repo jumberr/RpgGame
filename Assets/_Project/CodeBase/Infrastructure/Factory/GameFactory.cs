@@ -2,8 +2,6 @@
 using _Project.CodeBase.Hero;
 using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
-using _Project.CodeBase.Logic;
-using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -37,8 +35,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
         {
             ProgressReaders.Clear();
             ProgressWriters.Clear();
-
-            //_assets.CleanUp();
+            _assetProvider.CleanUp();
         }
 
         public void WarmUp()
