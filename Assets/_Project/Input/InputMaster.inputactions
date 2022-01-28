@@ -120,6 +120,17 @@
                 },
                 {
                     "name": "",
+                    "id": "357e1c65-5730-41af-ad6e-966078b2c35e",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and keyboard",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "102a066c-bd51-4c5f-8358-26ce728e36bc",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
