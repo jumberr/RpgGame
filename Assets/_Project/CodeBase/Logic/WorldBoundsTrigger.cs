@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using _Project.CodeBase.Constants;
 using UnityEngine;
 

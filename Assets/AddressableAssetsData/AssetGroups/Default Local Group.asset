@@ -33,6 +33,10 @@ MonoBehaviour:
     m_Address: PlayerStaticData
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 1a22d35c86396954e99d38c7a247bc30
+    m_Address: DeathScreen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7f7aa7cd3321f4d4f8521b1a30e7d9ab, type: 2}
   m_SchemaSet:

@@ -1,10 +1,9 @@
-﻿using System.Threading.Tasks;
-using _Project.CodeBase.Hero;
+﻿using _Project.CodeBase.Hero;
 using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Services;
-using _Project.CodeBase.StaticData;
 using _Project.CodeBase.UI.Elements;
+using _Project.CodeBase.UI.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -15,14 +14,13 @@ namespace _Project.CodeBase.Infrastructure.States
     {
         // TODO: Change const string to SO & static data
         private const string NextScene = "Game";
-        private const string InitialPoint = "InitialPoint";
 
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
         private readonly IGameFactory _gameFactory;
         private readonly IUIFactory _uiFactory;
         private readonly IPersistentProgressService _persistentProgressService;
-        private IStaticDataService _staticDataService;
+        private readonly IStaticDataService _staticDataService;
 
         public InitializeGameSceneState(
             SceneLoader sceneLoader,
@@ -40,11 +38,8 @@ namespace _Project.CodeBase.Infrastructure.States
             _staticDataService = staticDataService;
         }
 
-        public void Enter()
-        {
-            _loadingCurtain.Show();
+        public void Enter() => 
             _sceneLoader.Load(NextScene, OnLoaded);
-        }
 
         private async void OnLoaded()
         {

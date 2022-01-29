@@ -4,6 +4,7 @@ using _Project.CodeBase.Infrastructure.SaveLoad;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.States;
 using _Project.CodeBase.Services;
+using _Project.CodeBase.StaticData;
 using _Project.CodeBase.UI.Services;
 using UnityEngine;
 using Zenject;

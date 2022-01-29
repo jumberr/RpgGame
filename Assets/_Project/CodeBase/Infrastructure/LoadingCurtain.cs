@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using _Project.CodeBase.Logic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.CodeBase.Infrastructure
@@ -20,16 +22,11 @@ namespace _Project.CodeBase.Infrastructure
         }
 
         public void Hide() => 
-            StartCoroutine(DoFadeIn());
+             StartCoroutine(DoFadeOut());
 
-        private IEnumerator DoFadeIn()
+        private IEnumerator DoFadeOut()
         {
-            while (_curtain.alpha > 0)
-            {
-                _curtain.alpha -= 0.03f;
-                yield return new WaitForSeconds(0.03f);
-            }
-
+            yield return StartCoroutine(Fade.DoFadeOut(_curtain));
             gameObject.SetActive(false);
         }
     }

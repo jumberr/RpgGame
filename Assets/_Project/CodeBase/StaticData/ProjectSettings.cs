@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using _Project.CodeBase.Infrastructure;
+using UnityEngine;
 
-namespace _Project.CodeBase.Infrastructure
+namespace _Project.CodeBase.StaticData
 {
     [CreateAssetMenu(fileName = "ProjectSettings", menuName = "Scriptable Objects/Project Settings", order = 0)]
     public class ProjectSettings : ScriptableObject
