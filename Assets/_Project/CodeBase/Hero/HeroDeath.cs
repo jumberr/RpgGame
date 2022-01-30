@@ -1,43 +1,69 @@
-﻿using UnityEngine;
+﻿using System;
+using DG.Tweening;
+using UnityEngine;
 
 namespace _Project.CodeBase.Hero
 {
     [RequireComponent(typeof(HeroHealth))]
     public class HeroDeath : MonoBehaviour
     {
-        public HeroHealth Health;
-        public HeroMovement Move;
-        public HeroRotation Rotation;
-        //public PlayerAnimator Animator;
+        public event Action ZeroHealth;
+        [SerializeField] public HeroHealth health;
+        [SerializeField] public HeroMovement move;
+        [SerializeField] public HeroRotation rotation;
 
-        public GameObject DeathFx;
         private bool _isDead;
 
         private void Start() => 
-            Health.HealthChanged += HealthChanged;
+            health.HealthChanged += HealthChanged;
 
         private void OnDestroy() => 
-            Health.HealthChanged -= HealthChanged;
+            health.HealthChanged -= HealthChanged;
 
         private void HealthChanged()
         {
-            if (!_isDead && Health.Current <= 0)
+            if (!_isDead && health.Current <= 0)
                 Die();
         }
 
         private void Die()
         {
+            ZeroHealth?.Invoke();
             _isDead = true;
             DisableComponents();
-            //Animator.PlayDeath();
-
-            //Instantiate(DeathFx, transform.position, Quaternion.identity);
+            ProduceHeroDeath();
         }
 
         private void DisableComponents()
         {
-            Move.enabled = false;
-            Rotation.enabled = false;
+            move.enabled = false;
+            rotation.enabled = false;
         }
+        
+        private void ProduceHeroDeath()
+        {
+            var duration = 0.3f;
+            var cc = move.CharacterController;
+            cc.enabled = false;
+
+            ApplyDeathPositionToHero(cc, duration);
+
+            var cams = gameObject.GetComponentsInChildren<Camera>();
+            RotateHeroCamera(cams[0], duration);
+            SetEmptyCullingMaskToGunCamera(cams[1]);
+        }
+
+        private void ApplyDeathPositionToHero(CharacterController cc, float duration)
+        {
+            var pos = gameObject.transform.position;
+            pos.y -= cc.height;
+            gameObject.transform.DOLocalMove(pos, duration);
+        }
+
+        private static void RotateHeroCamera(Camera heroCam, float duration) => 
+            heroCam.transform.DOLocalRotate(Vector3.left * 90, duration);
+
+        private static void SetEmptyCullingMaskToGunCamera(Camera weaponCamera) => 
+            weaponCamera.cullingMask = 0;
     }
 }

@@ -1,7 +1,7 @@
-﻿using System;
-using _Project.CodeBase.Infrastructure;
+﻿using _Project.CodeBase.Infrastructure;
 using _Project.CodeBase.Infrastructure.States;
 using _Project.CodeBase.Logic;
+using _Project.CodeBase.Logic.Effects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +13,7 @@ namespace _Project.CodeBase.UI.Windows.DeathScreen
         [SerializeField] private Button respawnButton;
 
         private IGameStateMachine _gameStateMachine;
-        
+
         public void Construct(IGameStateMachine gameStateMachine) => 
             _gameStateMachine = gameStateMachine;
 
@@ -26,9 +26,9 @@ namespace _Project.CodeBase.UI.Windows.DeathScreen
         private void OnAwake() => 
             respawnButton.onClick.AddListener(Respawn);
 
-        private void OnStart() =>
-             StartCoroutine(Fade.DoFadeIn(canvasGroup));
-        
+        private void OnStart() => 
+            StartCoroutine(Fade.DoFadeIn(canvasGroup));
+
         private void Respawn()
         {
             _gameStateMachine.Enter<ReloadSceneState>();

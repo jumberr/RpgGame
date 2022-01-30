@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _Project.CodeBase.Logic;
+using _Project.CodeBase.Logic.Effects;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 

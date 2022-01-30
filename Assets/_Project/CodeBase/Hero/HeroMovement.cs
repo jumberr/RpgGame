@@ -1,4 +1,5 @@
-﻿using _Project.CodeBase.Data;
+﻿using System;
+using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
@@ -7,6 +8,8 @@ namespace _Project.CodeBase.Hero
 {
     public class HeroMovement : MonoBehaviour, ISavedProgress
     {
+        public event Action OnMove;
+        
         private const float Gravity = -9.81f;
 
         [Header("Jump:")] 
@@ -21,6 +24,8 @@ namespace _Project.CodeBase.Hero
         private Vector3 velocity;
         private Vector2 input;
 
+        public CharacterController CharacterController => characterController;
+        
         private void Awake() => 
             characterController = GetComponent<CharacterController>();
 
@@ -50,8 +55,11 @@ namespace _Project.CodeBase.Hero
         public void UpdateProgress(PlayerProgress progress) => 
             progress.PositionData = transform.position.AsVectorData();
 
-        private void UpdateDirection(Vector2 dir) =>
+        private void UpdateDirection(Vector2 dir)
+        {
             input = dir;
+            OnMove?.Invoke();
+        }
 
         private void MovementAction()
         {

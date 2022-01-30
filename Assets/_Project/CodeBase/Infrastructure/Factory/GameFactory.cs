@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using _Project.CodeBase.Hero;
 using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
+using _Project.CodeBase.Logic.Effects;
 using _Project.CodeBase.UI.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace _Project.CodeBase.Infrastructure.Factory
 {
@@ -30,15 +33,14 @@ namespace _Project.CodeBase.Infrastructure.Factory
         {
             HeroGameObject = await _assetProvider.InstantiateAsync(AssetPath.HeroPath, at);
             RegisterProgressWatchers(HeroGameObject);
-            
-            //var heroMovement = HeroGameObject.GetComponent<HeroMovement>();
-            //var heroAnimator = HeroGameObject.GetComponent<HeroAnimator>();
-            var heroHealth = HeroGameObject.GetComponent<HeroHealth>();
 
-            heroHealth.ZeroHealth += _uiFactory.CreateDeathScreen;
-            
-            //heroMovement.Construct(heroAnimator);
+            var heroMove = HeroGameObject.GetComponent<HeroMovement>();
+            //var cameraShake = HeroGameObject.GetComponentInChildren<CameraShake>();
+            var heroDeath = HeroGameObject.GetComponent<HeroDeath>();
 
+            //heroMove.OnMove += cameraShake.Shake;
+            heroDeath.ZeroHealth += _uiFactory.CreateDeathScreen;
+            
             return HeroGameObject;
         }
 

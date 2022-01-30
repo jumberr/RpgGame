@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195faadad75f4d3fb9262c711cea6bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 2
+  jumpForce: 1
   runningSpeed: 5
   inputService: {fileID: 6525794905949041474}
   characterController: {fileID: 2069869355385823021}
@@ -119,7 +119,7 @@ MonoBehaviour:
   inputService: {fileID: 6525794905949041474}
   player: {fileID: 2069869355385823022}
   hands: {fileID: 4951220763066260364}
-  mouseSensitivity: 50
+  mouseSensitivity: 20
 --- !u!114 &2069869355385823018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,10 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db79300ea97b4cd1bcf0f985afa72336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: {fileID: 6568509556983406653}
-  Move: {fileID: 2069869355385823023}
-  Rotation: {fileID: 5001262662604618594}
-  DeathFx: {fileID: 0}
+  health: {fileID: 6568509556983406653}
+  move: {fileID: 2069869355385823023}
+  rotation: {fileID: 5001262662604618594}
 --- !u!1 &3514158171966373874
 GameObject:
   m_ObjectHideFlags: 0

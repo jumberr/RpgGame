@@ -9,7 +9,6 @@ namespace _Project.CodeBase.Hero
     public class HeroHealth : MonoBehaviour, IHealth, ISavedProgress
     {
         public event Action HealthChanged;
-        public event Action ZeroHealth;
         private HealthData _healthData;
         
         public float Current
@@ -21,9 +20,6 @@ namespace _Project.CodeBase.Hero
                 {
                     _healthData.CurrentHP = value;
                     HealthChanged?.Invoke();
-                    
-                    if (value <= 0)
-                        ZeroHealth?.Invoke();
                 }
             }
         }
