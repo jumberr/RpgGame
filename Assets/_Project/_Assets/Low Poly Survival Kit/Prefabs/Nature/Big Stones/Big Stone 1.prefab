@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1110269839057166958}
   m_Layer: 9
   m_Name: Big_Stone_1_LOD3
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4824790687271133257}
   m_Layer: 9
   m_Name: Big_Stone_1_LOD4
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 6859468479084495857}
   m_Layer: 9
   m_Name: Big_Stone_1_LOD0
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 8935306812789301475}
   m_Layer: 9
   m_Name: Big_Stone_1_LOD1
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 8658307256335038550}
   m_Layer: 9
   m_Name: Big Stone 1
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 740960246563110132}
   m_Layer: 9
   m_Name: Big_Stone_1_LOD2
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294

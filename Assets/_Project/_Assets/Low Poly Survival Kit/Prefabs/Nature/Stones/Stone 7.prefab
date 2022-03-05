@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7732112690628458875}
   m_Layer: 9
   m_Name: Stone_7_LOD3
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2146306787849565463}
   m_Layer: 9
   m_Name: Stone_7_LOD2
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 2681507887832674317}
   m_Layer: 9
   m_Name: Stone_7_LOD1
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 5500469152042759983}
   m_Layer: 9
   m_Name: Stone_7_LOD4
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 7254010486759834445}
   m_Layer: 9
   m_Name: Stone 7
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 2981939086088029541}
   m_Layer: 9
   m_Name: Stone_7_LOD0
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294

@@ -1,6 +1,6 @@
-﻿using _Project.CodeBase.Hero;
-using _Project.CodeBase.Infrastructure.Factory;
+﻿using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
+using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Services;
 using _Project.CodeBase.UI.Elements;
 using _Project.CodeBase.UI.Services;

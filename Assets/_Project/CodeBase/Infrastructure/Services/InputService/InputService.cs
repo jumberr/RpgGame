@@ -7,9 +7,11 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
     {
         private InputMaster _input;
         
-        public Action<Vector2> OnMove;
-        public Action<Vector2> OnRotate;
-        public Action OnJump;
+        public event Action<Vector2> OnMove;
+        public event Action<Vector2> OnRotate;
+        public event Action OnJump;
+ 
+        public event Action<bool> OnAttack;
 
         private void OnEnable()
         {
@@ -33,6 +35,10 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
 
             // Jump
             _input.PlayerMovement.Jump.performed += ctx => OnJump?.Invoke();
+            
+            // Shoot
+            _input.PlayerFight.Attack.performed += ctx => OnAttack?.Invoke(true);
+            _input.PlayerFight.Attack.canceled += ctx => OnAttack?.Invoke(false);
         }
 
         private void OnDisable() => 
