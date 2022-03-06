@@ -2,11 +2,11 @@
 {
     public class Weapon
     {
-        public float damage;
+        public float _damage;
 
-        public float timeBetweenShooting;
-        public float reloadTime;
-        public float spread;
-        public float timeBetweenShots;
+        public float _timeBetweenShooting;
+        public float _reloadTime;
+        public float _spread;
+        public float _timeBetweenShots;
     }
 }

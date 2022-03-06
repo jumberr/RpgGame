@@ -9,12 +9,8 @@ using UnityEngine;
 
 namespace _Project.CodeBase.Infrastructure.States
 {
-    // State that should be used to initialize scene and game objects
     public class InitializeGameSceneState : IState
     {
-        // TODO: Change const string to SO & static data
-        private const string NextScene = "Game";
-
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
         private readonly IGameFactory _gameFactory;
@@ -38,12 +34,15 @@ namespace _Project.CodeBase.Infrastructure.States
             _staticDataService = staticDataService;
         }
 
-        public void Enter() => 
-            _sceneLoader.Load(NextScene, OnLoaded);
+        public void Enter()
+        {
+            var projectSettings = _staticDataService.ForProjectSettings();
+            _sceneLoader.Load(projectSettings.GameScene, OnLoaded);
+        }
 
         private async void OnLoaded()
         {
-            await _staticDataService.Load();
+            //await _staticDataService.LoadGameStaticData();
             await InitializeGameWorld();
             InformProgressReaders();
 

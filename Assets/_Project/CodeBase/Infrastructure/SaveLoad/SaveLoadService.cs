@@ -11,7 +11,7 @@ namespace _Project.CodeBase.Infrastructure.SaveLoad
 {
     public class SaveLoadService : ISaveLoadService
     {
-        private string path = Path.Combine($"{Application.persistentDataPath}", "Progress");
+        private readonly string _path = Path.Combine($"{Application.persistentDataPath}", "Progress");
         
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
@@ -35,7 +35,7 @@ namespace _Project.CodeBase.Infrastructure.SaveLoad
 
         private void Serialize(IPersistentProgressService progressService)
         {
-            var fs = new FileStream(path, FileMode.OpenOrCreate);
+            var fs = new FileStream(_path, FileMode.OpenOrCreate);
             var bf = new BinaryFormatter();
             try
             {
@@ -54,8 +54,8 @@ namespace _Project.CodeBase.Infrastructure.SaveLoad
 
         private PlayerProgress Deserialize()
         {
-            if (!File.Exists(path)) return null;
-            var fs = new FileStream(path, FileMode.Open);
+            if (!File.Exists(_path)) return null;
+            var fs = new FileStream(_path, FileMode.Open);
             try
             {
                 var bf = new BinaryFormatter();

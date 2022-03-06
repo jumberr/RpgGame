@@ -82,11 +82,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195faadad75f4d3fb9262c711cea6bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 1
-  runningSpeed: 5
-  inputService: {fileID: 6525794905949041474}
-  heroAnimator: {fileID: 2069869355385823018}
-  characterController: {fileID: 2069869355385823021}
+  _jumpForce: 1
+  _runningSpeed: 6
+  _inputService: {fileID: 6525794905949041474}
+  _heroAnimator: {fileID: 2069869355385823018}
+  _characterController: {fileID: 2069869355385823021}
 --- !u!114 &5001262662604618594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3007e9e6f941ce8a1c95d5fd318c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputService: {fileID: 6525794905949041474}
-  player: {fileID: 2069869355385823022}
-  hands: {fileID: 4951220763066260364}
-  mouseSensitivity: 20
+  _inputService: {fileID: 6525794905949041474}
+  _player: {fileID: 2069869355385823022}
+  _hands: {fileID: 4951220763066260364}
+  _mouseSensitivity: 20
 --- !u!114 &2069869355385823018
 MonoBehaviour:
   m_ObjectHideFlags: 0

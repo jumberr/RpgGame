@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70eb91e96f994b459a8d835142b17a43, type: 3}
-  m_Name: ProjectSettings
+  m_Name: ProjectSettingsData
   m_EditorClassIdentifier: 
-  loadingCurtain: {fileID: 795907595884449915, guid: daa62a1d91fefd34b9e256b3e0e14309,
+  LoadingCurtain: {fileID: 795907595884449915, guid: daa62a1d91fefd34b9e256b3e0e14309,
     type: 3}
+  InitialScene: Initial
+  GameScene: Game

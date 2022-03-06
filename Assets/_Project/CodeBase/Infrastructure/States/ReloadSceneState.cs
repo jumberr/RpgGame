@@ -6,7 +6,6 @@ namespace _Project.CodeBase.Infrastructure.States
     public class ReloadSceneState : IState
     {
         private readonly LazyInject<IGameStateMachine> _gameStateMachine;
-
         private readonly IGameFactory _gameFactory;
 
         public ReloadSceneState(

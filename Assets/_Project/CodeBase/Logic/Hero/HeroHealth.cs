@@ -12,12 +12,12 @@ namespace _Project.CodeBase.Logic.Hero
         
         public float Current
         {
-            get => _healthData.CurrentHP;
+            get => _healthData.CurrentHp;
             set
             {
-                if (_healthData.CurrentHP != value)
+                if (_healthData.CurrentHp != value)
                 {
-                    _healthData.CurrentHP = value;
+                    _healthData.CurrentHp = value;
                     HealthChanged?.Invoke();
                 }
             }
@@ -25,8 +25,8 @@ namespace _Project.CodeBase.Logic.Hero
 
         public float Max
         {
-            get => _healthData.MaxHP;
-            set => _healthData.MaxHP = value;
+            get => _healthData.MaxHp;
+            set => _healthData.MaxHp = value;
         }
 
         public void TakeDamage(float damage)
@@ -45,8 +45,8 @@ namespace _Project.CodeBase.Logic.Hero
 
         public void UpdateProgress(PlayerProgress progress)
         {
-            progress.HealthData.CurrentHP = Current;
-            progress.HealthData.MaxHP = Max;
+            progress.HealthData.CurrentHp = Current;
+            progress.HealthData.MaxHp = Max;
         }
     }
 }

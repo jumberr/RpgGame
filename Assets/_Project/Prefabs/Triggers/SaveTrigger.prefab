@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 778056968248827255}
-  WaitTime: 5
+  _waitTime: 5
 --- !u!65 &778056968248827255
 BoxCollider:
   m_ObjectHideFlags: 0

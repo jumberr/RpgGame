@@ -5,9 +5,9 @@ namespace _Project.CodeBase.Data
     [Serializable]
     public class HealthData
     {
-        public float CurrentHP;
-        public float MaxHP;
+        public float CurrentHp;
+        public float MaxHp;
 
-        public void ResetHP() => CurrentHP = MaxHP;
+        public void ResetHp() => CurrentHp = MaxHp;
     }
 }

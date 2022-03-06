@@ -5,7 +5,9 @@ namespace _Project.CodeBase.Services
 {
     public interface IStaticDataService
     {
-        UniTask Load();
+        UniTask LoadMenuStaticData();
+        UniTask LoadGameStaticData();
         PlayerStaticData ForPlayer();
+        ProjectSettings ForProjectSettings();
     }
 }

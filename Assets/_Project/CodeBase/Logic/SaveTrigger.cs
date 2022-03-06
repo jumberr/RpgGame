@@ -1,5 +1,6 @@
-﻿using System.Collections;
+﻿using System;
 using _Project.CodeBase.Infrastructure.SaveLoad;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -8,10 +9,10 @@ namespace _Project.CodeBase.Logic
     public class SaveTrigger : MonoBehaviour
     {
         public BoxCollider Collider;
-        [SerializeField] private float WaitTime;
+        [SerializeField] private float _waitTime;
 
         private ISaveLoadService _saveLoadService;
-        private bool saved;
+        private bool _saved;
 
         [Inject]
         private void Construct(ISaveLoadService saveLoadService) => 
@@ -19,10 +20,10 @@ namespace _Project.CodeBase.Logic
 
         private void OnTriggerEnter(Collider other)
         {
-            if (saved) return;
-            saved = true;
+            if (_saved) return;
+            _saved = true;
             _saveLoadService.SaveProgress();
-            StartCoroutine(ResetAbilityToSave());
+            ResetAbilityToSave().Forget();
             Debug.Log("Progress Saved");
         }
 
@@ -35,10 +36,10 @@ namespace _Project.CodeBase.Logic
             Gizmos.DrawCube(transform.position + Collider.center, Collider.size);
         }
 
-        private IEnumerator ResetAbilityToSave()
+        private async UniTaskVoid ResetAbilityToSave()
         {
-            yield return new WaitForSecondsRealtime(WaitTime);
-            saved = false;
+            await UniTask.Delay(TimeSpan.FromSeconds(_waitTime));
+            _saved = false;
         }
     }
 }

@@ -1,40 +1,43 @@
-﻿using System.Collections;
+﻿using System;
+using System.Threading;
 using _Project.CodeBase.Constants;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic
 {
     public class WorldBoundsTrigger : MonoBehaviour
     {
-        [SerializeField] private float damage;
-        [SerializeField] private float waitTime;
-        
-        private Coroutine routine;
+        [SerializeField] private float _damage;
+        [SerializeField] private float _waitTime;
+
+        private CancellationTokenSource _tokenSource = new CancellationTokenSource();
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(TagConstants.Player)) 
-                routine = StartCoroutine(RemoveHealth(other.gameObject));
+            if (other.CompareTag(TagConstants.Player))
+                RemoveHealth(other.gameObject).Forget();
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (other.CompareTag(TagConstants.Player))
             {
-                StopCoroutine(routine);
-                routine = null;
+                _tokenSource.Cancel();
+                _tokenSource.Dispose();
+                _tokenSource = new CancellationTokenSource();
             }
         }
 
-        private IEnumerator RemoveHealth(GameObject player)
+        private async UniTask RemoveHealth(GameObject player)
         {
             var health = player.GetComponent<IHealth>();
             if (health != null)
             {
                 while (true)
                 {
-                    health.Current -= damage;
-                    yield return new WaitForSecondsRealtime(waitTime);
+                    health.Current -= _damage;
+                    await UniTask.Delay(TimeSpan.FromSeconds(_waitTime), cancellationToken: _tokenSource.Token);
                 }
             }
         }

@@ -14,7 +14,7 @@ namespace _Project.CodeBase.Infrastructure.States
         private readonly LazyInject<IGameStateMachine> _gameStateMachine;
         private readonly IStaticDataService _staticDataService;
         
-        private PositionData defaultStartPosition = new PositionData(82, 4, 5);
+        private readonly PositionData _defaultStartPosition = new PositionData(82, 4, 5);
 
         public LoadProgressState(IPersistentProgressService progressService,
             ISaveLoadService saveLoadService,
@@ -37,7 +37,7 @@ namespace _Project.CodeBase.Infrastructure.States
 
         private async UniTask LoadProgressOrInitNew()
         {
-            await _staticDataService.Load();
+            await _staticDataService.LoadGameStaticData();
             _progressService.Progress = _saveLoadService.LoadProgress() ?? NewProgress();
         }
 
@@ -46,11 +46,11 @@ namespace _Project.CodeBase.Infrastructure.States
             var playerData = _staticDataService.ForPlayer();
             var healthData = new HealthData
             {
-                CurrentHP = playerData.HealthData.CurrentHP,
-                MaxHP = playerData.HealthData.MaxHP
+                CurrentHp = playerData.HealthData.CurrentHp,
+                MaxHp = playerData.HealthData.MaxHp
             };
 
-            var progress = new PlayerProgress(healthData, defaultStartPosition);
+            var progress = new PlayerProgress(healthData, _defaultStartPosition);
             return progress;
         }
     }

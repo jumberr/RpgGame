@@ -9,8 +9,8 @@ namespace _Project.CodeBase.Logic.Hero
     {
         private const string SandTag = "Sand";
         private const string RockTag = "Rock";
-        private const float TIME_DESTROY_FX = 0.1f;
-        private const float TIME_DESTROY_ENV_FX = 2f;
+        private const float TimeDestroyFX = 0.1f;
+        private const float TimeDestroyEnvFx = 2f;
         
         [SerializeField] private InputService _inputService;
         [SerializeField] private BulletPool _bulletPool;
@@ -84,7 +84,7 @@ namespace _Project.CodeBase.Logic.Hero
             if (Physics.Raycast(_heroCamera.transform.position, _heroCamera.transform.forward, out var hit, _range, _layerMask))
             {
                 var fx = Instantiate(_weaponFX, _firePoint);
-                Destroy(fx, TIME_DESTROY_FX);
+                Destroy(fx, TimeDestroyFX);
                 
                 //if (hit.transform.TryGetComponent<IHealth>(out var enemy))
                 //{
@@ -104,7 +104,7 @@ namespace _Project.CodeBase.Logic.Hero
             if (hit.collider.CompareTag(tag))
             {
                 var fx = Instantiate(particles, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(fx, TIME_DESTROY_ENV_FX);
+                Destroy(fx, TimeDestroyEnvFx);
             }
         }
 

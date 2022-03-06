@@ -14,7 +14,7 @@ namespace _Project.CodeBase.Infrastructure.Installers
 {
     public class BootstrapInstaller : MonoInstaller, ICoroutineRunner
     {
-        [SerializeField] private ProjectSettings projectSettings;
+        [SerializeField] private ProjectSettings _projectSettings;
         
         public override void InstallBindings()
         {
@@ -42,7 +42,7 @@ namespace _Project.CodeBase.Infrastructure.Installers
 
             Container
                 .Bind<ProjectSettings>()
-                .FromInstance(projectSettings)
+                .FromInstance(_projectSettings)
                 .AsSingle();
         }
 
@@ -50,7 +50,7 @@ namespace _Project.CodeBase.Infrastructure.Installers
         {
             Container
                 .Bind<LoadingCurtain>()
-                .FromComponentInNewPrefab(projectSettings.LoadingCurtain)
+                .FromComponentInNewPrefab(_projectSettings.LoadingCurtain)
                 .AsSingle();
 
             Container

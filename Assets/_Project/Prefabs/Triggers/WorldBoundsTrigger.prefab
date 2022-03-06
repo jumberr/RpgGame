@@ -58,8 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c02d71509b4de98266846943370d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  waitTime: 1
+  _damage: 10
+  _waitTime: 1
 --- !u!1001 &4524263951474921943
 PrefabInstance:
   m_ObjectHideFlags: 0

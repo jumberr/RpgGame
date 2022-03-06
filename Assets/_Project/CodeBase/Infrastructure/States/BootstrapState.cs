@@ -1,30 +1,33 @@
-﻿using Zenject;
+﻿using _Project.CodeBase.Services;
+using Zenject;
 
 namespace _Project.CodeBase.Infrastructure.States
 {
     public class BootstrapState : IState
     {
-        // TODO: Change const string to SO & static data
-        private const string InitialScene = "Initial";
-
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
         private readonly LazyInject<IGameStateMachine> _gameStateMachine;
+        private readonly IStaticDataService _staticDataService;
 
-        public BootstrapState(
-            SceneLoader sceneLoader,
+        public BootstrapState(SceneLoader sceneLoader,
             LoadingCurtain loadingCurtain,
+            IStaticDataService staticDataService,
             LazyInject<IGameStateMachine> gameStateMachine)
         {
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
+            _staticDataService = staticDataService;
             _gameStateMachine = gameStateMachine;
         }
 
-        public void Enter()
+        public async void Enter()
         { 
             _loadingCurtain.Show();
-            _sceneLoader.Load(InitialScene, OnLoaded);
+
+            await _staticDataService.LoadMenuStaticData();
+            var projectSettings = _staticDataService.ForProjectSettings();
+            _sceneLoader.Load(projectSettings.InitialScene, OnLoaded);
         }
 
         public void Exit() { }

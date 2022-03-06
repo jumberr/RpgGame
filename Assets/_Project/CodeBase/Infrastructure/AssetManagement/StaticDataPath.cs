@@ -2,6 +2,7 @@
 {
     public class StaticDataPath
     {
-        public const string PlayerStaticDataPath = "PlayerStaticData";
+        public const string PlayerDataPath = "PlayerStaticData";
+        public const string ProjectSettingsDataPath = "ProjectSettingsData";
     }
 }

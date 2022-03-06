@@ -9,8 +9,8 @@ namespace _Project.CodeBase.UI.Windows.DeathScreen
 {
     public class DeathScreen : MonoBehaviour
     {
-        [SerializeField] private CanvasGroup canvasGroup;
-        [SerializeField] private Button respawnButton;
+        [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private Button _respawnButton;
 
         private IGameStateMachine _gameStateMachine;
 
@@ -24,15 +24,15 @@ namespace _Project.CodeBase.UI.Windows.DeathScreen
             OnStart();
 
         private void OnAwake() => 
-            respawnButton.onClick.AddListener(Respawn);
+            _respawnButton.onClick.AddListener(Respawn);
 
         private void OnStart() => 
-            StartCoroutine(Fade.DoFadeIn(canvasGroup));
+            StartCoroutine(Fade.DoFadeIn(_canvasGroup));
 
         private void Respawn()
         {
             _gameStateMachine.Enter<ReloadSceneState>();
-            respawnButton.enabled = false;
+            _respawnButton.enabled = false;
         }
     }
 }

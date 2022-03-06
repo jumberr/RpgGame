@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerStaticData
   m_EditorClassIdentifier: 
   HealthData:
-    CurrentHP: 100
-    MaxHP: 100
+    CurrentHp: 100
+    MaxHp: 100

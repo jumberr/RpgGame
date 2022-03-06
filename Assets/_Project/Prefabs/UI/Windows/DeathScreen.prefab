@@ -517,8 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6831e847bad54ab6b72714ce95394038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 3059369295091804418}
-  respawnButton: {fileID: 4299387043347480106}
+  _canvasGroup: {fileID: 3059369295091804418}
+  _respawnButton: {fileID: 4299387043347480106}
 --- !u!225 &3059369295091804418
 CanvasGroup:
   m_ObjectHideFlags: 0

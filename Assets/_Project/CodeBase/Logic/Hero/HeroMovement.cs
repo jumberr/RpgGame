@@ -14,34 +14,34 @@ namespace _Project.CodeBase.Logic.Hero
         private const float Gravity = -9.81f;
 
         [Header("Jump:")] 
-        [SerializeField] private float jumpForce = 5f;
+        [SerializeField] private float _jumpForce = 5f;
         [Header("Movement Speed:")] 
-        [SerializeField] private float runningSpeed = 5f;
+        [SerializeField] private float _runningSpeed = 5f;
         
-        [SerializeField] private InputService inputService;
-        [SerializeField] private HeroAnimator heroAnimator;
-        [SerializeField] private CharacterController characterController;
+        [SerializeField] private InputService _inputService;
+        [SerializeField] private HeroAnimator _heroAnimator;
+        [SerializeField] private CharacterController _characterController;
         
-        private Transform cachedTransform;
-        private Vector3 velocity;
-        private Vector2 input;
+        private Transform _cachedTransform;
+        private Vector3 _velocity;
+        private Vector2 _input;
 
-        public CharacterController CharacterController => characterController;
+        public CharacterController CharacterController => _characterController;
         
         private void Awake() => 
-            characterController = GetComponent<CharacterController>();
+            _characterController = GetComponent<CharacterController>();
 
         private void Start()
         {
-            cachedTransform = transform;
-            inputService.OnMove += UpdateDirection;
-            inputService.OnJump += JumpAction;
+            _cachedTransform = transform;
+            _inputService.OnMove += UpdateDirection;
+            _inputService.OnJump += JumpAction;
         }
 
         private void FixedUpdate()
         {
-            if (characterController.isGrounded && velocity.y <= 0)
-                velocity.y = 0f; //We're standing at the floor
+            if (_characterController.isGrounded && _velocity.y <= 0)
+                _velocity.y = 0f; //We're standing at the floor
 
             MovementAction();
             ApplyGravity();
@@ -59,7 +59,7 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void UpdateDirection(Vector2 dir)
         {
-            input = dir;
+            _input = dir;
             OnMove?.Invoke();
         }
 
@@ -67,37 +67,37 @@ namespace _Project.CodeBase.Logic.Hero
         {
             var moveDirection = CalculateDirection();
             ApplyMoveAnimation(moveDirection);
-            characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
+            _characterController.Move(moveDirection * _runningSpeed * Time.deltaTime);
         }
 
         private void ApplyMoveAnimation(Vector3 moveDirection)
         {
             if (moveDirection == Vector3.zero)
-                heroAnimator.EnterIdleState();
+                _heroAnimator.EnterIdleState();
             else
-                heroAnimator.EnterWalkState();
+                _heroAnimator.EnterWalkState();
         }
 
         private Vector3 CalculateDirection() =>
-            cachedTransform.right * input.x + cachedTransform.forward * input.y;
+            _cachedTransform.right * _input.x + _cachedTransform.forward * _input.y;
 
         private void JumpAction()
         {
-            if (characterController.isGrounded)
-                velocity.y = Mathf.Sqrt(jumpForce * -2f * Gravity);
+            if (_characterController.isGrounded)
+                _velocity.y = Mathf.Sqrt(_jumpForce * -2f * Gravity);
         }
 
         private void ApplyGravity()
         {
-            velocity.y += Gravity * Time.deltaTime;
-            characterController.Move(velocity * Time.deltaTime);
+            _velocity.y += Gravity * Time.deltaTime;
+            _characterController.Move(_velocity * Time.deltaTime);
         }
 
         private void Warp(PositionData to)
         {
-            characterController.enabled = false;
-            transform.position = to.AsUnityVector().AddY(characterController.height);
-            characterController.enabled = true;
+            _characterController.enabled = false;
+            transform.position = to.AsUnityVector().AddY(_characterController.height);
+            _characterController.enabled = true;
         }
     }
 }

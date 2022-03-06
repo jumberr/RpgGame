@@ -2,13 +2,13 @@
 {
     public class Magazine
     {
-        public int size;
-        public int bulletsLeft;
+        public int _size;
+        public int _bulletsLeft;
 
         public Magazine(int size, int bulletsLeft)
         {
-            this.size = size;
-            this.bulletsLeft = bulletsLeft;
+            this._size = size;
+            this._bulletsLeft = bulletsLeft;
         }
     }
 }
