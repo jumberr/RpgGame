@@ -41,7 +41,7 @@ namespace _Project.CodeBase.Logic.Hero
         private void FixedUpdate()
         {
             if (_characterController.isGrounded && _velocity.y <= 0)
-                _velocity.y = 0f; //We're standing at the floor
+                _velocity.y = -2f; //We're standing at the floor
 
             MovementAction();
             ApplyGravity();
