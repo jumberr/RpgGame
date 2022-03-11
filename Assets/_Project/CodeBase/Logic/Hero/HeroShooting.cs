@@ -28,17 +28,18 @@ namespace _Project.CodeBase.Logic.Hero
         //private float nextFire;
         //private bool _isShoot;
 
+        [SerializeField] private bool _isAutomatic;
         [SerializeField] private float _firePower = 10;
-        [SerializeField] private bool _isShooting;
         [SerializeField] private float _fireSpeed;
-        [SerializeField] private float _fireTimer;
         [SerializeField] private int _range;
 
         [SerializeField] private GameObject _weaponFX;
-        
         [SerializeField] private GameObject _rockParticlesFX;
         [SerializeField] private GameObject _sandParticlesFX;
         [SerializeField] private GameObject _bloodParticlesFX;
+
+        private bool _isShooting;
+        private float _fireTimer;
 
         private void Start() =>
             _inputService.OnAttack += EnableDisableShoot;
@@ -56,18 +57,9 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void Update()
         {
-        //    if (_isShoot && IsAutomatic && Time.time > nextFire)
-        //    {
-        //        nextFire = Time.time + fireRatio;
-        //        Shoot();
-        //    }
-        //    
-        //    if (_isShoot && !IsAutomatic)
-        //    {
-        //        Shoot();
-        //    }
+            if (!_isShooting) return;
 
-            if (_isShooting)
+            if (_isAutomatic)
             {
                 if (_fireTimer > 0)
                     _fireTimer -= Time.deltaTime;
@@ -76,6 +68,11 @@ namespace _Project.CodeBase.Logic.Hero
                     _fireTimer = _fireSpeed;
                     Shoot();
                 }
+            }
+            else
+            {
+                Shoot();
+                ReleaseTrigger();
             }
         }
 
@@ -112,8 +109,8 @@ namespace _Project.CodeBase.Logic.Hero
         {
             if (_fireSpeed > 0)
                 _isShooting = true;
-            else
-                Shoot();
+            //else
+            //    Shoot();
         }
 
         private void ReleaseTrigger()

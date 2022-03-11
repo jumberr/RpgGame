@@ -1,6 +1,5 @@
 ﻿using _Project.CodeBase.Logic.Hero.Animation.States;
 using UnityEngine;
-using Zenject;
 
 namespace _Project.CodeBase.Logic.Hero.Animation
 {
