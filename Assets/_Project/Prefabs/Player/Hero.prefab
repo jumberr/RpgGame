@@ -83,7 +83,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpForce: 1
-  _runningSpeed: 6
+  _walkingSpeed: 6
+  _runningSpeed: 8
   _inputService: {fileID: 6525794905949041474}
   _heroAnimator: {fileID: 2069869355385823018}
   _characterController: {fileID: 2069869355385823021}
@@ -102,7 +103,7 @@ MonoBehaviour:
   _inputService: {fileID: 6525794905949041474}
   _player: {fileID: 2069869355385823022}
   _hands: {fileID: 4951220763066260364}
-  _mouseSensitivity: 20
+  _mouseSensitivity: 40
 --- !u!114 &2069869355385823018
 MonoBehaviour:
   m_ObjectHideFlags: 0

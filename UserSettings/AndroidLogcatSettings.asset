@@ -2,24 +2,12 @@
     "m_SelectedDeviceId": "ztskmftseuy9lnz5",
     "m_SelectedPackage": {
         "deviceId": "ztskmftseuy9lnz5",
-        "name": "com.moremountains.topdownengine",
-        "processId": 32106,
+        "name": "com.DefaultCompany.RPG",
+        "processId": 31867,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "ztskmftseuy9lnz5",
-            "name": "com.miui.home",
-            "processId": 1985,
-            "exited": false
-        },
-        {
-            "deviceId": "ztskmftseuy9lnz5",
-            "name": "com.moremountains.topdownengine",
-            "processId": 9152,
-            "exited": true
-        },
         {
             "deviceId": "ztskmftseuy9lnz5",
             "name": "com.moremountains.topdownengine",
@@ -30,12 +18,36 @@
             "deviceId": "ztskmftseuy9lnz5",
             "name": "com.moremountains.topdownengine",
             "processId": 13358,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "ztskmftseuy9lnz5",
             "name": "com.moremountains.topdownengine",
             "processId": 32106,
+            "exited": true
+        },
+        {
+            "deviceId": "ztskmftseuy9lnz5",
+            "name": "com.DefaultCompany.TopDown",
+            "processId": 30263,
+            "exited": true
+        },
+        {
+            "deviceId": "ztskmftseuy9lnz5",
+            "name": "com.DefaultCompany.RPG",
+            "processId": 31184,
+            "exited": true
+        },
+        {
+            "deviceId": "ztskmftseuy9lnz5",
+            "name": "com.miui.home",
+            "processId": 2051,
+            "exited": false
+        },
+        {
+            "deviceId": "ztskmftseuy9lnz5",
+            "name": "com.DefaultCompany.RPG",
+            "processId": 31867,
             "exited": false
         }
     ],

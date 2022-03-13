@@ -9,14 +9,13 @@ namespace _Project.CodeBase.Logic.Hero
 {
     public class HeroMovement : MonoBehaviour, ISavedProgress
     {
-        public event Action OnMove;
-        
         private const float Gravity = -9.81f;
 
         [Header("Jump:")] 
-        [SerializeField] private float _jumpForce = 5f;
+        [SerializeField] private float _jumpForce = 1f;
         [Header("Movement Speed:")] 
-        [SerializeField] private float _runningSpeed = 5f;
+        [SerializeField] private float _walkingSpeed = 6f;
+        [SerializeField] private float _runningSpeed = 8f;
         
         [SerializeField] private InputService _inputService;
         [SerializeField] private HeroAnimator _heroAnimator;
@@ -57,24 +56,35 @@ namespace _Project.CodeBase.Logic.Hero
         public void UpdateProgress(PlayerProgress progress) => 
             progress.PositionData = transform.position.AsVectorData();
 
-        private void UpdateDirection(Vector2 dir)
-        {
+        private void UpdateDirection(Vector2 dir) => 
             _input = dir;
-            OnMove?.Invoke();
-        }
 
         private void MovementAction()
         {
             var moveDirection = CalculateDirection();
-            ApplyMoveAnimation(moveDirection);
-            _characterController.Move(moveDirection * _runningSpeed * Time.deltaTime);
+            var normalized = _input.magnitude;
+
+            var speed = SelectSpeed(normalized);
+            ApplyMoveAnimation(normalized);
+            _characterController.Move(moveDirection * speed * Time.deltaTime);
         }
 
-        private void ApplyMoveAnimation(Vector3 moveDirection)
+        private float SelectSpeed(float normalized)
         {
-            if (moveDirection == Vector3.zero)
+            if (normalized == 0)
+                return 0;
+            if (normalized >= 0.9f && _input.y >= 0.77f)
+                return _runningSpeed;
+            return _walkingSpeed;
+        }
+
+        private void ApplyMoveAnimation(float normalized)
+        {
+            if (normalized == 0)
                 _heroAnimator.EnterIdleState();
-            else
+            else if (normalized >= 0.9f && _input.y >= 0.77f)
+                _heroAnimator.EnterRunState();
+            else 
                 _heroAnimator.EnterWalkState();
         }
 
