@@ -7,6 +7,8 @@ namespace _Project.CodeBase.Logic.Hero.Animation.States
         private Animator _animator;
         private static readonly int IsRun = Animator.StringToHash("IsRun");
 
+        public EAnimationState StateName => EAnimationState.Run;
+
         public void Construct(Animator animator) => 
             _animator = animator;
 

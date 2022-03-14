@@ -7,6 +7,8 @@ namespace _Project.CodeBase.Logic.Hero.Animation.States
         private Animator _animator;
         private static readonly int IsWalk = Animator.StringToHash("IsWalk");
 
+        public EAnimationState StateName => EAnimationState.Walk;
+
         public void Construct(Animator animator) => 
             _animator = animator;
         

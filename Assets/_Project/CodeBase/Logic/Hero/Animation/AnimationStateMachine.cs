@@ -27,6 +27,9 @@ namespace _Project.CodeBase.Logic.Hero.Animation
             foreach (var state in _states) 
                 state.Value.Construct(animator);
         }
+        
+        public EAnimationState GetStateName() => 
+            _actualState.StateName;
 
         public void Enter<TState>() where TState : class, IAnimationState => 
             ChangeState<TState>().Enter();

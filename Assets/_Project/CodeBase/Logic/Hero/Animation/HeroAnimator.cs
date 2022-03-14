@@ -14,6 +14,8 @@ namespace _Project.CodeBase.Logic.Hero.Animation
             EnterIdleState();
         }
 
+        public EAnimationState CurrentState => _stateMachine.GetStateName();
+        
         public void EnterIdleState() => 
             _stateMachine.Enter<IdleAnimationState>();
 

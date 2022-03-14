@@ -29,8 +29,8 @@ namespace _Project.CodeBase.Logic.Hero
         //private bool _isShoot;
 
         [SerializeField] private bool _isAutomatic;
-        [SerializeField] private float _firePower = 10;
-        [SerializeField] private float _fireSpeed;
+        [SerializeField] private float _firePower = 10; // dmg
+        [Tooltip("Rate of fire [0, 1000]")] [SerializeField] private float _fireRate;
         [SerializeField] private int _range;
 
         [SerializeField] private GameObject _weaponFX;
@@ -39,10 +39,20 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private GameObject _bloodParticlesFX;
 
         private bool _isShooting;
-        private float _fireTimer;
+        private float _fireSpeed;
+        private float _automaticFireTimer;
+        private float _singleFireTimer;
 
-        private void Start() =>
+        private void Start()
+        {
+            ApplyGunSettings();
             _inputService.OnAttack += EnableDisableShoot;
+        }
+
+        public void ApplyGunSettings()
+        {
+            _fireSpeed = 60 / _fireRate;
+        }
 
         private void EnableDisableShoot(bool value)
         {
@@ -57,22 +67,29 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void Update()
         {
+            if (_singleFireTimer > 0)
+                _singleFireTimer -= Time.deltaTime;
+            
             if (!_isShooting) return;
 
             if (_isAutomatic)
             {
-                if (_fireTimer > 0)
-                    _fireTimer -= Time.deltaTime;
+                if (_automaticFireTimer > 0)
+                    _automaticFireTimer -= Time.deltaTime;
                 else
                 {
-                    _fireTimer = _fireSpeed;
+                    _automaticFireTimer = _fireSpeed;
                     Shoot();
                 }
             }
             else
             {
-                Shoot();
-                ReleaseTrigger();
+                if (_singleFireTimer <= 0)
+                {
+                    _singleFireTimer = _fireSpeed;
+                    Shoot();
+                    ReleaseTrigger();
+                }
             }
         }
 
@@ -90,8 +107,6 @@ namespace _Project.CodeBase.Logic.Hero
                 
                 HitParticles(hit, SandTag, _sandParticlesFX);
                 HitParticles(hit, RockTag, _rockParticlesFX);
-
-                Debug.DrawRay(_heroCamera.transform.position, _heroCamera.transform.forward * hit.distance, Color.red);
                 Debug.Log(hit.collider.name);
             }
         }
@@ -105,18 +120,14 @@ namespace _Project.CodeBase.Logic.Hero
             }
         }
 
-        private void PullTrigger()
-        {
-            if (_fireSpeed > 0)
-                _isShooting = true;
-            //else
-            //    Shoot();
-        }
+        private void PullTrigger() => 
+            _isShooting = true;
 
         private void ReleaseTrigger()
         {
             _isShooting = false;
-            _fireTimer = 0;
+            if (_isAutomatic) 
+                _automaticFireTimer = 0;
         }
     }
 }

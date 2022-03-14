@@ -166,7 +166,7 @@ MonoBehaviour:
   _firePoint: {fileID: 9036575125646677724}
   _isAutomatic: 1
   _firePower: 10
-  _fireSpeed: 0.2
+  _fireRate: 650
   _range: 100
   _weaponFX: {fileID: 4888934222848124639, guid: 43586b1e1127c63428f509860df6fb48,
     type: 3}

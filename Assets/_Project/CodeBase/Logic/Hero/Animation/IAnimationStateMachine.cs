@@ -2,6 +2,7 @@
 {
     public interface IAnimationStateMachine
     {
+        EAnimationState GetStateName();
         void Enter<TState>() where TState : class, IAnimationState;
     }
 }

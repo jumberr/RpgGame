@@ -9,6 +9,7 @@ namespace _Project.CodeBase.Logic.Hero
 {
     public class HeroMovement : MonoBehaviour, ISavedProgress
     {
+        private const float MinJoystickDeflectionToRun = 0.85f;
         private const float Gravity = -9.81f;
 
         [Header("Jump:")] 
@@ -24,6 +25,7 @@ namespace _Project.CodeBase.Logic.Hero
         private Transform _cachedTransform;
         private Vector3 _velocity;
         private Vector2 _input;
+        
 
         public CharacterController CharacterController => _characterController;
         
@@ -62,27 +64,26 @@ namespace _Project.CodeBase.Logic.Hero
         private void MovementAction()
         {
             var moveDirection = CalculateDirection();
-            var normalized = _input.magnitude;
 
-            var speed = SelectSpeed(normalized);
-            ApplyMoveAnimation(normalized);
+            var speed = SelectSpeed();
+            ApplyMoveAnimation();
             _characterController.Move(moveDirection * speed * Time.deltaTime);
         }
 
-        private float SelectSpeed(float normalized)
+        private float SelectSpeed()
         {
-            if (normalized == 0)
+            if (_input.magnitude == 0)
                 return 0;
-            if (normalized >= 0.9f && _input.y >= 0.77f)
+            if (_input.y >= MinJoystickDeflectionToRun)
                 return _runningSpeed;
             return _walkingSpeed;
         }
 
-        private void ApplyMoveAnimation(float normalized)
+        private void ApplyMoveAnimation()
         {
-            if (normalized == 0)
+            if (_input.magnitude == 0)
                 _heroAnimator.EnterIdleState();
-            else if (normalized >= 0.9f && _input.y >= 0.77f)
+            else if (_input.y >= MinJoystickDeflectionToRun)
                 _heroAnimator.EnterRunState();
             else 
                 _heroAnimator.EnterWalkState();
