@@ -24,27 +24,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Sprinting",
-                    "type": "Button",
-                    "id": "3143a5cc-f778-4f8c-99a9-c64f8ec27993",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "669a8b6a-b961-437c-a010-2e2e72ef612b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Rolling",
-                    "type": "Button",
-                    "id": "6b3b57a3-2502-4b37-935b-9dabfca1a51e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -142,17 +124,6 @@
                 },
                 {
                     "name": "",
-                    "id": "772a787f-f6b9-4b7b-9f7d-4751c36df21b",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse and keyboard",
-                    "action": "Sprinting",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "36821a91-7bbe-48e2-afa5-a58078821330",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -172,17 +143,6 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "13db63bd-07f5-42f0-9f4a-e08dc22b5cd6",
-                    "path": "<Keyboard>/c",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse and keyboard",
-                    "action": "Rolling",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -191,24 +151,6 @@
             "id": "5b441bc6-1c1f-4e89-807b-e48513b26b25",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "2cd00b5b-b2fa-40a8-bd56-0d3862245537",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Block",
-                    "type": "Button",
-                    "id": "04efe2f9-1deb-423c-b140-e86700021d36",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Attack",
                     "type": "Button",
                     "id": "93710eff-776a-43c8-b19f-dd83dad633ae",
@@ -216,31 +158,27 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "1c3c4af7-5262-42d9-8569-c4fb96f8b386",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Scope",
+                    "type": "Button",
+                    "id": "e5fc4f78-69fb-47ca-b66d-eef30ad281da",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "f334aa73-4600-407d-9998-a54f4e00ae5d",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse and keyboard",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b817a065-5089-4725-a4f6-e69a50103c2a",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse and keyboard",
-                    "action": "Block",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "647e2107-4973-49d7-8d9c-1bb87aa7bb99",
@@ -260,6 +198,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d2326cc2-e295-4a92-8a7c-13f36f91c121",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db7e520a-14f9-47b1-a36d-f16a32c84d5d",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "04643140-6866-43b1-879a-800eba41e0ef",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scope",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9c382a6-56a8-461c-a208-a9e8794050ab",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scope",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -46,27 +46,9 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Sprinting"",
-                    ""type"": ""Button"",
-                    ""id"": ""3143a5cc-f778-4f8c-99a9-c64f8ec27993"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""669a8b6a-b961-437c-a010-2e2e72ef612b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Rolling"",
-                    ""type"": ""Button"",
-                    ""id"": ""6b3b57a3-2502-4b37-935b-9dabfca1a51e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -164,17 +146,6 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""772a787f-f6b9-4b7b-9f7d-4751c36df21b"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse and keyboard"",
-                    ""action"": ""Sprinting"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""36821a91-7bbe-48e2-afa5-a58078821330"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -194,17 +165,6 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""13db63bd-07f5-42f0-9f4a-e08dc22b5cd6"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse and keyboard"",
-                    ""action"": ""Rolling"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -213,24 +173,6 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
             ""id"": ""5b441bc6-1c1f-4e89-807b-e48513b26b25"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""2cd00b5b-b2fa-40a8-bd56-0d3862245537"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Block"",
-                    ""type"": ""Button"",
-                    ""id"": ""04efe2f9-1deb-423c-b140-e86700021d36"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""93710eff-776a-43c8-b19f-dd83dad633ae"",
@@ -238,31 +180,27 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""1c3c4af7-5262-42d9-8569-c4fb96f8b386"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scope"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5fc4f78-69fb-47ca-b66d-eef30ad281da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""f334aa73-4600-407d-9998-a54f4e00ae5d"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse and keyboard"",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b817a065-5089-4725-a4f6-e69a50103c2a"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse and keyboard"",
-                    ""action"": ""Block"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""647e2107-4973-49d7-8d9c-1bb87aa7bb99"",
@@ -282,6 +220,50 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d2326cc2-e295-4a92-8a7c-13f36f91c121"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db7e520a-14f9-47b1-a36d-f16a32c84d5d"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04643140-6866-43b1-879a-800eba41e0ef"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scope"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9c382a6-56a8-461c-a208-a9e8794050ab"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scope"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -311,14 +293,12 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Move = m_PlayerMovement.FindAction("Move", throwIfNotFound: true);
         m_PlayerMovement_Rotation = m_PlayerMovement.FindAction("Rotation", throwIfNotFound: true);
-        m_PlayerMovement_Sprinting = m_PlayerMovement.FindAction("Sprinting", throwIfNotFound: true);
         m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
-        m_PlayerMovement_Rolling = m_PlayerMovement.FindAction("Rolling", throwIfNotFound: true);
         // PlayerFight
         m_PlayerFight = asset.FindActionMap("PlayerFight", throwIfNotFound: true);
-        m_PlayerFight_Newaction = m_PlayerFight.FindAction("New action", throwIfNotFound: true);
-        m_PlayerFight_Block = m_PlayerFight.FindAction("Block", throwIfNotFound: true);
         m_PlayerFight_Attack = m_PlayerFight.FindAction("Attack", throwIfNotFound: true);
+        m_PlayerFight_Reload = m_PlayerFight.FindAction("Reload", throwIfNotFound: true);
+        m_PlayerFight_Scope = m_PlayerFight.FindAction("Scope", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -380,18 +360,14 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
     private IPlayerMovementActions m_PlayerMovementActionsCallbackInterface;
     private readonly InputAction m_PlayerMovement_Move;
     private readonly InputAction m_PlayerMovement_Rotation;
-    private readonly InputAction m_PlayerMovement_Sprinting;
     private readonly InputAction m_PlayerMovement_Jump;
-    private readonly InputAction m_PlayerMovement_Rolling;
     public struct PlayerMovementActions
     {
         private @InputMaster m_Wrapper;
         public PlayerMovementActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerMovement_Move;
         public InputAction @Rotation => m_Wrapper.m_PlayerMovement_Rotation;
-        public InputAction @Sprinting => m_Wrapper.m_PlayerMovement_Sprinting;
         public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
-        public InputAction @Rolling => m_Wrapper.m_PlayerMovement_Rolling;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -407,15 +383,9 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                 @Rotation.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRotation;
                 @Rotation.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRotation;
                 @Rotation.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRotation;
-                @Sprinting.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSprinting;
-                @Sprinting.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSprinting;
-                @Sprinting.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSprinting;
                 @Jump.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJump;
-                @Rolling.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRolling;
-                @Rolling.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRolling;
-                @Rolling.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRolling;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -426,15 +396,9 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                 @Rotation.started += instance.OnRotation;
                 @Rotation.performed += instance.OnRotation;
                 @Rotation.canceled += instance.OnRotation;
-                @Sprinting.started += instance.OnSprinting;
-                @Sprinting.performed += instance.OnSprinting;
-                @Sprinting.canceled += instance.OnSprinting;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Rolling.started += instance.OnRolling;
-                @Rolling.performed += instance.OnRolling;
-                @Rolling.canceled += instance.OnRolling;
             }
         }
     }
@@ -443,16 +407,16 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
     // PlayerFight
     private readonly InputActionMap m_PlayerFight;
     private IPlayerFightActions m_PlayerFightActionsCallbackInterface;
-    private readonly InputAction m_PlayerFight_Newaction;
-    private readonly InputAction m_PlayerFight_Block;
     private readonly InputAction m_PlayerFight_Attack;
+    private readonly InputAction m_PlayerFight_Reload;
+    private readonly InputAction m_PlayerFight_Scope;
     public struct PlayerFightActions
     {
         private @InputMaster m_Wrapper;
         public PlayerFightActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_PlayerFight_Newaction;
-        public InputAction @Block => m_Wrapper.m_PlayerFight_Block;
         public InputAction @Attack => m_Wrapper.m_PlayerFight_Attack;
+        public InputAction @Reload => m_Wrapper.m_PlayerFight_Reload;
+        public InputAction @Scope => m_Wrapper.m_PlayerFight_Scope;
         public InputActionMap Get() { return m_Wrapper.m_PlayerFight; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -462,28 +426,28 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PlayerFightActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnNewaction;
-                @Block.started -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnBlock;
-                @Block.performed -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnBlock;
-                @Block.canceled -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnBlock;
                 @Attack.started -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnAttack;
+                @Reload.started -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnReload;
+                @Scope.started -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnScope;
+                @Scope.performed -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnScope;
+                @Scope.canceled -= m_Wrapper.m_PlayerFightActionsCallbackInterface.OnScope;
             }
             m_Wrapper.m_PlayerFightActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
-                @Block.started += instance.OnBlock;
-                @Block.performed += instance.OnBlock;
-                @Block.canceled += instance.OnBlock;
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
+                @Scope.started += instance.OnScope;
+                @Scope.performed += instance.OnScope;
+                @Scope.canceled += instance.OnScope;
             }
         }
     }
@@ -501,14 +465,12 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
-        void OnSprinting(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnRolling(InputAction.CallbackContext context);
     }
     public interface IPlayerFightActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
-        void OnBlock(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
+        void OnScope(InputAction.CallbackContext context);
     }
 }

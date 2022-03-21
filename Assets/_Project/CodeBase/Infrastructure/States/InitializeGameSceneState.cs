@@ -71,10 +71,12 @@ namespace _Project.CodeBase.Infrastructure.States
         private async UniTask InitializeHud(GameObject hero)
         {
             var hud = await _uiFactory.CreateHud();
-            hud.GetComponentInChildren<ActorUI>()
-                .Construct(hero.GetComponent<HeroHealth>());
+            
+            var actorUI = hud.GetComponentInChildren<ActorUI>();
+            
+            actorUI.Construct(hero.GetComponent<HeroHealth>(), hero.GetComponent<HeroAmmoController>());
         }
-
+        
         public void Exit() { }
     }
 }

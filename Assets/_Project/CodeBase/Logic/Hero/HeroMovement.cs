@@ -1,8 +1,6 @@
-﻿using System;
-using _Project.CodeBase.Data;
+﻿using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
-using _Project.CodeBase.Logic.Hero.Animation;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
@@ -82,11 +80,11 @@ namespace _Project.CodeBase.Logic.Hero
         private void ApplyMoveAnimation()
         {
             if (_input.magnitude == 0)
-                _heroAnimator.EnterIdleState();
+                _heroAnimator.EnterMoveState(0);
             else if (_input.y >= MinJoystickDeflectionToRun)
-                _heroAnimator.EnterRunState();
+                _heroAnimator.EnterMoveState(1);
             else 
-                _heroAnimator.EnterWalkState();
+                _heroAnimator.EnterMoveState(0.5f);
         }
 
         private Vector3 CalculateDirection() =>

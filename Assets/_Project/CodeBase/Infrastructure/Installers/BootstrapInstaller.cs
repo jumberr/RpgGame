@@ -3,7 +3,6 @@ using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.SaveLoad;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.States;
-using _Project.CodeBase.Logic.Hero.Animation;
 using _Project.CodeBase.Services;
 using _Project.CodeBase.StaticData;
 using _Project.CodeBase.UI.Services;
@@ -95,15 +94,6 @@ namespace _Project.CodeBase.Infrastructure.Installers
             Container
                 .Bind<IAssetProvider>()
                 .To<AssetProvider>()
-                .AsSingle();
-
-            Container
-                .Bind<IAnimationStateMachine>()
-                .To<AnimationStateMachine>()
-                .AsSingle();
-            
-            Container.Bind<IAnimationState>()
-                .To(x => x.AllNonAbstractClasses())
                 .AsSingle();
         }
     }

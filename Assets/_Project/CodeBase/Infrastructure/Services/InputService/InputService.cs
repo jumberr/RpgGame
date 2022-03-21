@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace _Project.CodeBase.Infrastructure.Services.InputService
 {
@@ -10,8 +11,10 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
         public event Action<Vector2> OnMove;
         public event Action<Vector2> OnRotate;
         public event Action OnJump;
- 
+
         public event Action<bool> OnAttack;
+        public event Action<bool> OnScope;
+        public event Action OnReload;
 
         private void OnEnable()
         {
@@ -24,24 +27,59 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
             _input.Enable();
         }
 
-        private void Subscribe()
+        private void OnDisable()
         {
-            // Move
-            _input.PlayerMovement.Move.performed += ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>());
-            _input.PlayerMovement.Move.canceled += ctx => OnMove?.Invoke(Vector2.zero);
-            
-            // Rotate
-            _input.PlayerMovement.Rotation.performed += ctx => OnRotate?.Invoke(ctx.ReadValue<Vector2>());
-
-            // Jump
-            _input.PlayerMovement.Jump.performed += ctx => OnJump?.Invoke();
-            
-            // Shoot
-            _input.PlayerFight.Attack.performed += ctx => OnAttack?.Invoke(true);
-            _input.PlayerFight.Attack.canceled += ctx => OnAttack?.Invoke(false);
+            UnSubscribe();
+            _input.Disable();
         }
 
-        private void OnDisable() => 
-            _input.Disable();
+        private void Subscribe()
+        {
+            _input.PlayerMovement.Move.performed += MovePerformed();
+            _input.PlayerMovement.Move.canceled += MoveCanceled();
+            _input.PlayerMovement.Rotation.performed += Rotation();
+            _input.PlayerMovement.Jump.performed += Jump();
+            
+            _input.PlayerFight.Attack.performed += Attack(true);
+            _input.PlayerFight.Attack.canceled += Attack(false);
+            _input.PlayerFight.Scope.performed += Scope(true);
+            _input.PlayerFight.Scope.canceled += Scope(false);
+            _input.PlayerFight.Reload.performed += Reload();
+        }
+
+        private void UnSubscribe()
+        {
+            _input.PlayerMovement.Move.performed -= MovePerformed();
+            _input.PlayerMovement.Move.canceled -= MoveCanceled();
+            _input.PlayerMovement.Rotation.performed -= Rotation();
+            _input.PlayerMovement.Jump.performed -= Jump();
+            
+            _input.PlayerFight.Attack.performed -= Attack(true);
+            _input.PlayerFight.Attack.canceled -= Attack(false);
+            _input.PlayerFight.Scope.performed -= Scope(true);
+            _input.PlayerFight.Scope.canceled -= Scope(false);
+            _input.PlayerFight.Reload.performed -= Reload();
+        }
+
+        private Action<InputAction.CallbackContext> MovePerformed() => 
+            ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>());
+
+        private Action<InputAction.CallbackContext> MoveCanceled() => 
+            ctx => OnMove?.Invoke(Vector2.zero);
+
+        private Action<InputAction.CallbackContext> Rotation() => 
+            ctx => OnRotate?.Invoke(ctx.ReadValue<Vector2>());
+
+        private Action<InputAction.CallbackContext> Jump() => 
+            ctx => OnJump?.Invoke();
+        
+        private Action<InputAction.CallbackContext> Attack(bool value) => 
+            ctx => OnAttack?.Invoke(value);
+        
+        private Action<InputAction.CallbackContext> Scope(bool value) => 
+            ctx => OnScope?.Invoke(value);
+
+        private Action<InputAction.CallbackContext> Reload() => 
+            ctx => OnReload?.Invoke();
     }
 }

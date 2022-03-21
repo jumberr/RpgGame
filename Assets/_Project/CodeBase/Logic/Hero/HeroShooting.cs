@@ -1,43 +1,35 @@
 ﻿using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Weapon;
+using _Project.CodeBase.StaticData;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
 {
-    [RequireComponent(typeof(InputService))]
+    [RequireComponent(typeof(InputService), typeof(HeroAmmoController))]
     public class HeroShooting : MonoBehaviour
     {
         private const string SandTag = "Sand";
         private const string RockTag = "Rock";
         private const float TimeDestroyFX = 0.1f;
         private const float TimeDestroyEnvFx = 2f;
-        
+
+        [SerializeField] private WeaponData _weaponData;
         [SerializeField] private InputService _inputService;
+        [SerializeField] private HeroAmmoController _ammoController;
         [SerializeField] private BulletPool _bulletPool;
         [SerializeField] private Camera _heroCamera;
         [SerializeField] private LayerMask _layerMask;
-
         [SerializeField] private Transform _firePoint;
-
-        //public bool IsAutomatic;
-//
-        //public float fireRatio = 100;
-        //public float damage;
-        //public float range;
-//
-        //private float nextFire;
-        //private bool _isShoot;
-
-        [SerializeField] private bool _isAutomatic;
-        [SerializeField] private float _firePower = 10; // dmg
-        [Tooltip("Rate of fire [0, 1000]")] [SerializeField] private float _fireRate;
-        [SerializeField] private int _range;
 
         [SerializeField] private GameObject _weaponFX;
         [SerializeField] private GameObject _rockParticlesFX;
         [SerializeField] private GameObject _sandParticlesFX;
         [SerializeField] private GameObject _bloodParticlesFX;
 
+        private bool _isAutomatic;
+        private float _damage;
+        private float _range;
+        
         private bool _isShooting;
         private float _fireSpeed;
         private float _automaticFireTimer;
@@ -48,22 +40,6 @@ namespace _Project.CodeBase.Logic.Hero
             ApplyGunSettings();
             _inputService.OnAttack += EnableDisableShoot;
         }
-
-        public void ApplyGunSettings()
-        {
-            _fireSpeed = 60 / _fireRate;
-        }
-
-        private void EnableDisableShoot(bool value)
-        {
-            if (value)
-                PullTrigger();
-            else
-                ReleaseTrigger();
-        }
-
-        private void OnDisable() => 
-            _inputService.OnAttack -= EnableDisableShoot;
 
         private void Update()
         {
@@ -93,10 +69,40 @@ namespace _Project.CodeBase.Logic.Hero
             }
         }
 
+        private void OnDisable() => 
+            _inputService.OnAttack -= EnableDisableShoot;
+        
+        public void ApplyGunSettings()
+        {
+            _ammoController.Construct(_weaponData);
+            
+            var weapon = _weaponData.Weapon;
+            _isAutomatic = weapon.IsAutomatic;
+            _damage = weapon.Damage;
+            _range = weapon.Range;
+            _fireSpeed = 60 / weapon.FireRate;
+        }
+
+        private void EnableDisableShoot(bool value)
+        {
+            if (value)
+                PullTrigger();
+            else
+                ReleaseTrigger();
+        }
+
         private void Shoot()
         {
+            if (!_ammoController.CanShoot())
+            {
+                _ammoController.Reload();
+                return;
+            }
+
             if (Physics.Raycast(_heroCamera.transform.position, _heroCamera.transform.forward, out var hit, _range, _layerMask))
             {
+                _ammoController.UseOneAmmo();
+                
                 var fx = Instantiate(_weaponFX, _firePoint);
                 Destroy(fx, TimeDestroyFX);
                 

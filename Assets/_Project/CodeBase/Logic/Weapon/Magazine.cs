@@ -1,14 +1,12 @@
-﻿namespace _Project.CodeBase.Logic.Weapon
+﻿using System;
+using UnityEngine;
+
+namespace _Project.CodeBase.Logic.Weapon
 {
+    [Serializable]
     public class Magazine
     {
-        public int _size;
-        public int _bulletsLeft;
-
-        public Magazine(int size, int bulletsLeft)
-        {
-            this._size = size;
-            this._bulletsLeft = bulletsLeft;
-        }
+        public int BulletsMax;
+        [HideInInspector] public int BulletsLeft;
     }
 }

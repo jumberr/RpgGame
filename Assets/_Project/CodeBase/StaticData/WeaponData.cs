@@ -7,5 +7,6 @@ namespace _Project.CodeBase.StaticData
     public class WeaponData : ScriptableObject
     {
         public Weapon Weapon;
+        public Magazine Magazine;
     }
 }
