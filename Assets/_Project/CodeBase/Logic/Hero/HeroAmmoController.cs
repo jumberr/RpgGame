@@ -11,6 +11,7 @@ namespace _Project.CodeBase.Logic.Hero
         public event Action<int, int> OnUpdateAmmo;
         
         [SerializeField] private HeroAnimator _heroAnimator;
+        [SerializeField] private HeroScoping _heroScoping;
         [SerializeField] private HeroState _state;
         [SerializeField] private InputService _inputService;
         private int _bulletLeft;
@@ -34,6 +35,9 @@ namespace _Project.CodeBase.Logic.Hero
         private void Start() => 
             _inputService.OnReload += Reload;
 
+        private void OnDisable() => 
+            _inputService.OnReload -= Reload;
+
         public void UpdateAmmoUI() => 
             OnUpdateAmmo?.Invoke(_bulletLeft, _bulletAll);
 
@@ -50,7 +54,10 @@ namespace _Project.CodeBase.Logic.Hero
         {
             var usedAmmo = _bulletMaxMagazine - _bulletLeft;
             if (usedAmmo <= 0 || _bulletAll <= 0 || _state.CurrentState == EHeroState.Reload) return;
-            
+
+            if (_state.CurrentState == EHeroState.Scoping) 
+                _heroScoping.UnScope();
+
             _state.Enter(EHeroState.Reload);
             await _heroAnimator.ReloadAnimation(_reloadTime);
             

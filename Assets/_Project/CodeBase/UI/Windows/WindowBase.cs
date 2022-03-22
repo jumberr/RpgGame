@@ -2,7 +2,6 @@
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace _Project.CodeBase.UI.Windows
 {

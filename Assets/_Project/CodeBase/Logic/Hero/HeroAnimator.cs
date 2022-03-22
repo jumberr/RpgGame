@@ -8,6 +8,7 @@ namespace _Project.CodeBase.Logic.Hero
     {
         private static readonly int Move = Animator.StringToHash("Move");
         private static readonly int Reload = Animator.StringToHash("Reload");
+        private static readonly int Scoping = Animator.StringToHash("Scoping");
         
         [SerializeField] private Animator _animator;
 
@@ -24,6 +25,9 @@ namespace _Project.CodeBase.Logic.Hero
             await UniTask.Delay(TimeSpan.FromSeconds(reloadTime));
             ResetAnimatorSpeed();
         }
+
+        public void Scope(bool value) => 
+            _animator.SetBool(Scoping, value);
 
         private void ResetAnimatorSpeed() => 
             _animator.speed = 1;

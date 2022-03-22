@@ -1,4 +1,5 @@
-﻿using _Project.CodeBase.Data;
+﻿using System;
+using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
@@ -35,6 +36,12 @@ namespace _Project.CodeBase.Logic.Hero
             _cachedTransform = transform;
             _inputService.OnMove += UpdateDirection;
             _inputService.OnJump += JumpAction;
+        }
+
+        private void OnDisable()
+        {
+            _inputService.OnMove -= UpdateDirection;
+            _inputService.OnJump -= JumpAction;
         }
 
         private void FixedUpdate()

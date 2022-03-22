@@ -13,7 +13,7 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
         public event Action OnJump;
 
         public event Action<bool> OnAttack;
-        public event Action<bool> OnScope;
+        public event Action OnScope;
         public event Action OnReload;
 
         private void OnEnable()
@@ -42,8 +42,7 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
             
             _input.PlayerFight.Attack.performed += Attack(true);
             _input.PlayerFight.Attack.canceled += Attack(false);
-            _input.PlayerFight.Scope.performed += Scope(true);
-            _input.PlayerFight.Scope.canceled += Scope(false);
+            _input.PlayerFight.Scope.performed += Scope();
             _input.PlayerFight.Reload.performed += Reload();
         }
 
@@ -56,8 +55,7 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
             
             _input.PlayerFight.Attack.performed -= Attack(true);
             _input.PlayerFight.Attack.canceled -= Attack(false);
-            _input.PlayerFight.Scope.performed -= Scope(true);
-            _input.PlayerFight.Scope.canceled -= Scope(false);
+            _input.PlayerFight.Scope.performed -= Scope();
             _input.PlayerFight.Reload.performed -= Reload();
         }
 
@@ -76,8 +74,8 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
         private Action<InputAction.CallbackContext> Attack(bool value) => 
             ctx => OnAttack?.Invoke(value);
         
-        private Action<InputAction.CallbackContext> Scope(bool value) => 
-            ctx => OnScope?.Invoke(value);
+        private Action<InputAction.CallbackContext> Scope() => 
+            ctx => OnScope?.Invoke();
 
         private Action<InputAction.CallbackContext> Reload() => 
             ctx => OnReload?.Invoke();

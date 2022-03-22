@@ -1,4 +1,5 @@
-﻿using _Project.CodeBase.Infrastructure.Services.InputService;
+﻿using System;
+using _Project.CodeBase.Infrastructure.Services.InputService;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
@@ -19,6 +20,9 @@ namespace _Project.CodeBase.Logic.Hero
         
         private void Start() => 
             _inputService.OnRotate += OnRotate;
+
+        private void OnDisable() => 
+            _inputService.OnRotate -= OnRotate;
 
         private void Update()
         {

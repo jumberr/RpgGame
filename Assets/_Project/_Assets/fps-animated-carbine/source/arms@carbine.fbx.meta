@@ -21,7 +21,22 @@ ModelImporter:
   - first:
       74: 5849279094314658771
     second: MeleeAttack
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arms
+    second: {fileID: 2100000, guid: b1f0171de810c1342986881f1ccfd660, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: carbine
+    second: {fileID: 2100000, guid: 3c98cfd3b146dee498dda14a539c3762, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lens
+    second: {fileID: 2100000, guid: 0f1d5967e40b7a24491a79297bbeb2e1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

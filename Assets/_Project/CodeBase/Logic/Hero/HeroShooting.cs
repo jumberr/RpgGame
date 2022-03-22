@@ -1,4 +1,5 @@
 ﻿using _Project.CodeBase.Infrastructure.Services.InputService;
+using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.Weapon;
 using _Project.CodeBase.StaticData;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace _Project.CodeBase.Logic.Hero
         private const float TimeDestroyEnvFx = 2f;
 
         [SerializeField] private WeaponData _weaponData;
+        [SerializeField] private HeroState _state;
         [SerializeField] private InputService _inputService;
         [SerializeField] private HeroAmmoController _ammoController;
         [SerializeField] private BulletPool _bulletPool;
@@ -93,12 +95,14 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void Shoot()
         {
+            if (_state.CurrentState == EHeroState.Reload) return;
+
             if (!_ammoController.CanShoot())
             {
                 _ammoController.Reload();
                 return;
             }
-
+            
             if (Physics.Raycast(_heroCamera.transform.position, _heroCamera.transform.forward, out var hit, _range, _layerMask))
             {
                 _ammoController.UseOneAmmo();
