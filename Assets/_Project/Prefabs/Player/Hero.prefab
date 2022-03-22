@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3524021818451517063}
   - component: {fileID: 6465014802036329193}
   - component: {fileID: 5039849704631123406}
+  - component: {fileID: 8354393796157299354}
   m_Layer: 6
   m_Name: Hero
   m_TagString: Player
@@ -147,7 +148,12 @@ MonoBehaviour:
   _health: {fileID: 6568509556983406653}
   _move: {fileID: 2069869355385823023}
   _rotation: {fileID: 5001262662604618594}
+  _state: {fileID: 6465014802036329193}
+  _animator: {fileID: 2069869355385823018}
   _shooting: {fileID: 6345382572701065086}
+  _ammo: {fileID: 3524021818451517063}
+  _reload: {fileID: 8354393796157299354}
+  _scoping: {fileID: 5039849704631123406}
 --- !u!114 &6345382572701065086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +169,8 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: fedc0ff81f84f8f46addc44e25ea4b62, type: 2}
   _state: {fileID: 6465014802036329193}
   _inputService: {fileID: 6525794905949041474}
-  _ammoController: {fileID: 3524021818451517063}
+  _ammo: {fileID: 3524021818451517063}
+  _heroReload: {fileID: 8354393796157299354}
   _bulletPool: {fileID: 4952754974195427555}
   _heroCamera: {fileID: 7950303267749795192}
   _layerMask:
@@ -189,10 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f5644eea684451ac9576eab2e9d0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heroAnimator: {fileID: 2069869355385823018}
-  _heroScoping: {fileID: 5039849704631123406}
-  _state: {fileID: 6465014802036329193}
-  _inputService: {fileID: 6525794905949041474}
 --- !u!114 &6465014802036329193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +221,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heroAnimator: {fileID: 2069869355385823018}
+  _state: {fileID: 6465014802036329193}
+  _inputService: {fileID: 6525794905949041474}
+--- !u!114 &8354393796157299354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069869355385823009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a09636431a4b3c85e98156806f4ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroAnimator: {fileID: 2069869355385823018}
+  _ammo: {fileID: 3524021818451517063}
+  _heroScoping: {fileID: 5039849704631123406}
   _state: {fileID: 6465014802036329193}
   _inputService: {fileID: 6525794905949041474}
 --- !u!1 &3514158171966373874

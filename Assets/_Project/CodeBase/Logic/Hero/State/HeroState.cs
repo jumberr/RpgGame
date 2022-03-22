@@ -11,10 +11,8 @@ namespace _Project.CodeBase.Logic.Hero.State
         public EHeroState PreviousState => _prevState;
         public EHeroState CurrentState => _state;
 
-        private void Start()
-        {
+        private void Start() => 
             ChangeState(EHeroState.None);
-        }
 
         public void Enter(EHeroState newState, Action onStart = null, Action onComplete = null)
         {

@@ -9,17 +9,17 @@ namespace _Project.CodeBase.UI.Elements
     {
         [SerializeField] private TMP_Text _ammoLeft;
         [SerializeField] private TMP_Text _ammoAll;
-        private HeroAmmoController _ammoController;
+        private HeroAmmo _ammo;
 
-        public void Construct(HeroAmmoController ammoController)
+        public void Construct(HeroAmmo ammo)
         {
-            _ammoController = ammoController;
-            _ammoController.OnUpdateAmmo += UpdateAmmoText;
-            _ammoController.UpdateAmmoUI();
+            _ammo = ammo;
+            _ammo.OnUpdateAmmo += UpdateAmmoText;
+            _ammo.UpdateAmmoUI();
         }
 
         private void OnDisable() => 
-            _ammoController.OnUpdateAmmo -= UpdateAmmoText;
+            _ammo.OnUpdateAmmo -= UpdateAmmoText;
 
         private void UpdateAmmoText(int ammoLeft, int ammoAll)
         {

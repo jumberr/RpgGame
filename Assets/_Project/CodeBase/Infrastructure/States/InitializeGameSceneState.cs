@@ -74,7 +74,7 @@ namespace _Project.CodeBase.Infrastructure.States
             
             var actorUI = hud.GetComponentInChildren<ActorUI>();
             
-            actorUI.Construct(hero.GetComponent<HeroHealth>(), hero.GetComponent<HeroAmmoController>());
+            actorUI.Construct(hero.GetComponent<HeroHealth>(), hero.GetComponent<HeroAmmo>());
         }
         
         public void Exit() { }

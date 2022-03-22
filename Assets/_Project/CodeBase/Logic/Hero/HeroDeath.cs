@@ -1,18 +1,24 @@
 ﻿using System;
+using _Project.CodeBase.Logic.Hero.State;
 using DG.Tweening;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
 {
-    [RequireComponent(typeof(HeroHealth))]
     public class HeroDeath : MonoBehaviour
     {
         public event Action ZeroHealth;
         [SerializeField] private HeroHealth _health;
         [SerializeField] private HeroMovement _move;
         [SerializeField] private HeroRotation _rotation;
+        [SerializeField] private HeroState _state;
+        [SerializeField] private HeroAnimator _animator;
+        
         [SerializeField] private HeroShooting _shooting;
-
+        [SerializeField] private HeroAmmo _ammo;
+        [SerializeField] private HeroReload _reload;
+        [SerializeField] private HeroScoping _scoping;
+        
         private bool _isDead;
 
         private void Start() => 
@@ -40,7 +46,13 @@ namespace _Project.CodeBase.Logic.Hero
             _health.enabled = false;
             _move.enabled = false;
             _rotation.enabled = false;
+            _animator.enabled = false;
+            _state.enabled = false;
+
             _shooting.enabled = false;
+            _ammo.enabled = false;
+            _reload.enabled = false;
+            _scoping.enabled = false;
         }
         
         private void ProduceHeroDeath()

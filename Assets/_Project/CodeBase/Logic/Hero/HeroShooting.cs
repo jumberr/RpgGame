@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
 {
-    [RequireComponent(typeof(InputService), typeof(HeroAmmoController))]
+    [RequireComponent(typeof(InputService), typeof(HeroAmmo))]
     public class HeroShooting : MonoBehaviour
     {
         private const string SandTag = "Sand";
@@ -17,7 +17,8 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private WeaponData _weaponData;
         [SerializeField] private HeroState _state;
         [SerializeField] private InputService _inputService;
-        [SerializeField] private HeroAmmoController _ammoController;
+        [SerializeField] private HeroAmmo _ammo;
+        [SerializeField] private HeroReload _heroReload;
         [SerializeField] private BulletPool _bulletPool;
         [SerializeField] private Camera _heroCamera;
         [SerializeField] private LayerMask _layerMask;
@@ -73,10 +74,11 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void OnDisable() => 
             _inputService.OnAttack -= EnableDisableShoot;
-        
-        public void ApplyGunSettings()
+
+        private void ApplyGunSettings()
         {
-            _ammoController.Construct(_weaponData);
+            _ammo.Construct(_weaponData);
+            _heroReload.Construct(_weaponData);
             
             var weapon = _weaponData.Weapon;
             _isAutomatic = weapon.IsAutomatic;
@@ -97,15 +99,15 @@ namespace _Project.CodeBase.Logic.Hero
         {
             if (_state.CurrentState == EHeroState.Reload) return;
 
-            if (!_ammoController.CanShoot())
+            if (!_ammo.CanShoot())
             {
-                _ammoController.Reload();
+                _heroReload.Reload();
                 return;
             }
             
             if (Physics.Raycast(_heroCamera.transform.position, _heroCamera.transform.forward, out var hit, _range, _layerMask))
             {
-                _ammoController.UseOneAmmo();
+                _ammo.UseOneAmmo();
                 
                 var fx = Instantiate(_weaponFX, _firePoint);
                 Destroy(fx, TimeDestroyFX);

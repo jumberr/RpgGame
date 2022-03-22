@@ -13,10 +13,10 @@ namespace _Project.CodeBase.UI.Elements
 
         public void Construct(
             IHealth heroHealth,
-            HeroAmmoController heroAmmoController)
+            HeroAmmo heroAmmo)
         {
             SetupHealth(heroHealth);
-            SetupAmmoUI(heroAmmoController);
+            SetupAmmoUI(heroAmmo);
         }
 
         private void Start()
@@ -36,8 +36,8 @@ namespace _Project.CodeBase.UI.Elements
             _heroHealth.HealthChanged += UpdateHpBar;
         }
 
-        private void SetupAmmoUI(HeroAmmoController heroAmmoController) => 
-            _ammoUI.Construct(heroAmmoController);
+        private void SetupAmmoUI(HeroAmmo heroAmmo) => 
+            _ammoUI.Construct(heroAmmo);
 
         private void UpdateHpBar() => 
             _hpBar.SetValue(_heroHealth.Current, _heroHealth.Max);
