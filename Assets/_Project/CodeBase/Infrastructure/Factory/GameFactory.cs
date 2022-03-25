@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
-using _Project.CodeBase.Logic.Effects;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.UI.Services;
+using _Project.CodeBase.Utils.ObjectPool;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 namespace _Project.CodeBase.Infrastructure.Factory
 {
@@ -15,11 +13,14 @@ namespace _Project.CodeBase.Infrastructure.Factory
     {
         private readonly IAssetProvider _assetProvider;
         private readonly IUIFactory _uiFactory;
+        private readonly IPoolManager _poolManager;
+        
+        public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
+        public IPoolManager PoolManager => _poolManager;
+        public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
         
         private GameObject HeroGameObject { get; set; }
 
-        public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
-        public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
 
         public GameFactory(
             IAssetProvider assetProvider,
@@ -27,6 +28,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
         {
             _assetProvider = assetProvider;
             _uiFactory = uiFactory;
+            _poolManager = new PoolManager();
         }
 
         public async UniTask<GameObject> CreateHero(Vector3 at)
@@ -34,11 +36,10 @@ namespace _Project.CodeBase.Infrastructure.Factory
             HeroGameObject = await _assetProvider.InstantiateAsync(AssetPath.HeroPath, at);
             RegisterProgressWatchers(HeroGameObject);
 
-            var heroMove = HeroGameObject.GetComponent<HeroMovement>();
-            //var cameraShake = HeroGameObject.GetComponentInChildren<CameraShake>();
+            var heroShooting = HeroGameObject.GetComponent<HeroShooting>();
+            heroShooting.Construct(_poolManager);
+            
             var heroDeath = HeroGameObject.GetComponent<HeroDeath>();
-
-            //heroMove.OnMove += cameraShake.Shake;
             heroDeath.ZeroHealth += _uiFactory.CreateDeathScreen;
             
             return HeroGameObject;
@@ -46,6 +47,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
 
         public void Cleanup()
         {
+            _poolManager.CleanUp();
             ProgressReaders.Clear();
             ProgressWriters.Clear();
             _assetProvider.CleanUp();
@@ -53,7 +55,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
 
         public void WarmUp()
         {
-            //
+            
         }
 
         private void RegisterProgressWatchers(GameObject go)

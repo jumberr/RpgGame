@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: M4A4
   m_EditorClassIdentifier: 
   Weapon:
+    Recoil: {x: -2, y: 2, z: 0.35}
+    AimRecoil: {x: -1, y: 1, z: 0.15}
+    Snappiness: 6
+    ReturnSpeed: 2
     IsAutomatic: 1
     Damage: 15
     ReloadTime: 2
     Range: 100
     FireRate: 600
-    Spread: 0.1
   Magazine:
     BulletsMax: 30
     BulletsLeft: 30

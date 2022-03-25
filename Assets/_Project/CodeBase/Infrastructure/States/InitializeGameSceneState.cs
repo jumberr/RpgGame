@@ -42,7 +42,6 @@ namespace _Project.CodeBase.Infrastructure.States
 
         private async void OnLoaded()
         {
-            //await _staticDataService.LoadGameStaticData();
             await InitializeGameWorld();
             InformProgressReaders();
 
