@@ -1,5 +1,10 @@
 using _Project.CodeBase.Infrastructure;
 using _Project.CodeBase.Infrastructure.AssetManagement;
+using _Project.CodeBase.Infrastructure.Services.StaticData;
+using _Project.CodeBase.Logic.HeroInventory;
+using _Project.CodeBase.UI.Elements;
+using _Project.CodeBase.UI.Services.Windows;
+using _Project.CodeBase.UI.Services.Windows.Inventory;
 using _Project.CodeBase.UI.Windows.DeathScreen;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -10,16 +15,21 @@ namespace _Project.CodeBase.UI.Services
     public class UIFactory : IUIFactory
     {
         private readonly IAssetProvider _assetProvider;
+        private readonly IStaticDataService _staticDataService;
         private readonly LazyInject<IGameStateMachine> _gameStateMachine;
 
         private Transform _uiRoot;
         private Transform _hud;
+        
+        private InventoryUI _inventory;
 
         public UIFactory(
             IAssetProvider assetProvider,
+            IStaticDataService staticDataService,
             LazyInject<IGameStateMachine> gameStateMachine)
         {
             _assetProvider = assetProvider;
+            _staticDataService = staticDataService;
             _gameStateMachine = gameStateMachine;
         }
 
@@ -42,5 +52,21 @@ namespace _Project.CodeBase.UI.Services
             var deathScreen = gameObject.GetComponent<DeathScreen>();
             deathScreen.Construct(_gameStateMachine.Value);
         }
+
+        public void CreateInventory(GameObject hero)
+        {
+            var prefab = _staticDataService.ForWindow(WindowId.Inventory).Prefab;
+            _inventory = Object.Instantiate(prefab, _uiRoot) as InventoryUI;
+            _inventory.Construct(hero.GetComponent<HeroInventory>());
+        }
+
+        public void SetupWindowButtons(IWindowService windowService)
+        {
+            foreach (var button in _hud.GetComponentsInChildren<OpenWindowButton>()) 
+                button.Construct(windowService);
+        }
+
+        public void OpenInventory() => 
+            _inventory.gameObject.SetActive(true);
     }
 }

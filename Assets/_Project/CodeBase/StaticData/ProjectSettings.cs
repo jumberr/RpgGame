@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Project.CodeBase.StaticData
 {
-    [CreateAssetMenu(fileName = "ProjectSettings", menuName = "Scriptable Objects/Project Settings", order = 0)]
+    [CreateAssetMenu(fileName = "ProjectSettings", menuName = "Static Data/Project Settings", order = 0)]
     public class ProjectSettings : ScriptableObject
     {
         public LoadingCurtain LoadingCurtain;

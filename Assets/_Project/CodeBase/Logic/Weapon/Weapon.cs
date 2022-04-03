@@ -17,5 +17,9 @@ namespace _Project.CodeBase.Logic.Weapon
         public float ReloadTime;
         public float Range;
         public float FireRate;
+        
+        public float Accuracy;
+        public float AimAccuracy;
+        public float AccuracyDistance;
     }
 }

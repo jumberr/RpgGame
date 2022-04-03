@@ -1,7 +1,8 @@
 ﻿using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.SaveLoad;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
-using _Project.CodeBase.Services;
+using _Project.CodeBase.Infrastructure.Services.StaticData;
+using _Project.CodeBase.Logic.HeroInventory;
 using Cysharp.Threading.Tasks;
 using Zenject;
 
@@ -29,12 +30,19 @@ namespace _Project.CodeBase.Infrastructure.States
 
         public async void Enter()
         {
+            await LoadConfigs();
             await LoadProgressOrInitNew();
             _gameStateMachine.Value.Enter<InitializeGameSceneState>();
         }
 
         public void Exit() { }
 
+        private async UniTask LoadConfigs()
+        {
+            await _staticDataService.LoadItemsDataBase();
+            await _staticDataService.LoadUIWindowConfig();
+        }
+        
         private async UniTask LoadProgressOrInitNew()
         {
             await _staticDataService.LoadGameStaticData();
@@ -49,8 +57,9 @@ namespace _Project.CodeBase.Infrastructure.States
                 CurrentHp = playerData.HealthData.CurrentHp,
                 MaxHp = playerData.HealthData.MaxHp
             };
+            var inventory = new Inventory(4);
 
-            var progress = new PlayerProgress(healthData, _defaultStartPosition);
+            var progress = new PlayerProgress(healthData, _defaultStartPosition, inventory);
             return progress;
         }
     }

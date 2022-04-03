@@ -1,4 +1,4 @@
-﻿using _Project.CodeBase.Services;
+﻿using _Project.CodeBase.Infrastructure.Services.StaticData;
 using Zenject;
 
 namespace _Project.CodeBase.Infrastructure.States

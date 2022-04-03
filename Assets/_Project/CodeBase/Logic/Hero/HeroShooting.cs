@@ -2,12 +2,12 @@
 using _Project.CodeBase.Constants;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero.State;
-using _Project.CodeBase.Logic.Weapon;
 using _Project.CodeBase.Logic.Weapon.Effects;
 using _Project.CodeBase.StaticData;
 using _Project.CodeBase.Utils.ObjectPool;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Project.CodeBase.Logic.Hero
 {
@@ -23,7 +23,6 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private HeroAmmo _ammo;
         [SerializeField] private HeroReload _reload;
         [SerializeField] private HeroRecoil _recoil;
-        [SerializeField] private BulletPool _bulletPool;
         
         [SerializeField] private Camera _heroCamera;
         [SerializeField] private LayerMask _layerMask;
@@ -45,6 +44,9 @@ namespace _Project.CodeBase.Logic.Hero
         private float _fireSpeed;
         private float _automaticFireTimer;
         private float _singleFireTimer;
+        private float _accuracy;
+        private float _aimAccuracy;
+        private float _accuracyDistance;
 
         public void Construct(IPoolManager poolManager)
         {
@@ -100,6 +102,9 @@ namespace _Project.CodeBase.Logic.Hero
             _damage = weapon.Damage;
             _range = weapon.Range;
             _fireSpeed = 60 / weapon.FireRate;
+            _accuracy = weapon.Accuracy;
+            _aimAccuracy = weapon.AimAccuracy;
+            _accuracyDistance = weapon.AccuracyDistance;
         }
 
         private void EnableDisableShoot(bool value)
@@ -119,8 +124,9 @@ namespace _Project.CodeBase.Logic.Hero
                 _reload.Reload();
                 return;
             }
-            
-            if (Physics.Raycast(_heroCamera.transform.position, _heroCamera.transform.forward, out var hit, _range, _layerMask))
+
+            var dir = RandShootDir();
+            if (Physics.Raycast(_heroCamera.transform.position, dir, out var hit, _range, _layerMask))
             {
                 _ammo.UseOneAmmo();
 
@@ -173,5 +179,18 @@ namespace _Project.CodeBase.Logic.Hero
             if (_isAutomatic) 
                 _automaticFireTimer = 0;
         }
+        
+        private float RandDistance() => 
+            (_state.CurrentState == EHeroState.Scoping ? _aimAccuracy : _accuracy) * Mathf.Sqrt(-2 * Mathf.Log(1 - Random.Range(0, 1f)));
+
+        private Vector3 RandShootDir()
+         {
+             var distanceDispersion = RandDistance(); // dispersion distance
+             var angleDispersion = Random.Range(0, 2 * Mathf.PI); // dispersion angle
+ 
+             var coordX = distanceDispersion * Mathf.Cos(angleDispersion);
+             var coordY = distanceDispersion * Mathf.Sin(angleDispersion);
+             return _heroCamera.transform.forward * _accuracyDistance + new Vector3(coordX, coordY, 0);
+         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
+using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
+using _Project.CodeBase.Logic.HeroInventory;
 using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.Utils.ObjectPool;
 using Cysharp.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
         private readonly IAssetProvider _assetProvider;
         private readonly IUIFactory _uiFactory;
         private readonly IPoolManager _poolManager;
+        private readonly IStaticDataService _staticDataService;
         
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public IPoolManager PoolManager => _poolManager;
@@ -24,10 +27,12 @@ namespace _Project.CodeBase.Infrastructure.Factory
 
         public GameFactory(
             IAssetProvider assetProvider,
-            IUIFactory uiFactory)
+            IUIFactory uiFactory,
+            IStaticDataService staticDataService)
         {
             _assetProvider = assetProvider;
             _uiFactory = uiFactory;
+            _staticDataService = staticDataService;
             _poolManager = new PoolManager();
         }
 
@@ -38,6 +43,9 @@ namespace _Project.CodeBase.Infrastructure.Factory
 
             var heroShooting = HeroGameObject.GetComponent<HeroShooting>();
             heroShooting.Construct(_poolManager);
+
+            var inventory = HeroGameObject.GetComponent<HeroInventory>();
+            inventory.Construct(_staticDataService);
             
             var heroDeath = HeroGameObject.GetComponent<HeroDeath>();
             heroDeath.ZeroHealth += _uiFactory.CreateDeathScreen;
@@ -53,10 +61,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
             _assetProvider.CleanUp();
         }
 
-        public void WarmUp()
-        {
-            
-        }
+        public void WarmUp() { }
 
         private void RegisterProgressWatchers(GameObject go)
         {
@@ -72,7 +77,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
             ProgressReaders.Add(progressReader);
         }
 
-        private GameObject InstantiateRegistered(GameObject prefab)
+        private GameObject InstantiateAndRegister(GameObject prefab)
         {
             var instance = Object.Instantiate(prefab);
             RegisterProgressWatchers(instance);

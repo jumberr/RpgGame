@@ -2,10 +2,11 @@
 using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.SaveLoad;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
+using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Infrastructure.States;
-using _Project.CodeBase.Services;
 using _Project.CodeBase.StaticData;
 using _Project.CodeBase.UI.Services;
+using _Project.CodeBase.UI.Services.Windows;
 using UnityEngine;
 using Zenject;
 
@@ -79,6 +80,11 @@ namespace _Project.CodeBase.Infrastructure.Installers
             Container
                 .Bind<IStaticDataService>()
                 .To<StaticDataService>()
+                .AsSingle();
+
+            Container
+                .Bind<IWindowService>()
+                .To<WindowService>()
                 .AsSingle();
             
             Container

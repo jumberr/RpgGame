@@ -35,10 +35,7 @@ namespace _Project.CodeBase.Logic.Hero
         {
             BulletLeft = bulletLeft;
             BulletAll = bulletAll;
-            UpdateAmmoUI();
-        }
-        
-        public void UpdateAmmoUI() => 
             OnUpdateAmmo?.Invoke(BulletLeft, BulletAll);
+        }
     }
 }

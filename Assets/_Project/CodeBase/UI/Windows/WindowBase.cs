@@ -17,17 +17,17 @@ namespace _Project.CodeBase.UI.Windows
         private void Awake() => 
             OnAwake();
 
-        private void Start()
+        private void OnEnable()
         {
             Initialize();
             SubscribeUpdates();
         }
 
-        private void OnDestroy() => 
+        private void OnDisable() => 
             Cleanup();
 
         protected virtual void OnAwake() => 
-            CloseButton.onClick.AddListener(() => Destroy(gameObject));
+            CloseButton.onClick.AddListener(() => gameObject.SetActive(false));
 
         protected virtual void Initialize() { }
         protected virtual void SubscribeUpdates() { }

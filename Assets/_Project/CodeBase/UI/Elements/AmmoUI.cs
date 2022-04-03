@@ -15,7 +15,7 @@ namespace _Project.CodeBase.UI.Elements
         {
             _ammo = ammo;
             _ammo.OnUpdateAmmo += UpdateAmmoText;
-            _ammo.UpdateAmmoUI();
+            UpdateAmmoText(_ammo.BulletLeft, _ammo.BulletAll);
         }
 
         private void OnDisable() => 
