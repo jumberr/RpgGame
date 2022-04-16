@@ -3,6 +3,7 @@ using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.HeroInventory;
 using _Project.CodeBase.UI.Elements;
+using _Project.CodeBase.UI.Elements.Inventory;
 using _Project.CodeBase.UI.Services.Windows;
 using _Project.CodeBase.UI.Services.Windows.Inventory;
 using _Project.CodeBase.UI.Windows.DeathScreen;

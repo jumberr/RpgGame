@@ -24,6 +24,9 @@ namespace _Project.CodeBase.Logic.HeroInventory
             _itemsDataBase = _staticDataService.ForInventory();
         }
 
+        public InventorySlot GetSlot(int index) => 
+            Inventory.Slots[index];
+
         public void LoadProgress(PlayerProgress progress) => 
             _inventory = progress.Inventory;
 
@@ -40,6 +43,12 @@ namespace _Project.CodeBase.Logic.HeroInventory
         public void RemoveItemFromSlot(int id)
         {
             _inventory.RemoveItemFromSlot(id);
+            OnUpdate?.Invoke();
+        }
+        
+        public void RemoveAllItemsFromSlot(int id)
+        {
+            _inventory.RemoveAllItemsFromSlot(id);
             OnUpdate?.Invoke();
         }
     }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using _Project.CodeBase.StaticData.ItemsDataBase;
 
 namespace _Project.CodeBase.Logic.HeroInventory
@@ -11,9 +10,6 @@ namespace _Project.CodeBase.Logic.HeroInventory
 
         public Inventory(int amount) => 
             InitializeInventory(amount);
-
-        //public bool FreeSlotExists => Array.FindIndex(Slots, x => !x.IsFilled) >= 0;
-        //public int FreeSlotIndex => Array.FindIndex(Slots, x => !x.IsFilled);
 
         public void InitializeInventory(int amount)
         {
@@ -27,37 +23,6 @@ namespace _Project.CodeBase.Logic.HeroInventory
                 };
             }
         }
-
-        //public bool IsExistsItemInInventory(int dbID, out int id)
-        //{
-        //    id = -1;
-        //    for (var i = 0; i < Slots.Length; i++)
-        //    {
-        //        if (Slots[i].DbId == dbID && !Slots[i].IsFilled)
-        //        {
-        //            id = Slots[i].DbId;
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
-
-        //public bool FreeSlotExistsIndex(out int freeSlotID)
-        //{
-        //    freeSlotID = Array.FindIndex(Slots, x => x.State == SlotState.Empty);
-        //    return freeSlotID >= 0;
-        //}
-
-        //public void SetItemInSlot(int id, int dbId, int amount)
-        //{
-        //    if (Slots.Length <= id) return;
-        //    Slots[id].DbId = dbId;
-        //    Slots[id].IsEmpty = true;
-        //    Slots[id].Amount += amount;
-        //}
-//
-        //public void AddItemsToSlot(int id, int amount) => 
-        //    Slots[id].Amount += amount;
 
         public void AddItemToInventory(int dbId, ItemPayloadData item,  int amount)
         {
@@ -114,22 +79,19 @@ namespace _Project.CodeBase.Logic.HeroInventory
         public void RemoveItemFromSlot(int id)
         {
             if (Slots.Length <= id || Slots[id].State == SlotState.Empty) return;
+            
+            if (Slots[id].Amount <= 1) 
+                RemoveAllItemsFromSlot(id);
+            else
+                Slots[id].Amount -= 1;
+        }
+        
+        public void RemoveAllItemsFromSlot(int id)
+        {
+            if (Slots.Length <= id || Slots[id].State == SlotState.Empty) return;
             Slots[id].DbId = -1;
             Slots[id].State = SlotState.Empty;
             Slots[id].Amount = 0;
         }
-
-        //public void ChangeCapacity(int amount)
-        //{
-        //    if (amount >= 0)
-        //    { 
-        //        var slots = Slots;
-        //        Slots = new InventorySlot[amount];
-        //        slots?.CopyTo(Slots, amount);
-        //    }
-        //}
-//
-        //public void ChangeData(int i, InventorySlot slot) => 
-        //    Slots[i] = slot;
     }
 }

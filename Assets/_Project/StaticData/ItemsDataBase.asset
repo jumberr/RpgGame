@@ -20,6 +20,7 @@ MonoBehaviour:
     ItemPayloadData:
       ItemType: 1
       MaxInContainer: 2
+      Actions: 000000000100000002000000
   - ItemUIData:
       Icon: {fileID: 21300000, guid: 7d053d3b3746a204bb3be41bbecff78f, type: 3}
       Name: 
@@ -27,6 +28,7 @@ MonoBehaviour:
     ItemPayloadData:
       ItemType: 0
       MaxInContainer: 0
+      Actions: 0100000002000000
   - ItemUIData:
       Icon: {fileID: 21300000, guid: eed1ebcab0d6c3743950949d537f1f5b, type: 3}
       Name: 
@@ -34,6 +36,7 @@ MonoBehaviour:
     ItemPayloadData:
       ItemType: 0
       MaxInContainer: 0
+      Actions: 00000000010000000200000003000000
   - ItemUIData:
       Icon: {fileID: 21300000, guid: aa9220a4630dfef45adbd0c6f1be9d0a, type: 3}
       Name: 
@@ -41,3 +44,4 @@ MonoBehaviour:
     ItemPayloadData:
       ItemType: 0
       MaxInContainer: 0
+      Actions: 00000000010000000200000003000000
