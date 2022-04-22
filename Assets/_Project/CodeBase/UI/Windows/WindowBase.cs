@@ -1,5 +1,4 @@
-﻿using System;
-using _Project.CodeBase.Data;
+﻿using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.UI;

@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
 
 namespace _Project.CodeBase.StaticData.ItemsDataBase
 {
-    [Serializable]
-    public class ItemData
+    public abstract class ItemData : SerializedScriptableObject
     {
+        [HideLabel, HorizontalGroup("Split", 300)]
         public ItemUIData ItemUIData;
+        
+        [HideLabel, HorizontalGroup("Split", 300)]
         public ItemPayloadData ItemPayloadData;
     }
 }                                                 

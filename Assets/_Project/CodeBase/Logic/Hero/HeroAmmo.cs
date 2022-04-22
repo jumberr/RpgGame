@@ -1,5 +1,5 @@
 ﻿using System;
-using _Project.CodeBase.StaticData;
+using _Project.CodeBase.Logic.HeroWeapon;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
@@ -12,9 +12,9 @@ namespace _Project.CodeBase.Logic.Hero
         public int BulletMaxMagazine { get; private set; }
         public int BulletAll { get; private set; }
         
-        public void Construct(WeaponData weaponData)
+        public void Construct(Weapon weapon)
         {
-            var magazine = weaponData.Magazine;
+            var magazine = weapon.Magazine;
             BulletLeft = magazine.BulletsLeft;
             BulletMaxMagazine = magazine.BulletsMax;
             BulletAll = 120;

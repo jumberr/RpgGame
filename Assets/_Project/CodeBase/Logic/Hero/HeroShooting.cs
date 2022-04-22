@@ -2,8 +2,8 @@
 using _Project.CodeBase.Constants;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero.State;
-using _Project.CodeBase.Logic.Weapon.Effects;
-using _Project.CodeBase.StaticData;
+using _Project.CodeBase.Logic.HeroWeapon;
+using _Project.CodeBase.Logic.HeroWeapon.Effects;
 using _Project.CodeBase.Utils.ObjectPool;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -17,7 +17,7 @@ namespace _Project.CodeBase.Logic.Hero
         private const float TimeDestroyFX = 0.1f;
         private const float TimeDestroyEnvFx = 2f;
 
-        [SerializeField] private WeaponData _weaponData;
+        [SerializeField] private Weapon _weapon;
         [SerializeField] private HeroState _state;
         [SerializeField] private InputService _inputService;
         [SerializeField] private HeroAmmo _ammo;
@@ -93,11 +93,11 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void Initialize()
         {
-            _ammo.Construct(_weaponData);
-            _reload.Construct(_weaponData);
-            _recoil.Construct(_weaponData);
+            _ammo.Construct(_weapon);
+            _reload.Construct(_weapon);
+            _recoil.Construct(_weapon);
             
-            var weapon = _weaponData.Weapon;
+            var weapon = _weapon.WeaponData;
             _isAutomatic = weapon.IsAutomatic;
             _damage = weapon.Damage;
             _range = weapon.Range;

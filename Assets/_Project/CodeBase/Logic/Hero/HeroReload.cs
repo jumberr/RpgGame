@@ -1,6 +1,8 @@
 ﻿using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero.State;
+using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.StaticData;
+using _Project.CodeBase.StaticData.ItemsDataBase.Types;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
@@ -15,8 +17,8 @@ namespace _Project.CodeBase.Logic.Hero
 
         private float _reloadTime;
         
-        public void Construct(WeaponData weaponData) => 
-            _reloadTime = weaponData.Weapon.ReloadTime;
+        public void Construct(Weapon weapon) => 
+            _reloadTime = weapon.WeaponData.ReloadTime;
 
         private void Start() => 
             _inputService.OnReload += Reload;

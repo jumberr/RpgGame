@@ -23,8 +23,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
         
         private GameObject HeroGameObject { get; set; }
-
-
+        
         public GameFactory(
             IAssetProvider assetProvider,
             IUIFactory uiFactory,

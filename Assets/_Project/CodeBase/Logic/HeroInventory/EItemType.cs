@@ -4,6 +4,7 @@
     {
         Ammo,
         Weapon,
-        Armor
+        Armor,
+        Food
     }
 }

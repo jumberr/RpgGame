@@ -1,5 +1,7 @@
 ﻿using _Project.CodeBase.Logic.Hero.State;
+using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.StaticData;
+using _Project.CodeBase.StaticData.ItemsDataBase.Types;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
@@ -16,12 +18,12 @@ namespace _Project.CodeBase.Logic.Hero
         private Vector3 _currentRotation;
         private Vector3 _targetRotation;
 
-        public void Construct(WeaponData weaponData)
+        public void Construct(Weapon weapon)
         {
-            _recoil = weaponData.Weapon.Recoil;
-            _aimRecoil = weaponData.Weapon.AimRecoil;
-            _snappiness = weaponData.Weapon.Snappiness;
-            _returnSpeed = weaponData.Weapon.ReturnSpeed;
+            _recoil = weapon.WeaponData.Recoil;
+            _aimRecoil = weapon.WeaponData.AimRecoil;
+            _snappiness = weapon.WeaponData.Snappiness;
+            _returnSpeed = weapon.WeaponData.ReturnSpeed;
         }
         
         private void Update()

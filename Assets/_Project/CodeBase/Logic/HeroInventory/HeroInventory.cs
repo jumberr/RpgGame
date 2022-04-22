@@ -10,7 +10,7 @@ namespace _Project.CodeBase.Logic.HeroInventory
     public class HeroInventory : MonoBehaviour, ISavedProgress
     {
         public event Action OnUpdate;
-
+        
         private IStaticDataService _staticDataService;
         private ItemsDataBase _itemsDataBase;
         private Inventory _inventory;
@@ -42,14 +42,25 @@ namespace _Project.CodeBase.Logic.HeroInventory
 
         public void RemoveItemFromSlot(int id)
         {
+            SpawnGroundItem(_inventory.Slots[id].DbId, 1);
             _inventory.RemoveItemFromSlot(id);
             OnUpdate?.Invoke();
         }
         
         public void RemoveAllItemsFromSlot(int id)
         {
+            var slot = _inventory.Slots[id];
+            SpawnGroundItem(slot.DbId, slot.Amount);
             _inventory.RemoveAllItemsFromSlot(id);
             OnUpdate?.Invoke();
+        }
+
+        private void SpawnGroundItem(int dbId, int amount)
+        {
+            var prefab = _itemsDataBase.FindItemByIndex(dbId).ItemPayloadData.Prefab;
+            var obj = Instantiate(prefab, transform.position + Vector3.forward, Quaternion.identity);
+            obj.AddComponent<BoxCollider>().isTrigger = true;
+            obj.AddComponent<ItemGround>().Construct(dbId, amount);
         }
     }
 }

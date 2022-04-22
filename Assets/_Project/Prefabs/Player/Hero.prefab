@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feff99dd084442858551f520e1a26c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData: {fileID: 11400000, guid: fedc0ff81f84f8f46addc44e25ea4b62, type: 2}
+  _weapon: {fileID: 11400000, guid: fedc0ff81f84f8f46addc44e25ea4b62, type: 2}
   _state: {fileID: 6465014802036329193}
   _inputService: {fileID: 6525794905949041474}
   _ammo: {fileID: 3524021818451517063}
@@ -621,7 +621,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1912
+    m_Bits: 1913
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

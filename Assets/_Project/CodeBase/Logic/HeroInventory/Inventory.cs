@@ -55,6 +55,24 @@ namespace _Project.CodeBase.Logic.HeroInventory
             }
         }
 
+        public void RemoveItemFromSlot(int id)
+        {
+            if (Slots.Length <= id || Slots[id].State == SlotState.Empty) return;
+            
+            if (Slots[id].Amount <= 1) 
+                RemoveAllItemsFromSlot(id);
+            else
+                Slots[id].Amount -= 1;
+        }
+        
+        public void RemoveAllItemsFromSlot(int id)
+        {
+            if (Slots.Length <= id || Slots[id].State == SlotState.Empty) return;
+            Slots[id].DbId = -1;
+            Slots[id].State = SlotState.Empty;
+            Slots[id].Amount = 0;
+        }
+
         private int FindSlot(int dbId)
         {
             for (var i = 0; i < Slots.Length; i++)
@@ -74,24 +92,6 @@ namespace _Project.CodeBase.Logic.HeroInventory
                     return i;
             }
             return -1;
-        }
-
-        public void RemoveItemFromSlot(int id)
-        {
-            if (Slots.Length <= id || Slots[id].State == SlotState.Empty) return;
-            
-            if (Slots[id].Amount <= 1) 
-                RemoveAllItemsFromSlot(id);
-            else
-                Slots[id].Amount -= 1;
-        }
-        
-        public void RemoveAllItemsFromSlot(int id)
-        {
-            if (Slots.Length <= id || Slots[id].State == SlotState.Empty) return;
-            Slots[id].DbId = -1;
-            Slots[id].State = SlotState.Empty;
-            Slots[id].Amount = 0;
         }
     }
 }

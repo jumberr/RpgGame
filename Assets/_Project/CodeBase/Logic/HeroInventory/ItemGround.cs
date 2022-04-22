@@ -5,9 +5,15 @@ namespace _Project.CodeBase.Logic.HeroInventory
 {
     public class ItemGround : MonoBehaviour
     {
-        [SerializeField] private int _dbID;
-        [SerializeField] private int _amount;
-        
+        private int _dbID;
+        private int _amount = 1;
+
+        public void Construct(int dbID, int amount)
+        {
+            _dbID = dbID;
+            _amount = amount;
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(TagConstants.Player))
