@@ -3,6 +3,7 @@ using _Project.CodeBase.Logic.HeroInventory;
 using _Project.CodeBase.UI.Services.Windows.Inventory;
 using _Project.CodeBase.UI.Windows;
 using _Project.CodeBase.Utils;
+using _Project.CodeBase.Utils.Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -56,7 +57,7 @@ namespace _Project.CodeBase.UI.Elements.Inventory
         {
             var dbId = _heroInventory.GetSlot(slotUI.SlotID).DbId;
             if (dbId == -1) return;
-            var actions = _heroInventory.ItemsDataBase.FindItemByIndex(dbId).ItemPayloadData.Actions;
+            var actions = _heroInventory.ItemsDataBase.FindItem(dbId).ItemPayloadData.Actions;
             _context.InitializeContext(actions, slotUI);
         }
 
@@ -70,7 +71,7 @@ namespace _Project.CodeBase.UI.Elements.Inventory
         {
             if (inventorySlot.DbId != -1)
             {
-                var itemData = _heroInventory.ItemsDataBase.FindItemByIndex(inventorySlot.DbId);
+                var itemData = _heroInventory.ItemsDataBase.FindItem(inventorySlot.DbId);
                 UpdateSlotUI(_list[index], itemData.ItemUIData.Icon, inventorySlot.Amount.ToString());
             }
             else

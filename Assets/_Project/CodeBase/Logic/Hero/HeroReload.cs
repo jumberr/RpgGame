@@ -1,8 +1,8 @@
-﻿using _Project.CodeBase.Infrastructure.Services.InputService;
+﻿using System.Threading.Tasks;
+using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
-using _Project.CodeBase.StaticData;
-using _Project.CodeBase.StaticData.ItemsDataBase.Types;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
@@ -16,44 +16,48 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private InputService _inputService;
 
         private float _reloadTime;
+        private float _fullReloadTime;
         
-        public void Construct(Weapon weapon) => 
+        public void Construct(Weapon weapon)
+        {
             _reloadTime = weapon.WeaponData.ReloadTime;
+            _fullReloadTime = weapon.WeaponData.FullReloadTime;
+        }
 
-        private void Start() => 
+        private void OnEnable() => 
             _inputService.OnReload += Reload;
 
         private void OnDisable() => 
             _inputService.OnReload -= Reload;
-        
+
         public async void Reload()
         {
-            var maxMagazine = _ammo.BulletMaxMagazine;
-            var bulletLeft = _ammo.BulletLeft;
-            var bulletAll = _ammo.BulletAll;
+            if (_state.CurrentState == State.State.Reload) return;
 
-            var usedAmmo = maxMagazine - bulletLeft;
-            if (usedAmmo <= 0 || bulletAll <= 0 || _state.CurrentState == EHeroState.Reload) return;
+            var reload = _ammo.Reload();
+            if (reload == ReloadState.None) return;
 
-            if (_state.CurrentState == EHeroState.Scoping) 
-                _heroScoping.UnScope();
-
-            _state.Enter(EHeroState.Reload);
-            await _heroAnimator.ReloadAnimation(_reloadTime);
+            if (_state.CurrentState == State.State.Scoping) 
+                await _heroScoping.UnScope();
             
-            if (bulletAll < usedAmmo)
-            {
-                bulletLeft += bulletAll;
-                bulletAll = 0;
-            }
-            else
-            {
-                bulletLeft += usedAmmo;
-                bulletAll -= usedAmmo;
-            }
-
-            _ammo.SetAmmoValue(bulletLeft, bulletAll);
-            _state.Enter(EHeroState.None);
+            _state.Enter(State.State.Reload);
+            await PlayReloadAnimation(reload);
+            _ammo.UpdateUI();
+            _state.Enter(State.State.None);
         }
+
+        private async Task PlayReloadAnimation(ReloadState result)
+        {
+            if (result == ReloadState.FullReload)
+                await FullReloadAnimation();
+            else if (result == ReloadState.Reload)
+                await ReloadAnimation();
+        }
+
+        private async UniTask FullReloadAnimation() => 
+            await _heroAnimator.FullReloadAnimation(_fullReloadTime);
+
+        private async UniTask ReloadAnimation() => 
+            await _heroAnimator.ReloadAnimation(_reloadTime);
     }
 }

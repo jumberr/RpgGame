@@ -6,7 +6,10 @@ namespace _Project.CodeBase.Logic.HeroWeapon.Effects
 {
     public class WeaponLight : MonoBehaviour
     {
-        [SerializeField] private GameObject _light;
+        private GameObject _light;
+
+        public void Construct(GameObject light) => 
+            _light = light;
 
         public async void TurnOn(float waitTime)
         {

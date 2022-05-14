@@ -28,7 +28,7 @@ namespace _Project.CodeBase.Logic.HeroInventory
         {
             while (amount > 0)
             {
-                var id = FindSlot(dbId);
+                var id = FindSlotOrEmpty(dbId);
                 if (id != -1)
                 {
                     Slots[id].DbId = dbId;
@@ -40,15 +40,37 @@ namespace _Project.CodeBase.Logic.HeroInventory
                     {
                         Slots[id].State = SlotState.Middle;
                         Slots[id].Amount += amount;
-                        amount = 0;
                         return;
                     }
-                    else
+
+                    Slots[id].State = SlotState.Full;
+                    Slots[id].Amount += diff;
+                    amount -= diff;
+                }
+                else
+                    return; 
+            }
+        }
+        
+        public void RemoveItemFromInventory(int dbId,  int amount)
+        {
+            while (amount > 0)
+            {
+                var id = FindSlotReversed(dbId);
+                if (id != -1)
+                {
+                    var startAmount = Slots[id].Amount;
+                    if (startAmount > amount)
                     {
-                        Slots[id].State = SlotState.Full;
-                        Slots[id].Amount += diff;
-                        amount -= diff;
+                        Slots[id].Amount -= amount;
+                        Slots[id].State = SlotState.Middle;
+                        return;
                     }
+
+                    amount -= Slots[id].Amount;
+                    Slots[id].Amount = 0;
+                    Slots[id].DbId = -1;
+                    Slots[id].State = SlotState.Empty;
                 }
                 else
                     return; 
@@ -73,7 +95,7 @@ namespace _Project.CodeBase.Logic.HeroInventory
             Slots[id].Amount = 0;
         }
 
-        private int FindSlot(int dbId)
+        private int FindSlotOrEmpty(int dbId)
         {
             for (var i = 0; i < Slots.Length; i++)
             {
@@ -82,6 +104,16 @@ namespace _Project.CodeBase.Logic.HeroInventory
             }
 
             return FindEmptySlot();
+        }
+        
+        private int FindSlotReversed(int dbId)
+        {
+            for (var i = Slots.Length - 1; i >= 0; i--)
+            {
+                if (Slots[i].DbId == dbId && Slots[i].State != SlotState.Empty)
+                    return i;
+            }
+            return -1;
         }
 
         private int FindEmptySlot()

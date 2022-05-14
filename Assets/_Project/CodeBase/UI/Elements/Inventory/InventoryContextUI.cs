@@ -26,7 +26,7 @@ namespace _Project.CodeBase.UI.Elements.Inventory
         private void Start() => 
             _actionSize = _actionPrefab.GetComponent<RectTransform>().sizeDelta;
 
-        public void InitializeContext(List<EActionType> actions, InventorySlotUI slotUI)
+        public void InitializeContext(List<ActionType> actions, InventorySlotUI slotUI)
         {
             Clear();
             
@@ -44,19 +44,20 @@ namespace _Project.CodeBase.UI.Elements.Inventory
             _list.Clear();
         }
         
-        private void CreateAction(EActionType action, InventorySlotUI slotUI)
+        private void CreateAction(ActionType action, InventorySlotUI slotUI)
         {
             var actionUI = Instantiate(_actionPrefab, transform);
             actionUI.Construct(FindAction(action, slotUI), action.ToString());
             _list.Add(actionUI);
         }
 
-        private Action FindAction(EActionType action, InventorySlotUI slotUI)
+        private Action FindAction(ActionType action, InventorySlotUI slotUI)
         {
             Action onClick = action switch
             {
-                EActionType.Drop => () => _heroInventory.RemoveItemFromSlot(slotUI.SlotID),
-                EActionType.DropAll => () => _heroInventory.RemoveAllItemsFromSlot(slotUI.SlotID),
+                ActionType.Equip => () => _heroInventory.EquipItem(slotUI.SlotID),
+                ActionType.Drop => () => _heroInventory.DropItemFromSlot(slotUI.SlotID),
+                ActionType.DropAll => () => _heroInventory.DropAllItemsFromSlot(slotUI.SlotID),
                 _ => null
             };
 

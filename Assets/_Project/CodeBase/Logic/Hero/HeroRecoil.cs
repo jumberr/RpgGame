@@ -35,7 +35,7 @@ namespace _Project.CodeBase.Logic.Hero
 
         public void RecoilFire()
         {
-            if (_state.CurrentState == EHeroState.Scoping)
+            if (_state.CurrentState == State.State.Scoping)
                 _targetRotation += TargetRotation(_aimRecoil);
             else
                 _targetRotation += TargetRotation(_recoil);

@@ -64,16 +64,15 @@ namespace _Project.CodeBase.Editor
 
         private static void ConfigureItem(ItemData obj)
         {
-            obj.ItemUIData.Name = obj.name;
             if (obj.GetType() == typeof(Equippable))
                 obj.ItemPayloadData.MaxInContainer = 1;
             
             if (obj.GetType() == typeof(Armor))
-                obj.ItemPayloadData.ItemType = EItemType.Armor;
+                obj.ItemPayloadData.ItemType = ItemType.Armor;
             else if (obj.GetType() == typeof(Food))
-                obj.ItemPayloadData.ItemType = EItemType.Food;
+                obj.ItemPayloadData.ItemType = ItemType.Food;
             else if (obj.GetType() == typeof(Weapon))
-                obj.ItemPayloadData.ItemType = EItemType.Weapon;
+                obj.ItemPayloadData.ItemType = ItemType.Weapon;
         }
 
         private static void UpdateItemDatabase()

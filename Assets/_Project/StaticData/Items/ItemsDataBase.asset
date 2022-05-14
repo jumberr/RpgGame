@@ -13,8 +13,17 @@ MonoBehaviour:
   m_Name: ItemsDataBase
   m_EditorClassIdentifier: 
   ItemsDatabase:
+  - {fileID: 11400000, guid: ac8345dc772cf0d489d04f7c47427d88, type: 2}
+  - {fileID: 11400000, guid: fb46abfe30d2d3549804d3e8f533066e, type: 2}
+  - {fileID: 11400000, guid: 4c059b759bac50e43a39264772912480, type: 2}
+  - {fileID: 11400000, guid: 2eccfe56ac590c646bc59f83670285e5, type: 2}
+  - {fileID: 11400000, guid: bd105a1cb0856cc4aae342229460218b, type: 2}
+  - {fileID: 11400000, guid: c0f5c8448adbf3148a749cfda140e365, type: 2}
+  - {fileID: 11400000, guid: 19c943f07cb765a48969d07e950bb5e0, type: 2}
   - {fileID: 11400000, guid: 18304698154f8c74c94b26d739d21ac3, type: 2}
   - {fileID: 11400000, guid: 78b8d2c92828f3044ae48781800d7f6e, type: 2}
   - {fileID: 11400000, guid: c3be83822cea5174983ae98ce57531d1, type: 2}
   - {fileID: 11400000, guid: 865b99e39e666264eac03036763ed4db, type: 2}
+  - {fileID: 11400000, guid: c720ef95938c71d458f1fff2bd245762, type: 2}
+  - {fileID: 11400000, guid: 3b152abf28f40594495ffb509f82a9c5, type: 2}
   - {fileID: 11400000, guid: fedc0ff81f84f8f46addc44e25ea4b62, type: 2}

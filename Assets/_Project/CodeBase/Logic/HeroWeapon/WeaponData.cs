@@ -25,6 +25,9 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         [ProgressBar(0, 15, r: 0, g: 0.2f, b: 0.75f)]
         public float ReloadTime;
         
+        [ProgressBar(0, 15, r: 0, g: 0.2f, b: 0.75f)]
+        public float FullReloadTime;
+        
         [ProgressBar(0, 100, r: 0, g: 0.2f, b: 0.75f)]
         public float Range;
         
@@ -39,5 +42,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         
         [ProgressBar(0, 100, r: 0.4f, g: 0.2f, b: 0.75f)]
         public float AccuracyDistance;
+
+        public AmmoType AmmoType;
     }
 }

@@ -16,17 +16,9 @@ namespace _Project.CodeBase.Logic.Hero
     {
         private const float TimeDestroyFX = 0.1f;
         private const float TimeDestroyEnvFx = 2f;
-
-        [SerializeField] private Weapon _weapon;
-        [SerializeField] private HeroState _state;
-        [SerializeField] private InputService _inputService;
-        [SerializeField] private HeroAmmo _ammo;
-        [SerializeField] private HeroReload _reload;
-        [SerializeField] private HeroRecoil _recoil;
         
         [SerializeField] private Camera _heroCamera;
         [SerializeField] private LayerMask _layerMask;
-        [SerializeField] private Transform _firePoint;
 
         [SerializeField] private LineFade _lineFade;
         [SerializeField] private WeaponLight _weaponLight;
@@ -36,6 +28,15 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private GameObject _bloodParticlesFX;
 
         private IPoolManager _poolManager;
+        private HeroState _state;
+        private InputService _inputService;
+        private HeroAmmo _ammo;
+        private HeroReload _reload;
+        private HeroRecoil _recoil;
+        private HeroAnimator _animator;
+
+        private Transform _firePoint;
+        
         private bool _isAutomatic;
         private float _damage;
         private float _range;
@@ -53,10 +54,21 @@ namespace _Project.CodeBase.Logic.Hero
             _poolManager = poolManager;
             _poolManager.Initialize();
         }
-
-        private void Start()
+        
+        public void Construct(
+            HeroState state,
+            InputService inputService,
+            HeroAmmo ammo,
+            HeroReload reload,
+            HeroRecoil recoil,
+            HeroAnimator animator)
         {
-            Initialize();
+            _state = state;
+            _inputService = inputService;
+            _ammo = ammo;
+            _reload = reload;
+            _recoil = recoil;
+            _animator = animator;
             _inputService.OnAttack += EnableDisableShoot;
         }
 
@@ -91,13 +103,9 @@ namespace _Project.CodeBase.Logic.Hero
         private void OnDisable() => 
             _inputService.OnAttack -= EnableDisableShoot;
 
-        private void Initialize()
+        public void UpdateConfig(WeaponData weapon, WeaponConfiguration config)
         {
-            _ammo.Construct(_weapon);
-            _reload.Construct(_weapon);
-            _recoil.Construct(_weapon);
-            
-            var weapon = _weapon.WeaponData;
+            //var weapon = _weapon.WeaponData;
             _isAutomatic = weapon.IsAutomatic;
             _damage = weapon.Damage;
             _range = weapon.Range;
@@ -105,6 +113,14 @@ namespace _Project.CodeBase.Logic.Hero
             _accuracy = weapon.Accuracy;
             _aimAccuracy = weapon.AimAccuracy;
             _accuracyDistance = weapon.AccuracyDistance;
+
+            SetupWeaponConfiguration(config);
+        }
+
+        private void SetupWeaponConfiguration(WeaponConfiguration config)
+        {
+            _firePoint = config.FirePoint;
+            _weaponLight.Construct(config.LightPoint);
         }
 
         private void EnableDisableShoot(bool value)
@@ -117,7 +133,7 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void Shoot()
         {
-            if (_state.CurrentState == EHeroState.Reload) return;
+            if (_state.CurrentState == State.State.Reload) return;
 
             if (!_ammo.CanShoot())
             {
@@ -126,22 +142,25 @@ namespace _Project.CodeBase.Logic.Hero
             }
 
             var dir = RandShootDir();
+            
+            _ammo.UseOneAmmo();
+            _animator.ShootAnimation();
+            _weaponLight.TurnOn(TimeDestroyFX);
+            _recoil.RecoilFire();
+            MuzzleFlash();
+            
             if (Physics.Raycast(_heroCamera.transform.position, dir, out var hit, _range, _layerMask))
             {
-                _ammo.UseOneAmmo();
-
                 //if (hit.transform.TryGetComponent<IHealth>(out var enemy))
                 //    Debug.Log(enemy);
 
-                MuzzleFlash();
                 HitParticles(hit, TagConstants.SandTag, _sandParticlesFX);
                 HitParticles(hit, TagConstants.RockTag, _rockParticlesFX);
                 SpawnBulletTrail(_firePoint.position, hit.point);
-                
-                _weaponLight.TurnOn(TimeDestroyFX);
-                _recoil.RecoilFire();
                 Debug.Log(hit.collider.name);
             }
+            else
+                SpawnBulletTrail(_firePoint.position, _heroCamera.transform.position + dir * 0.15f);
         }
 
         private async void MuzzleFlash()
@@ -181,7 +200,7 @@ namespace _Project.CodeBase.Logic.Hero
         }
         
         private float RandDistance() => 
-            (_state.CurrentState == EHeroState.Scoping ? _aimAccuracy : _accuracy) * Mathf.Sqrt(-2 * Mathf.Log(1 - Random.Range(0, 1f)));
+            (_state.CurrentState == State.State.Scoping ? _aimAccuracy : _accuracy) * Mathf.Sqrt(-2 * Mathf.Log(1 - Random.Range(0, 1f)));
 
         private Vector3 RandShootDir()
          {

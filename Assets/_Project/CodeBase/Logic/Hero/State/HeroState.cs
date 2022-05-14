@@ -5,23 +5,23 @@ namespace _Project.CodeBase.Logic.Hero.State
 {
     public class HeroState : MonoBehaviour
     {
-        private EHeroState _prevState;
-        private EHeroState _state;
+        private State _prevState;
+        private State _state;
         
-        public EHeroState PreviousState => _prevState;
-        public EHeroState CurrentState => _state;
+        public State PreviousState => _prevState;
+        public State CurrentState => _state;
 
         private void Start() => 
-            ChangeState(EHeroState.None);
+            ChangeState(State.None);
 
-        public void Enter(EHeroState newState, Action onStart = null, Action onComplete = null)
+        public void Enter(State newState, Action onStart = null, Action onComplete = null)
         {
             onStart?.Invoke();
             ChangeState(newState);
             onComplete?.Invoke();
         }
 
-        private void ChangeState(EHeroState newState)
+        private void ChangeState(State newState)
         {
             _prevState = _state;
             _state = newState;

@@ -14,20 +14,20 @@ namespace _Project.CodeBase.StaticData.ItemsDataBase
         public int DbId;
         
         [BoxGroup("Right", false), EnumToggleButtons, HideLabel]
-        public EItemType ItemType;
+        public ItemType ItemType;
 
         [HorizontalGroup("Right/Row")]
-        public List<EActionType> Actions = new List<EActionType>
+        public List<ActionType> Actions = new List<ActionType>
         {
-            EActionType.Equip,
-            EActionType.Use,
-            EActionType.Drop,
-            EActionType.DropAll
+            ActionType.Equip,
+            ActionType.Use,
+            ActionType.Drop,
+            ActionType.DropAll
         };
         
         [HorizontalGroup("Right/Row", 55)]
         [HideLabel, PreviewField(55, ObjectFieldAlignment.Right)]
-        public GameObject Prefab;
+        public GameObject GroundPrefab;
         
         [Range(1, 100), GUIColor(0f, 1f, 0f), BoxGroup("Right", false)]
         public int MaxInContainer;

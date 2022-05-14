@@ -71,8 +71,8 @@ namespace _Project.CodeBase.Logic.Hero
             var moveDirection = CalculateDirection();
 
             var speed = SelectSpeed();
-            ApplyMoveAnimation();
             _characterController.Move(moveDirection * speed * Time.deltaTime);
+            ApplyMoveAnimation();
         }
 
         private float SelectSpeed()
@@ -86,12 +86,15 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void ApplyMoveAnimation()
         {
-            if (_input.magnitude == 0)
-                _heroAnimator.EnterMoveState(0);
-            else if (_input.y >= MinJoystickDeflectionToRun)
-                _heroAnimator.EnterMoveState(1);
-            else 
-                _heroAnimator.EnterMoveState(0.5f);
+            //if (_input.magnitude == 0)
+            //    _heroAnimator.EnterMoveState(0);
+            //else
+                _heroAnimator.EnterMoveState(_input.y);
+            
+            //else if (_input.y >= MinJoystickDeflectionToRun)
+            //    _heroAnimator.EnterMoveState(1);
+            //else 
+            //    _heroAnimator.EnterMoveState(0.85f);
         }
 
         private Vector3 CalculateDirection() =>
@@ -100,7 +103,10 @@ namespace _Project.CodeBase.Logic.Hero
         private void JumpAction()
         {
             if (_characterController.isGrounded)
+            {
                 _velocity.y = Mathf.Sqrt(_jumpForce * -2f * Gravity);
+                _heroAnimator.JumpAnimation();
+            }
         }
 
         private void ApplyGravity()

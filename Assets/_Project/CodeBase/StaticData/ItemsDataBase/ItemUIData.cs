@@ -1,4 +1,5 @@
 ﻿using System;
+using _Project.CodeBase.Logic.HeroInventory;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace _Project.CodeBase.StaticData.ItemsDataBase
     public class ItemUIData
     {
         [BoxGroup("Left", false), LabelWidth(0)]
-        public string Name;
+        public ItemName Name;
         
         [HorizontalGroup("Left/Row", 55)]
         [HideLabel, PreviewField(55, ObjectFieldAlignment.Left)]

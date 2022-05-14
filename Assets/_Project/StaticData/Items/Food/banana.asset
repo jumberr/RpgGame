@@ -22,13 +22,14 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   ItemUIData:
-    Name: banana
+    Name: 0
     Icon: {fileID: 0}
     Description: 
   ItemPayloadData:
-    DbId: 0
+    DbId: 3
     ItemType: 3
     Actions: 00000000010000000200000003000000
+    GroundPrefab: {fileID: 0}
     MaxInContainer: 1
   HealthRestore: 0
   Seconds: 0

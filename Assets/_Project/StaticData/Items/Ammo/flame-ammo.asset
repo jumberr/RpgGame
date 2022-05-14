@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b13dd4f2da48788c26bb863b531a65, type: 3}
+  m_Name: flame-ammo
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  ItemUIData:
+    Name: 10
+    Icon: {fileID: 21300000, guid: 27f1d569ac152e945aecf65ef2eccf12, type: 3}
+    Description: 
+  ItemPayloadData:
+    DbId: 0
+    ItemType: 0
+    Actions: 00000000010000000200000003000000
+    GroundPrefab: {fileID: 2401688455636562452, guid: d1f34a98db041b144b158411c506b72d,
+      type: 3}
+    MaxInContainer: 100
+  AmmoType: 5
