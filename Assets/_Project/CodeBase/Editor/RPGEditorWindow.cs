@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
-using _Project.CodeBase.Logic.HeroInventory;
+using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData.ItemsDataBase;
 using _Project.CodeBase.StaticData.ItemsDataBase.Types;
 using Sirenix.OdinInspector.Editor;

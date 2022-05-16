@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _Project.CodeBase.Logic.HeroInventory
+namespace _Project.CodeBase.Logic.Inventory
 {
     [Serializable]
     public class InventorySlot

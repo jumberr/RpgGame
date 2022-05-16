@@ -2,7 +2,7 @@
 using _Project.CodeBase.StaticData.ItemsDataBase;
 using UnityEngine;
 
-namespace _Project.CodeBase.Logic.HeroInventory
+namespace _Project.CodeBase.Logic.Inventory
 {
     public class ItemGround : MonoBehaviour
     {

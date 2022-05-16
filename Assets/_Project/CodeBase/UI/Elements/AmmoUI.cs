@@ -1,4 +1,5 @@
 ﻿using _Project.CodeBase.Logic.Hero;
+using _Project.CodeBase.UI.MVA;
 using _Project.CodeBase.Utils;
 using TMPro;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace _Project.CodeBase.UI.Elements
             _ammo = ammo;
             _ammo.OnUpdateAmmo += UpdateAmmoText;
             _ammo.OnChangeWeapon += ChangeWeapon;
+            _ammo.OnHideWeapon += Hide;
             Hide();
         }
 
@@ -26,6 +28,7 @@ namespace _Project.CodeBase.UI.Elements
         {
             _ammo.OnUpdateAmmo -= UpdateAmmoText;
             _ammo.OnChangeWeapon -= ChangeWeapon;
+            _ammo.OnHideWeapon -= Hide;
         }
         
         public void Show() => 

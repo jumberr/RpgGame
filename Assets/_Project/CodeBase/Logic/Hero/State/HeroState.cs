@@ -5,6 +5,8 @@ namespace _Project.CodeBase.Logic.Hero.State
 {
     public class HeroState : MonoBehaviour
     {
+        public event Action<State> OnChangeState;
+        
         private State _prevState;
         private State _state;
         
@@ -14,11 +16,10 @@ namespace _Project.CodeBase.Logic.Hero.State
         private void Start() => 
             ChangeState(State.None);
 
-        public void Enter(State newState, Action onStart = null, Action onComplete = null)
+        public void Enter(State newState)
         {
-            onStart?.Invoke();
             ChangeState(newState);
-            onComplete?.Invoke();
+            OnChangeState?.Invoke(_state);
         }
 
         private void ChangeState(State newState)

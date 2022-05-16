@@ -277,6 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167d37f2de5d4e7e921170ce93917aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inventory: {fileID: 6614678942181432447}
   _inputService: {fileID: 6525794905949041474}
   _state: {fileID: 6465014802036329193}
   _shooting: {fileID: 6345382572701065086}

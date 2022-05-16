@@ -1,6 +1,6 @@
 ﻿using System;
-using _Project.CodeBase.Logic.HeroInventory;
 using _Project.CodeBase.Logic.HeroWeapon;
+using _Project.CodeBase.Logic.Inventory;
 
 namespace _Project.CodeBase.Utils.Extensions
 {

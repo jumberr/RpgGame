@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Project.CodeBase.Logic.HeroInventory;
+using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData.ItemsDataBase;
 using _Project.CodeBase.UI.Services.Windows.Inventory;
 using UnityEngine;

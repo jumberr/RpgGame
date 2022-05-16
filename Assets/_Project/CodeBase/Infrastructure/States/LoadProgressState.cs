@@ -2,7 +2,7 @@
 using _Project.CodeBase.Infrastructure.SaveLoad;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
-using _Project.CodeBase.Logic.HeroInventory;
+using _Project.CodeBase.Logic.Inventory;
 using Cysharp.Threading.Tasks;
 using Zenject;
 

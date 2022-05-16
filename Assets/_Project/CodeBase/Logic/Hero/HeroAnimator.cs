@@ -12,7 +12,6 @@ namespace _Project.CodeBase.Logic.Hero
 
         private static readonly int Reload = Animator.StringToHash("Reload");
         private static readonly int FullReload = Animator.StringToHash("FullReload");
-        //private static readonly int Scoping = Animator.StringToHash("Scoping");
         private static readonly int Hide = Animator.StringToHash("Hide");
         private static readonly int Show = Animator.StringToHash("Show");
         private static readonly int Shoot = Animator.StringToHash("Shoot");
@@ -21,6 +20,9 @@ namespace _Project.CodeBase.Logic.Hero
 
         public void Construct(Animator animator) =>
             _animator = animator;
+        
+        public void SetEmptyAnimator() =>
+            _animator = null;
         
         public void EnterMoveState(float value)
         {
@@ -64,6 +66,7 @@ namespace _Project.CodeBase.Logic.Hero
         
         private async UniTask ShowHide(int id)
         {
+            if (!IsAnimatorExists()) return;
             _animator.SetTrigger(id);
             var duration = _animator.GetAnimatorTransitionInfo(0).duration;
             await UniTask.Delay(TimeSpan.FromSeconds(duration));

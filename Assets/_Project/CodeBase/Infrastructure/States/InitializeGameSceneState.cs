@@ -1,7 +1,10 @@
 ﻿using _Project.CodeBase.Infrastructure.Factory;
+using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
+using _Project.CodeBase.Logic.Hero.State;
+using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.UI.Elements;
 using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.UI.Services.Windows;
@@ -75,7 +78,9 @@ namespace _Project.CodeBase.Infrastructure.States
             var hud = await _uiFactory.CreateHud();
             _uiFactory.SetupWindowButtons(_windowService);
             var actorUI = hud.GetComponentInChildren<ActorUI>();
-            actorUI.Construct(hero.GetComponent<HeroHealth>(), hero.GetComponent<HeroAmmo>());
+            actorUI.Construct(hero.GetComponent<HeroHealth>(), hero.GetComponent<HeroAmmo>(),
+                hero.GetComponent<WeaponController>(), hero.GetComponent<InputService>(),
+                hero.GetComponent<HeroState>());
         }
 
         private void InitializeInventory(GameObject hero) => 

@@ -1,5 +1,5 @@
 ﻿using System;
-using _Project.CodeBase.Logic.HeroInventory;
+using _Project.CodeBase.Logic.Inventory;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

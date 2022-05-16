@@ -1,7 +1,7 @@
 ﻿using System;
 using _Project.CodeBase.Logic.Hero.State;
-using _Project.CodeBase.Logic.HeroInventory;
 using _Project.CodeBase.Logic.HeroWeapon;
+using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.Utils.Extensions;
 using UnityEngine;
 
@@ -11,8 +11,9 @@ namespace _Project.CodeBase.Logic.Hero
     {
         public event Action<int, int> OnUpdateAmmo;
         public event Action<int, int, Sprite> OnChangeWeapon;
+        public event Action OnHideWeapon;
 
-        [SerializeField] private HeroInventory.HeroInventory _inventory;
+        [SerializeField] private HeroInventory _inventory;
         private int _bulletMaxMagazine;
         private AmmoType _type;
         private ItemName _itemName;
@@ -47,6 +48,9 @@ namespace _Project.CodeBase.Logic.Hero
         public void UpdateUI() => 
             OnUpdateAmmo?.Invoke(BulletLeft, BulletAll);
 
+        public void HideUI() =>
+            OnHideWeapon?.Invoke();
+        
         public ReloadState Reload()
         {
             var usedAmmo = _bulletMaxMagazine - BulletLeft;

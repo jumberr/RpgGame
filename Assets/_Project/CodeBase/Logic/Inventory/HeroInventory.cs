@@ -7,7 +7,7 @@ using _Project.CodeBase.StaticData.ItemsDataBase;
 using _Project.CodeBase.StaticData.ItemsDataBase.Types;
 using UnityEngine;
 
-namespace _Project.CodeBase.Logic.HeroInventory
+namespace _Project.CodeBase.Logic.Inventory
 {
     public class HeroInventory : MonoBehaviour, ISavedProgress
     {
@@ -42,7 +42,7 @@ namespace _Project.CodeBase.Logic.HeroInventory
             var dbId = _inventory.Slots[slotID].DbId;
             var item = _itemsDataBase.FindItem(dbId);
             if (item is Weapon weapon) 
-                EquipWeapon(weapon);
+                EquipWeapon(weapon, slotID);
             if (item is Armor armor) 
                 EquipArmor(armor);
         }
@@ -93,7 +93,7 @@ namespace _Project.CodeBase.Logic.HeroInventory
             return count;
         }
 
-        private int FindFirstItemIndex(ItemName itemName)
+        public int FindFirstItemIndex(ItemName itemName)
         {
             var dbIndex = _itemsDataBase.FindIndex(itemName);
             foreach (var slot in _inventory.Slots)
@@ -121,8 +121,8 @@ namespace _Project.CodeBase.Logic.HeroInventory
             obj.GetComponent<ItemGround>().Construct(dbId, amount);
         }
         
-        private async void EquipWeapon(Weapon weapon) => 
-            await _weaponController.CreateNewWeapon(weapon.WeaponPrefab, weapon);
+        private async void EquipWeapon(Weapon weapon, int slotID) => 
+            await _weaponController.CreateNewWeapon(weapon.WeaponPrefab, weapon, slotID);
 
         private void EquipArmor(Armor armor)
         {

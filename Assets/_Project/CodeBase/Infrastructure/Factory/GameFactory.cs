@@ -3,7 +3,7 @@ using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.Logic.HeroInventory;
+using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.Utils.ObjectPool;
 using Cysharp.Threading.Tasks;

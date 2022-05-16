@@ -1,4 +1,4 @@
-﻿namespace _Project.CodeBase.Logic.HeroInventory
+﻿namespace _Project.CodeBase.Logic.Inventory
 {
     public enum ItemName
     {

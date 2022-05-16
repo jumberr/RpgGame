@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using _Project.CodeBase.Logic.HeroInventory;
+using _Project.CodeBase.Logic.Inventory;
 using UnityEngine;
 
 namespace _Project.CodeBase.StaticData.ItemsDataBase

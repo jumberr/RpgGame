@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Project.CodeBase.Logic.HeroInventory;
+using _Project.CodeBase.Logic.Inventory;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Object = UnityEngine.Object;

@@ -1,6 +1,8 @@
-﻿using _Project.CodeBase.Infrastructure.Services.InputService;
+﻿using System;
+using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Hero.State;
+using _Project.CodeBase.Logic.Inventory;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -8,6 +10,9 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 {
     public class WeaponController : MonoBehaviour
     {
+        public event Action<bool> OnSwitch;
+
+        [SerializeField] private HeroInventory _inventory;
         [SerializeField] private InputService _inputService;
         [SerializeField] private HeroState _state;
         [SerializeField] private HeroShooting _shooting;
@@ -20,32 +25,37 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         private GameObject _currentWeapon;
         private Weapon _weapon;
+        private int _slotID = -1;
 
-        public void Construct(Weapon weapon)
+        private void Start()
         {
-            _weapon = weapon;
-            
-            _ammo.Construct(_weapon);
-            _reload.Construct(_weapon);
-            _recoil.Construct(_weapon);
-            UpdateData(weapon);
+            _shooting.Construct(_state, _inputService, _ammo, _reload, _recoil, _animator);
+            _inventory.OnUpdate += OnInventoryUpdate;
         }
 
-        private void Start() => 
-            _shooting.Construct(_state, _inputService, _ammo, _reload, _recoil, _animator);
+        private void OnDisable() => 
+            _inventory.OnUpdate -= OnInventoryUpdate;
 
-        public async UniTask CreateNewWeapon(GameObject prefab, Weapon weapon)
+        public async UniTask CreateNewWeapon(GameObject prefab, Weapon weapon, int slotID)
         {
-            if (_currentWeapon != null)
-            {
-                await _animator.HideWeapon();
-                Destroy(_currentWeapon);
-            }
+            await DestroyWeapon();
 
             _currentWeapon = Instantiate(prefab, _parent);
             _animator.Construct(_currentWeapon.GetComponent<Animator>());
             await _animator.ShowWeapon();
+            OnSwitch?.Invoke(true);
             Construct(weapon);
+            _slotID = slotID;
+        }
+
+        private void Construct(Weapon weapon)
+        {
+            _weapon = weapon;
+
+            _ammo.Construct(weapon);
+            _reload.Construct(weapon);
+            _recoil.Construct(weapon);
+            UpdateData(weapon);
         }
 
         private void UpdateData(Weapon weapon)
@@ -53,6 +63,24 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             var config = GetComponentInChildren<WeaponConfiguration>();
             _shooting.UpdateConfig(weapon.WeaponData, config);
             _scoping.Construct(config);
+        }
+
+        private async void OnInventoryUpdate()
+        {
+            if (_slotID == -1 || _weapon is null) return;
+            if (_inventory.FindFirstItemIndex(_weapon.ItemUIData.Name) == -1) 
+                await DestroyWeapon();
+        }
+
+        private async UniTask DestroyWeapon()
+        {
+            if (_slotID == -1) return;
+            _ammo.HideUI();
+            await _animator.HideWeapon();
+            _animator.SetEmptyAnimator();
+            Destroy(_currentWeapon);
+            _weapon = null;
+            OnSwitch?.Invoke(false);
         }
     }
 }
