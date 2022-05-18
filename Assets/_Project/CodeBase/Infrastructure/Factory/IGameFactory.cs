@@ -13,7 +13,8 @@ namespace _Project.CodeBase.Infrastructure.Factory
         IPoolManager PoolManager { get; }
 
         UniTask<GameObject> CreateHero(Vector3 at);
-        
+        UniTask CreateInteractableSpawner(GameObject hero);
+
         void Cleanup();
         void WarmUp();
     }

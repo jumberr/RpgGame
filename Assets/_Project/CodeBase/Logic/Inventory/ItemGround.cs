@@ -1,5 +1,4 @@
-﻿using _Project.CodeBase.Constants;
-using _Project.CodeBase.StaticData.ItemsDataBase;
+﻿using _Project.CodeBase.StaticData.ItemsDataBase;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Inventory
@@ -8,30 +7,34 @@ namespace _Project.CodeBase.Logic.Inventory
     {
         public int Amount;
         [SerializeField] private ItemName _itemName;
-        private int _dbID = -1;
+        public int DbID { get; set; } = -1;
 
-        public void Construct(int dbID, int amount)
+        public void Construct(ItemsDataBase db) => 
+            DbID = TryConvertNameToId(db, _itemName);
+
+        public void Construct(ItemsDataBase db, int amount)
         {
-            _dbID = dbID;
+            Construct(db);
             Amount = amount;
         }
 
-        private void OnTriggerEnter(Collider other)
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    if (other.CompareTag(TagConstants.Player))
+        //    {
+        //        var inventory = other.GetComponent<HeroInventory>();
+        //        TryConvertNameToId(inventory.ItemsDataBase);
+        //        inventory.SetItemInFreeSlot(_dbID, Amount);
+        //        Debug.Log($"Item {_dbID} added");
+        //        Destroy(gameObject);
+        //    }
+        //}
+        
+        private int TryConvertNameToId(ItemsDataBase db, ItemName itemName)
         {
-            if (other.CompareTag(TagConstants.Player))
-            {
-                var inventory = other.GetComponent<HeroInventory>();
-                TryConvertNameToId(inventory.ItemsDataBase);
-                inventory.SetItemInFreeSlot(_dbID, Amount);
-                Debug.Log($"Item {_dbID} added");
-                Destroy(gameObject);
-            }
-        }
-
-        private void TryConvertNameToId(ItemsDataBase db)
-        {
-            if (_itemName != ItemName.None) 
-                _dbID = db.FindItem(_itemName).ItemPayloadData.DbId;
+            if (itemName != ItemName.None) 
+                return db.FindItem(itemName).ItemPayloadData.DbId;
+            return -1;
         }
     }
 }

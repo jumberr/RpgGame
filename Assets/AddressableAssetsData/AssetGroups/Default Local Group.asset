@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: ItemsDataBase
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: ae4dabdb736f8d64f9715a2a4728fa51
+    m_Address: InteractableSpawner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7f7aa7cd3321f4d4f8521b1a30e7d9ab, type: 2}
   m_SchemaSet:

@@ -3,6 +3,7 @@ using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
+using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.Utils.ObjectPool;
@@ -17,13 +18,14 @@ namespace _Project.CodeBase.Infrastructure.Factory
         private readonly IUIFactory _uiFactory;
         private readonly IPoolManager _poolManager;
         private readonly IStaticDataService _staticDataService;
-        
+        private InteractableSpawner _interactableSpawner;
+
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public IPoolManager PoolManager => _poolManager;
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
         
         private GameObject HeroGameObject { get; set; }
-        
+
         public GameFactory(
             IAssetProvider assetProvider,
             IUIFactory uiFactory,
@@ -50,6 +52,15 @@ namespace _Project.CodeBase.Infrastructure.Factory
             heroDeath.ZeroHealth += _uiFactory.CreateDeathScreen;
             
             return HeroGameObject;
+        }
+
+        public async UniTask CreateInteractableSpawner(GameObject hero)
+        {
+            _interactableSpawner = (await _assetProvider.InstantiateAsync(AssetPath.InteractableSpawner))
+                .GetComponent<InteractableSpawner>();
+            var inventory = hero.GetComponent<HeroInventory>();
+            _interactableSpawner.Construct(inventory);
+            inventory.Construct(_interactableSpawner);
         }
 
         public void Cleanup()

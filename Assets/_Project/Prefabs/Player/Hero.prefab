@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 7233730278501378840}
   - component: {fileID: 6614678942181432447}
   - component: {fileID: 3214247681925859823}
+  - component: {fileID: 6751817453903407190}
   m_Layer: 6
   m_Name: Hero
   m_TagString: Player
@@ -287,6 +288,20 @@ MonoBehaviour:
   _recoil: {fileID: 4570767839213652636}
   _animator: {fileID: 2069869355385823018}
   _parent: {fileID: 4962749743191915194}
+--- !u!114 &6751817453903407190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069869355385823009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eecaeaa204e4c3dbd96c6f0d8f1a9d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 7950303267749795192}
+  _range: 10
 --- !u!1 &3503070965833969150
 GameObject:
   m_ObjectHideFlags: 0

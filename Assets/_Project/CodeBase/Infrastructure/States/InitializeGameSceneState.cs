@@ -1,11 +1,14 @@
-﻿using _Project.CodeBase.Infrastructure.Factory;
+﻿using System.Threading.Tasks;
+using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
+using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.UI.Elements;
+using _Project.CodeBase.UI.Elements.Hud;
 using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.UI.Services.Windows;
 using Cysharp.Threading.Tasks;
@@ -57,8 +60,12 @@ namespace _Project.CodeBase.Infrastructure.States
         private async UniTask InitializeGameWorld()
         {
             var hero = await InitializePlayer();
+            await InitializeInteractableSpawner(hero);
             await InitializeUI(hero);
         }
+
+        private async UniTask InitializeInteractableSpawner(GameObject hero) => 
+            await _gameFactory.CreateInteractableSpawner(hero);
 
         private async UniTask InitializeUI(GameObject hero)
         {
@@ -80,7 +87,7 @@ namespace _Project.CodeBase.Infrastructure.States
             var actorUI = hud.GetComponentInChildren<ActorUI>();
             actorUI.Construct(hero.GetComponent<HeroHealth>(), hero.GetComponent<HeroAmmo>(),
                 hero.GetComponent<WeaponController>(), hero.GetComponent<InputService>(),
-                hero.GetComponent<HeroState>());
+                hero.GetComponent<HeroState>(), hero.GetComponent<Interaction>());
         }
 
         private void InitializeInventory(GameObject hero) => 
