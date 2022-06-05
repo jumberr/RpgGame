@@ -41,9 +41,9 @@ namespace _Project.CodeBase.Logic.Hero
 
         public async UniTask UnScope()
         {
-            _state.Enter(State.State.None);
-            _isScoping = false;
             await SmoothTranslation(_startPos, _startFov,_aimingInTime);
+            _isScoping = false;
+            _state.Enter(PlayerState.None);
         }
 
         private async void ScopeHandling()
@@ -63,8 +63,8 @@ namespace _Project.CodeBase.Logic.Hero
 
         private async UniTask Scope()
         {
-            if (_state.CurrentState == State.State.Reload) return;
-            _state.Enter(State.State.Scoping);
+            if (_state.CurrentPlayerState == PlayerState.Reload) return;
+            _state.Enter(PlayerState.Scoping);
             _isScoping = true;
             await SmoothTranslation(_adsPoint, _adsFov, _aimingInTime);
         }

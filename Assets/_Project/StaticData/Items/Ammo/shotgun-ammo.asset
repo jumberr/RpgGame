@@ -22,13 +22,13 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   ItemUIData:
-    Name: 9
+    Name: 21
     Icon: {fileID: 21300000, guid: bcf3bd629bea9784e9f5148b548a2793, type: 3}
     Description: 
   ItemPayloadData:
     DbId: 4
     ItemType: 0
-    Actions: 00000000010000000200000003000000
+    Actions: 0200000003000000
     GroundPrefab: {fileID: 3218732400185544470, guid: 625aa179f10c7414d950dbf65fe8d1c8,
       type: 3}
     MaxInContainer: 100

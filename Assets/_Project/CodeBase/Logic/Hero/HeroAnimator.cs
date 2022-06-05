@@ -15,7 +15,8 @@ namespace _Project.CodeBase.Logic.Hero
         private static readonly int Hide = Animator.StringToHash("Hide");
         private static readonly int Show = Animator.StringToHash("Show");
         private static readonly int Shoot = Animator.StringToHash("Shoot");
-        
+        private static readonly int EndRevolverReload = Animator.StringToHash("EndRevolverReload");
+
         private Animator _animator;
 
         public void Construct(Animator animator) =>
@@ -42,9 +43,6 @@ namespace _Project.CodeBase.Logic.Hero
                 _animator.SetTrigger(Shoot);
         }
 
-        //public void Scope(bool value) => 
-        //    _animator?.SetBool(Scoping, value);
-
         public void JumpAnimation()
         {
             if (IsAnimatorExists())
@@ -57,13 +55,19 @@ namespace _Project.CodeBase.Logic.Hero
         public async UniTask ShowWeapon() => 
             await ShowHide(Show);
 
-        private async Task ProceedReload(float reloadTime, int key)
+        public void EndRevolverReloadAnimation()
+        {
+            if (!IsAnimatorExists()) return;
+            _animator.SetTrigger(EndRevolverReload);
+        }
+
+        private async UniTask ProceedReload(float reloadTime, int key)
         {
             if (!IsAnimatorExists()) return;
             _animator.SetTrigger(key);
             await UniTask.Delay(TimeSpan.FromSeconds(reloadTime));
         }
-        
+
         private async UniTask ShowHide(int id)
         {
             if (!IsAnimatorExists()) return;

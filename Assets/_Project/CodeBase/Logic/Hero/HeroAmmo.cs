@@ -51,12 +51,12 @@ namespace _Project.CodeBase.Logic.Hero
         public void HideUI() =>
             OnHideWeapon?.Invoke();
         
-        public ReloadState Reload()
+        public (ReloadState, int, int) Reload()
         {
             var usedAmmo = _bulletMaxMagazine - BulletLeft;
-
+            
             if (usedAmmo <= 0 || BulletAll <= 0)
-                return ReloadState.None;
+                return (ReloadState.None, usedAmmo, 0);
 
             int grabbedFromInventory;
             if (BulletAll < usedAmmo)
@@ -73,7 +73,10 @@ namespace _Project.CodeBase.Logic.Hero
             }
 
             _inventory.RemoveItem(_itemName, grabbedFromInventory);
-            return usedAmmo == _bulletMaxMagazine ? ReloadState.FullReload : ReloadState.Reload;
+            
+            return (usedAmmo == _bulletMaxMagazine ?
+                ReloadState.FullReload : 
+                ReloadState.Reload, usedAmmo, grabbedFromInventory);
         }
 
         private void SetupWeaponData(Weapon weapon)

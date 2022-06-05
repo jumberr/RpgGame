@@ -23,13 +23,14 @@ MonoBehaviour:
     SerializationNodes: []
   ItemUIData:
     Name: 2
-    Icon: {fileID: 21300000, guid: 488638513cd8c574f9907cd162afeac6, type: 3}
+    Icon: {fileID: 21300000, guid: 87b26a99a29de914a867b2bca4571085, type: 3}
     Description: 
   ItemPayloadData:
-    DbId: 5
+    DbId: 19
     ItemType: 1
-    Actions: 00000000010000000200000003000000
-    GroundPrefab: {fileID: 0}
+    Actions: 0000000002000000
+    GroundPrefab: {fileID: 6378831021959968376, guid: 9f8c1a277d05b454b8a2f4ae9cda1155,
+      type: 3}
     MaxInContainer: 1
   Durability: 0.2
   WeaponData:
@@ -40,12 +41,15 @@ MonoBehaviour:
     IsAutomatic: 1
     Damage: 15
     ReloadTime: 2
+    FullReloadTime: 0
     Range: 50
     FireRate: 600
     Accuracy: 0.5
     AimAccuracy: 0.2
     AccuracyDistance: 100
+    AmmoType: 1
   Magazine:
     BulletsMax: 30
     BulletsLeft: 30
-  WeaponPrefab: {fileID: 0}
+  WeaponPrefab: {fileID: 1475004734686439129, guid: 8e49b557cdae8cf41a2d4d6a0eb98abe,
+    type: 3}

@@ -7,7 +7,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
     [Serializable]
     public class WeaponData
     {
-        // Recoil Settings
         public Vector3 Recoil;
         public Vector3 AimRecoil;
         

@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c6eb7881a54b4eb3dcaa7a5ec91fe6, type: 3}
+  m_Name: Revolver
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  ItemUIData:
+    Name: 10
+    Icon: {fileID: 21300000, guid: d747d773afd678946939360ae1122d66, type: 3}
+    Description: 
+  ItemPayloadData:
+    DbId: 25
+    ItemType: 1
+    Actions: 0000000002000000
+    GroundPrefab: {fileID: 1758916937797778874, guid: 9397bc7a508a93e4dbc5565e5fe4b581,
+      type: 3}
+    MaxInContainer: 1
+  Durability: 0
+  WeaponData:
+    Recoil: {x: -1, y: 1, z: 0.4}
+    AimRecoil: {x: -0.5, y: 0.5, z: 0.2}
+    Snappiness: 6.6319904
+    ReturnSpeed: 2.5000606
+    IsAutomatic: 0
+    Damage: 24.409985
+    ReloadTime: 6.9791946
+    FullReloadTime: 7.0156527
+    Range: 74.96536
+    FireRate: 125.00302
+    Accuracy: 0.11041974
+    AimAccuracy: 0.030211683
+    AccuracyDistance: 100
+    AmmoType: 3
+  Magazine:
+    BulletsMax: 6
+    BulletsLeft: 0
+  WeaponPrefab: {fileID: 7749649111390227278, guid: 56094bc7fe29773418b72fa178dbc5cf,
+    type: 3}
+  StartReloadDuration: 1.26
+  OneAmmoReloadDuration: 0.8
+  EndReloadAnimation: 1.2

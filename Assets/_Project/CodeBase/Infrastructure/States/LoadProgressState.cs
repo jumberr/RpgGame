@@ -52,14 +52,16 @@ namespace _Project.CodeBase.Infrastructure.States
         private PlayerProgress NewProgress()
         {
             var playerData = _staticDataService.ForPlayer();
+            var inventory = new Inventory(4);
+            var settings = new SettingsData(0.2f);
+            
             var healthData = new HealthData
             {
                 CurrentHp = playerData.HealthData.CurrentHp,
                 MaxHp = playerData.HealthData.MaxHp
             };
-            var inventory = new Inventory(4);
 
-            var progress = new PlayerProgress(healthData, _defaultStartPosition, inventory);
+            var progress = new PlayerProgress(healthData, _defaultStartPosition, inventory, settings);
             return progress;
         }
     }

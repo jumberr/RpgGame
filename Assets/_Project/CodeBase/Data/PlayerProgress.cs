@@ -9,15 +9,18 @@ namespace _Project.CodeBase.Data
         public HealthData HealthData;
         public PositionData PositionData;
         public Inventory Inventory;
+        public SettingsData Settings;
 
         public PlayerProgress(
             HealthData healthData,
             PositionData positionData,
-            Inventory inventory)
+            Inventory inventory,
+            SettingsData settings)
         {
             HealthData = healthData;
             PositionData = positionData;
             Inventory = inventory;
+            Settings = settings;
         }
     }
 }

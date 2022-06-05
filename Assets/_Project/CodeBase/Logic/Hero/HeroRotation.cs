@@ -8,12 +8,13 @@ namespace _Project.CodeBase.Logic.Hero
     {
         private const int MinRotationAngleY = -90;
         private const int MaxRotationAngleY = 90;
-        
+        private const int Multiplier = 100;
+
         [SerializeField] private InputService _inputService;
         [SerializeField] private Transform _player;
         [SerializeField] private Transform _hands;
-        [SerializeField] private float _mouseSensitivity;
         
+        private float _mouseSensitivity;
         private float _xRotation;
 
         public Vector2 Direction { get; private set; }
@@ -37,6 +38,9 @@ namespace _Project.CodeBase.Logic.Hero
             
             Direction = Vector2.zero;
         }
+
+        public void UpdateSensitivity(float sensitivity) => 
+            _mouseSensitivity = sensitivity * Multiplier;
 
         private void OnRotate(Vector2 dir) => 
             Direction = dir;

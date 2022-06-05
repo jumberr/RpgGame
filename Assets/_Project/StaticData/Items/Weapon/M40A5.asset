@@ -26,10 +26,10 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: f085544878ed9bf4fbe1634dabd8ee30, type: 3}
     Description: 
   ItemPayloadData:
-    DbId: 12
+    DbId: 18
     ItemType: 1
-    Actions: 00000000010000000200000003000000
-    GroundPrefab: {fileID: 7076942377428145089, guid: 3a997dff9bdf88c49994fe305b33ba11,
+    Actions: 0000000002000000
+    GroundPrefab: {fileID: 1896483440669827849, guid: 3fc481a36e8775147841a072fec3b3a9,
       type: 3}
     MaxInContainer: 1
   Durability: 0
@@ -51,5 +51,5 @@ MonoBehaviour:
   Magazine:
     BulletsMax: 5
     BulletsLeft: 0
-  WeaponPrefab: {fileID: 4703516776147170339, guid: f3d12775b00ca9047847291652f1fde7,
+  WeaponPrefab: {fileID: 2089622913178447811, guid: 25f066bd7c242274db8f3beb13c4df25,
     type: 3}

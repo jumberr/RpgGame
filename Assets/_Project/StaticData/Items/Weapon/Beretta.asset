@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba93958214444227a6cd35afa27d1657, type: 3}
+  m_Name: Beretta
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  ItemUIData:
+    Name: 4
+    Icon: {fileID: 21300000, guid: f0a3d494b6b7aa64c9053e472decaa82, type: 3}
+    Description: 
+  ItemPayloadData:
+    DbId: 13
+    ItemType: 1
+    Actions: 0000000002000000
+    GroundPrefab: {fileID: 226407184526406250, guid: f4c5ae4d0ebf4444fa93cbabc4ecf4ca,
+      type: 3}
+    MaxInContainer: 1
+  Durability: 0
+  WeaponData:
+    Recoil: {x: -0.5, y: 0.5, z: 0.17}
+    AimRecoil: {x: -0.25, y: 0.25, z: 0.08}
+    Snappiness: 3.3264465
+    ReturnSpeed: 2.5486712
+    IsAutomatic: 0
+    Damage: 11.041974
+    ReloadTime: 2.2760856
+    FullReloadTime: 2.7135842
+    Range: 20.521107
+    FireRate: 200.34999
+    Accuracy: 0.10798919
+    AimAccuracy: 0.061808795
+    AccuracyDistance: 100
+    AmmoType: 3
+  Magazine:
+    BulletsMax: 10
+    BulletsLeft: 0
+  WeaponPrefab: {fileID: 2117939424415251141, guid: ca23dfcd1ff72804a8a18a7a01e4a979,
+    type: 3}

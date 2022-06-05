@@ -63,6 +63,9 @@ namespace _Project.CodeBase.Infrastructure.Factory
             inventory.Construct(_interactableSpawner);
         }
 
+        public void AddProgressWatchers(GameObject go) => 
+            RegisterProgressWatchers(go);
+
         public void Cleanup()
         {
             _poolManager.CleanUp();

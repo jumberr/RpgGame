@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Beretta
+  m_Controller: {fileID: 9100000, guid: d506755e7f1a2354589916940ca2316c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 641136364113939877, guid: 17a1dd5302de00149a172ab335ea495b,
+      type: 3}
+    m_OverrideClip: {fileID: 2751788880015041205, guid: f1ca1ad524ea10548ab1edf186b54691,
+      type: 3}
+  - m_OriginalClip: {fileID: 529765338226212847, guid: 17a1dd5302de00149a172ab335ea495b,
+      type: 3}
+    m_OverrideClip: {fileID: -9131487860214168047, guid: f1ca1ad524ea10548ab1edf186b54691,
+      type: 3}
+  - m_OriginalClip: {fileID: 4703884177966736917, guid: 17a1dd5302de00149a172ab335ea495b,
+      type: 3}
+    m_OverrideClip: {fileID: -412204705352906072, guid: f1ca1ad524ea10548ab1edf186b54691,
+      type: 3}
+  - m_OriginalClip: {fileID: -1498010087492872569, guid: 17a1dd5302de00149a172ab335ea495b,
+      type: 3}
+    m_OverrideClip: {fileID: -1498010087492872569, guid: f1ca1ad524ea10548ab1edf186b54691,
+      type: 3}
+  - m_OriginalClip: {fileID: -3171551108635181152, guid: 17a1dd5302de00149a172ab335ea495b,
+      type: 3}
+    m_OverrideClip: {fileID: -93942283449191570, guid: f1ca1ad524ea10548ab1edf186b54691,
+      type: 3}

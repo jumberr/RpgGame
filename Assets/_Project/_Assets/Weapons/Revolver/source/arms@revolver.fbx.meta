@@ -21,6 +21,9 @@ ModelImporter:
   - first:
       74: 8593529058521555276
     second: revolver-kick
+  - first:
+      74: -7449802195202467381
+    second: revolver-end-reload
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -83,7 +86,7 @@ ModelImporter:
       takeName: CINEMA_4D_Main
       internalID: 0
       firstFrame: 12
-      lastFrame: 221
+      lastFrame: 185
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -102,7 +105,91 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.23747833
+        functionName: OnAmmoEnabled
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.35150817
+        functionName: OnAmmoAdded
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.37804827
+        functionName: OnAmmoEnabled
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.48077893
+        functionName: OnAmmoAdded
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.50960684
+        functionName: OnAmmoEnabled
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
+      - time: 0.6149425
+        functionName: OnAmmoAdded
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
+      - time: 0.6358563
+        functionName: OnAmmoEnabled
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 3
+        messageOptions: 0
+      - time: 0.7501145
+        functionName: OnAmmoAdded
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 3
+        messageOptions: 0
+      - time: 0.7678689
+        functionName: OnAmmoEnabled
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 4
+        messageOptions: 0
+      - time: 0.87971485
+        functionName: OnAmmoAdded
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 4
+        messageOptions: 0
+      - time: 0.90167
+        functionName: OnAmmoEnabled
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 5
+        messageOptions: 0
+      - time: 1
+        functionName: OnAmmoAdded
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 5
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -200,6 +287,35 @@ ModelImporter:
       internalID: 0
       firstFrame: 296
       lastFrame: 320
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: revolver-end-reload
+      takeName: CINEMA_4D_Main
+      internalID: 0
+      firstFrame: 185
+      lastFrame: 221
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -73,9 +73,9 @@ namespace _Project.CodeBase.UI.Elements.Crosshair
             _input = dir;
         }
 
-        private void OnChangeState(State state)
+        private void OnChangeState(PlayerState playerState)
         {
-            if (state == State.Scoping)
+            if (playerState == PlayerState.Scoping)
                 _view.Hide();
             else
                 _view.Show(_state);

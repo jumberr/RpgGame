@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CloseButton: {fileID: 2961180283459042023}
+  HideObject: {fileID: 9121608955545232503}
   _prefab: {fileID: 803084970579679055, guid: f2989da5f1c26f440bfa7501b375566b, type: 3}
   _context: {fileID: 3694240919917308815}
   _parent: {fileID: 5545651707968249550}

@@ -16,6 +16,9 @@ namespace _Project.CodeBase.UI.Services.Windows
                 case WindowId.Inventory:
                     _uiFactory.OpenInventory();
                     break;
+                case WindowId.Settings:
+                    _uiFactory.OpenSettings();
+                    break;
             }
         }
     }

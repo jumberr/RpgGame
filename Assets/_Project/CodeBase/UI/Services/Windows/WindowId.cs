@@ -4,5 +4,6 @@ namespace _Project.CodeBase.UI.Services.Windows
     {
         Unknown = 0,
         Inventory = 1,
+        Settings = 2
     }
 }

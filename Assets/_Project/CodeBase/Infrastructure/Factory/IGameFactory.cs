@@ -14,7 +14,8 @@ namespace _Project.CodeBase.Infrastructure.Factory
 
         UniTask<GameObject> CreateHero(Vector3 at);
         UniTask CreateInteractableSpawner(GameObject hero);
-
+        void AddProgressWatchers(GameObject go);
+        
         void Cleanup();
         void WarmUp();
     }

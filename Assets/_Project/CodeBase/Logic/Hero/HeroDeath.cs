@@ -1,4 +1,5 @@
 ﻿using System;
+using _Project.CodeBase.Logic.Hero.Reload;
 using _Project.CodeBase.Logic.Hero.State;
 using DG.Tweening;
 using UnityEngine;

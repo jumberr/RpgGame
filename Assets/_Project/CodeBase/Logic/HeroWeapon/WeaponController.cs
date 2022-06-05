@@ -1,7 +1,9 @@
 ﻿using System;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero;
+using _Project.CodeBase.Logic.Hero.Reload;
 using _Project.CodeBase.Logic.Hero.State;
+using _Project.CodeBase.Logic.HeroWeapon.Animations;
 using _Project.CodeBase.Logic.Inventory;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -53,15 +55,16 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             _weapon = weapon;
 
             _ammo.Construct(weapon);
-            _reload.Construct(weapon);
             _recoil.Construct(weapon);
-            UpdateData(weapon);
+            SetupConfig(weapon);
         }
 
-        private void UpdateData(Weapon weapon)
+        private void SetupConfig(Weapon weapon)
         {
-            var config = GetComponentInChildren<WeaponConfiguration>();
-            _shooting.UpdateConfig(weapon.WeaponData, config);
+            var config = _currentWeapon.GetComponent<WeaponConfiguration>();
+            _currentWeapon.TryGetComponent<RevolverAnimation>(out var rev);
+            _shooting.UpdateConfig(weapon, config);
+            _reload.Construct(weapon, config, rev);
             _scoping.Construct(config);
         }
 

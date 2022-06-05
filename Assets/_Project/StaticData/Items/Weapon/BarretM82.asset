@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba93958214444227a6cd35afa27d1657, type: 3}
+  m_Name: BarretM82
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  ItemUIData:
+    Name: 5
+    Icon: {fileID: 21300000, guid: 2515e8a57ac94cd4fa9e3b5fd27a665d, type: 3}
+    Description: 
+  ItemPayloadData:
+    DbId: 12
+    ItemType: 1
+    Actions: 0000000002000000
+    GroundPrefab: {fileID: 8252672009285812156, guid: 1c4b4730ef4d7eb49a0e5f29222f88de,
+      type: 3}
+    MaxInContainer: 1
+  Durability: 0
+  WeaponData:
+    Recoil: {x: -2, y: 2, z: 0.28}
+    AimRecoil: {x: -1.23, y: 1.23, z: 0.16}
+    Snappiness: 7.312544
+    ReturnSpeed: 2.4514494
+    IsAutomatic: 0
+    Damage: 100
+    ReloadTime: 1.7292125
+    FullReloadTime: 2.3854601
+    Range: 100
+    FireRate: 52.086605
+    Accuracy: 0.6086819
+    AimAccuracy: 0.022920042
+    AccuracyDistance: 100
+    AmmoType: 2
+  Magazine:
+    BulletsMax: 0
+    BulletsLeft: 0
+  WeaponPrefab: {fileID: 1263574551393705365, guid: dad35b25036a5d14eaa63dc28af916ee,
+    type: 3}

@@ -21,7 +21,7 @@ namespace _Project.CodeBase.Editor
         private static void Open()
         {
             var window = GetWindow<RPGEditorWindow>();
-            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(800, 500);
+            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(900, 600);
         }
         
         protected override OdinMenuTree BuildMenuTree()

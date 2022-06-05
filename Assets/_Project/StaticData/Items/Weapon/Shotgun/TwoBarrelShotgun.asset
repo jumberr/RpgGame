@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0129e852884e422db7d73b32c6994c90, type: 3}
+  m_Name: TwoBarrelShotgun
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  ItemUIData:
+    Name: 7
+    Icon: {fileID: 21300000, guid: b99b0a9b84facda4886c0786ca070fe0, type: 3}
+    Description: 
+  ItemPayloadData:
+    DbId: 25
+    ItemType: 1
+    Actions: 0000000002000000
+    GroundPrefab: {fileID: 6607413444922787224, guid: d832494099aa64047908ba75dbcd4c70,
+      type: 3}
+    MaxInContainer: 1
+  Durability: 0
+  WeaponData:
+    Recoil: {x: -1, y: 1, z: 0.2}
+    AimRecoil: {x: -0.5, y: 0.5, z: 0.1}
+    Snappiness: 6.026948
+    ReturnSpeed: 2.0346472
+    IsAutomatic: 0
+    Damage: 35.10439
+    ReloadTime: 2.9518073
+    FullReloadTime: 2.9161615
+    Range: 14.267569
+    FireRate: 110.922935
+    Accuracy: 0.75021166
+    AimAccuracy: 0.6507197
+    AccuracyDistance: 14.267569
+    AmmoType: 4
+  Magazine:
+    BulletsMax: 2
+    BulletsLeft: 0
+  WeaponPrefab: {fileID: 6322586335249049182, guid: 18466cc1393e8e149a35353350b20dad,
+    type: 3}
+  FractionAmount: 6

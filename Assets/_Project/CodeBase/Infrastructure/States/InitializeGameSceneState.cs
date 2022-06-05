@@ -72,6 +72,7 @@ namespace _Project.CodeBase.Infrastructure.States
             await InitializeUIRoot();
             await InitializeHud(hero);
             InitializeInventory(hero);
+            InitializeSettings(hero);
         }
 
         private async UniTask<GameObject> InitializePlayer() => 
@@ -92,6 +93,12 @@ namespace _Project.CodeBase.Infrastructure.States
 
         private void InitializeInventory(GameObject hero) => 
              _uiFactory.CreateInventory(hero);
+
+        private void InitializeSettings(GameObject hero)
+        {
+            var settings = _uiFactory.CreateSettings(hero.GetComponent<HeroRotation>());
+            _gameFactory.AddProgressWatchers(settings);
+        }
 
         private void InformProgressReaders()
         {

@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using _Project.CodeBase.Constants;
 using _Project.CodeBase.Infrastructure.Services.InputService;
+using _Project.CodeBase.Logic.Hero.Reload;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.HeroWeapon.Effects;
+using _Project.CodeBase.StaticData.ItemsDataBase.Types;
 using _Project.CodeBase.Utils.ObjectPool;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -48,6 +51,8 @@ namespace _Project.CodeBase.Logic.Hero
         private float _accuracy;
         private float _aimAccuracy;
         private float _accuracyDistance;
+
+        private int _fractionCount;
 
         public void Construct(IPoolManager poolManager)
         {
@@ -103,16 +108,19 @@ namespace _Project.CodeBase.Logic.Hero
         private void OnDisable() => 
             _inputService.OnAttack -= EnableDisableShoot;
 
-        public void UpdateConfig(WeaponData weapon, WeaponConfiguration config)
+        public void UpdateConfig(Weapon weapon, WeaponConfiguration config)
         {
             //var weapon = _weapon.WeaponData;
-            _isAutomatic = weapon.IsAutomatic;
-            _damage = weapon.Damage;
-            _range = weapon.Range;
-            _fireSpeed = 60 / weapon.FireRate;
-            _accuracy = weapon.Accuracy;
-            _aimAccuracy = weapon.AimAccuracy;
-            _accuracyDistance = weapon.AccuracyDistance;
+            _isAutomatic = weapon.WeaponData.IsAutomatic;
+            _damage = weapon.WeaponData.Damage;
+            _range = weapon.WeaponData.Range;
+            _fireSpeed = 60 / weapon.WeaponData.FireRate;
+            _accuracy = weapon.WeaponData.Accuracy;
+            _aimAccuracy = weapon.WeaponData.AimAccuracy;
+            _accuracyDistance = weapon.WeaponData.AccuracyDistance;
+
+            var shotgun = weapon as Shotgun;
+            _fractionCount = shotgun != null ? shotgun.FractionAmount : 1;
 
             SetupWeaponConfiguration(config);
         }
@@ -133,34 +141,38 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void Shoot()
         {
-            if (_state.CurrentState == State.State.Reload) return;
+            if (_state.CurrentPlayerState == PlayerState.Reload) return;
 
             if (!_ammo.CanShoot())
             {
                 _reload.Reload();
                 return;
             }
-
-            var dir = RandShootDir();
             
             _ammo.UseOneAmmo();
             _animator.ShootAnimation();
             _weaponLight.TurnOn(TimeDestroyFX);
             _recoil.RecoilFire();
             MuzzleFlash();
-            
-            if (Physics.Raycast(_heroCamera.transform.position, dir, out var hit, _range, _layerMask))
-            {
-                //if (hit.transform.TryGetComponent<IHealth>(out var enemy))
-                //    Debug.Log(enemy);
 
-                HitParticles(hit, TagConstants.SandTag, _sandParticlesFX);
-                HitParticles(hit, TagConstants.RockTag, _rockParticlesFX);
-                SpawnBulletTrail(_firePoint.position, hit.point);
-                Debug.Log(hit.collider.name);
-            }
-            else
-                SpawnBulletTrail(_firePoint.position, _heroCamera.transform.position + dir * 0.15f);
+            var dir = _fractionCount == 1 ? new List<Vector3> {RandShootDir()} : RandShotgunDir();
+
+            for (var i = 0; i < _fractionCount; i++)
+            {
+                if (Physics.Raycast(_heroCamera.transform.position, dir[i], out var hit, _range, _layerMask))
+                {
+                    //if (hit.transform.TryGetComponent<IHealth>(out var enemy))
+                    //    Debug.Log(enemy);
+
+                    HitParticles(hit, TagConstants.SandTag, _sandParticlesFX);
+                    HitParticles(hit, TagConstants.RockTag, _rockParticlesFX);
+                    SpawnBulletTrail(_firePoint.position, hit.point);
+                    Debug.Log(hit.collider.name);
+                }
+                else
+                    SpawnBulletTrail(_firePoint.position, _heroCamera.transform.position + dir[i] * 0.15f);
+            }   
+            
         }
 
         private async void MuzzleFlash()
@@ -181,12 +193,10 @@ namespace _Project.CodeBase.Logic.Hero
 
         private async void HitParticles(RaycastHit hit, string tag, GameObject particles)
         {
-            if (hit.collider.CompareTag(tag))
-            {
-                var fx = _poolManager.SpawnObject(particles, hit.point, Quaternion.LookRotation(hit.normal));
-                await UniTask.Delay(TimeSpan.FromSeconds(TimeDestroyEnvFx));
-                _poolManager.ReleaseObject(fx);
-            }
+            if (!hit.collider.CompareTag(tag)) return;
+            var fx = _poolManager.SpawnObject(particles, hit.point, Quaternion.LookRotation(hit.normal));
+            await UniTask.Delay(TimeSpan.FromSeconds(TimeDestroyEnvFx));
+            _poolManager.ReleaseObject(fx);
         }
 
         private void PullTrigger() => 
@@ -198,18 +208,28 @@ namespace _Project.CodeBase.Logic.Hero
             if (_isAutomatic) 
                 _automaticFireTimer = 0;
         }
-        
-        private float RandDistance() => 
-            (_state.CurrentState == State.State.Scoping ? _aimAccuracy : _accuracy) * Mathf.Sqrt(-2 * Mathf.Log(1 - Random.Range(0, 1f)));
+
+        private List<Vector3> RandShotgunDir()
+        {
+            var randShotgunDir = new List<Vector3>();
+
+            for (var i = 0; i < _fractionCount; i++) 
+                randShotgunDir.Add(RandShootDir());
+
+            return randShotgunDir;
+        }
 
         private Vector3 RandShootDir()
-         {
-             var distanceDispersion = RandDistance(); // dispersion distance
-             var angleDispersion = Random.Range(0, 2 * Mathf.PI); // dispersion angle
+        {
+            var distanceDispersion = RandDistance(); // dispersion distance
+            var angleDispersion = Random.Range(0, 2 * Mathf.PI); // dispersion angle
  
-             var coordX = distanceDispersion * Mathf.Cos(angleDispersion);
-             var coordY = distanceDispersion * Mathf.Sin(angleDispersion);
-             return _heroCamera.transform.forward * _accuracyDistance + new Vector3(coordX, coordY, 0);
-         }
+            var coordX = distanceDispersion * Mathf.Cos(angleDispersion);
+            var coordY = distanceDispersion * Mathf.Sin(angleDispersion);
+            return _heroCamera.transform.forward * _accuracyDistance + new Vector3(coordX, coordY, 0);
+        }
+
+        private float RandDistance() => 
+            (_state.CurrentPlayerState == PlayerState.Scoping ? _aimAccuracy : _accuracy) * Mathf.Sqrt(-2 * Mathf.Log(1 - Random.Range(0, 1f)));
     }
 }

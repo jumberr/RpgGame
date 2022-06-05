@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
@@ -7,5 +8,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         public Transform FirePoint;
         public GameObject LightPoint;
         public GameObject AdsPoint;
+        public List<GameObject> RevolverAmmo;
     }
 }
