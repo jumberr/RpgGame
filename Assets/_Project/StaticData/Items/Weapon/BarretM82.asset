@@ -48,6 +48,7 @@ MonoBehaviour:
     AimAccuracy: 0.022920042
     AccuracyDistance: 100
     AmmoType: 2
+    Scoping: 1
   Magazine:
     BulletsMax: 0
     BulletsLeft: 0

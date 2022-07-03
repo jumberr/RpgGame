@@ -1,5 +1,6 @@
 ﻿using System;
 using _Project.CodeBase.Logic.Hero.Reload;
+using _Project.CodeBase.Logic.Hero.Shooting;
 using _Project.CodeBase.Logic.Hero.State;
 using DG.Tweening;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private HeroState _state;
         [SerializeField] private HeroAnimator _animator;
         
-        [SerializeField] private HeroShooting _shooting;
+        [SerializeField] private HeroAttack _attack;
         [SerializeField] private HeroAmmo _ammo;
         [SerializeField] private HeroReload _reload;
         [SerializeField] private HeroScoping _scoping;
@@ -50,7 +51,7 @@ namespace _Project.CodeBase.Logic.Hero
             _animator.enabled = false;
             _state.enabled = false;
 
-            _shooting.enabled = false;
+            _attack.enabled = false;
             _ammo.enabled = false;
             _reload.enabled = false;
             _scoping.enabled = false;

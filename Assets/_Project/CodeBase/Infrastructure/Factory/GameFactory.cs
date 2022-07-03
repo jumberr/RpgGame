@@ -3,6 +3,7 @@ using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
+using _Project.CodeBase.Logic.Hero.Shooting;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Services;
@@ -42,7 +43,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
             HeroGameObject = await _assetProvider.InstantiateAsync(AssetPath.HeroPath, at);
             RegisterProgressWatchers(HeroGameObject);
 
-            var heroShooting = HeroGameObject.GetComponent<HeroShooting>();
+            var heroShooting = HeroGameObject.GetComponent<HeroAttack>();
             heroShooting.Construct(_poolManager);
 
             var inventory = HeroGameObject.GetComponent<HeroInventory>();

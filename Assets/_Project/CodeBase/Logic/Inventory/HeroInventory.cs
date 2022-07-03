@@ -48,6 +48,8 @@ namespace _Project.CodeBase.Logic.Inventory
             var item = _itemsDataBase.FindItem(dbId);
             if (item is Weapon weapon) 
                 EquipWeapon(weapon, slotID);
+            if (item is Knife knife) 
+                EquipWeapon(knife, slotID);
             if (item is Armor armor) 
                 EquipArmor(armor);
         }
@@ -128,6 +130,9 @@ namespace _Project.CodeBase.Logic.Inventory
         
         private async void EquipWeapon(Weapon weapon, int slotID) => 
             await _weaponController.CreateNewWeapon(weapon.WeaponPrefab, weapon, slotID);
+        
+        private async void EquipWeapon(Knife weapon, int slotID) => 
+            await _weaponController.CreateNewMeleeWeapon(weapon.Prefab, weapon, slotID);
 
         private void EquipArmor(Armor armor)
         {

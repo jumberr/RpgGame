@@ -26,7 +26,7 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: d747d773afd678946939360ae1122d66, type: 3}
     Description: 
   ItemPayloadData:
-    DbId: 25
+    DbId: 23
     ItemType: 1
     Actions: 0000000002000000
     GroundPrefab: {fileID: 1758916937797778874, guid: 9397bc7a508a93e4dbc5565e5fe4b581,
@@ -48,6 +48,7 @@ MonoBehaviour:
     AimAccuracy: 0.030211683
     AccuracyDistance: 100
     AmmoType: 3
+    Scoping: 1
   Magazine:
     BulletsMax: 6
     BulletsLeft: 0

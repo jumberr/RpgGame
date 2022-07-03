@@ -43,5 +43,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         public float AccuracyDistance;
 
         public AmmoType AmmoType;
+        public bool Scoping;
     }
 }

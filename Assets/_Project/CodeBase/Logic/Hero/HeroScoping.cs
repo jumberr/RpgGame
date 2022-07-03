@@ -2,6 +2,7 @@
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
+using _Project.CodeBase.StaticData.ItemsDataBase.Types;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -23,9 +24,16 @@ namespace _Project.CodeBase.Logic.Hero
         private float _startFov;
         private float _adsFov = 32f;
         private bool _isScoping;
+        private bool _isNeedScope;
         
-        public void Construct(WeaponConfiguration config) => 
+        public void Construct(Weapon weapon, WeaponConfiguration config)
+        {
+            _isNeedScope = weapon.WeaponData.Scoping;
             _adsPoint = _weaponHolder.localPosition - _weaponHolder.parent.InverseTransformPoint(config.AdsPoint.transform.position);
+        }
+        
+        public void Construct(Knife knife) => 
+            _isNeedScope = knife.Scoping;
 
         private void OnEnable() => 
             _inputService.OnScope += ScopeHandling;
@@ -48,6 +56,8 @@ namespace _Project.CodeBase.Logic.Hero
 
         private async void ScopeHandling()
         {
+            if (!_isNeedScope) return;
+            
             if (_cts != null)
             {
                 _cts.Cancel();

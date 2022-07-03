@@ -2,6 +2,7 @@
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.HeroWeapon.Animations;
+using _Project.CodeBase.StaticData.ItemsDataBase.Types;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         private DefaultReload _defaultReload;
         private ReloadRevolver _reloadRevolver;
         private bool _isRevolver;
+        private bool _isNeedReload;
         
         public void Construct(Weapon weapon, WeaponConfiguration config, RevolverAnimation revolverAnimation)
         {
@@ -31,7 +33,11 @@ namespace _Project.CodeBase.Logic.Hero.Reload
                 _isRevolver = false;
                 _defaultReload.Construct(weapon);
             }
+            _isNeedReload = true;
         }
+        
+        public void Construct(Knife knife) => 
+            _isNeedReload = false;
 
         private void Start()
         {
@@ -50,6 +56,7 @@ namespace _Project.CodeBase.Logic.Hero.Reload
 
         public async void Reload()
         {
+            if (!_isNeedReload) return;
             if (_state.CurrentPlayerState == PlayerState.Reload) return;
 
             var reload = _ammo.Reload();

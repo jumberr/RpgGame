@@ -111,7 +111,6 @@ MonoBehaviour:
   _inputService: {fileID: 6525794905949041474}
   _player: {fileID: 2069869355385823022}
   _hands: {fileID: 3454814663676999890}
-  _mouseSensitivity: 40
 --- !u!114 &2069869355385823018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +152,7 @@ MonoBehaviour:
   _rotation: {fileID: 5001262662604618594}
   _state: {fileID: 6465014802036329193}
   _animator: {fileID: 2069869355385823018}
-  _shooting: {fileID: 6345382572701065086}
+  _attack: {fileID: 0}
   _ammo: {fileID: 3524021818451517063}
   _reload: {fileID: 8354393796157299354}
   _scoping: {fileID: 5039849704631123406}
@@ -172,7 +171,7 @@ MonoBehaviour:
   _heroCamera: {fileID: 7950303267749795192}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 4104
   _lineFade: {fileID: 4949848307316654512, guid: c1c6823599ce40d4e87451f783612d59,
     type: 3}
   _weaponLight: {fileID: 7233730278501378840}
@@ -281,7 +280,7 @@ MonoBehaviour:
   _inventory: {fileID: 6614678942181432447}
   _inputService: {fileID: 6525794905949041474}
   _state: {fileID: 6465014802036329193}
-  _shooting: {fileID: 6345382572701065086}
+  _attack: {fileID: 6345382572701065086}
   _scoping: {fileID: 5039849704631123406}
   _ammo: {fileID: 3524021818451517063}
   _reload: {fileID: 8354393796157299354}
@@ -609,7 +608,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3961
+    m_Bits: 8057
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

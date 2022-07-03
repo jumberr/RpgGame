@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3647062714116512405}
   - component: {fileID: 7503255013500581793}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Wooden Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 5380783567144078163}
   - component: {fileID: 5796489578449557283}
   - component: {fileID: 7204955388628225118}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Wooden_Table_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 6600687127498234288}
   - component: {fileID: 5065039545406896231}
   - component: {fileID: 4224670898214252781}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Wooden_Table_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 5875795766589298487}
   - component: {fileID: 7121838508844314288}
   - component: {fileID: 70018721944138626}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Wooden_Table_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 697171402261169733}
   - component: {fileID: 2055920428829876588}
   - component: {fileID: 4975397102016611145}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Wooden_Table_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 1499589395556232773}
   - component: {fileID: 6184354661298270753}
   - component: {fileID: 4429703294034531392}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Wooden_Table_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

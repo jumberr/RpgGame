@@ -2,6 +2,7 @@
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Inventory;
+using _Project.CodeBase.StaticData.ItemsDataBase.Types;
 using _Project.CodeBase.Utils.Extensions;
 using UnityEngine;
 
@@ -28,6 +29,9 @@ namespace _Project.CodeBase.Logic.Hero
             var sprite = _inventory.ItemsDataBase.FindItem(_itemName).ItemUIData.Icon;
             OnChangeWeapon?.Invoke(BulletLeft, BulletAll, sprite);
         }
+        
+        public void Construct(Knife knife) => 
+            SetupKnifeData();
 
         private void OnEnable() => 
             _inventory.OnUpdate += UpdateAmmoValue;
@@ -85,6 +89,12 @@ namespace _Project.CodeBase.Logic.Hero
             _bulletMaxMagazine = weapon.Magazine.BulletsMax;
             _type = weapon.WeaponData.AmmoType;
             _itemName = _type.ToItemName();
+        }
+        
+        private void SetupKnifeData()
+        {
+            BulletLeft = 0;
+            _bulletMaxMagazine = 0;
         }
 
         private void UpdateAmmoValue()

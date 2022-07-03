@@ -26,6 +26,14 @@ namespace _Project.CodeBase.Logic.Hero
             _returnSpeed = weapon.WeaponData.ReturnSpeed;
         }
         
+        public void Construct(Knife knife)
+        {
+            _recoil = Vector3.zero;
+            _aimRecoil = Vector3.zero;
+            _snappiness = 0;
+            _returnSpeed = 0;
+        }
+        
         private void Update()
         {
             _targetRotation = Vector3.Lerp(_targetRotation, Vector3.zero, _returnSpeed * Time.deltaTime);

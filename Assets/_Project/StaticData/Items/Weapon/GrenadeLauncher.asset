@@ -47,6 +47,7 @@ MonoBehaviour:
     AimAccuracy: 0
     AccuracyDistance: 0
     AmmoType: 6
+    Scoping: 1
   Magazine:
     BulletsMax: 0
     BulletsLeft: 0

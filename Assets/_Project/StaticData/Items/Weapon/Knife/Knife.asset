@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7399b43be72490ca68a3c391c5e53c2, type: 3}
+  m_Name: Knife
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  ItemUIData:
+    Name: 14
+    Icon: {fileID: 21300000, guid: d4de1a0cdd0fe614383b510cfaf04376, type: 3}
+    Description: 
+  ItemPayloadData:
+    DbId: 22
+    ItemType: 1
+    Actions: 0000000002000000
+    GroundPrefab: {fileID: 215372590480101995, guid: ae552448de10f7f4eb4c4ea57df4ab05,
+      type: 3}
+    MaxInContainer: 1
+  Durability: 0
+  Damage: 35
+  Range: 1.5
+  FireRate: 60
+  Radius: 0.3
+  Prefab: {fileID: 4828828816598372186, guid: fafa64bbfabcd47438f9aea0e04fb277, type: 3}
+  Scoping: 0
