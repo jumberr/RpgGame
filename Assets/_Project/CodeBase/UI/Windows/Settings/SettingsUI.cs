@@ -21,16 +21,7 @@ namespace _Project.CodeBase.UI.Windows.Settings
             _rotation = rotation;
             OnUpdateSensitivity += rotation.UpdateSensitivity;
         }
-
-        protected override void SubscribeUpdates() => 
-            _slider.onValueChanged.AddListener(ChangeValue);
-
-        protected override void Cleanup() => 
-            _slider.onValueChanged.RemoveAllListeners();
-
-        private void OnDestroy() => 
-            OnUpdateSensitivity -= _rotation.UpdateSensitivity;
-
+        
         public void LoadProgress(PlayerProgress progress)
         {
             _settings = progress.Settings;
@@ -40,6 +31,18 @@ namespace _Project.CodeBase.UI.Windows.Settings
 
         public void UpdateProgress(PlayerProgress progress) => 
             progress.Settings = _settings;
+
+        protected override void SubscribeUpdates()
+        {
+            base.SubscribeUpdates();
+            _slider.onValueChanged.AddListener(ChangeValue);
+        }
+
+        protected override void Cleanup()
+        {
+            OnUpdateSensitivity -= _rotation.UpdateSensitivity;
+            _slider.onValueChanged.RemoveAllListeners();
+        }
 
         private void ChangeValue(float value)
         {

@@ -14,7 +14,7 @@ namespace _Project.CodeBase.UI.Services
         GameObject CreateSettings(HeroRotation rotation);
         void SetupWindowButtons(IWindowService windowService);
 
-        void OpenInventory();
-        void OpenSettings();
+        void OpenWindow(WindowId id);
+        void HideWindow(WindowId id);
     }
 }

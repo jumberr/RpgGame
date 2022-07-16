@@ -6,22 +6,21 @@ namespace _Project.CodeBase.Logic.Inventory
     [Serializable]
     public class Inventory
     {
+        public InventorySlot[] HotBarSlots;
         public InventorySlot[] Slots;
 
-        public Inventory(int amount) => 
-            InitializeInventory(amount);
+        public Inventory(int hotBarAmount, int slotAmount) => 
+            InitializeInventory(hotBarAmount, slotAmount);
 
-        public void InitializeInventory(int amount)
+        public void InitializeInventory(int hotBarAmount, int slotAmount)
         {
-            Slots = new InventorySlot[amount];
-            for (var i = 0; i < Slots.Length; i++)
-            {
-                Slots[i] = new InventorySlot
-                {
-                    DbId = -1,
-                    State = SlotState.Empty
-                };
-            }
+            HotBarSlots = new InventorySlot[hotBarAmount];
+            for (var i = 0; i < HotBarSlots.Length; i++) 
+                HotBarSlots[i] = new InventorySlot();
+
+            Slots = new InventorySlot[slotAmount];
+            for (var i = 0; i < Slots.Length; i++) 
+                Slots[i] = new InventorySlot();
         }
 
         public void AddItemToInventory(int dbId, ItemPayloadData item,  int amount)

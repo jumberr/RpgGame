@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.Utils.Extensions;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,36 +13,41 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         [SerializeField] private InventoryContextUI _context;
         [SerializeField] private Transform _parent;
         [SerializeField] private Button _closeContext;
+        [Space]
+        [SerializeField] private Transform _hotBarParent;
 
-        private readonly List<InventorySlotUI> _list = new List<InventorySlotUI>();
+        private readonly List<InventorySlotUI> _inventory = new List<InventorySlotUI>();
+        private readonly List<InventorySlotUI> _hotBar = new List<InventorySlotUI>();
         private HeroInventory _heroInventory;
         
-        public void Construct(HeroInventory heroInventory) => 
+        public async void Construct(HeroInventory heroInventory)
+        {
             _heroInventory = heroInventory;
-
-        protected override void OnAwake()
-        {
-            base.OnAwake();
-            _context.Construct(_heroInventory, _parent.GetComponent<RectTransform>());
-            CloseButton.onClick.AddListener(_context.Clear);
-            _closeContext.onClick.AddListener(_context.Clear);
-            InitializeSlots();
+            await UniTask.WaitUntil(() => _heroInventory.Inventory != null);
+            OnConstructInitialized();
         }
-        
-        private void OnDestroy()
+
+        protected override void OnConstructInitialized()
         {
+            _context.Construct(_heroInventory, _parent.GetComponent<RectTransform>());
+            Subscribe();
+            InitializeSlots();
+            UpdateData();
+        }
+
+        protected override void Cleanup()
+        {
+            _heroInventory.OnUpdate -= UpdateData;
             CloseButton.onClick.RemoveAllListeners();
             _closeContext.onClick.RemoveAllListeners();
         }
 
-        protected override void SubscribeUpdates()
+        private void Subscribe()
         {
             _heroInventory.OnUpdate += UpdateData;
-            UpdateData();
+            CloseButton.onClick.AddListener(_context.Clear);
+            _closeContext.onClick.AddListener(_context.Clear);
         }
-
-        protected override void Cleanup() => 
-            _heroInventory.OnUpdate -= UpdateData;
 
         private void InitializeSlots()
         {
@@ -49,7 +55,7 @@ namespace _Project.CodeBase.UI.Windows.Inventory
             {
                 var slot = Instantiate(_prefab, _parent);
                 slot.Construct(i, HandleClick);
-                _list.Add(slot);
+                _inventory.Add(slot);
             }
         }
 
@@ -72,10 +78,10 @@ namespace _Project.CodeBase.UI.Windows.Inventory
             if (inventorySlot.DbId != -1)
             {
                 var itemData = _heroInventory.ItemsDataBase.FindItem(inventorySlot.DbId);
-                UpdateSlotUI(_list[index], itemData.ItemUIData.Icon, inventorySlot.Amount.ToString());
+                UpdateSlotUI(_inventory[index], itemData.ItemUIData.Icon, inventorySlot.Amount.ToString());
             }
             else
-                UpdateSlotUI(_list[index], null, "");
+                UpdateSlotUI(_inventory[index], null, "");
         }
 
         private void UpdateSlotUI(InventorySlotUI inventorySlotUI, Sprite icon, string text)

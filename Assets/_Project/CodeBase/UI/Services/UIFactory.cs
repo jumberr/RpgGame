@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure;
 using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
@@ -21,11 +22,9 @@ namespace _Project.CodeBase.UI.Services
         private readonly IStaticDataService _staticDataService;
         private readonly LazyInject<IGameStateMachine> _gameStateMachine;
 
+        private readonly Dictionary<WindowId, WindowBase> _windows = new Dictionary<WindowId, WindowBase>();
         private Transform _uiRoot;
         private Transform _hud;
-        
-        private InventoryUI _inventory;
-        private SettingsUI _settings;
 
         public UIFactory(
             IAssetProvider assetProvider,
@@ -60,16 +59,20 @@ namespace _Project.CodeBase.UI.Services
         public void CreateInventory(GameObject hero)
         {
             var prefab = _staticDataService.ForWindow(WindowId.Inventory).Prefab;
-            _inventory = Object.Instantiate(prefab, _uiRoot) as InventoryUI;
-            _inventory.Construct(hero.GetComponent<HeroInventory>());
+            var inventory = Object.Instantiate(prefab, _uiRoot) as InventoryUI;
+            inventory.Construct(hero.GetComponent<HeroInventory>());
+            
+            AddWindow(inventory, WindowId.Inventory);
         }
 
         public GameObject CreateSettings(HeroRotation rotation)
         {
             var prefab = _staticDataService.ForWindow(WindowId.Settings).Prefab;
-            _settings = Object.Instantiate(prefab, _uiRoot) as SettingsUI;
-            _settings.Construct(rotation);
-            return _settings.gameObject;
+            var settings = Object.Instantiate(prefab, _uiRoot) as SettingsUI;
+            settings.Construct(rotation);
+            
+            AddWindow(settings, WindowId.Settings);
+            return settings.gameObject;
         }
 
         public void SetupWindowButtons(IWindowService windowService)
@@ -78,10 +81,13 @@ namespace _Project.CodeBase.UI.Services
                 button.Construct(windowService);
         }
 
-        public void OpenInventory() => 
-            _inventory.gameObject.SetActive(true);
+        public void OpenWindow(WindowId id) => 
+            _windows[id].Show();
 
-        public void OpenSettings() => 
-            _settings.gameObject.SetActive(true);
+        public void HideWindow(WindowId id) => 
+            _windows[id].Hide();
+
+        private void AddWindow(WindowBase window, WindowId id) => 
+            _windows.Add(id, window);
     }
 }

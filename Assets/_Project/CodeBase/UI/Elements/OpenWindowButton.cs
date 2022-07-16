@@ -1,4 +1,5 @@
-﻿using _Project.CodeBase.UI.Services.Windows;
+﻿using System;
+using _Project.CodeBase.UI.Services.Windows;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,9 @@ namespace _Project.CodeBase.UI.Elements
 
         private void Awake() =>
             Button.onClick.AddListener(Open);
+
+        private void OnDestroy() => 
+            Button.onClick.RemoveListener(Open);
 
         private void Open() => 
             _windowService.Open(WindowId);

@@ -7,19 +7,7 @@ namespace _Project.CodeBase.UI.Services.Windows
         public WindowService(IUIFactory uiFactory) => 
             _uiFactory = uiFactory;
 
-        public void Open(WindowId id)
-        {
-            switch (id)
-            {
-                case WindowId.Unknown:
-                    break;
-                case WindowId.Inventory:
-                    _uiFactory.OpenInventory();
-                    break;
-                case WindowId.Settings:
-                    _uiFactory.OpenSettings();
-                    break;
-            }
-        }
+        public void Open(WindowId id) => 
+            _uiFactory.OpenWindow(id);
     }
 }
