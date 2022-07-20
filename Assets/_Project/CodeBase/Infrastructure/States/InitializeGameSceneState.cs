@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using _Project.CodeBase.Infrastructure.Factory;
+﻿using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
@@ -7,7 +6,6 @@ using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Interaction;
-using _Project.CodeBase.UI.Elements;
 using _Project.CodeBase.UI.Elements.Hud;
 using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.UI.Services.Windows;
@@ -31,8 +29,7 @@ namespace _Project.CodeBase.Infrastructure.States
             IGameFactory gameFactory,
             IUIFactory uiFactory,
             IPersistentProgressService persistentProgressService,
-            IStaticDataService staticDataService,
-            IWindowService windowService)
+            IStaticDataService staticDataService)
         {
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
@@ -40,7 +37,6 @@ namespace _Project.CodeBase.Infrastructure.States
             _uiFactory = uiFactory;
             _persistentProgressService = persistentProgressService;
             _staticDataService = staticDataService;
-            _windowService = windowService;
         }
 
         public void Enter()
@@ -48,6 +44,8 @@ namespace _Project.CodeBase.Infrastructure.States
             var projectSettings = _staticDataService.ForProjectSettings();
             _sceneLoader.Load(projectSettings.GameScene, OnLoaded);
         }
+        
+        public void Exit() { }
 
         private async void OnLoaded()
         {
@@ -70,7 +68,10 @@ namespace _Project.CodeBase.Infrastructure.States
         private async UniTask InitializeUI(GameObject hero)
         {
             await InitializeUIRoot();
-            await InitializeHud(hero);
+            await InitializeHud();
+
+            _uiFactory.ConstructActorUI(hero);
+            
             InitializeInventory(hero);
             InitializeSettings(hero);
         }
@@ -81,15 +82,8 @@ namespace _Project.CodeBase.Infrastructure.States
         private async UniTask InitializeUIRoot() =>
             await _uiFactory.CreateUIRoot();
 
-        private async UniTask InitializeHud(GameObject hero)
-        {
-            var hud = await _uiFactory.CreateHud();
-            _uiFactory.SetupWindowButtons(_windowService);
-            var actorUI = hud.GetComponentInChildren<ActorUI>();
-            actorUI.Construct(hero.GetComponent<HeroHealth>(), hero.GetComponent<HeroAmmo>(),
-                hero.GetComponent<WeaponController>(), hero.GetComponent<InputService>(),
-                hero.GetComponent<HeroState>(), hero.GetComponent<Interaction>());
-        }
+        private async UniTask InitializeHud() => 
+            await _uiFactory.CreateHud();
 
         private void InitializeInventory(GameObject hero) => 
              _uiFactory.CreateInventory(hero);
@@ -105,7 +99,5 @@ namespace _Project.CodeBase.Infrastructure.States
             foreach (var reader in _gameFactory.ProgressReaders)
                 reader.LoadProgress(_persistentProgressService.Progress);
         }
-
-        public void Exit() { }
     }
 }

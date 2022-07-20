@@ -8,11 +8,11 @@ namespace _Project.CodeBase.UI.Services
     public interface IUIFactory
     {
         UniTask CreateUIRoot();
-        UniTask<GameObject> CreateHud();
+        UniTask CreateHud();
         void CreateDeathScreen();
         void CreateInventory(GameObject hero);
         GameObject CreateSettings(HeroRotation rotation);
-        void SetupWindowButtons(IWindowService windowService);
+        void ConstructActorUI(GameObject hero);
 
         void OpenWindow(WindowId id);
         void HideWindow(WindowId id);

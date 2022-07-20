@@ -1,4 +1,5 @@
 ﻿using System;
+using _Project.CodeBase.Logic.Inventory;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

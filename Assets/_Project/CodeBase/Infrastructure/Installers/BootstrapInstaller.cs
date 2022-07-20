@@ -83,11 +83,6 @@ namespace _Project.CodeBase.Infrastructure.Installers
                 .AsSingle();
 
             Container
-                .Bind<IWindowService>()
-                .To<WindowService>()
-                .AsSingle();
-            
-            Container
                 .Bind<IGameFactory>()
                 .To<GameFactory>()
                 .AsSingle();

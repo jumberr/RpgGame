@@ -13,17 +13,14 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         [SerializeField] private InventoryContextUI _context;
         [SerializeField] private Transform _parent;
         [SerializeField] private Button _closeContext;
-        [Space]
-        [SerializeField] private Transform _hotBarParent;
 
         private readonly List<InventorySlotUI> _inventory = new List<InventorySlotUI>();
-        private readonly List<InventorySlotUI> _hotBar = new List<InventorySlotUI>();
         private HeroInventory _heroInventory;
         
         public async void Construct(HeroInventory heroInventory)
         {
             _heroInventory = heroInventory;
-            await UniTask.WaitUntil(() => _heroInventory.Inventory != null);
+            await UniTask.WaitUntil(IsInventoryExists);
             OnConstructInitialized();
         }
 
@@ -90,5 +87,8 @@ namespace _Project.CodeBase.UI.Windows.Inventory
             inventorySlotUI.Icon.sprite = icon;
             inventorySlotUI.Amount.text = text;
         }
+        
+        private bool IsInventoryExists() => 
+            _heroInventory.Inventory != null;
     }
 }
