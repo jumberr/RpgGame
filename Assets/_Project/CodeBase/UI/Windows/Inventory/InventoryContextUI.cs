@@ -14,6 +14,7 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         private HeroInventory _heroInventory;
         private RectTransform _inventoryRect;
         private Vector2 _actionSize;
+        private int _slotID;
 
         public void Construct(HeroInventory heroInventory, RectTransform rect)
         {
@@ -51,11 +52,13 @@ namespace _Project.CodeBase.UI.Windows.Inventory
 
         private Action FindAction(ActionType action, InventorySlotUI slotUI)
         {
+            _slotID = slotUI.SlotID;
+            
             Action onClick = action switch
             {
-                ActionType.Equip => () => _heroInventory.EquipItem(slotUI.SlotID),
-                ActionType.Drop => () => _heroInventory.DropItemFromSlot(slotUI.SlotID),
-                ActionType.DropAll => () => _heroInventory.DropAllItemsFromSlot(slotUI.SlotID),
+                ActionType.Equip => EquipItem,
+                ActionType.Drop => DropItem,
+                ActionType.DropAll => DropAllItems,
                 _ => null
             };
 
@@ -102,5 +105,14 @@ namespace _Project.CodeBase.UI.Windows.Inventory
 
         private bool CheckContextInRect(Vector3 point1, Vector3 point2) => 
             _inventoryRect.rect.Contains(point1) && _inventoryRect.rect.Contains(point2);
+        
+        private void EquipItem() => 
+            _heroInventory.EquipItem(_slotID);
+
+        private void DropItem() => 
+            _heroInventory.DropItemFromSlot(_slotID);
+        
+        private void DropAllItems() => 
+            _heroInventory.DropAllItemsFromSlot(_slotID);
     }
 }

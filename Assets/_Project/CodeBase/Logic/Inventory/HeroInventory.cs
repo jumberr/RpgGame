@@ -12,14 +12,14 @@ namespace _Project.CodeBase.Logic.Inventory
 {
     public class HeroInventory : MonoBehaviour, ISavedProgress
     {
-        public event Action OnUpdate;
-
         [SerializeField] private WeaponController _weaponController;
         
         private IStaticDataService _staticDataService;
         private ItemsDataBase _itemsDataBase;
         private Inventory _inventory;
         private InteractableSpawner _interactableSpawner;
+        
+        public event Action OnUpdate;
 
         public ItemsDataBase ItemsDataBase => _itemsDataBase;
         public Inventory Inventory => _inventory;
@@ -77,17 +77,17 @@ namespace _Project.CodeBase.Logic.Inventory
             RemoveItemFromSlot(index);
         }
         
-        public void DropItemFromSlot(int id)
+        public void DropItemFromSlot(int slotId)
         {
-            SpawnGroundItem(_inventory.Slots[id].DbId, 1);
-            RemoveItemFromSlot(id);
+            SpawnGroundItem(_inventory.Slots[slotId].DbId, 1);
+            RemoveItemFromSlot(slotId);
         }
 
-        public void DropAllItemsFromSlot(int id)
+        public void DropAllItemsFromSlot(int slotId)
         {
-            var slot = _inventory.Slots[id];
+            var slot = _inventory.Slots[slotId];
             SpawnGroundItem(slot.DbId, slot.Amount);
-            RemoveAllItemsFromSlot(id);
+            RemoveAllItemsFromSlot(slotId);
         }
 
         public int FindItemAmount(ItemName itemName)
@@ -108,6 +108,9 @@ namespace _Project.CodeBase.Logic.Inventory
                     return slot.DbId;
             return -1;
         }
+
+        public void SwapSlots(int one, int two) => 
+            _inventory.SwapSlots(one, two);
 
         private void RemoveItemFromSlot(int id)
         {

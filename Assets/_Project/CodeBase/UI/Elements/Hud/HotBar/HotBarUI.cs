@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Windows.Inventory;
-using _Project.CodeBase.Utils.Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace _Project.CodeBase.UI.Elements.Hud.HotBar
 {
-    public class HotBarUI : MonoBehaviour
+    public class HotBarUI : MonoBehaviour, ISlotHolderUI
     {
+        [SerializeField] private SlotHolderUI _slotHolder;
         [SerializeField] private Transform _inventoryButton;
         [SerializeField] private float _buttonOffset;
         [Space]
@@ -16,66 +16,49 @@ namespace _Project.CodeBase.UI.Elements.Hud.HotBar
         [SerializeField] private HorizontalLayoutGroup _horizontal;
         [SerializeField] private RectTransform _container;
 
-        private readonly List<InventorySlotUI> _slots = new List<InventorySlotUI>();
-        private HeroInventory _inventory;
-
+        private HeroInventory _heroInventory;
         private RectTransform _rectTransform;
         private float _width;
         private float _spacing;
-
-        //private InventoryContextUI _context;
-
+        
         public void Construct(HeroInventory inventory)
         {
-            _inventory = inventory;
-            //_context = context;
+            _heroInventory = inventory;
+            _slotHolder.Construct(inventory, 0, _heroInventory.Inventory.HotBarSlots);
+            Subscribe();
             InitializeBarSettings();
-            InitializeHotBar();
+            InitializeSlots(HandleClick);
             UpdateData();
         }
 
-        private void InitializeHotBar()
-        {
-            for (var i = 0; i < _inventory.Inventory.HotBarSlots.Length; i++)
-            {
-                var slot = Instantiate(_prefab, _container);
-                slot.Construct(i, HandleClick);
-                _slots.Add(slot);
-            }
+        private void OnDestroy() => 
+            Cleanup();
 
+        private void Subscribe() => 
+            _heroInventory.OnUpdate += UpdateData;
+        
+        private void Cleanup() => 
+            _heroInventory.OnUpdate -= UpdateData;
+
+        public void InitializeSlots(Action<InventorySlotUI> handleClick)
+        {
+            _slotHolder.InitializeSlots(handleClick);
             UpdateBarView();
         }
 
-        private void HandleClick(InventorySlotUI slotUI)
+        public void UpdateData() => 
+            _slotHolder.UpdateData();
+
+        public void UpdateSlot(InventorySlot inventorySlot, int slotIndex) => 
+            _slotHolder.UpdateSlot(inventorySlot, slotIndex);
+
+        public void HandleClick(InventorySlotUI slotUI)
         {
-            var dbId = _inventory.GetHotBarSlot(slotUI.SlotID).DbId;
+            var dbId = _heroInventory.GetSlot(slotUI.SlotID).DbId;
             if (dbId == -1) return;
-            var actions = _inventory.ItemsDataBase.FindItem(dbId).ItemPayloadData.Actions;
-            //_context.InitializeContext(actions, slotUI);
-        }
-
-        private void UpdateData()
-        {
-            for (var i = 0; i < _inventory.Inventory.HotBarSlots.Length; i++) 
-                UpdateSlot(_inventory.GetHotBarSlot(i), i);
-        }
-
-        private void UpdateSlot(InventorySlot inventorySlot, int index)
-        {
-            if (inventorySlot.DbId != -1)
-            {
-                var itemData = _inventory.ItemsDataBase.FindItem(inventorySlot.DbId);
-                UpdateSlotUI(_slots[index], itemData.ItemUIData.Icon, inventorySlot.Amount.ToString());
-            }
-            else
-                UpdateSlotUI(_slots[index], null, "");
-        }
-
-        private void UpdateSlotUI(InventorySlotUI inventorySlotUI, Sprite icon, string text)
-        {
-            inventorySlotUI.Icon.ChangeAlpha(icon is null ? 0f : 1f);
-            inventorySlotUI.Icon.sprite = icon;
-            inventorySlotUI.Amount.text = text;
+            var actions = _heroInventory.ItemsDataBase.FindItem(dbId).ItemPayloadData.Actions;
+            if (actions.Contains(ActionType.Equip)) 
+                _heroInventory.EquipItem(slotUI.SlotID);
         }
 
         private void InitializeBarSettings()
@@ -87,7 +70,7 @@ namespace _Project.CodeBase.UI.Elements.Hud.HotBar
 
         private void UpdateBarView()
         {
-            var containerWidth = _width * _slots.Count + _spacing * (_slots.Count - 1);
+            var containerWidth = _width * _slotHolder.SlotsUI.Count + _spacing * (_slotHolder.SlotsUI.Count - 1);
             var buttonXPos = containerWidth / 2 + _spacing + _buttonOffset;
             
             ApplySizeDelta(_container, containerWidth);

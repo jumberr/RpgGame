@@ -6,18 +6,19 @@ namespace _Project.CodeBase.Logic.Inventory
     [Serializable]
     public class Inventory
     {
-        public InventorySlot[] HotBarSlots;
+        private const int DefaultHotBarSlotsAmount = 4;
+        
         public InventorySlot[] Slots;
+        public int HotBarSlots;
 
-        public Inventory(int hotBarAmount, int slotAmount) => 
-            InitializeInventory(hotBarAmount, slotAmount);
-
-        public void InitializeInventory(int hotBarAmount, int slotAmount)
+        public Inventory(int slotAmount)
         {
-            HotBarSlots = new InventorySlot[hotBarAmount];
-            for (var i = 0; i < HotBarSlots.Length; i++) 
-                HotBarSlots[i] = new InventorySlot();
+            InitializeInventory(slotAmount);
+            HotBarSlots = DefaultHotBarSlotsAmount;
+        }
 
+        public void InitializeInventory(int slotAmount)
+        {
             Slots = new InventorySlot[slotAmount];
             for (var i = 0; i < Slots.Length; i++) 
                 Slots[i] = new InventorySlot();
@@ -85,7 +86,15 @@ namespace _Project.CodeBase.Logic.Inventory
             else
                 Slots[id].Amount -= 1;
         }
-        
+
+        public void SwapSlots(int one, int two)
+        {
+            if (Slots[one].DbId == -1)
+                return;
+
+            (Slots[one], Slots[two]) = (Slots[two], Slots[one]);
+        }
+
         public void RemoveAllItemsFromSlot(int id)
         {
             if (Slots.Length <= id || Slots[id].State == SlotState.Empty) return;

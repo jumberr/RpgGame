@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Hero.Reload;
@@ -91,13 +90,15 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         private async UniTask CreateGun(GameObject prefab, int slotID)
         {
+            if (_slotID == slotID) return;
+            
+            _slotID = slotID;
             await DestroyWeapon();
 
             _currentWeapon = Instantiate(prefab, _parent);
             _animator.Construct(_currentWeapon.GetComponent<Animator>());
-            await _animator.ShowWeapon();
+            await _animator.ShowWeaponOnInit();
             OnSwitch?.Invoke(true);
-            _slotID = slotID;
         }
 
         private async void OnInventoryUpdate()

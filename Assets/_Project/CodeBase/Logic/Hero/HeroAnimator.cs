@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -19,9 +18,9 @@ namespace _Project.CodeBase.Logic.Hero
 
         private Animator _animator;
 
-        public void Construct(Animator animator) =>
+        public void Construct(Animator animator) => 
             _animator = animator;
-        
+
         public void SetEmptyAnimator() =>
             _animator = null;
         
@@ -55,6 +54,12 @@ namespace _Project.CodeBase.Logic.Hero
         public async UniTask ShowWeapon() => 
             await ShowHide(Show);
 
+        public async UniTask ShowWeaponOnInit()
+        {
+            var duration = _animator.GetCurrentAnimatorStateInfo(0).length;
+            await UniTask.Delay(TimeSpan.FromSeconds(duration));
+        }
+
         public void EndRevolverReloadAnimation()
         {
             if (!IsAnimatorExists()) return;
@@ -72,7 +77,7 @@ namespace _Project.CodeBase.Logic.Hero
         {
             if (!IsAnimatorExists()) return;
             _animator.SetTrigger(id);
-            var duration = _animator.GetAnimatorTransitionInfo(0).duration;
+            var duration = _animator.GetCurrentAnimatorStateInfo(0).length;
             await UniTask.Delay(TimeSpan.FromSeconds(duration));
         }
 

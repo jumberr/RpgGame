@@ -768,6 +768,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3148889451092350554}
   - component: {fileID: 2405800298269767841}
+  - component: {fileID: 4943509369521716250}
   m_Layer: 5
   m_Name: HotBar
   m_TagString: Untagged
@@ -808,11 +809,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c69892214d4631bd902ca232609c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slotHolder: {fileID: 4943509369521716250}
   _inventoryButton: {fileID: 4717974703681963818}
   _buttonOffset: 25
-  _prefab: {fileID: 803084970579679055, guid: 162eb02cc56c532418144e0c16d652da, type: 3}
+  _prefab: {fileID: 5460098896556935559, guid: 9dabdf396d957a742b3022d2a6a222d9, type: 3}
   _horizontal: {fileID: 2018770493103966113}
   _container: {fileID: 6285788014423548336}
+--- !u!114 &4943509369521716250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2870576162610801288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6802eab8b1e74dd8816870fe15994421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 5460098896556935559, guid: 9dabdf396d957a742b3022d2a6a222d9, type: 3}
+  _parent: {fileID: 6285788014423548336}
 --- !u!1 &3242636846171353681
 GameObject:
   m_ObjectHideFlags: 0

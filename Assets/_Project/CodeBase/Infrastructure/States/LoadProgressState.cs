@@ -52,7 +52,7 @@ namespace _Project.CodeBase.Infrastructure.States
         private PlayerProgress NewProgress()
         {
             var playerData = _staticDataService.ForPlayer();
-            var inventory = new Inventory(4, 8);
+            var inventory = new Inventory(8);
             var settings = new SettingsData(0.2f);
             
             var healthData = new HealthData

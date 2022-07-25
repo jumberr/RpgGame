@@ -425,6 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8203785024651798918}
   - component: {fileID: 6583611752469255914}
+  - component: {fileID: 4420344167412885548}
   - component: {fileID: 2541842545944220758}
   m_Layer: 5
   m_Name: InventoryWindow
@@ -468,11 +469,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animation: {fileID: 8430368253981064600}
   CloseButton: {fileID: 2961180283459042023}
-  _prefab: {fileID: 803084970579679055, guid: f2989da5f1c26f440bfa7501b375566b, type: 3}
+  _slotHolder: {fileID: 4420344167412885548}
   _context: {fileID: 3694240919917308815}
   _parent: {fileID: 5545651707968249550}
   _closeContext: {fileID: 4912008518773279913}
-  _hotBarParent: {fileID: 0}
+--- !u!114 &4420344167412885548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121608955545232503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6802eab8b1e74dd8816870fe15994421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 803084970579679055, guid: f2989da5f1c26f440bfa7501b375566b, type: 3}
+  _parent: {fileID: 5545651707968249550}
 --- !u!225 &2541842545944220758
 CanvasGroup:
   m_ObjectHideFlags: 0

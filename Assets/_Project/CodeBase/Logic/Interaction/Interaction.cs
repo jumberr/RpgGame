@@ -5,19 +5,21 @@ namespace _Project.CodeBase.Logic.Interaction
 {
     public class Interaction : MonoBehaviour
     {
+        [SerializeField] private Camera _mainCamera;
+        [SerializeField] private float _range;
+        
+        private IInteractable _currentTarget;
+        private readonly Vector3 _defaultPosition = new Vector3(0.5F, 0.5F, 0);
+        
         public Action<Action> OnStartHover;
         public event Action OnEndHover;
 
-        [SerializeField] private Camera _mainCamera;
-        [SerializeField] private float _range;
-        private IInteractable _currentTarget;
- 
         private void Update() => 
             RaycastForInteractable();
 
         private void RaycastForInteractable()
         {
-            var ray = _mainCamera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));;
+            var ray = _mainCamera.ViewportPointToRay(_defaultPosition);
 
             if (Physics.Raycast(ray, out var hit, _range))
             {
