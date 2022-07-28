@@ -2,11 +2,14 @@
 
 namespace _Project.CodeBase.Utils.ObjectPool
 {
-    public interface IPoolManager
+    public interface IPoolManager<T>
     {
-        void Initialize();
-        GameObject SpawnObject(GameObject prefab, Vector3 position, Quaternion rotation);
-        void ReleaseObject(GameObject clone);
+        void Initialize(string objName);
+        T SpawnObject(T prefab, Vector3 position, Quaternion rotation, int size);
+        void ReleaseObject(T clone);
         void CleanUp();
+        void OnSpawn(T obj, Vector3 position, Quaternion rotation);
+        void OnRelease(T obj);
+        void OnInstantiate(T obj);
     }
 }

@@ -23,7 +23,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         [SerializeField] private GameObject _sandParticlesFX;
         [SerializeField] private GameObject _bloodParticlesFX;
 
-        private IPoolManager _poolManager;
+        private MainPoolManager _poolManager;
         private DefaultShooting _defaultShooting;
         private ShotgunShooting _shotgunShooting;
         private WeaponType _weaponType;
@@ -42,7 +42,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
 
         public LayerMask LayerMask => _layerMask;
 
-        public void Construct(IPoolManager poolManager)
+        public void Construct(MainPoolManager poolManager)
         {
             _poolManager = poolManager;
             _poolManager.Initialize();

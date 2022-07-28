@@ -1,5 +1,6 @@
 using System;
 using _Project.CodeBase.Logic.Inventory;
+using _Project.CodeBase.UI.Elements.Slot;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;

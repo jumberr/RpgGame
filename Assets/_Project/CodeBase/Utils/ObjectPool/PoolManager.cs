@@ -5,33 +5,33 @@ using Object = UnityEngine.Object;
 
 namespace _Project.CodeBase.Utils.ObjectPool
 {
-    public class PoolManager : IPoolManager
+    public class PoolManager<T> : IPoolManager<T> where T: Object
     {
-        private readonly Dictionary<GameObject, IObjectPool<GameObject>> _pools = new Dictionary<GameObject, IObjectPool<GameObject>>();
-        private readonly Dictionary<GameObject, IObjectPool<GameObject>> _instancedObjectsPools = new Dictionary<GameObject, IObjectPool<GameObject>>();
+        private readonly Dictionary<T, IObjectPool<T>> _pools = new Dictionary<T, IObjectPool<T>>();
+        private readonly Dictionary<T, IObjectPool<T>> _instancedObjectsPools = new Dictionary<T, IObjectPool<T>>();
+        private T _prefab;
         private GameObject _root;
 
-        public void Initialize() => 
-            _root = new GameObject { name = "PoolManager" };
+        public void Initialize(string objName) => 
+            _root = new GameObject { name = objName };
 
-        public GameObject SpawnObject(GameObject prefab, Vector3 position, Quaternion rotation)
+        public T SpawnObject(T prefab, Vector3 position, Quaternion rotation, int size = 5)
         {
             if (!_pools.ContainsKey(prefab)) 
-                WarmPool(prefab, 1);
+                WarmPool(prefab, size);
 
             var pool = _pools[prefab];
 
             var clone = pool.GetFromPool();
-            clone.transform.SetPositionAndRotation(position, rotation);
-            clone.SetActive(true);
+            OnSpawn(clone, position, rotation);
 
             _instancedObjectsPools.Add(clone, pool);
             return clone;
         }
 
-        public void ReleaseObject(GameObject clone)
+        public void ReleaseObject(T clone)
         {
-            clone.SetActive(false);
+            OnRelease(clone);
 
             if (_instancedObjectsPools.ContainsKey(clone))
             {
@@ -48,20 +48,29 @@ namespace _Project.CodeBase.Utils.ObjectPool
             _instancedObjectsPools.Clear();
         }
 
-        private void WarmPool(GameObject prefab, int size)
+        public virtual void OnSpawn(T obj, Vector3 position, Quaternion rotation) { }
+        public virtual void OnRelease(T obj) { }
+        public virtual void OnInstantiate(T obj) { }
+        
+        private void WarmPool(T prefab, int size)
         {
             if (_pools.ContainsKey(prefab))
                 throw new Exception("Pool for prefab " + prefab.name + " has already been created");
 
-            var pool = new ObjectPool<GameObject>(() => InstantiatePrefab(prefab), size);
+            _prefab = prefab;
+            var pool = new ObjectPool<T>(InstantiatePrefab, size);
             _pools[prefab] = pool;
+            _prefab = null;
         }
 
-        private GameObject InstantiatePrefab(GameObject prefab)
+        private T InstantiatePrefab(T prefab)
         {
             var gameObject = Object.Instantiate(prefab, _root.transform, true);
-            gameObject.SetActive(false);
+            OnInstantiate(prefab);
             return gameObject;
         }
+
+        private T InstantiatePrefab() => 
+            InstantiatePrefab(_prefab);
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Project.CodeBase.Logic.Inventory;
+using _Project.CodeBase.UI.Windows.Inventory;
 using UnityEngine;
 
-namespace _Project.CodeBase.UI.Windows.Inventory
+namespace _Project.CodeBase.UI.Elements.Slot
 {
     public class SlotHolderUI : MonoBehaviour, ISlotHolderUI
     {

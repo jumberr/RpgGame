@@ -1,7 +1,8 @@
 ﻿using System;
 using _Project.CodeBase.Logic.Inventory;
+using _Project.CodeBase.UI.Windows.Inventory;
 
-namespace _Project.CodeBase.UI.Windows.Inventory
+namespace _Project.CodeBase.UI.Elements.Slot
 {
     public interface ISlotHolderUI
     {

@@ -17,12 +17,12 @@ namespace _Project.CodeBase.Infrastructure.Factory
     {
         private readonly IAssetProvider _assetProvider;
         private readonly IUIFactory _uiFactory;
-        private readonly IPoolManager _poolManager;
+        private readonly MainPoolManager _poolManager;
         private readonly IStaticDataService _staticDataService;
         private InteractableSpawner _interactableSpawner;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
-        public IPoolManager PoolManager => _poolManager;
+        public MainPoolManager PoolManager => _poolManager;
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
         
         private GameObject HeroGameObject { get; set; }
@@ -35,7 +35,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
             _assetProvider = assetProvider;
             _uiFactory = uiFactory;
             _staticDataService = staticDataService;
-            _poolManager = new PoolManager();
+            _poolManager = new MainPoolManager();
         }
 
         public async UniTask<GameObject> CreateHero(Vector3 at)

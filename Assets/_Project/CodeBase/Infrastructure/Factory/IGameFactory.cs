@@ -10,7 +10,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
     {
         List<ISavedProgress> ProgressWriters { get; }
         List<ISavedProgressReader> ProgressReaders { get; }
-        IPoolManager PoolManager { get; }
+        MainPoolManager PoolManager { get; }
 
         UniTask<GameObject> CreateHero(Vector3 at);
         UniTask CreateInteractableSpawner(GameObject hero);

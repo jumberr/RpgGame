@@ -22,7 +22,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         protected float Range;
         protected float Damage;
 
-        private IPoolManager _poolManager;
+        private MainPoolManager _poolManager;
         private readonly HeroState _state;
         private readonly LineFade _lineFade;
         private readonly GameObject _weaponFX;
@@ -43,7 +43,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
             BloodParticlesFX = bloodParticles;
         }
 
-        public void SetupPoolManager(IPoolManager poolManager) => 
+        public void SetupPoolManager(MainPoolManager poolManager) => 
             _poolManager = poolManager;
         
         public void SetupFirePoint(Transform firePoint) => 
@@ -68,8 +68,8 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
 
         protected async void SpawnBulletTrail(Vector3 start, Vector3 end)
         {
-            var lineFade = _poolManager.SpawnObject(_lineFade.gameObject, start, Quaternion.identity);
-            lineFade.GetComponent<LineFade>().SetPositions(start, end);
+            var lineFade = (LineFade) _poolManager.SpawnObject(_lineFade, start, Quaternion.identity);
+            lineFade.SetPositions(start, end);
             
             await UniTask.Delay(TimeSpan.FromSeconds(TimeDestroyFX));
             _poolManager.ReleaseObject(lineFade);
