@@ -827,6 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6802eab8b1e74dd8816870fe15994421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 3706223142566023964}
   _prefab: {fileID: 5460098896556935559, guid: 9dabdf396d957a742b3022d2a6a222d9, type: 3}
   _parent: {fileID: 6285788014423548336}
 --- !u!1 &3242636846171353681
@@ -1156,6 +1157,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6285788014423548336}
   - component: {fileID: 2018770493103966113}
+  - component: {fileID: 3706223142566023964}
+  - component: {fileID: 7688955648878111716}
   m_Layer: 5
   m_Name: Container
   m_TagString: Untagged
@@ -1208,6 +1211,44 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!223 &3706223142566023964
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478218635320501609}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &7688955648878111716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478218635320501609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 8191
 --- !u!1 &5411069097974915315
 GameObject:
   m_ObjectHideFlags: 0

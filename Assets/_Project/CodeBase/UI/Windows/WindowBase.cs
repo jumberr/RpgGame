@@ -2,6 +2,7 @@
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.UI.Animation;
+using _Project.CodeBase.UI.Windows.Inventory;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;

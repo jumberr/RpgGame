@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
@@ -108,6 +109,9 @@ namespace _Project.CodeBase.Logic.Inventory
                     return slot.DbId;
             return -1;
         }
+        
+        public int FindIndex(InventorySlot slot) => 
+            Array.IndexOf(Inventory.Slots, slot);
 
         public void SwapSlots(int one, int two) => 
             _inventory.SwapSlots(one, two);

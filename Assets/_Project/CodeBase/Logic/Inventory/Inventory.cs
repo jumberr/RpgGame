@@ -89,8 +89,8 @@ namespace _Project.CodeBase.Logic.Inventory
 
         public void SwapSlots(int one, int two)
         {
-            if (Slots[one].DbId == -1)
-                return;
+            //if (Slots[one].DbId == -1)
+            //    return;
 
             (Slots[one], Slots[two]) = (Slots[two], Slots[one]);
         }

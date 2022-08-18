@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2318182150326220027, guid: 8255e4d3770f6be488432d86a3a3ef9b,
         type: 3}
       propertyPath: m_Name
-      value: HotBar
+      value: HotBarSlot
       objectReference: {fileID: 0}
     - target: {fileID: 4393001842880403183, guid: 8255e4d3770f6be488432d86a3a3ef9b,
         type: 3}
@@ -121,6 +121,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260531506689552317, guid: 8255e4d3770f6be488432d86a3a3ef9b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6774336956589857599, guid: 8255e4d3770f6be488432d86a3a3ef9b,
         type: 3}

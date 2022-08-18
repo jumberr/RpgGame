@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6802eab8b1e74dd8816870fe15994421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 2996048566017660865}
   _prefab: {fileID: 803084970579679055, guid: f2989da5f1c26f440bfa7501b375566b, type: 3}
   _parent: {fileID: 5545651707968249550}
 --- !u!225 &2541842545944220758
