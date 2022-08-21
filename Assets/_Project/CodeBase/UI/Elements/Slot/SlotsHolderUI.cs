@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Project.CodeBase.UI.Elements.Slot
 {
-    public class SlotHolderUI : MonoBehaviour, ISlotHolderUI
+    public class SlotsHolderUI : MonoBehaviour, ISlotHolderUI
     {
         [SerializeField] private Canvas _canvas;
         [SerializeField] private InventorySlotUI _prefab;
@@ -13,36 +13,29 @@ namespace _Project.CodeBase.UI.Elements.Slot
 
         private readonly List<InventorySlotUI> _slotsUI = new List<InventorySlotUI>();
         private HeroInventory _heroInventory;
+        private Transform _uiRoot;
         private int _from;
         private int _max;
 
         public RectTransform Parent => _parent;
         public List<InventorySlotUI> SlotsUI => _slotsUI;
 
-        public void Construct(HeroInventory heroInventory, int from, int max)
+        public void Construct(HeroInventory heroInventory, Transform uiRoot, int from, int max)
         {
             _heroInventory = heroInventory;
+            _uiRoot = uiRoot;
             _from = from;
             _max = max;
         }
 
-        public virtual void HandleClick(InventorySlotUI slotUI) { }
-
-        public virtual void HandleDrop(InventorySlot one, InventorySlot two)
-        {
-            var first = _heroInventory.FindIndex(one);
-            var second = _heroInventory.FindIndex(two);
-            
-            _heroInventory.SwapSlots(first, second);
-            UpdateData();
-        }
+        public void HandleClick(InventorySlotUI slotUI) { }
 
         public void InitializeSlots(SlotTouchEvents slotTouchEvents)
         {
             for (var i = _from; i < _max; i++)
             {
                 var slot = Instantiate(_prefab, _parent);
-                slot.Construct(i, _canvas, _heroInventory.GetSlot(i), slotTouchEvents);
+                slot.Construct(i, _canvas, _uiRoot, _heroInventory.GetSlot(i), slotTouchEvents);
                 _slotsUI.Add(slot);
             }
         }
@@ -50,15 +43,27 @@ namespace _Project.CodeBase.UI.Elements.Slot
         public void UpdateData()
         {
             for (var i = _from; i < _max; i++) 
-                UpdateSlot(_heroInventory.GetSlot(i), i);
+                UpdateSlot(i);
         }
 
-        public void UpdateSlot(InventorySlot inventorySlot, int slotIndex)
+        public void UpdateSlot(int slotIndex)
         {
             var slotUI = _slotsUI[slotIndex - _from];
-            
-            slotUI.UpdateSlotData(inventorySlot);
-            UpdateSlotUI(inventorySlot, slotUI);
+            var slot = _heroInventory.GetSlot(slotIndex);
+            UpdateSlot(slotUI, slot);
+        }
+
+        public void UpdateSlot(InventorySlotUI slotUI)
+        {
+            var slotIndex = slotUI.SlotID + _from;
+            var slot = _heroInventory.GetSlot(slotIndex);
+            UpdateSlot(slotUI, slot);
+        }
+
+        private void UpdateSlot(InventorySlotUI slotUI, InventorySlot slot)
+        {
+            slotUI.UpdateSlotData(slot);
+            UpdateSlotUI(slot, slotUI);
         }
 
         private void UpdateSlotUI(InventorySlot inventorySlot, InventorySlotUI slotUI)

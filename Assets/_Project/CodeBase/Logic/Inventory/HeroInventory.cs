@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
@@ -24,6 +23,7 @@ namespace _Project.CodeBase.Logic.Inventory
 
         public ItemsDataBase ItemsDataBase => _itemsDataBase;
         public Inventory Inventory => _inventory;
+        public int ErrorIndex => Inventory.ErrorIndex;
 
         public void Construct(IStaticDataService staticDataService)
         {
@@ -74,7 +74,7 @@ namespace _Project.CodeBase.Logic.Inventory
         public void RemoveItemFromSlot(ItemName itemName)
         {
             var index = FindFirstItemIndex(itemName);
-            if (index == -1) return;
+            if (index == ErrorIndex) return;
             RemoveItemFromSlot(index);
         }
         
@@ -107,11 +107,13 @@ namespace _Project.CodeBase.Logic.Inventory
             foreach (var slot in _inventory.Slots)
                 if (slot.DbId == dbIndex)
                     return slot.DbId;
-            return -1;
+            return ErrorIndex;
         }
         
         public int FindIndex(InventorySlot slot) => 
-            Array.IndexOf(Inventory.Slots, slot);
+            slot != null 
+                ? Array.IndexOf(Inventory.Slots, slot) 
+                : ErrorIndex;
 
         public void SwapSlots(int one, int two) => 
             _inventory.SwapSlots(one, two);

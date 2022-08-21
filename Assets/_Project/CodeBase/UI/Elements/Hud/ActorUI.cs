@@ -7,7 +7,6 @@ using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements.Crosshair;
 using _Project.CodeBase.UI.Elements.Hud.HotBar;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.CodeBase.UI.Elements.Hud
@@ -23,20 +22,19 @@ namespace _Project.CodeBase.UI.Elements.Hud
         private IHealth _heroHealth;
         private HeroInventory _heroInventory;
 
-        public async UniTask Construct(
-            IHealth heroHealth,
+        public HotBarUI HotBar => _hotBarUI;
+
+        public void Construct(IHealth heroHealth,
             HeroAmmo heroAmmo,
             WeaponController weaponController,
             InputService inputService,
             HeroState heroState,
-            Interaction interaction,
-            HeroInventory inventory)
+            Interaction interaction)
         {
             SetupHealth(heroHealth);
             SetupAmmoUI(heroAmmo);
             SetupCrosshairUI(weaponController, inputService, heroState);
             SetupInteractionUI(interaction);
-            await SetupHotBar(inventory);
         }
 
         private void OnDestroy() => 
@@ -59,15 +57,5 @@ namespace _Project.CodeBase.UI.Elements.Hud
 
         private void UpdateHpBar() => 
             _hpBar.SetValue(_heroHealth.Current, _heroHealth.Max);
-
-        private async UniTask SetupHotBar(HeroInventory inventory)
-        {
-            _heroInventory = inventory;
-            await UniTask.WaitUntil(IsInventoryExists);
-            _hotBarUI.Construct(inventory);
-        }
-        
-        private bool IsInventoryExists() => 
-            _heroInventory.Inventory != null;
     }
 }

@@ -795,7 +795,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 800, y: 100}
+  m_SizeDelta: {x: 800, y: 120}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2405800298269767841
 MonoBehaviour:
@@ -809,10 +809,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c69892214d4631bd902ca232609c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slotHolder: {fileID: 4943509369521716250}
+  _slotsHolder: {fileID: 4943509369521716250}
   _inventoryButton: {fileID: 4717974703681963818}
   _buttonOffset: 25
-  _prefab: {fileID: 5460098896556935559, guid: 9dabdf396d957a742b3022d2a6a222d9, type: 3}
+  _prefab: {fileID: 9041893871091807631, guid: 8255e4d3770f6be488432d86a3a3ef9b, type: 3}
   _horizontal: {fileID: 2018770493103966113}
   _container: {fileID: 6285788014423548336}
 --- !u!114 &4943509369521716250
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvas: {fileID: 3706223142566023964}
-  _prefab: {fileID: 5460098896556935559, guid: 9dabdf396d957a742b3022d2a6a222d9, type: 3}
+  _prefab: {fileID: 9041893871091807631, guid: 8255e4d3770f6be488432d86a3a3ef9b, type: 3}
   _parent: {fileID: 6285788014423548336}
 --- !u!1 &3242636846171353681
 GameObject:
@@ -1183,7 +1183,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 100}
+  m_SizeDelta: {x: 800, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2018770493103966113
 MonoBehaviour:

@@ -1,44 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements.Slot.Drop;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
 {
-    public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class DraggableComponent : MonoBehaviour, ICanBeDragged
     {
+        [SerializeField] private Image _icon;
         [SerializeField] private RectTransform _rectTransform;
-        
+        [SerializeField] private bool _followCursor;
+
         private Canvas _canvas;
-        
-        public event Action<PointerEventData> OnBeginDragHandler;
-        public event Action<PointerEventData> OnDragHandler;
-        public event Action<PointerEventData, bool> OnEndDragHandler;
+        private InventorySlot _dataBuffer;
+        private Transform _uiRoot;
 
-        public bool FollowCursor { get; set; } = true;
+        public IDropArea DropArea { get; private set; }
         public bool CanDrag { get; set; } = true;
-        public Vector3 StartPosition { get; set; }
 
-        public void Construct(Canvas canvas) =>
+        public void Construct(Canvas canvas, Transform uiRoot, IDropArea dropArea)
+        {
+            _uiRoot = uiRoot;
             _canvas = canvas;
-        
-        public void OnInitializePotentialDrag(PointerEventData eventData) => 
-            StartPosition = _rectTransform.anchoredPosition;
+            DropArea = dropArea;
+        }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (!CanDrag) return;
-            OnBeginDragHandler?.Invoke(eventData);
+
+            _dataBuffer = DropArea.SlotData;
+            DropArea.Release();
+            transform.SetParent(_uiRoot);
         }
 
         public virtual void OnDrag(PointerEventData eventData)
         {
             if (!CanDrag) return;
             
-            OnDragHandler?.Invoke(eventData);
-
-            if (FollowCursor) 
+            if (_followCursor)
                 _rectTransform.anchoredPosition += eventData.delta / _canvas.scaleFactor;
         }
 
@@ -49,29 +51,22 @@ namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
             var results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(eventData, results);
 
-            var dropArea = FindDropArea(results);
-
-            if (dropArea != null)
+            var dropArea = FindDropArea(results) ?? DropArea;
+            if (dropArea.Accepts(this))
             {
-                if (dropArea.Accepts(this))
-                {
-                    dropArea.Drop(this);
-                    OnEndDragHandler?.Invoke(eventData, true);
-                    return;
-                }
+                dropArea.Drop(_dataBuffer);
+                _dataBuffer = null;
+                Destroy(gameObject);
             }
-
-            _rectTransform.anchoredPosition = StartPosition;
-            OnEndDragHandler?.Invoke(eventData, false);
         }
 
-        private DropArea FindDropArea(List<RaycastResult> results)
+        private IDropArea FindDropArea(List<RaycastResult> results)
         {
-            DropArea dropArea = null;
+            IDropArea dropArea = null;
 
             foreach (var result in results)
             {
-                dropArea = result.gameObject.GetComponentInParent<DropArea>();
+                dropArea = result.gameObject.GetComponentInParent<IDropArea>();
 
                 if (dropArea != null)
                     break;
@@ -79,5 +74,8 @@ namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
 
             return dropArea;
         }
+
+        public void ChangeIcon(Sprite icon) =>
+            _icon.sprite = icon;
     }
 }

@@ -11,36 +11,38 @@ namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
         private bool _pointerDown;
         private bool _holdApproved;
         private float _time;
+        
+        public bool Dragging { get; set; }
 
         public event Action OnTouchStarted;
-        public event Action OnHoldApproved;
-        public event Action OnHoldEnded;
+        public event Action OnLongClickPerformed;
+        public event Action OnTouchEnded;
         public event Action OnClickPerformed;
 
         private void Update()
         {
-            if (!_pointerDown) return;
+            if (!_pointerDown || Dragging) return;
 
             if (_time >= _holdTime && !_holdApproved)
             {
                 //ResetHold();
-                OnHoldApproved?.Invoke();
+                OnLongClickPerformed?.Invoke();
                 _holdApproved = true;
             }
 
             _time += Time.deltaTime;
         }
 
-        public void OnPointerDown(PointerEventData eventData)
+        public virtual void OnPointerDown(PointerEventData eventData)
         {
             _pointerDown = true;
             OnTouchStarted?.Invoke();
         }
 
-        public void OnPointerUp(PointerEventData eventData)
+        public virtual void OnPointerUp(PointerEventData eventData)
         {
             if (_time >= _holdTime)
-                OnHoldEnded?.Invoke();
+                OnTouchEnded?.Invoke();
             else
                 OnClickPerformed?.Invoke();
 
@@ -48,7 +50,7 @@ namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
             ResetHold();
         }
 
-        private void ResetHold()
+        public void ResetHold()
         {
             _pointerDown = false;
             _holdApproved = false;

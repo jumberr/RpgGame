@@ -1,6 +1,6 @@
+using System;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements.Slot;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,36 +8,38 @@ namespace _Project.CodeBase.UI.Windows.Inventory
 {
     public class InventoryUI : WindowBase, ISlotHolderUI
     {
-        [SerializeField] private SlotHolderUI _slotHolder;
+        [SerializeField] private SlotsHolderUI _slotsHolder;
         [SerializeField] private InventoryContextUI _context;
         [SerializeField] private Button _closeContext;
 
         private HeroInventory _heroInventory;
+        private Action<InventorySlot, InventorySlot> _handleDrop;
 
+        public SlotsHolderUI SlotsHolder => _slotsHolder;
         private int HotBarSlotsAmount => _heroInventory.Inventory.HotBarSlots;
 
-        public async void Construct(HeroInventory heroInventory)
+        public void Construct(HeroInventory heroInventory, Transform uiRoot, Action<InventorySlot,InventorySlot> handleDrop)
         {
             _heroInventory = heroInventory;
-            await UniTask.WaitUntil(IsInventoryExists);
-            _slotHolder.Construct(heroInventory, HotBarSlotsAmount, _heroInventory.Inventory.Slots.Length);
+            _handleDrop = handleDrop;
+            _slotsHolder.Construct(heroInventory, uiRoot, HotBarSlotsAmount, _heroInventory.Inventory.Slots.Length);
             OnConstructInitialized();
         }
 
         public void InitializeSlots(SlotTouchEvents slotTouchEvents) => 
-            _slotHolder.InitializeSlots(slotTouchEvents);
+            _slotsHolder.InitializeSlots(slotTouchEvents);
 
         public void UpdateData() => 
-            _slotHolder.UpdateData();
+            _slotsHolder.UpdateData();
 
-        public void UpdateSlot(InventorySlot inventorySlot, int slotIndex) => 
-            _slotHolder.UpdateSlot(inventorySlot, slotIndex);
+        public void UpdateSlot(int slotIndex) => 
+            _slotsHolder.UpdateSlot(slotIndex);
 
         protected override void OnConstructInitialized()
         {
-            _context.Construct(_heroInventory, _slotHolder.Parent);
+            _context.Construct(_heroInventory, _slotsHolder.Parent);
             Subscribe();
-            InitializeSlots(new SlotTouchEvents(HandleClick, HandleDrop));
+            InitializeSlots(new SlotTouchEvents(HandleClick, _handleDrop));
             UpdateData();
         }
         
@@ -48,9 +50,6 @@ namespace _Project.CodeBase.UI.Windows.Inventory
             var actions = _heroInventory.ItemsDataBase.FindItem(dbId).ItemPayloadData.Actions;
             _context.InitializeContext(actions, slotUI);
         }
-
-        public void HandleDrop(InventorySlot one, InventorySlot two) => 
-            _slotHolder.HandleDrop(one, two);
 
         protected override void Cleanup()
         {
@@ -65,8 +64,5 @@ namespace _Project.CodeBase.UI.Windows.Inventory
             CloseButton.onClick.AddListener(_context.Clear);
             _closeContext.onClick.AddListener(_context.Clear);
         }
-
-        private bool IsInventoryExists() => 
-            _heroInventory.Inventory != null;
     }
 }

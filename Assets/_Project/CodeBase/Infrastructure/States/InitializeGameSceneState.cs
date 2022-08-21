@@ -1,12 +1,7 @@
 ﻿using _Project.CodeBase.Infrastructure.Factory;
-using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.Logic.Hero.State;
-using _Project.CodeBase.Logic.HeroWeapon;
-using _Project.CodeBase.Logic.Interaction;
-using _Project.CodeBase.UI.Elements.Hud;
 using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.UI.Services.Windows;
 using Cysharp.Threading.Tasks;
@@ -67,13 +62,23 @@ namespace _Project.CodeBase.Infrastructure.States
 
         private async UniTask InitializeUI(GameObject hero)
         {
+            await CreateUI(hero);
+            ConstructUI(hero);
+        }
+
+        private async UniTask CreateUI(GameObject hero)
+        {
             await InitializeUIRoot();
             await InitializeHud();
 
-            _uiFactory.ConstructActorUI(hero);
-            
-            InitializeInventory(hero);
+            InitializeInventory();
             InitializeSettings(hero);
+        }
+
+        private void ConstructUI(GameObject hero)
+        {
+            _uiFactory.ConstructHud(hero);
+            _uiFactory.ConstructInventoriesHolder(hero);
         }
 
         private async UniTask<GameObject> InitializePlayer() => 
@@ -85,8 +90,8 @@ namespace _Project.CodeBase.Infrastructure.States
         private async UniTask InitializeHud() => 
             await _uiFactory.CreateHud();
 
-        private void InitializeInventory(GameObject hero) => 
-             _uiFactory.CreateInventory(hero);
+        private void InitializeInventory() => 
+             _uiFactory.CreateInventory();
 
         private void InitializeSettings(GameObject hero)
         {

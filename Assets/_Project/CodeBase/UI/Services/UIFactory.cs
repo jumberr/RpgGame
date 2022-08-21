@@ -31,6 +31,9 @@ namespace _Project.CodeBase.UI.Services
         private readonly Dictionary<WindowId, WindowBase> _windows = new Dictionary<WindowId, WindowBase>();
         private Transform _uiRoot;
         private GameObject _hud;
+        private InventoriesHolderUI _inventoriesHolder;
+        private ActorUI _actorUI;
+        private InventoryUI _inventoryUI;
 
         public UIFactory(
             IAssetProvider assetProvider,
@@ -46,6 +49,7 @@ namespace _Project.CodeBase.UI.Services
         public async UniTask CreateUIRoot()
         {
             var uiRoot = await _assetProvider.InstantiateAsync(AssetPath.UIRootPath);
+            _inventoriesHolder = uiRoot.GetComponent<InventoriesHolderUI>();
             _uiRoot = uiRoot.transform;
         }
 
@@ -62,13 +66,12 @@ namespace _Project.CodeBase.UI.Services
             deathScreen.Construct(_gameStateMachine.Value);
         }
 
-        public void CreateInventory(GameObject hero)
+        public void CreateInventory()
         {
             var prefab = _staticDataService.ForWindow(WindowId.Inventory).Prefab;
-            var inventory = Object.Instantiate(prefab, _uiRoot) as InventoryUI;
-            inventory.Construct(hero.GetComponent<HeroInventory>());
+            _inventoryUI = Object.Instantiate(prefab, _uiRoot) as InventoryUI;
             
-            AddWindow(inventory, WindowId.Inventory);
+            AddWindow(_inventoryUI, WindowId.Inventory);
         }
 
         public GameObject CreateSettings(HeroRotation rotation)
@@ -81,19 +84,26 @@ namespace _Project.CodeBase.UI.Services
             return settings.gameObject;
         }
 
-        public async void ConstructActorUI(GameObject hero)
+        public void ConstructHud(GameObject hero)
         {
-            var actorUI = _hud.GetComponentInChildren<ActorUI>();
-            await actorUI.Construct(hero.GetComponent<HeroHealth>(), hero.GetComponent<HeroAmmo>(),
+            var actorUI = _hud.GetComponent<ActorUI>();
+            _actorUI = actorUI;
+            actorUI.Construct(hero.GetComponent<HeroHealth>(), hero.GetComponent<HeroAmmo>(),
                 hero.GetComponent<WeaponController>(), hero.GetComponent<InputService>(),
-                hero.GetComponent<HeroState>(), hero.GetComponent<Interaction>(), hero.GetComponent<HeroInventory>());
+                hero.GetComponent<HeroState>(), hero.GetComponent<Interaction>());
         }
+
+        public void ConstructInventoriesHolder(GameObject hero) => 
+            _inventoriesHolder.Construct(_actorUI.HotBar, _inventoryUI, hero.GetComponent<HeroInventory>());
 
         public void OpenWindow(WindowId id) => 
             _windows[id].Show();
 
         public void HideWindow(WindowId id) => 
             _windows[id].Hide();
+        
+        public WindowBase GetWindow(WindowId id) => 
+            _windows[id];
 
         private void SetupWindowButtons()
         {

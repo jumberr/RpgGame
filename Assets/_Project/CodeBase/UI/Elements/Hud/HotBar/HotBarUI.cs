@@ -1,4 +1,5 @@
-﻿using _Project.CodeBase.Logic.Inventory;
+﻿using System;
+using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements.Slot;
 using _Project.CodeBase.UI.Windows.Inventory;
 using UnityEngine;
@@ -8,10 +9,13 @@ namespace _Project.CodeBase.UI.Elements.Hud.HotBar
 {
     public class HotBarUI : MonoBehaviour, ISlotHolderUI
     {
-        [SerializeField] private SlotHolderUI _slotHolder;
+        private const int Zero = 0;
+        
+        [SerializeField] private SlotsHolderUI _slotsHolder;
         [SerializeField] private Transform _inventoryButton;
         [SerializeField] private float _buttonOffset;
-        [Space] [SerializeField] private InventorySlotUI _prefab;
+        [Space] 
+        [SerializeField] private InventorySlotUI _prefab;
         [SerializeField] private HorizontalLayoutGroup _horizontal;
         [SerializeField] private RectTransform _container;
 
@@ -20,19 +24,27 @@ namespace _Project.CodeBase.UI.Elements.Hud.HotBar
         private float _width;
         private float _spacing;
 
-        public void Construct(HeroInventory inventory)
+        public SlotsHolderUI SlotsHolder => _slotsHolder;
+        
+        public void Construct(HeroInventory inventory, Transform uiRoot, Action<InventorySlot,InventorySlot> handleDrop)
         {
             _heroInventory = inventory;
-            _slotHolder.Construct(inventory, 0, _heroInventory.Inventory.HotBarSlots);
-            Subscribe();
-            InitializeBarSettings();
+            _slotsHolder.Construct(inventory, uiRoot, Zero, _heroInventory.Inventory.HotBarSlots);
 
-            InitializeSlots(new SlotTouchEvents(HandleClick, HandleDrop));
-            UpdateData();
+            OnConstructInitialized(handleDrop);
         }
 
         private void OnDestroy() =>
             Cleanup();
+
+        private void OnConstructInitialized(Action<InventorySlot,InventorySlot> handleDrop)
+        {
+            Subscribe();
+            InitializeBarSettings();
+
+            InitializeSlots(new SlotTouchEvents(HandleClick, handleDrop));
+            UpdateData();
+        }
 
         private void Subscribe() =>
             _heroInventory.OnUpdate += UpdateData;
@@ -42,15 +54,15 @@ namespace _Project.CodeBase.UI.Elements.Hud.HotBar
 
         public void InitializeSlots(SlotTouchEvents slotTouchEvents)
         {
-            _slotHolder.InitializeSlots(slotTouchEvents);
+            _slotsHolder.InitializeSlots(slotTouchEvents);
             UpdateBarView();
         }
 
         public void UpdateData() =>
-            _slotHolder.UpdateData();
+            _slotsHolder.UpdateData();
 
-        public void UpdateSlot(InventorySlot inventorySlot, int slotIndex) =>
-            _slotHolder.UpdateSlot(inventorySlot, slotIndex);
+        public void UpdateSlot(int slotIndex) =>
+            _slotsHolder.UpdateSlot(slotIndex);
 
         public void HandleClick(InventorySlotUI slotUI)
         {
@@ -61,9 +73,6 @@ namespace _Project.CodeBase.UI.Elements.Hud.HotBar
                 _heroInventory.EquipItem(slotUI.SlotID);
         }
 
-        public void HandleDrop(InventorySlot one, InventorySlot two) =>
-            _slotHolder.HandleDrop(one, two);
-
         private void InitializeBarSettings()
         {
             _rectTransform = (RectTransform) transform;
@@ -73,7 +82,7 @@ namespace _Project.CodeBase.UI.Elements.Hud.HotBar
 
         private void UpdateBarView()
         {
-            var containerWidth = _width * _slotHolder.SlotsUI.Count + _spacing * (_slotHolder.SlotsUI.Count - 1);
+            var containerWidth = _width * _slotsHolder.SlotsUI.Count + _spacing * (_slotsHolder.SlotsUI.Count - 1);
             var buttonXPos = containerWidth / 2 + _spacing + _buttonOffset;
 
             ApplySizeDelta(_container, containerWidth);

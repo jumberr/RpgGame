@@ -1,14 +1,13 @@
-﻿using _Project.CodeBase.Logic.Inventory;
+﻿using System.Collections.Generic;
+using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements.Slot;
 using _Project.CodeBase.UI.Elements.Slot.Drop;
-using _Project.CodeBase.UI.Elements.SpecificButtonLogic;
 using UnityEngine;
 
 namespace _Project.CodeBase.UI.Windows.Inventory
 {
-    public class InventorySlotUI : MonoBehaviour
+    public class InventorySlotUI : MonoBehaviour, IDropArea
     {
-        [SerializeField] private DropArea _dropArea;
         [SerializeField] private ItemDisplay _prefab;
 
         [HideInInspector] public ItemDisplay Display;
@@ -16,51 +15,63 @@ namespace _Project.CodeBase.UI.Windows.Inventory
 
         private InventorySlot _slotData;
         private Canvas _canvas;
+        private Transform _uiRoot;
         private SlotTouchEvents _events;
 
         public InventorySlot SlotData => _slotData;
-        
-        public void Construct(int id, Canvas canvas, InventorySlot inventorySlot, SlotTouchEvents events)
+        public List<DropCondition> DropConditions { get; set; }
+
+        public void Construct(int id, Canvas canvas, Transform uiRoot, InventorySlot inventorySlot, SlotTouchEvents events)
         {
             SlotID = id;
             _canvas = canvas;
+            _uiRoot = uiRoot;
             _slotData = inventorySlot;
             _events = events;
 
             CreateDisplay();
-            Subscribe();
         }
 
         private void OnDestroy() => 
             Cleanup();
+        
+        public void Initialize()
+        {
+        }
+
+        public bool Accepts(ICanBeDragged draggable) =>
+            true;
+
+        public void Drop(InventorySlot data) => 
+            _events.Drop?.Invoke(SlotData, data);
+
+        public void UpdateSlotData(InventorySlot inventorySlot) =>
+            _slotData = inventorySlot;
 
         public void UpdateSlotUI(Sprite icon, string text)
         {
             CreateDisplay();
-            Display.UpdateSlotUI(icon, text);
+            Display.UpdateSlot(_slotData.DbId, icon, text);
             Display.transform.localPosition = Vector3.zero;
         }
+
+        public void Release() =>
+            ClearSlot();
 
         private void CreateDisplay()
         {
             if (Display != null) return;
             Display = Instantiate(_prefab, transform);
-            Display.Construct(_canvas, this, _events.Click);
+            Display.Construct(_canvas, _uiRoot, this, _events.Click);
         }
 
-        private void Subscribe() => 
-            _dropArea.OnDropHandler += Drop;
+        private void ClearSlot()
+        {
+            _slotData = null;
+            Display.Clear();
+        }
 
         private void Cleanup() => 
-            _dropArea.OnDropHandler -= Drop;
-
-        private void Drop(DraggableComponent draggable)
-        {
-            var slot = draggable.GetComponentInParent<InventorySlotUI>();
-            _events.Drop?.Invoke(SlotData, slot.SlotData);
-        }
-
-        public void UpdateSlotData(InventorySlot inventorySlot) => 
-            _slotData = inventorySlot;
+            ClearSlot();
     }
 }

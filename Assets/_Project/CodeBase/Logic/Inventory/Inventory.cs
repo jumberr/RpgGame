@@ -6,6 +6,7 @@ namespace _Project.CodeBase.Logic.Inventory
     [Serializable]
     public class Inventory
     {
+        public const int ErrorIndex = -1;
         private const int DefaultHotBarSlotsAmount = 4;
         
         public InventorySlot[] Slots;
@@ -29,7 +30,7 @@ namespace _Project.CodeBase.Logic.Inventory
             while (amount > 0)
             {
                 var id = FindSlotOrEmpty(dbId);
-                if (id != -1)
+                if (id != ErrorIndex)
                 {
                     Slots[id].DbId = dbId;
                     var startAmount = Slots[id].Amount;
@@ -57,7 +58,7 @@ namespace _Project.CodeBase.Logic.Inventory
             while (amount > 0)
             {
                 var id = FindSlotReversed(dbId);
-                if (id != -1)
+                if (id != ErrorIndex)
                 {
                     var startAmount = Slots[id].Amount;
                     if (startAmount > amount)
@@ -69,7 +70,7 @@ namespace _Project.CodeBase.Logic.Inventory
 
                     amount -= Slots[id].Amount;
                     Slots[id].Amount = 0;
-                    Slots[id].DbId = -1;
+                    Slots[id].DbId = ErrorIndex;
                     Slots[id].State = SlotState.Empty;
                 }
                 else
@@ -87,18 +88,13 @@ namespace _Project.CodeBase.Logic.Inventory
                 Slots[id].Amount -= 1;
         }
 
-        public void SwapSlots(int one, int two)
-        {
-            //if (Slots[one].DbId == -1)
-            //    return;
-
+        public void SwapSlots(int one, int two) => 
             (Slots[one], Slots[two]) = (Slots[two], Slots[one]);
-        }
 
         public void RemoveAllItemsFromSlot(int id)
         {
             if (Slots.Length <= id || Slots[id].State == SlotState.Empty) return;
-            Slots[id].DbId = -1;
+            Slots[id].DbId = ErrorIndex;
             Slots[id].State = SlotState.Empty;
             Slots[id].Amount = 0;
         }
@@ -121,7 +117,7 @@ namespace _Project.CodeBase.Logic.Inventory
                 if (Slots[i].DbId == dbId && Slots[i].State != SlotState.Empty)
                     return i;
             }
-            return -1;
+            return ErrorIndex;
         }
 
         private int FindEmptySlot()
@@ -131,7 +127,7 @@ namespace _Project.CodeBase.Logic.Inventory
                 if (Slots[i].State == SlotState.Empty)
                     return i;
             }
-            return -1;
+            return ErrorIndex;
         }
     }
 }
