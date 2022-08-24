@@ -24,7 +24,11 @@ MonoBehaviour:
   ItemUIData:
     Name: 3
     Icon: {fileID: 21300000, guid: f085544878ed9bf4fbe1634dabd8ee30, type: 3}
-    Description: 
+    Description: An army sniper rifle that has been on the market for more than fifty
+      years and has earned its reputation for exceptional reliability and ease of
+      use. The rifle is normally used by the army to improve the effective range
+      of its units. Soldiers respect this weapon for its armor-piercing properties,
+      which allow it to penetrate army body armor.
   ItemPayloadData:
     DbId: 17
     ItemType: 1

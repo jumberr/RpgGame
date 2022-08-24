@@ -1,4 +1,5 @@
 using System;
+using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements.Slot;
 using UnityEngine;
@@ -11,11 +12,14 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         [SerializeField] private SlotsHolderUI _slotsHolder;
         [SerializeField] private InventoryContextUI _context;
         [SerializeField] private Button _closeContext;
+        [Space]
+        [SerializeField] private ItemDescription _itemDescription;
 
         private HeroInventory _heroInventory;
         private Action<InventorySlot, InventorySlot> _handleDrop;
 
         public SlotsHolderUI SlotsHolder => _slotsHolder;
+        public ItemDescription ItemDescription => _itemDescription;
         private int HotBarSlotsAmount => _heroInventory.Inventory.HotBarSlots;
 
         public void Construct(HeroInventory heroInventory, Transform uiRoot, Action<InventorySlot,InventorySlot> handleDrop)
@@ -47,8 +51,9 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         {
             var dbId = _heroInventory.GetSlot(slotUI.SlotID).DbId;
             if (dbId == -1) return;
-            var actions = _heroInventory.ItemsDataBase.FindItem(dbId).ItemPayloadData.Actions;
-            _context.InitializeContext(actions, slotUI);
+            var item = _heroInventory.ItemsDataBase.FindItem(dbId);
+            _context.InitializeContext(item.ItemPayloadData.Actions, slotUI);
+            _itemDescription.UpdateView(item);
         }
 
         protected override void Cleanup()

@@ -24,7 +24,12 @@ MonoBehaviour:
   ItemUIData:
     Name: 8
     Icon: {fileID: 21300000, guid: 159a26d738f80b34ba16fbe1839c931e, type: 3}
-    Description: 
+    Description: This special purpose smoothbore automatic shotgun was designed in
+      the second half of the 20th century and comes with pump-action and self-cocking
+      firing modes. Used as an all-purpose weapon by the police and assault troops.
+      Notable for its reliability and tactical flexibility. Despite its large weight,
+      complex mechanism and considerable cost it is in demand due to its effectiveness
+      against mutants.
   ItemPayloadData:
     DbId: 24
     ItemType: 0

@@ -24,7 +24,9 @@ MonoBehaviour:
   ItemUIData:
     Name: 1
     Icon: {fileID: 21300000, guid: 6f81b7a9566657545973549959c58f1a, type: 3}
-    Description: 
+    Description: Assault rifle with a folding butt, 1974 model, uses 5.45x39 mm ammunition.
+      It is a simple and reliable weapon, but the cheapness of its production affected
+      its ergonomy and accuracy.
   ItemPayloadData:
     DbId: 11
     ItemType: 1

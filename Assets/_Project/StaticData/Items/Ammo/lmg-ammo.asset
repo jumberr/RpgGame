@@ -24,7 +24,8 @@ MonoBehaviour:
   ItemUIData:
     Name: 19
     Icon: {fileID: 21300000, guid: fbc212d2d3763684fa1aabcccf8d6535, type: 3}
-    Description: 
+    Description: Cheap 7.62 caliber machine gun round. Its design makes it unsuitable
+      for sniper rifles, so it is used only with machine gun.
   ItemPayloadData:
     DbId: 1
     ItemType: 0

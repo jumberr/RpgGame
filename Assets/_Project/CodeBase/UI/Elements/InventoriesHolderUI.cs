@@ -8,6 +8,7 @@ namespace _Project.CodeBase.UI.Elements
 {
     public class InventoriesHolderUI : MonoBehaviour
     {
+        private WeaponStatsUI _weaponStatsUI;
         private HotBarUI _hotBarUI;
         private InventoryUI _inventoryUI;
         private HeroInventory _heroInventory;
@@ -24,7 +25,7 @@ namespace _Project.CodeBase.UI.Elements
         private async UniTaskVoid ConstructInventories()
         {
             await UniTask.WaitUntil(InventoryInitialized);
-            _hotBarUI.Construct(_heroInventory, transform, HandleDrop);
+            _hotBarUI.Construct(_heroInventory, _inventoryUI.ItemDescription, transform, HandleDrop);
             _inventoryUI.Construct(_heroInventory, transform, HandleDrop);
         }
 

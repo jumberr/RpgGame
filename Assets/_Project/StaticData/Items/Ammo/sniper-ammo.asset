@@ -24,7 +24,8 @@ MonoBehaviour:
   ItemUIData:
     Name: 17
     Icon: {fileID: 21300000, guid: ed6c4ecca00912c46bfee9db3fd11886, type: 3}
-    Description: 
+    Description: 7.62-caliber high precision armor-piercing sniper round. Used with
+      the sniper rifles.
   ItemPayloadData:
     DbId: 5
     ItemType: 0

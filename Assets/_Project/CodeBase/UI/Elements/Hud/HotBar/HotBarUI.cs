@@ -1,4 +1,5 @@
 ﻿using System;
+using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements.Slot;
 using _Project.CodeBase.UI.Windows.Inventory;
@@ -20,15 +21,17 @@ namespace _Project.CodeBase.UI.Elements.Hud.HotBar
         [SerializeField] private RectTransform _container;
 
         private HeroInventory _heroInventory;
+        private ItemDescription _itemDescription;
         private RectTransform _rectTransform;
         private float _width;
         private float _spacing;
 
         public SlotsHolderUI SlotsHolder => _slotsHolder;
         
-        public void Construct(HeroInventory inventory, Transform uiRoot, Action<InventorySlot,InventorySlot> handleDrop)
+        public void Construct(HeroInventory inventory, ItemDescription itemDescription, Transform uiRoot, Action<InventorySlot,InventorySlot> handleDrop)
         {
             _heroInventory = inventory;
+            _itemDescription = itemDescription;
             _slotsHolder.Construct(inventory, uiRoot, Zero, _heroInventory.Inventory.HotBarSlots);
 
             OnConstructInitialized(handleDrop);
@@ -68,9 +71,13 @@ namespace _Project.CodeBase.UI.Elements.Hud.HotBar
         {
             var dbId = _heroInventory.GetSlot(slotUI.SlotID).DbId;
             if (dbId == -1) return;
-            var actions = _heroInventory.ItemsDataBase.FindItem(dbId).ItemPayloadData.Actions;
+            var item = _heroInventory.ItemsDataBase.FindItem(dbId);
+            var actions = item.ItemPayloadData.Actions;
+            
             if (actions.Contains(ActionType.Equip))
                 _heroInventory.EquipItem(slotUI.SlotID);
+            
+            _itemDescription.UpdateView(item);
         }
 
         private void InitializeBarSettings()

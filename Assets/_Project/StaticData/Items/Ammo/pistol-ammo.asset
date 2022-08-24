@@ -24,7 +24,9 @@ MonoBehaviour:
   ItemUIData:
     Name: 18
     Icon: {fileID: 21300000, guid: 3119b3af927d93c41b76a7fb1602b951, type: 3}
-    Description: 
+    Description: This basic 9x19 caliber round with a jacketed bullet has good characteristics
+      while being simple to produce. The round is popular due to the fact that international
+      conventions prohibit the use of expanding ammunition in combat.
   ItemPayloadData:
     DbId: 2
     ItemType: 0

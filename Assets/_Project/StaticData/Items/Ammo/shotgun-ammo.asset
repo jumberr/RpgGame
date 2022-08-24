@@ -24,7 +24,8 @@ MonoBehaviour:
   ItemUIData:
     Name: 21
     Icon: {fileID: 21300000, guid: bcf3bd629bea9784e9f5148b548a2793, type: 3}
-    Description: 
+    Description: Standard 12-caliber round filled with 6 mm shot. Highly lethal at
+      close range. Only suitable for use with smoothbore weapons.
   ItemPayloadData:
     DbId: 4
     ItemType: 0

@@ -24,7 +24,12 @@ MonoBehaviour:
   ItemUIData:
     Name: 10
     Icon: {fileID: 21300000, guid: d747d773afd678946939360ae1122d66, type: 3}
-    Description: 
+    Description: "The Colt Revolver is a large frame double-action revolver featuring
+      a full length under-barrel ejection-rod lug and six round cylinder, designed
+      and produced by the Colt's Manufacturing Company in 1990. Chambered for the
+      powerful .44 Magnum and .45 Colt centerfire ammunition cartridges, the Anaconda
+      marked the Hartford, Connecticut firm\u2019s first foray into the popular large-bore
+      Magnum pistol market."
   ItemPayloadData:
     DbId: 23
     ItemType: 1

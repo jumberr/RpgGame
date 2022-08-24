@@ -24,7 +24,10 @@ MonoBehaviour:
   ItemUIData:
     Name: 2
     Icon: {fileID: 21300000, guid: 87b26a99a29de914a867b2bca4571085, type: 3}
-    Description: 
+    Description: A light rifle with an effective fire range of up to 300 meters.
+      Due its to exceptionally easy triggering, high ergonomics and low weight, the
+      weapon is highly accurate, though it is too sensitive to dirt and is not always
+      suitable for use under difficult field conditions.
   ItemPayloadData:
     DbId: 18
     ItemType: 1

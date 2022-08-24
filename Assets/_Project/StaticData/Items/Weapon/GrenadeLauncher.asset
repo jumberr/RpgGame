@@ -24,7 +24,10 @@ MonoBehaviour:
   ItemUIData:
     Name: 6
     Icon: {fileID: 21300000, guid: 62e9ed5d33bf19b4c88cf78579eb0e2a, type: 3}
-    Description: 
+    Description: This revolver-type grenade launcher uses six rifled front-loading
+      barrels, identical to underbarrel launcher attachments. The drum is also front-loading.
+      Widely used for rapid suppression of enemy firing position and attacking defended
+      fixed targets.
   ItemPayloadData:
     DbId: 16
     ItemType: 1

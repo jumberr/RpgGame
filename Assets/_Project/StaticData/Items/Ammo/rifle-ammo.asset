@@ -24,7 +24,8 @@ MonoBehaviour:
   ItemUIData:
     Name: 16
     Icon: {fileID: 21300000, guid: e5be7ae7ac1639a4bb142b82c354207d, type: 3}
-    Description: 
+    Description: A standard round for the AK 47, the M4A4 assault rifles. It has
+      a standard core and a full-jacketed bullet.
   ItemPayloadData:
     DbId: 3
     ItemType: 0

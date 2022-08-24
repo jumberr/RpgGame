@@ -24,7 +24,10 @@ MonoBehaviour:
   ItemUIData:
     Name: 5
     Icon: {fileID: 21300000, guid: 2515e8a57ac94cd4fa9e3b5fd27a665d, type: 3}
-    Description: 
+    Description: A modernized version of the sniper rifle in a compact bullpup design
+      made on the order of rapid response forces. It allows faster precision fire
+      and is considerably lighter, while its single shot firing accuracy at short
+      and medium range is similar to that of its predecessor.
   ItemPayloadData:
     DbId: 12
     ItemType: 1

@@ -24,7 +24,10 @@ MonoBehaviour:
   ItemUIData:
     Name: 13
     Icon: {fileID: 21300000, guid: eccb13442c9948f4eaf0fb49f726a904, type: 3}
-    Description: 
+    Description: Like it says on the box, this fuel-injected incendiary device throws
+      flames in a wide arc, capable of dealing continuous damage to enemies who are
+      set ablaze. Flamethrower also creates environmental chaos, which savvy fighters
+      can use to their advantage.
   ItemPayloadData:
     DbId: 14
     ItemType: 1
@@ -47,6 +50,7 @@ MonoBehaviour:
     AimAccuracy: 0
     AccuracyDistance: 0
     AmmoType: 0
+    Scoping: 0
   Magazine:
     BulletsMax: 0
     BulletsLeft: 0

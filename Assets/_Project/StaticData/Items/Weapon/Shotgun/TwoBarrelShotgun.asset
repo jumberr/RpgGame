@@ -24,7 +24,9 @@ MonoBehaviour:
   ItemUIData:
     Name: 7
     Icon: {fileID: 21300000, guid: b99b0a9b84facda4886c0786ca070fe0, type: 3}
-    Description: 
+    Description: A sawn-off BM-17 rifle. It is lighter and more compact then the
+      original two-barrel rifle, but it is effective only at a close range. One of
+      the weapons most commonly used by beginners.
   ItemPayloadData:
     DbId: 25
     ItemType: 1

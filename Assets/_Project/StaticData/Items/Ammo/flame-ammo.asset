@@ -24,7 +24,7 @@ MonoBehaviour:
   ItemUIData:
     Name: 22
     Icon: {fileID: 21300000, guid: 27f1d569ac152e945aecf65ef2eccf12, type: 3}
-    Description: 
+    Description: Standard gas balon. Used for flamethrower. Fire-hazardous.
   ItemPayloadData:
     DbId: 0
     ItemType: 0

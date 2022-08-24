@@ -24,7 +24,10 @@ MonoBehaviour:
   ItemUIData:
     Name: 15
     Icon: {fileID: 21300000, guid: 39648fc2c4ca73b47a97effe3cb1a322, type: 3}
-    Description: 
+    Description: This belt-fed machine gun is a portable modification with a complex
+      two-stage feeding system. Despite its weight and low precision, this LMG has
+      found admirers. Used primarily to fight off outnumbering enemy forces during
+      faction conflicts.
   ItemPayloadData:
     DbId: 20
     ItemType: 1

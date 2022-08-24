@@ -24,7 +24,9 @@ MonoBehaviour:
   ItemUIData:
     Name: 14
     Icon: {fileID: 21300000, guid: d4de1a0cdd0fe614383b510cfaf04376, type: 3}
-    Description: 
+    Description: Standard hunting knife. The grip is made of a metal and synthetic
+      finish with the hilt sporting a bayonet lug. The other edge of the blade is
+      serrated which is typically used for cutting objects rather than for combat.
   ItemPayloadData:
     DbId: 22
     ItemType: 1

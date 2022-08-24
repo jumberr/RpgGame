@@ -24,7 +24,9 @@ MonoBehaviour:
   ItemUIData:
     Name: 12
     Icon: {fileID: 21300000, guid: 269550140368d394f85baa54e84e03ac, type: 3}
-    Description: 
+    Description: 'One of the best weapons in the submachine gun class. During the
+      last decades of the 20th century it was adopted by the army and police special
+      forces units in many countries. '
   ItemPayloadData:
     DbId: 19
     ItemType: 1
