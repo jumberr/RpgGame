@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 1307941626881389947}
   - component: {fileID: 1765537045941841378}
   - component: {fileID: 158062791882145765}
-  - component: {fileID: 1299220167583175261}
   m_Layer: 9
   m_Name: Wooden_Crate_LOD2
   m_TagString: Untagged
@@ -144,12 +143,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5840279245864706723}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -177,19 +176,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1299220167583175261
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5840279245864706723}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.98693955, y: 0.9728475, z: 1.0012437}
-  m_Center: {x: 0.007003963, y: 0.45262453, z: -0.032369897}
 --- !u!1 &6518143046954836992
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +187,6 @@ GameObject:
   - component: {fileID: 5143821494661632202}
   - component: {fileID: 5946724356499642131}
   - component: {fileID: 901508403727349003}
-  - component: {fileID: 1037783575567850050}
   m_Layer: 9
   m_Name: Wooden_Crate_LOD4
   m_TagString: Untagged
@@ -272,19 +257,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1037783575567850050
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6518143046954836992}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9697391, y: 0.9632498, z: 0.96463966}
-  m_Center: {x: -0.0029696673, y: 0.45818257, z: -0.029190287}
 --- !u!1 &7862552362579439711
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +339,6 @@ GameObject:
   - component: {fileID: 7094336832602517731}
   - component: {fileID: 8130778448881963518}
   - component: {fileID: 4101576883445959712}
-  - component: {fileID: 6551919739629541368}
   m_Layer: 9
   m_Name: Wooden_Crate_LOD1
   m_TagString: Untagged
@@ -405,12 +376,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8154619501994856490}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -438,19 +409,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6551919739629541368
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8154619501994856490}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.987997, y: 0.9734536, z: 1.0060345}
-  m_Center: {x: 0.00647524, y: 0.45292756, z: -0.03476526}
 --- !u!1 &8182729597896321652
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +420,6 @@ GameObject:
   - component: {fileID: 7921358704197441897}
   - component: {fileID: 1693593322894078577}
   - component: {fileID: 683791408522243270}
-  - component: {fileID: 8056076501357159987}
   m_Layer: 9
   m_Name: Wooden_Crate_LOD3
   m_TagString: Untagged
@@ -533,16 +490,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8056076501357159987
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8182729597896321652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.97527117, y: 0.9724051, z: 0.97697324}
-  m_Center: {x: 0.001169771, y: 0.45195532, z: -0.023023516}

@@ -32,7 +32,7 @@ MonoBehaviour:
       against mutants.
   ItemPayloadData:
     DbId: 24
-    ItemType: 0
+    ItemType: 1
     Actions: 0000000002000000
     GroundPrefab: {fileID: 7070600995131026227, guid: 19e18eae50015e34a9e1a74f0ff27837,
       type: 3}

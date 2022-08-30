@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6590936569816123752}
   - component: {fileID: 3949476140929917117}
   - component: {fileID: 6870000956185067978}
-  - component: {fileID: 1245740011545819732}
   m_Layer: 9
   m_Name: Floor_Stairs_Plank_LOD3
   m_TagString: Untagged
@@ -82,20 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1245740011545819732
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205194203759826302}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4624225455961861404, guid: 7c915a78f51de504788d4e5aee8daf3d, type: 3}
 --- !u!1 &4289239296491158253
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +259,6 @@ GameObject:
   - component: {fileID: 7106676947806746911}
   - component: {fileID: 7063538041076088491}
   - component: {fileID: 7567026980591058981}
-  - component: {fileID: 3922669981649620814}
   m_Layer: 9
   m_Name: Floor_Stairs_Plank_LOD1
   m_TagString: Untagged
@@ -345,20 +329,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3922669981649620814
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6764710697424402647}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7755604326587255356, guid: 7c915a78f51de504788d4e5aee8daf3d, type: 3}
 --- !u!1 &7251095072719692135
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +340,6 @@ GameObject:
   - component: {fileID: 2397145742933461456}
   - component: {fileID: 2536318552640822282}
   - component: {fileID: 8248989954918281342}
-  - component: {fileID: 2905465592187529325}
   m_Layer: 9
   m_Name: Floor_Stairs_Plank_LOD2
   m_TagString: Untagged
@@ -441,20 +410,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2905465592187529325
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7251095072719692135}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6927952246968573407, guid: 7c915a78f51de504788d4e5aee8daf3d, type: 3}
 --- !u!1 &8359684476374983009
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +421,6 @@ GameObject:
   - component: {fileID: 3418819770425999418}
   - component: {fileID: 8277073890622882314}
   - component: {fileID: 6923608513100819738}
-  - component: {fileID: 5898977309228566168}
   m_Layer: 9
   m_Name: Floor_Stairs_Plank_LOD4
   m_TagString: Untagged
@@ -537,17 +491,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5898977309228566168
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8359684476374983009}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8049249190506930399, guid: 7c915a78f51de504788d4e5aee8daf3d, type: 3}

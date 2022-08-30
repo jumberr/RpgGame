@@ -92,7 +92,6 @@ GameObject:
   - component: {fileID: 1036187675244660668}
   - component: {fileID: 7757027432403720698}
   - component: {fileID: 3222814132175017750}
-  - component: {fileID: 2146306787849565463}
   m_Layer: 9
   m_Name: Stone_7_LOD2
   m_TagString: Rock
@@ -163,20 +162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2146306787849565463
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2896916689558698141}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6287337843347351143, guid: 1325e902070b55047ab4a90f24ddd166, type: 3}
 --- !u!1 &3401972521863684590
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +173,6 @@ GameObject:
   - component: {fileID: 5980090480564820205}
   - component: {fileID: 6072098404006074826}
   - component: {fileID: 2209383073021278592}
-  - component: {fileID: 2681507887832674317}
   m_Layer: 9
   m_Name: Stone_7_LOD1
   m_TagString: Rock
@@ -259,20 +243,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2681507887832674317
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3401972521863684590}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1952328360866360003, guid: 1325e902070b55047ab4a90f24ddd166, type: 3}
 --- !u!1 &5339898623663936014
 GameObject:
   m_ObjectHideFlags: 0

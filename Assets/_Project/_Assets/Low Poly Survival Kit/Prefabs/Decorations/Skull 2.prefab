@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4545412699639041335}
   - component: {fileID: 4795316545269405181}
   - component: {fileID: 2547483033148351695}
-  - component: {fileID: 3377232019455809243}
   m_Layer: 9
   m_Name: Skull_2_LOD4
   m_TagString: Untagged
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3377232019455809243
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631416505976243612}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25772488, y: 1.1704655, z: 0.21268356}
-  m_Center: {x: -0.030997697, y: 0.57173455, z: -0.021928474}
 --- !u!1 &1743320191223824280
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +187,6 @@ GameObject:
   - component: {fileID: 4852595816383267089}
   - component: {fileID: 8495156751474973672}
   - component: {fileID: 2663145027146826129}
-  - component: {fileID: 7727519855396333825}
   m_Layer: 9
   m_Name: Skull_2_LOD3
   m_TagString: Untagged
@@ -272,19 +257,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7727519855396333825
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2362954646663308949}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25305164, y: 1.1704655, z: 0.21378599}
-  m_Center: {x: -0.028445587, y: 0.57173455, z: -0.021105655}
 --- !u!1 &2603993676883895667
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +268,6 @@ GameObject:
   - component: {fileID: 787317512248232490}
   - component: {fileID: 74615868045313832}
   - component: {fileID: 3169429506346710696}
-  - component: {fileID: 8562572769675242009}
   m_Layer: 9
   m_Name: Skull_2_LOD1
   m_TagString: Untagged
@@ -334,12 +305,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2603993676883895667}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -367,19 +338,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8562572769675242009
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2603993676883895667}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.2521213, y: 1.1715833, z: 0.21373278}
-  m_Center: {x: -0.028858375, y: 0.57229346, z: -0.021132257}
 --- !u!1 &7651765352738105951
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +420,6 @@ GameObject:
   - component: {fileID: 6349755185496264043}
   - component: {fileID: 8072110033266262309}
   - component: {fileID: 2930775741068060107}
-  - component: {fileID: 8120893004359228387}
   m_Layer: 9
   m_Name: Skull_2_LOD2
   m_TagString: Untagged
@@ -500,12 +457,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9095651604200143308}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -533,16 +490,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8120893004359228387
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9095651604200143308}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25305164, y: 1.1715833, z: 0.21373278}
-  m_Center: {x: -0.028445587, y: 0.57229346, z: -0.021132257}

@@ -36,7 +36,7 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
         private void Subscribe()
         {
             _input.PlayerMovement.Move.performed += MovePerformed();
-            _input.PlayerMovement.Move.canceled += MoveCanceled();
+            _input.PlayerMovement.Move.canceled += MovePerformed();
             _input.PlayerMovement.Rotation.performed += Rotation();
             _input.PlayerMovement.Jump.performed += Jump();
             
@@ -49,7 +49,7 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
         private void UnSubscribe()
         {
             _input.PlayerMovement.Move.performed -= MovePerformed();
-            _input.PlayerMovement.Move.canceled -= MoveCanceled();
+            _input.PlayerMovement.Move.canceled -= MovePerformed();
             _input.PlayerMovement.Rotation.performed -= Rotation();
             _input.PlayerMovement.Jump.performed -= Jump();
             
@@ -61,9 +61,6 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
 
         private Action<InputAction.CallbackContext> MovePerformed() => 
             ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>());
-
-        private Action<InputAction.CallbackContext> MoveCanceled() => 
-            ctx => OnMove?.Invoke(Vector2.zero);
 
         private Action<InputAction.CallbackContext> Rotation() => 
             ctx => OnRotate?.Invoke(ctx.ReadValue<Vector2>());

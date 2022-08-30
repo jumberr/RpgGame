@@ -53,7 +53,7 @@ namespace _Project.CodeBase.Infrastructure.States
         {
             var playerData = _staticDataService.ForPlayer();
             var inventory = new Inventory(8);
-            var settings = new SettingsData(0.2f);
+            var settings = new SettingsData(0.2f, 0);
             
             var healthData = new HealthData
             {

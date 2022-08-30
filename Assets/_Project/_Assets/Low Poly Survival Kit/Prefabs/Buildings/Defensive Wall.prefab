@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5664541277505439280}
   - component: {fileID: 4411162354245181050}
   - component: {fileID: 1685532890639108527}
-  - component: {fileID: 8256593420374878638}
+  - component: {fileID: 5708807578875866219}
   m_Layer: 9
   m_Name: Defensive_Wall_LOD3
   m_TagString: Untagged
@@ -49,12 +49,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036172559818043889}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8256593420374878638
+--- !u!65 &5708807578875866219
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,8 +93,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9884442, y: 2.5006819, z: 0.43809658}
-  m_Center: {x: -0.031793322, y: 1.2496591, z: 0.0025730727}
+  m_Size: {x: 1.9983445, y: 2.5, z: 0.43430766}
+  m_Center: {x: -0.0337069, y: 1.25, z: 0.001104623}
 --- !u!1 &1985426638306037378
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 3272616634509914832}
   - component: {fileID: 5188226778388253620}
   - component: {fileID: 928487985438606038}
-  - component: {fileID: 6634060080524087857}
+  - component: {fileID: 2326695384360119397}
   m_Layer: 9
   m_Name: Defensive_Wall_LOD4
   m_TagString: Untagged
@@ -239,12 +239,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2232272127593695578}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -272,7 +272,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6634060080524087857
+--- !u!65 &2326695384360119397
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,8 +283,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9884442, y: 2.4525373, z: 0.4293464}
-  m_Center: {x: -0.031793322, y: 1.2255677, z: 0.00694815}
+  m_Size: {x: 1.9983445, y: 2.5, z: 0.43430766}
+  m_Center: {x: -0.0337069, y: 1.25, z: 0.001104623}
 --- !u!1 &2394599535382580758
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 8371639505405980775}
   - component: {fileID: 3679590420254562118}
   - component: {fileID: 3800794215357450247}
-  - component: {fileID: 5449468212983103146}
+  - component: {fileID: 5837802409142089811}
   m_Layer: 9
   m_Name: Defensive_Wall_LOD1
   m_TagString: Untagged
@@ -367,7 +367,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5449468212983103146
+--- !u!65 &5837802409142089811
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -378,8 +378,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9955622, y: 2.500207, z: 0.43918}
-  m_Center: {x: -0.032008674, y: 1.2498965, z: 0.003540784}
+  m_Size: {x: 1.9983445, y: 2.5, z: 0.43430766}
+  m_Center: {x: -0.0337069, y: 1.25, z: 0.001104623}
 --- !u!1 &6281820531373981165
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 1757887357347938092}
   - component: {fileID: 8354158571509496317}
   - component: {fileID: 7594873728292443454}
-  - component: {fileID: 6628859296640537880}
+  - component: {fileID: 5912347778366728522}
   m_Layer: 9
   m_Name: Defensive_Wall_LOD2
   m_TagString: Untagged
@@ -462,7 +462,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6628859296640537880
+--- !u!65 &5912347778366728522
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -473,8 +473,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9955622, y: 2.500207, z: 0.43960598}
-  m_Center: {x: -0.032008674, y: 1.2498965, z: 0.0033277792}
+  m_Size: {x: 1.9983445, y: 2.5, z: 0.43430766}
+  m_Center: {x: -0.0337069, y: 1.25, z: 0.001104623}
 --- !u!1 &8304534149890439654
 GameObject:
   m_ObjectHideFlags: 0

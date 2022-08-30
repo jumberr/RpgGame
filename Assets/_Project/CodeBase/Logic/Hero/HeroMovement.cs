@@ -1,5 +1,4 @@
-﻿using System;
-using _Project.CodeBase.Data;
+﻿using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
@@ -24,7 +23,6 @@ namespace _Project.CodeBase.Logic.Hero
         private Transform _cachedTransform;
         private Vector3 _velocity;
         private Vector2 _input;
-        
 
         public CharacterController CharacterController => _characterController;
         
@@ -84,18 +82,8 @@ namespace _Project.CodeBase.Logic.Hero
             return _walkingSpeed;
         }
 
-        private void ApplyMoveAnimation()
-        {
-            //if (_input.magnitude == 0)
-            //    _heroAnimator.EnterMoveState(0);
-            //else
-                _heroAnimator.EnterMoveState(_input.y);
-            
-            //else if (_input.y >= MinJoystickDeflectionToRun)
-            //    _heroAnimator.EnterMoveState(1);
-            //else 
-            //    _heroAnimator.EnterMoveState(0.85f);
-        }
+        private void ApplyMoveAnimation() => 
+            _heroAnimator.EnterMoveState(_input.y);
 
         private Vector3 CalculateDirection() =>
             _cachedTransform.right * _input.x + _cachedTransform.forward * _input.y;

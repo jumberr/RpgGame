@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 13577344633693124}
   - component: {fileID: 8899942853197750089}
   - component: {fileID: 8082987013758269927}
-  - component: {fileID: 3474311182505735395}
   m_Layer: 9
   m_Name: Rock_Wall_1_LOD0
   m_TagString: Rock
@@ -49,12 +48,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739476877864254795}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -82,20 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3474311182505735395
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739476877864254795}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2923514878158897338, guid: 57e34bd57b5201d4391f8d2d828fcdb9, type: 3}
 --- !u!1 &2235210371685059623
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +92,6 @@ GameObject:
   - component: {fileID: 2218029766230442378}
   - component: {fileID: 8466639604983934006}
   - component: {fileID: 4579465556643189938}
-  - component: {fileID: 3884639204604540365}
   m_Layer: 9
   m_Name: Rock_Wall_1_LOD4
   m_TagString: Rock
@@ -178,20 +162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3884639204604540365
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2235210371685059623}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1001291653491840314, guid: 57e34bd57b5201d4391f8d2d828fcdb9, type: 3}
 --- !u!1 &3144716961238835537
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +244,6 @@ GameObject:
   - component: {fileID: 1067182346754642523}
   - component: {fileID: 2079195028979542376}
   - component: {fileID: 3237154524063230516}
-  - component: {fileID: 8400341070796694352}
   m_Layer: 9
   m_Name: Rock_Wall_1_LOD2
   m_TagString: Rock
@@ -312,12 +281,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3299877454645154551}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -345,20 +314,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8400341070796694352
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3299877454645154551}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 677102806589201729, guid: 57e34bd57b5201d4391f8d2d828fcdb9, type: 3}
 --- !u!1 &4832930962692381132
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +325,6 @@ GameObject:
   - component: {fileID: 1044348212830286832}
   - component: {fileID: 5327215455066857108}
   - component: {fileID: 8105098876485330888}
-  - component: {fileID: 1466280644411796883}
   m_Layer: 9
   m_Name: Rock_Wall_1_LOD3
   m_TagString: Rock
@@ -441,20 +395,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1466280644411796883
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4832930962692381132}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3551935854896460047, guid: 57e34bd57b5201d4391f8d2d828fcdb9, type: 3}
 --- !u!1 &8448764721283706698
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +406,6 @@ GameObject:
   - component: {fileID: 3323273460559136424}
   - component: {fileID: 1336886467849917441}
   - component: {fileID: 53076727097417984}
-  - component: {fileID: 8473863760604113332}
   m_Layer: 9
   m_Name: Rock_Wall_1_LOD1
   m_TagString: Rock
@@ -504,12 +443,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8448764721283706698}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -537,17 +476,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8473863760604113332
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8448764721283706698}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1212064404815602751, guid: 57e34bd57b5201d4391f8d2d828fcdb9, type: 3}

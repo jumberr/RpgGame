@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2813856706100162904}
   - component: {fileID: 1344572614173957102}
   - component: {fileID: 5806988413690512216}
-  - component: {fileID: 7464673457587116941}
+  - component: {fileID: 6569679370047194527}
   m_Layer: 9
   m_Name: Wall_Window_Big_Log_LOD0
   m_TagString: Untagged
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7464673457587116941
-BoxCollider:
+--- !u!64 &6569679370047194527
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,9 +92,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5, z: 0.28964466}
-  m_Center: {x: 0, y: 1.25, z: -0.0014963448}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2860299577980645539, guid: c2da9ae3ec5f52f45ba39a94ba25d5f6, type: 3}
 --- !u!1 &2861559443425560261
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +178,7 @@ GameObject:
   - component: {fileID: 4436721809746284584}
   - component: {fileID: 7153938425937727921}
   - component: {fileID: 6779298597102707020}
-  - component: {fileID: 6653737766469867838}
+  - component: {fileID: 2224231942715775462}
   m_Layer: 9
   m_Name: Wall_Window_Big_Log_LOD3
   m_TagString: Untagged
@@ -215,12 +216,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2895300849508189350}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -248,8 +249,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6653737766469867838
-BoxCollider:
+--- !u!64 &2224231942715775462
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -258,9 +259,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.3859205, z: 0.2967101}
-  m_Center: {x: 0, y: 1.25, z: -0.0004980415}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2860299577980645539, guid: c2da9ae3ec5f52f45ba39a94ba25d5f6, type: 3}
 --- !u!1 &3471918088743421230
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +274,7 @@ GameObject:
   - component: {fileID: 3694075370293092375}
   - component: {fileID: 3006819041477298820}
   - component: {fileID: 4140817134590031367}
-  - component: {fileID: 5506090841946353727}
+  - component: {fileID: 837863914376332079}
   m_Layer: 9
   m_Name: Wall_Window_Big_Log_LOD4
   m_TagString: Untagged
@@ -310,12 +312,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3471918088743421230}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -343,8 +345,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5506090841946353727
-BoxCollider:
+--- !u!64 &837863914376332079
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -353,9 +355,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.3852031, z: 0.2967101}
-  m_Center: {x: 0, y: 1.2499996, z: -0.0004980415}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2860299577980645539, guid: c2da9ae3ec5f52f45ba39a94ba25d5f6, type: 3}
 --- !u!1 &4329193071411701473
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +370,7 @@ GameObject:
   - component: {fileID: 561183687815145761}
   - component: {fileID: 3368004356015071514}
   - component: {fileID: 7579670749438107945}
-  - component: {fileID: 8898270414750102813}
+  - component: {fileID: 5256550396841123447}
   m_Layer: 9
   m_Name: Wall_Window_Big_Log_LOD2
   m_TagString: Untagged
@@ -438,8 +441,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8898270414750102813
-BoxCollider:
+--- !u!64 &5256550396841123447
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -448,9 +451,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5149481, z: 0.2913009}
-  m_Center: {x: 0.000000059604645, y: 1.2500001, z: -0.0022075176}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2860299577980645539, guid: c2da9ae3ec5f52f45ba39a94ba25d5f6, type: 3}
 --- !u!1 &6229688413580746765
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +466,7 @@ GameObject:
   - component: {fileID: 1062820022498519967}
   - component: {fileID: 7225915454673897656}
   - component: {fileID: 2645799767358281139}
-  - component: {fileID: 7896041608979948823}
+  - component: {fileID: 2436056372291096639}
   m_Layer: 9
   m_Name: Wall_Window_Big_Log_LOD1
   m_TagString: Untagged
@@ -533,8 +537,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7896041608979948823
-BoxCollider:
+--- !u!64 &2436056372291096639
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -543,6 +547,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5, z: 0.27626163}
-  m_Center: {x: 0, y: 1.25, z: -0.0001314953}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2860299577980645539, guid: c2da9ae3ec5f52f45ba39a94ba25d5f6, type: 3}

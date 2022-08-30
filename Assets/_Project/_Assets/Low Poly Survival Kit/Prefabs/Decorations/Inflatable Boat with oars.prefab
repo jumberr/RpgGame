@@ -179,7 +179,6 @@ GameObject:
   - component: {fileID: 1428718808476141952}
   - component: {fileID: 1799890160850408500}
   - component: {fileID: 791238192044042308}
-  - component: {fileID: 6311505082826046620}
   m_Layer: 9
   m_Name: Inflatable_Boat_LOD4
   m_TagString: Untagged
@@ -250,19 +249,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6311505082826046620
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5363718526745521126}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.736626, y: 0.41867357, z: 2.8762345}
-  m_Center: {x: 0.0000019073486, y: 0.016018808, z: -0.10256932}
 --- !u!1 &7688319355184728731
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +260,6 @@ GameObject:
   - component: {fileID: 6226803111558283768}
   - component: {fileID: 3453051093335645913}
   - component: {fileID: 2156491189134669377}
-  - component: {fileID: 4726030413559689406}
   m_Layer: 9
   m_Name: Inflatable_Boat_LOD1
   m_TagString: Untagged
@@ -312,12 +297,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7688319355184728731}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -345,19 +330,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4726030413559689406
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7688319355184728731}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.7612332, y: 0.4199746, z: 2.8802624}
-  m_Center: {x: 0.0000019073486, y: 0.017650366, z: -0.09717999}
 --- !u!1 &7712800431989222756
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +341,6 @@ GameObject:
   - component: {fileID: 1089810620345615788}
   - component: {fileID: 1616149208246309539}
   - component: {fileID: 8838121233004151667}
-  - component: {fileID: 8564201079804839743}
   m_Layer: 9
   m_Name: Inflatable_Boat_LOD2
   m_TagString: Untagged
@@ -407,12 +378,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7712800431989222756}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -440,19 +411,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8564201079804839743
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7712800431989222756}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.7612332, y: 0.4187831, z: 2.8801916}
-  m_Center: {x: 0.0000019073486, y: 0.016874433, z: -0.09714452}
 --- !u!1 &8928801540607695908
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +422,6 @@ GameObject:
   - component: {fileID: 7018454480396240133}
   - component: {fileID: 1570981633854322590}
   - component: {fileID: 3237314635895515246}
-  - component: {fileID: 4211524510049320906}
   m_Layer: 9
   m_Name: Inflatable_Boat_LOD3
   m_TagString: Untagged
@@ -535,19 +492,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4211524510049320906
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8928801540607695908}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.7397988, y: 0.41935194, z: 2.883638}
-  m_Center: {x: 0.0000019073486, y: 0.017034777, z: -0.09886769}
 --- !u!1001 &1634652230110860040
 PrefabInstance:
   m_ObjectHideFlags: 0

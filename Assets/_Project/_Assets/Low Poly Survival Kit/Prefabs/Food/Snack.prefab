@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 5763098005587754271}
   - component: {fileID: 2028253974988395011}
   - component: {fileID: 1056676888197277145}
-  - component: {fileID: 5899924276233358632}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Snack_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5763098005587754271
 Transform:
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5899924276233358632
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950187480228567938}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.11785107, y: 0.012404635, z: 0.03313243}
-  m_Center: {x: 0.00036937743, y: 0.0000004810281, z: 0.0009790543}
 --- !u!1 &1363601097065917757
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,13 +92,12 @@ GameObject:
   - component: {fileID: 7186974000952589475}
   - component: {fileID: 1525120741072438774}
   - component: {fileID: 2517598280482011706}
-  - component: {fileID: 8884431705469201244}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Snack_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7186974000952589475
 Transform:
@@ -177,19 +162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8884431705469201244
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363601097065917757}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.11718721, y: 0.013528397, z: 0.03346057}
-  m_Center: {x: 0.00036886707, y: -0.000017977087, z: 0.000997005}
 --- !u!1 &1756285166498595810
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,12 +172,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3316001541151338993}
   - component: {fileID: 3341603323999539060}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Snack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3316001541151338993
 Transform:
@@ -272,13 +244,12 @@ GameObject:
   - component: {fileID: 3387278958289221246}
   - component: {fileID: 7985211874588124970}
   - component: {fileID: 6750747995539986464}
-  - component: {fileID: 8258194791336083953}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Snack_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3387278958289221246
 Transform:
@@ -343,19 +314,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8258194791336083953
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123481091185792201}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1178281, y: 0.013528397, z: 0.033499762}
-  m_Center: {x: 0.0003658887, y: -0.000017977087, z: 0.00090700574}
 --- !u!1 &2963402937594935113
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,13 +325,12 @@ GameObject:
   - component: {fileID: 1019301605710453961}
   - component: {fileID: 5739767936260344788}
   - component: {fileID: 7697396407648404883}
-  - component: {fileID: 7932064385002096786}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Snack_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1019301605710453961
 Transform:
@@ -438,19 +395,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7932064385002096786
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2963402937594935113}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1177887, y: 0.012404635, z: 0.03298202}
-  m_Center: {x: 0.0003381949, y: 0.0000004810281, z: 0.0009842012}
 --- !u!1 &4741611687669277749
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,12 +407,12 @@ GameObject:
   - component: {fileID: 8430961856026919234}
   - component: {fileID: 3660581069019267715}
   - component: {fileID: 3928419402429346488}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Snack_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3721435205851183961
 Transform:

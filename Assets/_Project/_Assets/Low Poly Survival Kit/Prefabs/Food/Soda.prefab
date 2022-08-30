@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 9151092825638958824}
   - component: {fileID: 2449781595171294411}
   - component: {fileID: 3155934941609534553}
-  - component: {fileID: 209519804621028882}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Soda_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &9151092825638958824
 Transform:
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &209519804621028882
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522857134570306536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.09425772, y: 0.1918934, z: 0.09425772}
-  m_Center: {x: 0, y: 0.08861159, z: 0}
 --- !u!1 &536987281885065332
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,12 +91,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3542251319001580135}
   - component: {fileID: 4431466655189903987}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Soda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3542251319001580135
 Transform:
@@ -177,13 +163,12 @@ GameObject:
   - component: {fileID: 7505489767209551688}
   - component: {fileID: 4304974804709260938}
   - component: {fileID: 7961754492502120723}
-  - component: {fileID: 3090976671941592629}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Soda_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7505489767209551688
 Transform:
@@ -248,19 +233,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3090976671941592629
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538453175421959978}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.09425772, y: 0.1918934, z: 0.09425772}
-  m_Center: {x: 0, y: 0.08861159, z: 0}
 --- !u!1 &828189847398426862
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,13 +244,12 @@ GameObject:
   - component: {fileID: 9135423613877777734}
   - component: {fileID: 1456849089834967018}
   - component: {fileID: 8937448571238614723}
-  - component: {fileID: 8306812917435298498}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Soda_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &9135423613877777734
 Transform:
@@ -343,19 +314,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8306812917435298498
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828189847398426862}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0859544, y: 0.18875632, z: 0.0859544}
-  m_Center: {x: 0.000005628914, y: 0.088354036, z: -0.000005628914}
 --- !u!1 &1157619609958418728
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,12 +326,12 @@ GameObject:
   - component: {fileID: 7828043444813486562}
   - component: {fileID: 5138657106062922377}
   - component: {fileID: 1878719806739680799}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Soda_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2371938389574961835
 Transform:
@@ -462,13 +420,12 @@ GameObject:
   - component: {fileID: 2177816282474148923}
   - component: {fileID: 5334644433598195158}
   - component: {fileID: 8151173604565731583}
-  - component: {fileID: 8604769321858023533}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Soda_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2177816282474148923
 Transform:
@@ -533,16 +490,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8604769321858023533
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4397588377227427610}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.09425772, y: 0.19053534, z: 0.09425772}
-  m_Center: {x: 0, y: 0.089243546, z: 0}

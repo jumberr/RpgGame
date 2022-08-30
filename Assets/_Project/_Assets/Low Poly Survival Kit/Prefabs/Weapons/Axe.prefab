@@ -82,7 +82,6 @@ GameObject:
   - component: {fileID: 5520491440519588369}
   - component: {fileID: 4916097369403576775}
   - component: {fileID: 2730004088967861590}
-  - component: {fileID: 2917399758030385199}
   m_Layer: 0
   m_Name: Axe_LOD2
   m_TagString: Untagged
@@ -120,12 +119,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571141386884554158}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -150,20 +151,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2917399758030385199
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571141386884554158}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 5885604941113948383, guid: 75844e4318ffb7a46918ee488a718d53, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4946605908778013368
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +163,6 @@ GameObject:
   - component: {fileID: 6095353548781808284}
   - component: {fileID: 4089672310051539526}
   - component: {fileID: 7774093847929696101}
-  - component: {fileID: 727045724137925432}
   m_Layer: 0
   m_Name: Axe_LOD4
   m_TagString: Untagged
@@ -213,12 +200,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4946605908778013368}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -243,20 +232,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &727045724137925432
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4946605908778013368}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 5964016177577786785, guid: 75844e4318ffb7a46918ee488a718d53, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5250662742631875321
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +244,6 @@ GameObject:
   - component: {fileID: 5482770941193857440}
   - component: {fileID: 3681575273883108440}
   - component: {fileID: 3867929310946166593}
-  - component: {fileID: 3166033463582774090}
   m_Layer: 0
   m_Name: Axe_LOD3
   m_TagString: Untagged
@@ -306,12 +281,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5250662742631875321}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -336,20 +313,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3166033463582774090
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5250662742631875321}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -1587147579530257647, guid: 75844e4318ffb7a46918ee488a718d53, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8039654684147712728
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +325,6 @@ GameObject:
   - component: {fileID: 8844809843987363204}
   - component: {fileID: 1075722597650608679}
   - component: {fileID: 4974053687263248739}
-  - component: {fileID: 6918925430524560828}
   m_Layer: 0
   m_Name: Axe_LOD0
   m_TagString: Untagged
@@ -399,12 +362,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8039654684147712728}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,20 +394,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6918925430524560828
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8039654684147712728}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 6889426940906442474, guid: 75844e4318ffb7a46918ee488a718d53, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8711402340422104371
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +406,6 @@ GameObject:
   - component: {fileID: 3460410063624864458}
   - component: {fileID: 9107288160611349498}
   - component: {fileID: 6604522277167754855}
-  - component: {fileID: 6314004084027288802}
   m_Layer: 0
   m_Name: Axe_LOD1
   m_TagString: Untagged
@@ -492,12 +443,14 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8711402340422104371}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,17 +475,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6314004084027288802
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8711402340422104371}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -4251985930872185953, guid: 75844e4318ffb7a46918ee488a718d53, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}

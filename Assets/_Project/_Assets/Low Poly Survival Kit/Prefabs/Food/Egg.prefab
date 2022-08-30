@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 3830237741455813469}
   - component: {fileID: 1400667387737455954}
   - component: {fileID: 4039654364618850517}
-  - component: {fileID: 5530821022951764271}
   m_Layer: 9
   m_Name: Egg_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3830237741455813469
 Transform:
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5530821022951764271
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275371509000531047}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.06559931, y: 0.10718454, z: 0.06312421}
-  m_Center: {x: -0.0016412362, y: 0.00024999306, z: 0.00030794367}
 --- !u!1 &3070691121235445676
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +96,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2073362918501103039
 Transform:
@@ -177,13 +163,12 @@ GameObject:
   - component: {fileID: 6807104329675284226}
   - component: {fileID: 4871356994867966096}
   - component: {fileID: 8210803544052641778}
-  - component: {fileID: 3979965270348042540}
   m_Layer: 9
   m_Name: Egg_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6807104329675284226
 Transform:
@@ -248,19 +233,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3979965270348042540
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3585595548663360946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.06395445, y: 0.10527514, z: 0.06723427}
-  m_Center: {x: -0.000005379319, y: -0.00070470385, z: 0}
 --- !u!1 &5652921501168282582
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +250,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1002363220905687414
 Transform:
@@ -367,13 +339,12 @@ GameObject:
   - component: {fileID: 3485564751414651011}
   - component: {fileID: 6378986632033173185}
   - component: {fileID: 68050466059760747}
-  - component: {fileID: 9217350144972819637}
   m_Layer: 9
   m_Name: Egg_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3485564751414651011
 Transform:
@@ -438,19 +409,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9217350144972819637
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5730401103081185606}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.06760887, y: 0.10406534, z: 0.059762664}
-  m_Center: {x: -0.002814847, y: 0.0044653155, z: -0.0013728281}
 --- !u!1 &7040087846547182506
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,13 +420,12 @@ GameObject:
   - component: {fileID: 2343823761463261262}
   - component: {fileID: 3894706307222800706}
   - component: {fileID: 5482609302181352060}
-  - component: {fileID: 7270447008550886611}
   m_Layer: 9
   m_Name: Egg_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2343823761463261262
 Transform:
@@ -533,16 +490,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7270447008550886611
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7040087846547182506}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.06559931, y: 0.10527514, z: 0.06551051}
-  m_Center: {x: -0.0016412362, y: -0.00070470385, z: 0}

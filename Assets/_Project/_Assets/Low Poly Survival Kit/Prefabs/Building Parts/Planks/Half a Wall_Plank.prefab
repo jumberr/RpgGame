@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 556909981556634976}
   - component: {fileID: 6348141347787783099}
   - component: {fileID: 7180020349929471484}
-  - component: {fileID: 416445832661673380}
+  - component: {fileID: 67115320361567881}
   m_Layer: 9
   m_Name: Half_a_Wall_Plank_LOD3
   m_TagString: Untagged
@@ -144,12 +144,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835381622235602250}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -177,7 +177,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &416445832661673380
+--- !u!65 &67115320361567881
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,8 +188,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5000517, y: 0.9338571, z: 0.09516387}
-  m_Center: {x: -0.000013768677, y: 0.472045, z: 0.00043635082}
+  m_Size: {x: 2.5000005, y: 0.9375, z: 0.103431374}
+  m_Center: {x: 0, y: 0.46875, z: -0.000000003725291}
 --- !u!1 &1841723717288342780
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 1605907343837118473}
   - component: {fileID: 26597998775090620}
   - component: {fileID: 7268065428961921221}
-  - component: {fileID: 5202387710742902417}
+  - component: {fileID: 7408338462551283947}
   m_Layer: 9
   m_Name: Half_a_Wall_Plank_LOD4
   m_TagString: Untagged
@@ -239,12 +239,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841723717288342780}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -272,7 +272,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5202387710742902417
+--- !u!65 &7408338462551283947
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,8 +283,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5000005, y: 0.97501916, z: 0.0928462}
-  m_Center: {x: 0, y: 0.4688628, z: 0.00093299546}
+  m_Size: {x: 2.5000005, y: 0.9375, z: 0.103431374}
+  m_Center: {x: 0, y: 0.46875, z: -0.000000003725291}
 --- !u!1 &1900939570554352386
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 6053332700852979575}
   - component: {fileID: 4327242207362173734}
   - component: {fileID: 2878525857937850685}
-  - component: {fileID: 7281714925524627407}
+  - component: {fileID: 6872663437928011440}
   m_Layer: 9
   m_Name: Half_a_Wall_Plank_LOD2
   m_TagString: Untagged
@@ -367,7 +367,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7281714925524627407
+--- !u!65 &6872663437928011440
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -378,8 +378,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5000517, y: 0.9375, z: 0.10367673}
-  m_Center: {x: -0.000013768677, y: 0.46875, z: 0.00012268315}
+  m_Size: {x: 2.5000005, y: 0.9375, z: 0.103431374}
+  m_Center: {x: 0, y: 0.46875, z: -0.000000003725291}
 --- !u!1 &6407845892381368911
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 7245088555340137929}
   - component: {fileID: 6537577435528121562}
   - component: {fileID: 5500826633154763481}
-  - component: {fileID: 1969114938327188113}
+  - component: {fileID: 3048531952963319748}
   m_Layer: 9
   m_Name: Half_a_Wall_Plank_LOD1
   m_TagString: Untagged
@@ -533,7 +533,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1969114938327188113
+--- !u!65 &3048531952963319748
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -544,5 +544,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5000346, y: 0.9375, z: 0.10394333}
-  m_Center: {x: -0.000006079675, y: 0.46875, z: 0.00025597593}
+  m_Size: {x: 2.5000005, y: 0.9375, z: 0.103431374}
+  m_Center: {x: 0, y: 0.46875, z: -0.000000003725291}

@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 1026060384122546505}
   - component: {fileID: 5693248230128993368}
   - component: {fileID: 4248782762884858074}
-  - component: {fileID: 2239583148941188347}
   m_Layer: 9
   m_Name: Pills_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1026060384122546505
 Transform:
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2239583148941188347
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 28105080437876986}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.09773092, y: 0.17715858, z: 0.097730905}
-  m_Center: {x: -0.0000000074505815, y: 0.08227425, z: 0.0000038146973}
 --- !u!1 &619283522664892586
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +98,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &372079478788575566
 Transform:
@@ -201,13 +187,12 @@ GameObject:
   - component: {fileID: 5482182579923409098}
   - component: {fileID: 9108559731039517485}
   - component: {fileID: 2885902596148641012}
-  - component: {fileID: 8202451327649169284}
   m_Layer: 9
   m_Name: Pills_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5482182579923409098
 Transform:
@@ -272,19 +257,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8202451327649169284
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2289948960157778888}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.088381596, y: 0.17918158, z: 0.08852307}
-  m_Center: {x: 0.000030098487, y: 0.085726425, z: 0.000044448305}
 --- !u!1 &2662977708992986768
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,13 +268,12 @@ GameObject:
   - component: {fileID: 6515012880717160150}
   - component: {fileID: 3178878577441383336}
   - component: {fileID: 2620547352124143882}
-  - component: {fileID: 7016256002436217562}
   m_Layer: 9
   m_Name: Cover_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6515012880717160150
 Transform:
@@ -367,19 +338,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7016256002436217562
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2662977708992986768}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.07532985, y: 0.029600084, z: 0.07532985}
-  m_Center: {x: 0.00035886842, y: -0.014781445, z: 0.000603281}
 --- !u!1 &3837779034079988993
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,13 +349,12 @@ GameObject:
   - component: {fileID: 4728442340480715896}
   - component: {fileID: 2104401747317917676}
   - component: {fileID: 3793925261397963621}
-  - component: {fileID: 5591045588542273761}
   m_Layer: 9
   m_Name: Cover_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4728442340480715896
 Transform:
@@ -462,19 +419,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5591045588542273761
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3837779034079988993}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.07351996, y: 0.027038306, z: 0.07351921}
-  m_Center: {x: 0.00018053131, y: -0.016062334, z: 0.0004253295}
 --- !u!1 &4304284337412917597
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,13 +430,12 @@ GameObject:
   - component: {fileID: 5080275190401069884}
   - component: {fileID: 263776634566915654}
   - component: {fileID: 531674094184182910}
-  - component: {fileID: 7192329446551915843}
   m_Layer: 9
   m_Name: Cover_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5080275190401069884
 Transform:
@@ -557,19 +500,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7192329446551915843
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4304284337412917597}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.07351996, y: 0.028286219, z: 0.07351921}
-  m_Center: {x: 0.00018053131, y: -0.015438378, z: 0.0004253295}
 --- !u!1 &4907236835327899859
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,13 +511,12 @@ GameObject:
   - component: {fileID: 8068869874436395162}
   - component: {fileID: 6379090019254731265}
   - component: {fileID: 5319354935228677624}
-  - component: {fileID: 2886548245717110114}
   m_Layer: 9
   m_Name: Cover_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8068869874436395162
 Transform:
@@ -652,19 +581,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2886548245717110114
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4907236835327899859}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.07532985, y: 0.029600084, z: 0.07532985}
-  m_Center: {x: 0.00035886842, y: -0.014781445, z: 0.000603281}
 --- !u!1 &5228668451865955463
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,13 +592,12 @@ GameObject:
   - component: {fileID: 639141277701202638}
   - component: {fileID: 5721821232683259713}
   - component: {fileID: 8289804282367296782}
-  - component: {fileID: 771670076304173513}
   m_Layer: 9
   m_Name: Pills_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &639141277701202638
 Transform:
@@ -747,19 +662,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &771670076304173513
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5228668451865955463}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.08924761, y: 0.17966446, z: 0.08924761}
-  m_Center: {x: 0.0000000018626454, y: 0.08548498, z: 0.0000038146973}
 --- !u!1 &5518599097031165321
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,13 +673,12 @@ GameObject:
   - component: {fileID: 4369630727525403540}
   - component: {fileID: 8652356873486358122}
   - component: {fileID: 9091492002817534602}
-  - component: {fileID: 7550714285759749642}
   m_Layer: 9
   m_Name: Cover_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4369630727525403540
 Transform:
@@ -842,19 +743,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7550714285759749642
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5518599097031165321}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.07532985, y: 0.029600084, z: 0.07460248}
-  m_Center: {x: 0.00035886842, y: -0.014781445, z: 0.00096696627}
 --- !u!1 &7880091985683435855
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,13 +754,12 @@ GameObject:
   - component: {fileID: 114812318006365595}
   - component: {fileID: 8489637666053946141}
   - component: {fileID: 8034972155371349340}
-  - component: {fileID: 128464633427538678}
   m_Layer: 9
   m_Name: Pills_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &114812318006365595
 Transform:
@@ -937,19 +824,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &128464633427538678
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7880091985683435855}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.09773092, y: 0.1747179, z: 0.097730905}
-  m_Center: {x: -0.0000000074505815, y: 0.08349459, z: 0.0000038146973}
 --- !u!1 &8102617190958444667
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,7 +839,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5055605863287079528
 Transform:

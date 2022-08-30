@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1070166023595794627}
   - component: {fileID: 7678695184828501568}
   - component: {fileID: 1948596047844416554}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Workbench_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,12 +48,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443516320727097947}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 8196216138981290674}
   - component: {fileID: 3669062873103637044}
   - component: {fileID: 3136613419454846223}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Workbench_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 4884738173826289498}
   - component: {fileID: 4596071187051747992}
   - component: {fileID: 3122309043043197832}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_2_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,12 +210,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986374943744750184}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 2724202235034027162}
   - component: {fileID: 128285039744550835}
   - component: {fileID: 8722019567383756706}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_3_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,12 +291,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525703917013206426}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 3610283549088747458}
   - component: {fileID: 2504143104091128888}
   - component: {fileID: 6260947709813496753}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_1_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 7651780882615636542}
   - component: {fileID: 2160708688087238773}
   - component: {fileID: 4036332349871857458}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_3_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 7006509612577575092}
   - component: {fileID: 5545884854111920814}
   - component: {fileID: 7575670119297739301}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_1_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 400097111481734009}
   - component: {fileID: 8103716954540142296}
   - component: {fileID: 7108334892441480302}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_2_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,7 +659,7 @@ GameObject:
   - component: {fileID: 2515712499007537156}
   - component: {fileID: 4115566149430533532}
   - component: {fileID: 8646462284338690743}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_4_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,12 +696,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3263111255003709154}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 341724191041359090}
   - component: {fileID: 2981282726836961825}
   - component: {fileID: 9094557539207893989}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Workbench_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -777,12 +777,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3502128274275389533}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 4225494983757751697}
   - component: {fileID: 6987076718203247171}
   - component: {fileID: 4102229070198602971}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_5_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -902,7 +902,7 @@ GameObject:
   - component: {fileID: 7029554841645918813}
   - component: {fileID: 5819533438046827839}
   - component: {fileID: 4285113234898844040}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_3_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -939,12 +939,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3952621548807722074}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -983,7 +983,7 @@ GameObject:
   - component: {fileID: 4109546455461124836}
   - component: {fileID: 5541327691386259427}
   - component: {fileID: 1107197550399274307}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_2_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,12 +1020,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4980734843147542200}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -1064,7 +1064,7 @@ GameObject:
   - component: {fileID: 2840863802207884308}
   - component: {fileID: 1655963928452457555}
   - component: {fileID: 1560884084600480595}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_4_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1146,7 +1146,7 @@ GameObject:
   - component: {fileID: 7485381017308596875}
   - component: {fileID: 4242398948432158525}
   - component: {fileID: 3560279650550474856}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Workbench_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1227,8 +1227,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2908654, y: 1.0033907, z: 1.4071988}
-  m_Center: {x: -0.022116184, y: 0.50733477, z: 0.19366235}
+  m_Size: {x: 2.2908654, y: 0.5342866, z: 1.1029677}
+  m_Center: {x: -0.022116184, y: 0.27278274, z: 0.04154685}
 --- !u!1 &5724743211765627722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,7 +1240,7 @@ GameObject:
   - component: {fileID: 6496337975546277258}
   - component: {fileID: 4999309720996310356}
   - component: {fileID: 241291134792793910}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_3_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1321,7 +1321,7 @@ GameObject:
   - component: {fileID: 459914237211528555}
   - component: {fileID: 3780435001243068513}
   - component: {fileID: 7043984593316888811}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_4_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1402,7 +1402,7 @@ GameObject:
   - component: {fileID: 8681801114779511484}
   - component: {fileID: 2839365034714351967}
   - component: {fileID: 1152560280256154835}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Workbench_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1483,7 +1483,7 @@ GameObject:
   - component: {fileID: 1145054239555632170}
   - component: {fileID: 4499736450139572454}
   - component: {fileID: 2203901983924498244}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_2_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1564,7 +1564,7 @@ GameObject:
   - component: {fileID: 8204867080659206268}
   - component: {fileID: 228020633658623373}
   - component: {fileID: 2702575352288349337}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_1_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1601,12 +1601,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6795824010774743817}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -1645,7 +1645,7 @@ GameObject:
   - component: {fileID: 6943151602806035328}
   - component: {fileID: 6209396269432655614}
   - component: {fileID: 1106746975591738573}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_1_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1682,12 +1682,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6892170318747776271}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -1726,7 +1726,7 @@ GameObject:
   - component: {fileID: 1297537337165117328}
   - component: {fileID: 9152157162436139128}
   - component: {fileID: 7220935037469628246}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_5_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1806,7 +1806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5107086777465124088}
   - component: {fileID: 1067260060776649667}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Workbench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1928,7 +1928,7 @@ GameObject:
   - component: {fileID: 4570161233545783343}
   - component: {fileID: 1727485047985874642}
   - component: {fileID: 2875372378174395579}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_5_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1965,12 +1965,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8241107601623526869}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -2009,7 +2009,7 @@ GameObject:
   - component: {fileID: 5492693235516726100}
   - component: {fileID: 1515113498630262741}
   - component: {fileID: 5346687379817687532}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_4_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2046,12 +2046,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8333620869087018413}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -2090,7 +2090,7 @@ GameObject:
   - component: {fileID: 4793741452972132545}
   - component: {fileID: 4414816613789325539}
   - component: {fileID: 7553098710401019285}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_5_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2127,12 +2127,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8572495362567507576}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -2171,7 +2171,7 @@ GameObject:
   - component: {fileID: 1024681285116470070}
   - component: {fileID: 477947013147114834}
   - component: {fileID: 5508493510362605669}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_3_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2208,12 +2208,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8585981979918549029}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -2252,7 +2252,7 @@ GameObject:
   - component: {fileID: 7871048880959317782}
   - component: {fileID: 1313505175100265325}
   - component: {fileID: 5713252434291879617}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_2_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2289,12 +2289,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8586544545014024894}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -2333,7 +2333,7 @@ GameObject:
   - component: {fileID: 7302769995140107470}
   - component: {fileID: 6361177097478850581}
   - component: {fileID: 8541814031999512843}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_4_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2370,12 +2370,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8697525852156112401}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -2414,7 +2414,7 @@ GameObject:
   - component: {fileID: 2013702547973307020}
   - component: {fileID: 4288266124328552716}
   - component: {fileID: 4525649072081990934}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_1_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2451,12 +2451,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9016684520882805674}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -2495,7 +2495,7 @@ GameObject:
   - component: {fileID: 2916542174226227708}
   - component: {fileID: 5884894132300537053}
   - component: {fileID: 4760584831809196832}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Drawer_5_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2532,12 +2532,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9171362257287785081}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1

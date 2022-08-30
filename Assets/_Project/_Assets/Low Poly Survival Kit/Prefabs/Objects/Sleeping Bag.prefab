@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3352389098481135383}
   - component: {fileID: 1660810185163505203}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Sleeping Bag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,8 +82,7 @@ GameObject:
   - component: {fileID: 2262125994126956629}
   - component: {fileID: 2397285091919407932}
   - component: {fileID: 3260963550245872966}
-  - component: {fileID: 8206668071023941829}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Sleeping_Bag_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,12 +119,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2731690541601410595}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -153,19 +152,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8206668071023941829
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2731690541601410595}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.0461874, y: 0.3267669, z: 0.8330523}
-  m_Center: {x: -0.00054734945, y: 0.1063006, z: -0.000009611249}
 --- !u!1 &3553704019250618877
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,8 +163,7 @@ GameObject:
   - component: {fileID: 1111724632109843861}
   - component: {fileID: 2637614124134746718}
   - component: {fileID: 6301391932829329799}
-  - component: {fileID: 111712896939788796}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Sleeping_Bag_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,12 +200,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3553704019250618877}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -248,19 +233,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &111712896939788796
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3553704019250618877}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.0461874, y: 0.32699543, z: 0.8330523}
-  m_Center: {x: -0.00054734945, y: 0.10614958, z: -0.000009611249}
 --- !u!1 &4432984836804486238
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,8 +244,7 @@ GameObject:
   - component: {fileID: 1723027356764432779}
   - component: {fileID: 5625399614580486997}
   - component: {fileID: 7851580149806258377}
-  - component: {fileID: 7523519336654892801}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Sleeping_Bag_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,19 +314,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7523519336654892801
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4432984836804486238}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.0428035, y: 0.34072512, z: 0.8108474}
-  m_Center: {x: -0.00015175343, y: 0.105691254, z: 0.0010187775}
 --- !u!1 &7934200728774165107
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +326,7 @@ GameObject:
   - component: {fileID: 464713374719011191}
   - component: {fileID: 2147655583264659248}
   - component: {fileID: 4760370380359564155}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Sleeping_Bag_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,8 +420,7 @@ GameObject:
   - component: {fileID: 741657056889557097}
   - component: {fileID: 1264488068075132179}
   - component: {fileID: 2976813341139562047}
-  - component: {fileID: 6634975960559807468}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Sleeping_Bag_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,16 +490,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6634975960559807468
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7948571098984018614}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.042488, y: 0.33203653, z: 0.818598}
-  m_Center: {x: -0.0006072521, y: 0.10572214, z: 0.00005787611}

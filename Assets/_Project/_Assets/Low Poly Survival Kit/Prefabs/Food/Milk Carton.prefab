@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 3715043460658511891}
   - component: {fileID: 1806106781507839923}
   - component: {fileID: 507738597212784493}
-  - component: {fileID: 1211102057712727319}
   m_Layer: 9
   m_Name: Milk_Carton_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3715043460658511891
 Transform:
@@ -83,19 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1211102057712727319
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505402571976466677}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.11023447, y: 0.33649805, z: 0.11131416}
-  m_Center: {x: 0, y: 0.16848417, z: -0.000011101365}
 --- !u!1 &3266567097164751746
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +99,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4232707277101057762
 Transform:
@@ -207,7 +193,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &9216453971714782409
 Transform:
@@ -274,13 +260,12 @@ GameObject:
   - component: {fileID: 2771120594558358577}
   - component: {fileID: 2456909942848915299}
   - component: {fileID: 7040923272799469040}
-  - component: {fileID: 6418067414385816966}
   m_Layer: 9
   m_Name: Milk_Carton_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2771120594558358577
 Transform:
@@ -346,19 +331,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6418067414385816966
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6989812788184593450}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.110643186, y: 0.3375902, z: 0.11085642}
-  m_Center: {x: 0, y: 0.16895016, z: -0.0000038146973}
 --- !u!1 &7547307057761828333
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,13 +342,12 @@ GameObject:
   - component: {fileID: 2210206795707495665}
   - component: {fileID: 5360612933025753991}
   - component: {fileID: 1485710490505698768}
-  - component: {fileID: 7969101921520153192}
   m_Layer: 9
   m_Name: Milk_Carton_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2210206795707495665
 Transform:
@@ -442,19 +413,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7969101921520153192
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7547307057761828333}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.11048172, y: 0.33752662, z: 0.11070564}
-  m_Center: {x: 0, y: 0.16899845, z: -0.000005884096}
 --- !u!1 &8152927299713239251
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,13 +424,12 @@ GameObject:
   - component: {fileID: 1835226978506506659}
   - component: {fileID: 8626002473268890708}
   - component: {fileID: 3350512765761269114}
-  - component: {fileID: 5250183176275459380}
   m_Layer: 9
   m_Name: Milk_Carton_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1835226978506506659
 Transform:
@@ -538,16 +495,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5250183176275459380
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8152927299713239251}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.11048172, y: 0.33752662, z: 0.110701434}
-  m_Center: {x: 0, y: 0.16899845, z: -0.000003779307}

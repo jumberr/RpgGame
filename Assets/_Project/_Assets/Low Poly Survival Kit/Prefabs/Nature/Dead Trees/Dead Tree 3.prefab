@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1095994136960094632}
   - component: {fileID: 7929277270655392941}
   - component: {fileID: 1239346330678977592}
+  - component: {fileID: 6195386988450492149}
   m_Layer: 9
   m_Name: Dead_Tree_3_LOD3
   m_TagString: Untagged
@@ -48,12 +49,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931136008870688965}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -81,6 +82,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6195386988450492149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931136008870688965}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 9.5954275, z: 0.1}
+  m_Center: {x: 0, y: 4.661984, z: 0}
 --- !u!1 &1423257094403155422
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +106,7 @@ GameObject:
   - component: {fileID: 2776356432526454685}
   - component: {fileID: 3191869007897583603}
   - component: {fileID: 8806443531629766764}
-  - component: {fileID: 8772744102872602120}
+  - component: {fileID: 5570633917486676661}
   m_Layer: 9
   m_Name: Dead_Tree_3_LOD2
   m_TagString: Untagged
@@ -163,7 +177,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8772744102872602120
+--- !u!65 &5570633917486676661
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +201,7 @@ GameObject:
   - component: {fileID: 4060251739118467511}
   - component: {fileID: 7868750821316903623}
   - component: {fileID: 4199366353123943056}
-  - component: {fileID: 7275685744134928703}
+  - component: {fileID: 5706466241639404437}
   m_Layer: 9
   m_Name: Dead_Tree_3_LOD1
   m_TagString: Untagged
@@ -258,7 +272,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7275685744134928703
+--- !u!65 &5706466241639404437
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -390,12 +404,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8554472514220570496}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1

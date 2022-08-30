@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3725928285613190209}
   - component: {fileID: 2871718007988060225}
   - component: {fileID: 25728048160242138}
-  - component: {fileID: 7534281129921274968}
+  - component: {fileID: 4362051690461774217}
   m_Layer: 9
   m_Name: Platform_with_pillars_Plank_LOD3
   m_TagString: Untagged
@@ -49,12 +49,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848464300586731323}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7534281129921274968
-MeshCollider:
+--- !u!65 &4362051690461774217
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,10 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4407851679094380620, guid: e79708043c863284f9fc8ed03bd19004, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.563186, y: 1.2727506, z: 2.5105362}
+  m_Center: {x: -0.012119651, y: 0.6363753, z: -0.015487254}
 --- !u!1 &986716684926837565
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +106,7 @@ GameObject:
   - component: {fileID: 583358293196118126}
   - component: {fileID: 1568355922072210967}
   - component: {fileID: 6276217162856741316}
-  - component: {fileID: 8775430681919421316}
+  - component: {fileID: 2314658736219361348}
   m_Layer: 9
   m_Name: Platform_with_pillars_Plank_LOD2
   m_TagString: Untagged
@@ -178,8 +177,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8775430681919421316
-MeshCollider:
+--- !u!65 &2314658736219361348
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -188,10 +187,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1187274316987955216, guid: e79708043c863284f9fc8ed03bd19004, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.563186, y: 1.2727506, z: 2.5105362}
+  m_Center: {x: -0.012119651, y: 0.6363753, z: -0.015487254}
 --- !u!1 &1514395738521341911
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +272,7 @@ GameObject:
   - component: {fileID: 7711687091422306361}
   - component: {fileID: 8390335789935866263}
   - component: {fileID: 666928373626261204}
-  - component: {fileID: 4885603714655479565}
+  - component: {fileID: 7464380347934633190}
   m_Layer: 9
   m_Name: Platform_with_pillars_Plank_LOD4
   m_TagString: Untagged
@@ -312,12 +310,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4379083559001538741}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -345,8 +343,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4885603714655479565
-MeshCollider:
+--- !u!65 &7464380347934633190
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -355,10 +353,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3638317709799412039, guid: e79708043c863284f9fc8ed03bd19004, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.563186, y: 1.2727506, z: 2.5105362}
+  m_Center: {x: -0.012119651, y: 0.6363753, z: -0.015487254}
 --- !u!1 &8505916133131277203
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +367,7 @@ GameObject:
   - component: {fileID: 8025664097049035348}
   - component: {fileID: 80913899214992295}
   - component: {fileID: 4380760428132548093}
-  - component: {fileID: 2464865901128523357}
+  - component: {fileID: 5655854332959499763}
   m_Layer: 9
   m_Name: Platform_with_pillars_Plank_LOD0
   m_TagString: Untagged
@@ -441,8 +438,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2464865901128523357
-MeshCollider:
+--- !u!65 &5655854332959499763
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -451,10 +448,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4074096780031840270, guid: e79708043c863284f9fc8ed03bd19004, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.563186, y: 1.2727506, z: 2.5105362}
+  m_Center: {x: -0.012119651, y: 0.6363753, z: -0.015487254}
 --- !u!1 &8896746340256014191
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +462,7 @@ GameObject:
   - component: {fileID: 8222116428908901703}
   - component: {fileID: 505194750183780724}
   - component: {fileID: 5990834094206894384}
-  - component: {fileID: 3895230289507690210}
+  - component: {fileID: 7905716745216366067}
   m_Layer: 9
   m_Name: Platform_with_pillars_Plank_LOD1
   m_TagString: Untagged
@@ -537,8 +533,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3895230289507690210
-MeshCollider:
+--- !u!65 &7905716745216366067
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -547,7 +543,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2238782090819865562, guid: e79708043c863284f9fc8ed03bd19004, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.563186, y: 1.2727506, z: 2.5105362}
+  m_Center: {x: -0.012119651, y: 0.6363753, z: -0.015487254}
