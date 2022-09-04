@@ -1,4 +1,5 @@
 ﻿using _Project.CodeBase.Logic.Inventory;
+using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Interaction
 {
@@ -25,8 +26,16 @@ namespace _Project.CodeBase.Logic.Interaction
 
         public override void OnInteract()
         {
-            _inventory.SetItemInFreeSlot(_item.DbID, _item.Amount);
-            Destroy(gameObject);
+            var payloadData = _inventory.ItemsDataBase.FindItem(_item.DbID).ItemPayloadData;
+            var amountNotStored = _inventory.AddItemWithReturnAmount(_item.DbID, payloadData, _item.Amount);
+            
+            if (amountNotStored == 0)
+                Destroy(gameObject);
+            else
+            {
+                _item.UpdateAmount(amountNotStored);
+                Debug.Log("Inventory is full!");
+            }
         }
     }
 }

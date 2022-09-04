@@ -55,11 +55,11 @@ namespace _Project.CodeBase.Logic.Inventory
                 EquipArmor(armor);
         }
 
-        public void SetItemInFreeSlot(int dbID, int amount)
+        public int AddItemWithReturnAmount(int dbID, ItemPayloadData data, int amount)
         {
-            var item = ItemsDataBase.FindItem(dbID).ItemPayloadData;
-            _inventory.AddItemToInventory(dbID, item, amount);
+            var amountNotStored = _inventory.AddItemWithReturnAmount(dbID, data, amount);
             OnUpdate?.Invoke();
+            return amountNotStored;
         }
         
         public void RemoveItem(ItemName itemName, int amount) => 
@@ -136,10 +136,10 @@ namespace _Project.CodeBase.Logic.Inventory
             var obj = _interactableSpawner.SpawnInteractableItem(prefab, transform.position + Vector3.forward);
             _interactableSpawner.ConstructItem(obj, amount);
         }
-        
+
         private async void EquipWeapon(Weapon weapon, int slotID) => 
             await _weaponController.CreateNewWeapon(weapon.WeaponPrefab, weapon, slotID);
-        
+
         private async void EquipWeapon(Knife weapon, int slotID) => 
             await _weaponController.CreateNewMeleeWeapon(weapon.Prefab, weapon, slotID);
 

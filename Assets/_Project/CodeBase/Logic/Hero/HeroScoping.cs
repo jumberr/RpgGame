@@ -3,6 +3,7 @@ using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.StaticData.ItemsDataBase.Types;
+using _Project.CodeBase.Utils;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -16,24 +17,23 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private Transform _weaponHolder;
         
         private CancellationTokenSource _cts;
+        private ScopeSettings _scopeSettings;
         private Vector3 _velocity = Vector3.zero;
         private Vector3 _startPos;
         private Vector3 _adsPoint;
-        private float _aimingInTime = 0.3f;
-        private float _aimingOutTime = 0.3f;
         private float _startFov;
-        private float _adsFov = 32f;
-        private bool _isScoping;
+        private float _adsFov;
         private bool _isNeedScope;
-        
+        private bool _isScoping;
+
         public void Construct(Weapon weapon, WeaponConfiguration config)
         {
-            _isNeedScope = weapon.WeaponData.Scoping;
+            ApplyScopeSettings(weapon);
             _adsPoint = _weaponHolder.localPosition - _weaponHolder.parent.InverseTransformPoint(config.AdsPoint.transform.position);
         }
-        
+
         public void Construct(Knife knife) => 
-            _isNeedScope = knife.Scoping;
+            _isNeedScope = false;
 
         private void OnEnable() => 
             _inputService.OnScope += ScopeHandling;
@@ -49,7 +49,7 @@ namespace _Project.CodeBase.Logic.Hero
 
         public async UniTask UnScope()
         {
-            await SmoothTranslation(_startPos, _startFov,_aimingInTime);
+            await SmoothTranslation(_startPos, _startFov,_scopeSettings.AimingOutTime);
             _isScoping = false;
             _state.Enter(PlayerState.None);
         }
@@ -76,7 +76,7 @@ namespace _Project.CodeBase.Logic.Hero
             if (_state.CurrentPlayerState == PlayerState.Reload) return;
             _state.Enter(PlayerState.Scoping);
             _isScoping = true;
-            await SmoothTranslation(_adsPoint, _adsFov, _aimingInTime);
+            await SmoothTranslation(_adsPoint, _adsFov, _scopeSettings.AimingInTime);
         }
 
         private async UniTask SmoothTranslation(Vector3 target, float fov, float speed)
@@ -86,10 +86,18 @@ namespace _Project.CodeBase.Logic.Hero
             while (_weaponHolder.transform.localPosition != target) 
             {
                 _weaponHolder.localPosition = Vector3.SmoothDamp(_weaponHolder.localPosition, target, ref _velocity, speed);
-                _mainCamera.fieldOfView = Mathf.Lerp(_mainCamera.fieldOfView, fov, speed * Time.deltaTime);
+                _mainCamera.fieldOfView = LerpUtils.Damp(_mainCamera.fieldOfView, fov, speed, Time.deltaTime);
+
                 if (await UniTask.DelayFrame(1, cancellationToken: _cts.Token).SuppressCancellationThrow())
                     break;
             }        
+        }
+
+        private void ApplyScopeSettings(Weapon weapon)
+        {
+            _isNeedScope = weapon.WeaponData.Scoping;
+            _scopeSettings = weapon.ScopeSettings;
+            _adsFov = _startFov / _scopeSettings.ScopeMultiplier;
         }
     }
 }

@@ -54,5 +54,9 @@ MonoBehaviour:
   Magazine:
     BulletsMax: 30
     BulletsLeft: 0
+  ScopeSettings:
+    AimingInTime: 0.15
+    AimingOutTime: 0.15
+    ScopeMultiplier: 3
   WeaponPrefab: {fileID: 6566511255792288664, guid: a5c2eb730ca944148bd5570b16af700c,
     type: 3}

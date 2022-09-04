@@ -53,7 +53,6 @@ namespace _Project.CodeBase.Logic.Interaction
             _currentTarget = interactable;
             _currentTarget.OnStartHover();
             OnStartHover?.Invoke(_currentTarget.OnInteract);
-            //Debug.Log("OnStartHover");
         }
 
         private void EndHover()
@@ -62,7 +61,6 @@ namespace _Project.CodeBase.Logic.Interaction
             _currentTarget.OnEndHover();
             _currentTarget = null;
             OnEndHover?.Invoke();
-            //Debug.Log("OnEndHover");
         }
     }
 }

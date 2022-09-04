@@ -17,6 +17,9 @@ namespace _Project.CodeBase.Logic.Inventory
             Construct(db);
             Amount = amount;
         }
+        
+        public void UpdateAmount(int amount) => 
+            Amount = amount;
 
         private int TryConvertNameToId(ItemsDataBase db, ItemName itemName)
         {

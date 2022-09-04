@@ -9,6 +9,5 @@ namespace _Project.CodeBase.StaticData.ItemsDataBase.Types
         public float FireRate;
         public float Radius;
         public GameObject Prefab;
-        public bool Scoping;
     }
 }

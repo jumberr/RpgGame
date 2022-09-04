@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100d1fa5ae1743fd917aab7b288e8c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleEndValue: 0.9
+  _scaleFromValue: 0.9
   _duration: 0.2
 --- !u!114 &3619190790670900143
 MonoBehaviour:

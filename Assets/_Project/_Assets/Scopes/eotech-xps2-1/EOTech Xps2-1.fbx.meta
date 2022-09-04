@@ -3,9 +3,19 @@ guid: a966bebd1ef324e40886cc19e644f8ae
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red_dot
+    second: {fileID: 2100000, guid: 3e96ea26bc56cfe43a1c339f70d46880, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scope
+    second: {fileID: 2100000, guid: b8e1f716c51e68e4fa1d67fcc0c9e726, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1

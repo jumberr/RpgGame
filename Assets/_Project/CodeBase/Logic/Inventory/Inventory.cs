@@ -25,7 +25,10 @@ namespace _Project.CodeBase.Logic.Inventory
                 Slots[i] = new InventorySlot();
         }
 
-        public void AddItemToInventory(int dbId, ItemPayloadData item,  int amount)
+        public void AddItemToInventory(int dbId, ItemPayloadData item,  int amount) => 
+            AddItemWithReturnAmount(dbId, item, amount);
+
+        public int AddItemWithReturnAmount(int dbId, ItemPayloadData item,  int amount)
         {
             while (amount > 0)
             {
@@ -41,7 +44,8 @@ namespace _Project.CodeBase.Logic.Inventory
                     {
                         Slots[id].State = SlotState.Middle;
                         Slots[id].Amount += amount;
-                        return;
+                        amount = 0;
+                        return amount;
                     }
 
                     Slots[id].State = SlotState.Full;
@@ -49,8 +53,9 @@ namespace _Project.CodeBase.Logic.Inventory
                     amount -= diff;
                 }
                 else
-                    return; 
+                    return amount;
             }
+            return amount;
         }
         
         public void RemoveItemFromInventory(int dbId,  int amount)
@@ -109,7 +114,7 @@ namespace _Project.CodeBase.Logic.Inventory
 
             return FindEmptySlot();
         }
-        
+
         private int FindSlotReversed(int dbId)
         {
             for (var i = Slots.Length - 1; i >= 0; i--)

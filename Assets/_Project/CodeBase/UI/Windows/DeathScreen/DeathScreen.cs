@@ -1,6 +1,5 @@
 ﻿using _Project.CodeBase.Infrastructure;
 using _Project.CodeBase.Infrastructure.States;
-using _Project.CodeBase.Logic;
 using _Project.CodeBase.Logic.Effects;
 using UnityEngine;
 using UnityEngine.UI;

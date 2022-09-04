@@ -9,6 +9,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
     {
         public WeaponData WeaponData;
         public Magazine Magazine;
+        public ScopeSettings ScopeSettings;
         public GameObject WeaponPrefab;
     }
 }

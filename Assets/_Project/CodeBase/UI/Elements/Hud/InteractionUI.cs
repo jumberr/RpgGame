@@ -10,6 +10,7 @@ namespace _Project.CodeBase.UI.Elements.Hud
     {
         [SerializeField] private Button _button;
         private Interaction _interaction;
+        private Action _onInteract;
 
         public void Construct(Interaction interaction)
         {
@@ -27,23 +28,31 @@ namespace _Project.CodeBase.UI.Elements.Hud
             _interaction.OnStartHover -= OnStartHover;
             _interaction.OnEndHover -= EndHover;
         }
-
-        private void OnStartHover(Action onInteract)
-        {
-            Show();
-            _button.onClick.AddListener(() => onInteract());
-        }
-
-        private void EndHover()
-        {
-            _button.onClick.RemoveAllListeners();
-            Hide();
-        }
-
+        
         public void Show() => 
             _button.gameObject.SetActive(true);
 
         public void Hide() => 
             _button.gameObject.SetActive(false);
+        
+        private void OnStartHover(Action onInteract)
+        {
+            Show();
+            BufferInteractAction(onInteract);
+            _button.onClick.AddListener(Interact);
+        }
+
+        private void Interact() => 
+            _onInteract?.Invoke();
+
+        private void BufferInteractAction(Action onInteract) => 
+            _onInteract = onInteract;
+
+        private void EndHover()
+        {
+            _button.onClick.RemoveAllListeners();
+            _onInteract = null;
+            Hide();
+        }
     }
 }
