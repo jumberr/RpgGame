@@ -63,7 +63,7 @@ namespace _Project.CodeBase.Logic.Hero.Reload
             if (reload.Item1 == ReloadState.None) return;
 
             if (_state.CurrentPlayerState == PlayerState.Scoping) 
-                await _heroScoping.UnScope();
+                _heroScoping.UnScope();
             
             _state.Enter(PlayerState.Reload);
             await PlayReloadAnimation(reload);

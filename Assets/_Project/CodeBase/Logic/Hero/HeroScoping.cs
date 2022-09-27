@@ -1,10 +1,11 @@
-﻿using System.Threading;
-using _Project.CodeBase.Infrastructure.Services.InputService;
+﻿using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.StaticData.ItemsDataBase.Types;
-using _Project.CodeBase.Utils;
-using Cysharp.Threading.Tasks;
+using _Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
@@ -16,15 +17,15 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private Camera _mainCamera;
         [SerializeField] private Transform _weaponHolder;
         
-        private CancellationTokenSource _cts;
         private ScopeSettings _scopeSettings;
-        private Vector3 _velocity = Vector3.zero;
         private Vector3 _startPos;
         private Vector3 _adsPoint;
         private float _startFov;
         private float _adsFov;
         private bool _isNeedScope;
         private bool _isScoping;
+        private TweenerCore<Vector3,Vector3,VectorOptions> _weaponTween;
+        private TweenerCore<float,float,FloatOptions> _cameraTween;
 
         public void Construct(Weapon weapon, WeaponConfiguration config)
         {
@@ -47,56 +48,47 @@ namespace _Project.CodeBase.Logic.Hero
         private void OnDisable() => 
             _inputService.OnScope -= ScopeHandling;
 
-        public async UniTask UnScope()
+        public void UnScope()
         {
-            await SmoothTranslation(_startPos, _startFov,_scopeSettings.AimingOutTime);
+            SmoothTranslation(_startPos, _startFov, _scopeSettings.AimingOutTime);
             _isScoping = false;
             _state.Enter(PlayerState.None);
         }
 
-        private async void ScopeHandling()
+        private void ScopeHandling()
         {
             if (!_isNeedScope) return;
-            
-            if (_cts != null)
-            {
-                _cts.Cancel();
-                _cts.Dispose();
-                _cts = null;
-            }
 
+            _weaponTween?.Kill();
+            _cameraTween?.Kill();
+            
             if (!_isScoping)
-                await Scope();
+                Scope();
             else
-                await UnScope();
+                UnScope();
         }
 
-        private async UniTask Scope()
+        private void Scope()
         {
             if (_state.CurrentPlayerState == PlayerState.Reload) return;
             _state.Enter(PlayerState.Scoping);
             _isScoping = true;
-            await SmoothTranslation(_adsPoint, _adsFov, _scopeSettings.AimingInTime);
+            SmoothTranslation(_adsPoint, _adsFov, _scopeSettings.AimingInTime);
         }
 
-        private async UniTask SmoothTranslation(Vector3 target, float fov, float speed)
+        private void SmoothTranslation(Vector3 target, float fov, float speed)
         {
-            _cts = new CancellationTokenSource();
-
-            while (_weaponHolder.transform.localPosition != target) 
-            {
-                _weaponHolder.localPosition = Vector3.SmoothDamp(_weaponHolder.localPosition, target, ref _velocity, speed);
-                _mainCamera.fieldOfView = LerpUtils.Damp(_mainCamera.fieldOfView, fov, speed, Time.deltaTime);
-
-                if (await UniTask.DelayFrame(1, cancellationToken: _cts.Token).SuppressCancellationThrow())
-                    break;
-            }        
+            _weaponTween = _weaponHolder.transform.DOLocalMove(target, speed)
+                .SetEase(Ease.OutQuad);
+                
+            _cameraTween = _mainCamera.DOFieldOfView(fov, speed)
+                .SetEase(Ease.OutQuad);
         }
 
         private void ApplyScopeSettings(Weapon weapon)
         {
             _isNeedScope = weapon.WeaponData.Scoping;
-            _scopeSettings = weapon.ScopeSettings;
+            _scopeSettings = weapon.DefaultScopeData;
             _adsFov = _startFov / _scopeSettings.ScopeMultiplier;
         }
     }
