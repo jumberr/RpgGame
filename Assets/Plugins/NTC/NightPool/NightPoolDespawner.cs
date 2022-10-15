@@ -4,11 +4,12 @@
 // Copyright (c) 2021-2022 Night Train Code
 // ----------------------------------------------------------------------------
 
+using NTC.Global.Cache;
 using UnityEngine;
 
 namespace NTC.Global.Pool
 {
-    public class NightPoolDespawner : MonoBehaviour
+    public class NightPoolDespawner : NightCache, INightRun
     {
         [SerializeField] private float timeToDespawn = 3f;
 
@@ -25,7 +26,7 @@ namespace NTC.Global.Pool
             Restore();
         }
 
-        private void Update()
+        public void Run()
         {
             if (IsDespawnMoment() == false)
                 return;

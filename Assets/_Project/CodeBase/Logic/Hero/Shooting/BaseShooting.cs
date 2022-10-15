@@ -1,8 +1,8 @@
 ﻿using System;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon.Effects;
-using _Project.CodeBase.Utils.ObjectPool;
 using Cysharp.Threading.Tasks;
+using NTC.Global.Pool;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,7 +19,6 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         protected float Range;
         protected float Damage;
 
-        private MainPoolManager _poolManager;
         private readonly HeroState _state;
         private readonly LineFade _lineFade;
         private float _accuracyDistance;
@@ -34,9 +33,6 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
             Particles = particles;
         }
 
-        public void SetupPoolManager(MainPoolManager poolManager) => 
-            _poolManager = poolManager;
-        
         public void SetupFirePoint(Transform firePoint) => 
             FirePoint = firePoint;
 
@@ -52,25 +48,26 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         protected async void HitParticles(RaycastHit hit, string tag, GameObject particles)
         {
             if (!hit.collider.CompareTag(tag)) return;
-            var fx = _poolManager.SpawnObject(particles, hit.point, Quaternion.LookRotation(hit.normal));
+            
+            var fx = NightPool.Spawn(particles, hit.point, Quaternion.LookRotation(hit.normal));
             await UniTask.Delay(TimeSpan.FromSeconds(TimeDestroyEnvFx));
-            _poolManager.ReleaseObject(fx);
+            NightPool.Despawn(fx);
         }
 
         protected async void SpawnBulletTrail(Vector3 start, Vector3 end)
         {
-            var lineFade = (LineFade) _poolManager.SpawnObject(_lineFade, start, Quaternion.identity);
+            var lineFade = NightPool.Spawn(_lineFade, start, Quaternion.identity);
             lineFade.SetPositions(start, end);
-            
+
             await UniTask.Delay(TimeSpan.FromSeconds(TimeDestroyFX));
-            _poolManager.ReleaseObject(lineFade);
+            NightPool.Despawn(lineFade);
         }
 
         protected async void MuzzleFlash()
         {
-            var fx = _poolManager.SpawnObject(Particles.WeaponFX, FirePoint.position, Quaternion.identity);
+            var fx = NightPool.Spawn(Particles.WeaponFX, FirePoint.position, Quaternion.identity);
             await UniTask.Delay(TimeSpan.FromSeconds(TimeDestroyFX));
-            _poolManager.ReleaseObject(fx);
+            NightPool.Despawn(fx);
         }
 
         protected Vector3 RandShootDir()

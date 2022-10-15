@@ -7,7 +7,6 @@ using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.Logic.Inventory;
-using _Project.CodeBase.Utils.ObjectPool;
 using UnityEngine;
 using Zenject;
 
@@ -31,10 +30,9 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private HeroAmmo _ammo;
         private InputService _inputService;
 
-        public void Construct(InputService inputService, MainPoolManager poolManager, IStaticDataService staticDataService, Action zeroHealthAction)
+        public void Construct(InputService inputService, IStaticDataService staticDataService, Action zeroHealthAction)
         {
             _inputService = inputService;
-            _attack.SetPool(poolManager);
             _inventory.Construct(staticDataService);
             _death.ZeroHealth += zeroHealthAction;
             SetupInputService(_inputService);

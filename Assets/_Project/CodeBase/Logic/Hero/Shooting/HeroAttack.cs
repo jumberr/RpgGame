@@ -4,7 +4,6 @@ using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.HeroWeapon.Effects;
 using _Project.CodeBase.StaticData.ItemsDataBase.Types;
-using _Project.CodeBase.Utils.ObjectPool;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero.Shooting
@@ -19,7 +18,6 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         [SerializeField] private WeaponLight _weaponLight;
         [SerializeField] private ShootingParticles _particles;
 
-        private MainPoolManager _poolManager;
         private DefaultShooting _defaultShooting;
         private ShotgunShooting _shotgunShooting;
         private WeaponType _weaponType;
@@ -50,8 +48,6 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
 
             _defaultShooting = new DefaultShooting(_state, _lineFade, _layerMask, _particles);
             _shotgunShooting = new ShotgunShooting(_state, _lineFade, _layerMask, _particles);
-            _defaultShooting.SetupPoolManager(_poolManager);
-            _shotgunShooting.SetupPoolManager(_poolManager);
         }
 
         private void Update()
@@ -82,9 +78,6 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
 
         private void OnDisable() =>
             _inputService.AttackAction.Event -= EnableDisableShoot;
-
-        public void SetPool(MainPoolManager poolManager) => 
-            _poolManager = poolManager;
 
         public void UpdateStatsAndConfig(Weapon weapon, WeaponConfiguration config)
         {
