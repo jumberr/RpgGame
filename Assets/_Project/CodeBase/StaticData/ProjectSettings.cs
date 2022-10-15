@@ -8,6 +8,7 @@ namespace _Project.CodeBase.StaticData
     {
         public LoadingCurtain LoadingCurtain;
         public string InitialScene;
+        public string MenuScene;
         public string GameScene;
     }
 }

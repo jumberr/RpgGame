@@ -17,7 +17,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         public event Action<bool> OnSwitch;
 
         [SerializeField] private HeroInventory _inventory;
-        [SerializeField] private InputService _inputService;
         [SerializeField] private HeroState _state;
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private HeroScoping _scoping;
@@ -25,21 +24,27 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         [SerializeField] private HeroReload _reload;
         [SerializeField] private HeroRecoil _recoil;
         [SerializeField] private HeroAnimator _animator;
+        [SerializeField] private WeaponSway _weaponSway;
         [SerializeField] private Transform _parent;
 
+        private InputService _inputService;
         private GameObject _currentWeapon;
         private Weapon _weapon;
         private Knife _knife;
         private int _slotID = -1;
 
-        private void Start()
-        {
-            _attack.Construct(_state, _inputService, _ammo, _reload, _recoil, _animator);
+        private void Start() => 
             _inventory.OnUpdate += OnInventoryUpdate;
-        }
 
         private void OnDisable() => 
             _inventory.OnUpdate -= OnInventoryUpdate;
+
+        public void Setup(InputService inputService)
+        {
+            _inputService = inputService;
+            _attack.Construct(_state, _inputService, _ammo, _reload, _recoil, _animator);
+            _weaponSway.SetInputService(inputService);
+        }
 
         public async UniTask CreateNewWeapon(GameObject prefab, Weapon weapon, int slotID)
         {
@@ -60,6 +65,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             _ammo.Construct(weapon);
             _recoil.Construct(weapon);
             SetupConfig(weapon);
+            SetupAttachments();
         }
 
         private void Construct(Knife knife)
@@ -86,6 +92,15 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             _attack.ApplyKnife(knife);
             _reload.Construct(knife);
             _scoping.Construct(knife);
+        }
+
+        private void SetupAttachments()
+        {
+            // load
+            if (_weapon.DefaultAttachments is null)
+            {
+                
+            }
         }
 
         private async UniTask CreateGun(GameObject prefab, int slotID)

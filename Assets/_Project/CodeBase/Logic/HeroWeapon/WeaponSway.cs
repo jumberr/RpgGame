@@ -5,8 +5,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 {
     public class WeaponSway : MonoBehaviour
     {
-        [SerializeField] private InputService _inputService;
-        
         [Header("Weapon Sway")]
         [SerializeField] private float _swayAmount;
         [SerializeField] private bool _swayInvertX;
@@ -30,6 +28,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         [SerializeField] private float _swayScale;
         [SerializeField] private float _swayLerpSpeed;
 
+        private InputService _inputService;
+
         private Vector3 _newRotation;
         private Vector3 _newRotationVelocity;
         private Vector3 _targetRotation;
@@ -46,17 +46,13 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private Vector2 _viewInput;
         private Vector2 _moveInput;
 
-        private void Start()
-        {
+        private void Start() => 
             _newRotation = transform.localRotation.eulerAngles;
-            _inputService.OnRotate += OnRotate;
-            _inputService.OnMove += UpdateDirection;
-        }
 
         private void OnDisable()
         {
-            _inputService.OnRotate -= OnRotate;
-            _inputService.OnMove -= UpdateDirection;
+            _inputService.RotateAction.Event -= OnRotate;
+            _inputService.MoveAction.Event -= UpdateDirection;
         }
 
         private void Update()
@@ -66,6 +62,13 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             SwayBreathing();
 
             transform.localRotation = Quaternion.Euler(_newRotation + _newMovementRotation);
+        }
+
+        public void SetInputService(InputService inputService)
+        {
+            _inputService = inputService;
+            _inputService.RotateAction.Event += OnRotate;
+            _inputService.MoveAction.Event += UpdateDirection;
         }
 
         private void MovementSway()

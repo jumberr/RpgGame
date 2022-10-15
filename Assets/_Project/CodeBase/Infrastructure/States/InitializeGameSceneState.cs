@@ -1,6 +1,5 @@
 ﻿using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
-using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.UI.Services.Windows;
@@ -11,48 +10,32 @@ namespace _Project.CodeBase.Infrastructure.States
 {
     public class InitializeGameSceneState : IState
     {
-        private readonly SceneLoader _sceneLoader;
-        private readonly LoadingCurtain _loadingCurtain;
         private readonly IGameFactory _gameFactory;
         private readonly IUIFactory _uiFactory;
         private readonly IPersistentProgressService _persistentProgressService;
-        private readonly IStaticDataService _staticDataService;
         private readonly IWindowService _windowService;
 
-        public InitializeGameSceneState(SceneLoader sceneLoader,
-            LoadingCurtain loadingCurtain,
+        public InitializeGameSceneState(
             IGameFactory gameFactory,
             IUIFactory uiFactory,
-            IPersistentProgressService persistentProgressService,
-            IStaticDataService staticDataService)
+            IPersistentProgressService persistentProgressService)
         {
-            _sceneLoader = sceneLoader;
-            _loadingCurtain = loadingCurtain;
             _gameFactory = gameFactory;
             _uiFactory = uiFactory;
             _persistentProgressService = persistentProgressService;
-            _staticDataService = staticDataService;
         }
 
-        public void Enter()
+        public async UniTask Enter()
         {
-            var projectSettings = _staticDataService.ForProjectSettings();
-            _sceneLoader.Load(projectSettings.GameScene, OnLoaded);
+            await InitializeGameWorld();
+            InformProgressReaders();
         }
         
         public void Exit() { }
 
-        private async void OnLoaded()
-        {
-            await InitializeGameWorld();
-            InformProgressReaders();
-
-            _loadingCurtain.Hide();
-        }
-
         private async UniTask InitializeGameWorld()
         {
-            var hero = await InitializePlayer();
+            var hero = InitializePlayer();
             await InitializeInteractableSpawner(hero);
             await InitializeUI(hero);
         }
@@ -81,8 +64,8 @@ namespace _Project.CodeBase.Infrastructure.States
             _uiFactory.ConstructInventoriesHolder(hero);
         }
 
-        private async UniTask<GameObject> InitializePlayer() => 
-            await _gameFactory.CreateHero(Vector3.zero);
+        private GameObject InitializePlayer() => 
+            _gameFactory.CreateHero();
 
         private async UniTask InitializeUIRoot() =>
             await _uiFactory.CreateUIRoot();

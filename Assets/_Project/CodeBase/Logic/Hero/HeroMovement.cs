@@ -15,31 +15,22 @@ namespace _Project.CodeBase.Logic.Hero
         [Header("Movement Speed:")] 
         [SerializeField] private float _walkingSpeed = 6f;
         [SerializeField] private float _runningSpeed = 8f;
-        
-        [SerializeField] private InputService _inputService;
+
         [SerializeField] private HeroAnimator _heroAnimator;
         [SerializeField] private CharacterController _characterController;
-        
+
+        private InputService _inputService;
         private Transform _cachedTransform;
         private Vector3 _velocity;
         private Vector2 _input;
 
         public CharacterController CharacterController => _characterController;
-        
-        private void Awake() => 
-            _characterController = GetComponent<CharacterController>();
 
         private void Start()
         {
             _cachedTransform = transform;
-            _inputService.OnMove += UpdateDirection;
-            _inputService.OnJump += JumpAction;
-        }
-
-        private void OnDisable()
-        {
-            _inputService.OnMove -= UpdateDirection;
-            _inputService.OnJump -= JumpAction;
+            _inputService.MoveAction.Event += UpdateDirection;
+            _inputService.JumpAction.Event += JumpAction;
         }
 
         private void FixedUpdate()
@@ -50,6 +41,15 @@ namespace _Project.CodeBase.Logic.Hero
             MovementAction();
             ApplyGravity();
         }
+
+        private void OnDisable()
+        {
+            _inputService.MoveAction.Event -= UpdateDirection;
+            _inputService.JumpAction.Event -= JumpAction;
+        }
+
+        public void SetInputService(InputService inputService) => 
+            _inputService = inputService;
 
         public void LoadProgress(PlayerProgress progress)
         {

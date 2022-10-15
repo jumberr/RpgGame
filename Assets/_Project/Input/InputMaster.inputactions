@@ -246,6 +246,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "PlayerActions",
+            "id": "f0a339dd-0e08-4b18-9482-a3ea45c2bacc",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "348e1c55-085d-471c-834e-470df0b8b737",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a32a4e37-6f33-49df-a60c-d46f28726211",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

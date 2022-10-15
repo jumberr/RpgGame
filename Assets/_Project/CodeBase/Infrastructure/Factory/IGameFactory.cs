@@ -12,7 +12,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
         List<ISavedProgressReader> ProgressReaders { get; }
         MainPoolManager PoolManager { get; }
 
-        UniTask<GameObject> CreateHero(Vector3 at);
+        GameObject CreateHero();
         UniTask CreateInteractableSpawner(GameObject hero);
         void AddProgressWatchers(GameObject go);
         

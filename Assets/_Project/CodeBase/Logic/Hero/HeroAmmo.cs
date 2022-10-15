@@ -10,14 +10,14 @@ namespace _Project.CodeBase.Logic.Hero
 {
     public class HeroAmmo : MonoBehaviour
     {
-        public event Action<int, int> OnUpdateAmmo;
-        public event Action<int, int, Sprite> OnChangeWeapon;
-        public event Action OnHideWeapon;
-
         [SerializeField] private HeroInventory _inventory;
         private int _bulletMaxMagazine;
         private AmmoType _type;
         private ItemName _itemName;
+        
+        public event Action<int, int> OnUpdateAmmo;
+        public event Action<int, int, Sprite> OnChangeWeapon;
+        public event Action OnHideWeapon;
 
         public int BulletLeft { get; private set; }
         public int BulletAll { get; private set; }

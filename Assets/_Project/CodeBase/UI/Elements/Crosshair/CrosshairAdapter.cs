@@ -50,14 +50,14 @@ namespace _Project.CodeBase.UI.Elements.Crosshair
         private void Subscribe()
         {
             _weaponController.OnSwitch += Switch;
-            _inputService.OnMove += OnMove;
+            _inputService.MoveAction.Event += OnMove;
             _heroState.OnChangeState += OnChangeState;
         }
 
         private void UnSubscribe()
         {
             _weaponController.OnSwitch -= Switch;
-            _inputService.OnMove -= OnMove;
+            _inputService.MoveAction.Event -= OnMove;
             _heroState.OnChangeState -= OnChangeState;
         }
 

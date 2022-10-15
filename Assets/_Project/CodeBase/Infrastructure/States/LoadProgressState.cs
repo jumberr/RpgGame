@@ -4,7 +4,6 @@ using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Inventory;
 using Cysharp.Threading.Tasks;
-using Zenject;
 
 namespace _Project.CodeBase.Infrastructure.States
 {
@@ -12,27 +11,24 @@ namespace _Project.CodeBase.Infrastructure.States
     {
         private readonly IPersistentProgressService _progressService;
         private readonly ISaveLoadService _saveLoadService;
-        private readonly LazyInject<IGameStateMachine> _gameStateMachine;
         private readonly IStaticDataService _staticDataService;
         
         private readonly PositionData _defaultStartPosition = new PositionData(82, 4, 5);
 
-        public LoadProgressState(IPersistentProgressService progressService,
+        public LoadProgressState(
+            IPersistentProgressService progressService,
             ISaveLoadService saveLoadService,
-            LazyInject<IGameStateMachine> gameStateMachine,
             IStaticDataService staticDataService)
         {
             _progressService = progressService;
             _saveLoadService = saveLoadService;
-            _gameStateMachine = gameStateMachine;
             _staticDataService = staticDataService;
         }
 
-        public async void Enter()
+        public async UniTask Enter()
         {
             await LoadConfigs();
             await LoadProgressOrInitNew();
-            _gameStateMachine.Value.Enter<InitializeGameSceneState>();
         }
 
         public void Exit() { }

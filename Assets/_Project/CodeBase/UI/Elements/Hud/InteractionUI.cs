@@ -1,4 +1,5 @@
 ﻿using System;
+using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.UI.MVA;
 using UnityEngine;
@@ -9,15 +10,18 @@ namespace _Project.CodeBase.UI.Elements.Hud
     public class InteractionUI : MonoBehaviour, IHideable
     {
         [SerializeField] private Button _button;
-        private Interaction _interaction;
+        
+        private InputService _inputService;
+        private HeroInteraction _heroInteraction;
         private Action _onInteract;
 
-        public void Construct(Interaction interaction)
+        public void Construct(HeroInteraction heroInteraction, InputService inputService)
         {
-            _interaction = interaction;
+            _inputService = inputService;
+            _heroInteraction = heroInteraction;
             
-            _interaction.OnStartHover += OnStartHover;
-            _interaction.OnEndHover += EndHover;
+            _heroInteraction.OnStartHover += OnStartHover;
+            _heroInteraction.OnEndHover += EndHover;
         }
 
         private void Start() => 
@@ -25,8 +29,8 @@ namespace _Project.CodeBase.UI.Elements.Hud
 
         private void OnDisable()
         {
-            _interaction.OnStartHover -= OnStartHover;
-            _interaction.OnEndHover -= EndHover;
+            _heroInteraction.OnStartHover -= OnStartHover;
+            _heroInteraction.OnEndHover -= EndHover;
         }
         
         public void Show() => 
@@ -38,7 +42,9 @@ namespace _Project.CodeBase.UI.Elements.Hud
         private void OnStartHover(Action onInteract)
         {
             Show();
+            
             BufferInteractAction(onInteract);
+            _inputService.InteractAction.Event += Interact;
             _button.onClick.AddListener(Interact);
         }
 
@@ -50,7 +56,8 @@ namespace _Project.CodeBase.UI.Elements.Hud
 
         private void EndHover()
         {
-            _button.onClick.RemoveAllListeners();
+            _inputService.InteractAction.Event -= Interact;
+            _button.onClick.RemoveListener(Interact);
             _onInteract = null;
             Hide();
         }

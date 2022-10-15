@@ -77,7 +77,7 @@ namespace _Project.CodeBase.UI.Elements.Hud.HotBar
             if (actions.Contains(ActionType.Equip))
                 _heroInventory.EquipItem(slotUI.SlotID);
             
-            _itemDescription.UpdateView(item);
+            _itemDescription.UpdateView(item, slotUI.SlotID);
         }
 
         private void InitializeBarSettings()

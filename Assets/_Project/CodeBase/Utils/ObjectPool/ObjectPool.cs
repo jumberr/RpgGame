@@ -7,12 +7,14 @@ namespace _Project.CodeBase.Utils.ObjectPool
     {
         private readonly Stack<T> _pool = new Stack<T>();
         private readonly Stack<T> _used = new Stack<T>();
-        private readonly Func<T> _factoryFunc;
+        private readonly Func<T, T> _factoryFunc;
+        private readonly T _prefab;
         private readonly int _defaultAmountObj;
 
-        public ObjectPool(Func<T> factoryFunc, int defaultAmountObj)
+        public ObjectPool(Func<T, T> factoryFunc, T prefab, int defaultAmountObj)
         {
             _factoryFunc = factoryFunc;
+            _prefab = prefab;
             _defaultAmountObj = defaultAmountObj;
             WarmPool();
         }
@@ -43,7 +45,7 @@ namespace _Project.CodeBase.Utils.ObjectPool
 
         private T InitializeElement()
         {
-            var obj = _factoryFunc();
+            var obj = _factoryFunc(_prefab);
             _pool.Push(obj);
             return obj;
         }

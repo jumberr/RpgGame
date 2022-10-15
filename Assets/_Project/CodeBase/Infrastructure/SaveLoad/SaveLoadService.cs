@@ -13,19 +13,19 @@ namespace _Project.CodeBase.Infrastructure.SaveLoad
     {
         private readonly string _path = Path.Combine($"{Application.persistentDataPath}", "Progress");
         
-        private readonly IGameFactory _gameFactory;
+        //private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
 
-        public SaveLoadService(IGameFactory gameFactory, IPersistentProgressService progressService)
+        public SaveLoadService(IPersistentProgressService progressService)
         {
-            _gameFactory = gameFactory;
+            //_gameFactory = gameFactory;
             _progressService = progressService;
         }
         
         public void SaveProgress()
         {
-            foreach (var progressWriter in _gameFactory.ProgressWriters)
-                progressWriter.UpdateProgress(_progressService.Progress);
+            //foreach (var progressWriter in _gameFactory.ProgressWriters)
+            //    progressWriter.UpdateProgress(_progressService.Progress);
 
             Serialize(_progressService);
         }

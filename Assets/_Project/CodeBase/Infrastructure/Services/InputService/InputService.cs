@@ -1,80 +1,58 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using System.Collections.Generic;
 
 namespace _Project.CodeBase.Infrastructure.Services.InputService
 {
-    public class InputService : MonoBehaviour
+    public class InputService
     {
-        private InputMaster _input;
+        public readonly ActionVector2Wrapper MoveAction;
+        public readonly ActionVector2Wrapper RotateAction;
+        public readonly ActionBoolWrapper AttackAction;
+        public readonly ActionWrapper JumpAction;
+        public readonly ActionWrapper ScopeAction;
+        public readonly ActionWrapper ReloadAction;
+        public readonly ActionWrapper InteractAction;
+            
+        private readonly List<BaseActionWrapper> _actions;
+        private readonly InputMaster _input;
+        private bool _inputBlocked;
         
-        public event Action<Vector2> OnMove;
-        public event Action<Vector2> OnRotate;
-        public event Action OnJump;
-
-        public event Action<bool> OnAttack;
-        public event Action OnScope;
-        public event Action OnReload;
-
-        private void OnEnable()
+        private InputService()
         {
-            if (_input == null)
-            {
-                _input = new InputMaster();
-                Subscribe();
-            }
-
+            _input = new InputMaster();
             _input.Enable();
-        }
 
-        private void OnDisable()
-        {
-            UnSubscribe();
-            _input.Disable();
-        }
-
-        private void Subscribe()
-        {
-            _input.PlayerMovement.Move.performed += MovePerformed();
-            _input.PlayerMovement.Move.canceled += MovePerformed();
-            _input.PlayerMovement.Rotation.performed += Rotation();
-            _input.PlayerMovement.Jump.performed += Jump();
+            MoveAction = new ActionVector2Wrapper(_input.PlayerMovement.Move);
+            RotateAction = new ActionVector2Wrapper(_input.PlayerMovement.Rotation);
+            JumpAction = new ActionWrapper(_input.PlayerMovement.Jump);
             
-            _input.PlayerFight.Attack.performed += Attack(true);
-            _input.PlayerFight.Attack.canceled += Attack(false);
-            _input.PlayerFight.Scope.performed += Scope();
-            _input.PlayerFight.Reload.performed += Reload();
-        }
-
-        private void UnSubscribe()
-        {
-            _input.PlayerMovement.Move.performed -= MovePerformed();
-            _input.PlayerMovement.Move.canceled -= MovePerformed();
-            _input.PlayerMovement.Rotation.performed -= Rotation();
-            _input.PlayerMovement.Jump.performed -= Jump();
             
-            _input.PlayerFight.Attack.performed -= Attack(true);
-            _input.PlayerFight.Attack.canceled -= Attack(false);
-            _input.PlayerFight.Scope.performed -= Scope();
-            _input.PlayerFight.Reload.performed -= Reload();
+            AttackAction = new ActionBoolWrapper(_input.PlayerFight.Attack);
+            ScopeAction = new ActionWrapper(_input.PlayerFight.Scope);
+            ReloadAction = new ActionWrapper(_input.PlayerFight.Reload);
+            
+            InteractAction = new ActionWrapper(_input.PlayerActions.Interact);
+
+            _actions = new List<BaseActionWrapper>
+            {
+                    MoveAction, RotateAction, JumpAction, AttackAction, ScopeAction, ReloadAction, InteractAction
+            };
+            
+            EnableInput();
         }
 
-        private Action<InputAction.CallbackContext> MovePerformed() => 
-            ctx => OnMove?.Invoke(ctx.ReadValue<Vector2>());
+        ~InputService() => 
+                _input.Disable();
 
-        private Action<InputAction.CallbackContext> Rotation() => 
-            ctx => OnRotate?.Invoke(ctx.ReadValue<Vector2>());
+        public void EnableInput()
+        { 
+            _inputBlocked = false;
+            _actions.ForEach(x => x.InputBlocked = _inputBlocked);
+        }
 
-        private Action<InputAction.CallbackContext> Jump() => 
-            ctx => OnJump?.Invoke();
-        
-        private Action<InputAction.CallbackContext> Attack(bool value) => 
-            ctx => OnAttack?.Invoke(value);
-        
-        private Action<InputAction.CallbackContext> Scope() => 
-            ctx => OnScope?.Invoke();
-
-        private Action<InputAction.CallbackContext> Reload() => 
-            ctx => OnReload?.Invoke();
+        public void BlockInput()
+        {
+            _inputBlocked = true;
+            _actions.ForEach(x => x.InputBlocked = _inputBlocked);
+        }
     }
 }

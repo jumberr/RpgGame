@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Effects
@@ -8,21 +10,21 @@ namespace _Project.CodeBase.Logic.Effects
         private const float Step = 0.03f;
         private const float DelayTime = 0.03f;
 
-        public static IEnumerator DoFadeOut(CanvasGroup group)
+        public static async UniTask DoFadeOut(CanvasGroup group)
         {
             while (group.alpha > 0)
             {
                 group.alpha -= Step;
-                yield return new WaitForSecondsRealtime(DelayTime);
+                await UniTask.Delay(TimeSpan.FromSeconds(DelayTime));
             }
         }
         
-        public static IEnumerator DoFadeIn(CanvasGroup group)
+        public static async UniTask DoFadeIn(CanvasGroup group)
         {
             while (group.alpha < 1)
             {
                 group.alpha += Step;
-                yield return new WaitForSecondsRealtime(DelayTime);
+                await UniTask.Delay(TimeSpan.FromSeconds(DelayTime));
             }
         }
     }

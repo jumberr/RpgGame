@@ -8,7 +8,7 @@ namespace _Project.CodeBase.Infrastructure.Services.StaticData
 {
     public interface IStaticDataService
     {
-        UniTask LoadMenuStaticData();
+        UniTask LoadProjectConfig();
         UniTask LoadGameStaticData();
         UniTask LoadItemsDataBase();
         UniTask LoadUIWindowConfig();

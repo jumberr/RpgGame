@@ -53,7 +53,8 @@ namespace _Project.CodeBase.UI.Windows.Inventory
             if (dbId == -1) return;
             var item = _heroInventory.ItemsDataBase.FindItem(dbId);
             _context.InitializeContext(item.ItemPayloadData.Actions, slotUI);
-            _itemDescription.UpdateView(item);
+            
+            _itemDescription.UpdateView(item, slotUI.SlotID);
         }
 
         protected override void Cleanup()

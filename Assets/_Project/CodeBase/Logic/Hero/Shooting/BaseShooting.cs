@@ -13,11 +13,8 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         private const float TimeDestroyFX = 0.1f;
         private const float TimeDestroyEnvFx = 2f;
 
-        protected readonly Camera HeroCamera;
         protected readonly LayerMask LayerMask;
-        protected readonly GameObject RockParticlesFX;
-        protected readonly GameObject SandParticlesFX;
-        protected readonly GameObject BloodParticlesFX;
+        protected readonly ShootingParticles Particles;
         protected Transform FirePoint;
         protected float Range;
         protected float Damage;
@@ -25,22 +22,16 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         private MainPoolManager _poolManager;
         private readonly HeroState _state;
         private readonly LineFade _lineFade;
-        private readonly GameObject _weaponFX;
         private float _accuracyDistance;
         private float _aimAccuracy;
         private float _accuracy;
-
-        public BaseShooting(HeroState state, Camera camera, LineFade lineFade, GameObject weaponFx,
-            LayerMask layerMask, GameObject rockParticles, GameObject sandParticles, GameObject bloodParticles)
+        
+        protected BaseShooting(HeroState state, LineFade lineFade, LayerMask layerMask, ShootingParticles particles)
         {
             _state = state;
             _lineFade = lineFade;
-            _weaponFX = weaponFx;
-            HeroCamera = camera;
             LayerMask = layerMask;
-            RockParticlesFX = rockParticles;
-            SandParticlesFX = sandParticles;
-            BloodParticlesFX = bloodParticles;
+            Particles = particles;
         }
 
         public void SetupPoolManager(MainPoolManager poolManager) => 
@@ -77,7 +68,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
 
         protected async void MuzzleFlash()
         {
-            var fx = _poolManager.SpawnObject(_weaponFX, FirePoint.position, Quaternion.identity);
+            var fx = _poolManager.SpawnObject(Particles.WeaponFX, FirePoint.position, Quaternion.identity);
             await UniTask.Delay(TimeSpan.FromSeconds(TimeDestroyFX));
             _poolManager.ReleaseObject(fx);
         }
@@ -89,7 +80,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
  
             var coordX = distanceDispersion * Mathf.Cos(angleDispersion);
             var coordY = distanceDispersion * Mathf.Sin(angleDispersion);
-            return HeroCamera.transform.forward * _accuracyDistance + new Vector3(coordX, coordY, 0);
+            return FirePoint.forward * _accuracyDistance + new Vector3(coordX, coordY, 0);
         }
 
         private float RandDistance() => 

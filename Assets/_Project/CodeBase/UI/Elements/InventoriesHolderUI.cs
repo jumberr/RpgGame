@@ -18,6 +18,7 @@ namespace _Project.CodeBase.UI.Elements
             _heroInventory = heroInventory;
             _hotBarUI = hotBarUI;
             _inventoryUI = inventoryUI;
+            _inventoryUI.ItemDescription.Construct(heroInventory);
             
             ConstructInventories().Forget();
         }

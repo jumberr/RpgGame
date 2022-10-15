@@ -20,7 +20,23 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: DefaultScopeData
+      Entry: 7
+      Data: 0|_Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments.ScopeSettings,
+        Assembly-CSharp
+    - Name: AimingInTime
+      Entry: 4
+      Data: 0.5
+    - Name: AimingOutTime
+      Entry: 4
+      Data: 0.5
+    - Name: ScopeMultiplier
+      Entry: 4
+      Data: 1.2
+    - Name: 
+      Entry: 8
+      Data: 
   ItemUIData:
     Name: 2
     Icon: {fileID: 21300000, guid: 87b26a99a29de914a867b2bca4571085, type: 3}
@@ -55,9 +71,7 @@ MonoBehaviour:
   Magazine:
     BulletsMax: 30
     BulletsLeft: 30
-  ScopeSettings:
-    AimingInTime: 0
-    AimingOutTime: 0
-    ScopeMultiplier: 0
+  PossibleAttachments: 
+  DefaultAttachments: 
   WeaponPrefab: {fileID: 1475004734686439129, guid: 8e49b557cdae8cf41a2d4d6a0eb98abe,
     type: 3}

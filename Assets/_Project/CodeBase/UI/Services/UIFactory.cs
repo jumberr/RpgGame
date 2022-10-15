@@ -25,9 +25,9 @@ namespace _Project.CodeBase.UI.Services
     {
         private readonly IAssetProvider _assetProvider;
         private readonly IStaticDataService _staticDataService;
-        private readonly LazyInject<IGameStateMachine> _gameStateMachine;
         private readonly IWindowService _windowService;
-
+        private readonly InputService _inputService;
+        private readonly SceneLoader _sceneLoader;
         private readonly Dictionary<WindowId, WindowBase> _windows = new Dictionary<WindowId, WindowBase>();
         private Transform _uiRoot;
         private GameObject _hud;
@@ -38,12 +38,14 @@ namespace _Project.CodeBase.UI.Services
         public UIFactory(
             IAssetProvider assetProvider,
             IStaticDataService staticDataService,
-            LazyInject<IGameStateMachine> gameStateMachine)
+            InputService inputService,
+            SceneLoader sceneLoader)
         {
+            _sceneLoader = sceneLoader;
             _assetProvider = assetProvider;
             _staticDataService = staticDataService;
-            _gameStateMachine = gameStateMachine;
             _windowService = new WindowService(this);
+            _inputService = inputService;
         }
 
         public async UniTask CreateUIRoot()
@@ -63,7 +65,7 @@ namespace _Project.CodeBase.UI.Services
         {
             var deathScreenGo = await _assetProvider.InstantiateAsync(AssetPath.DeathScreen, _uiRoot);
             var deathScreen = deathScreenGo.GetComponent<DeathScreen>();
-            deathScreen.Construct(_gameStateMachine.Value);
+            deathScreen.Construct(_sceneLoader, _staticDataService);
         }
 
         public void CreateInventory()
@@ -89,8 +91,7 @@ namespace _Project.CodeBase.UI.Services
             var actorUI = _hud.GetComponent<ActorUI>();
             _actorUI = actorUI;
             actorUI.Construct(hero.GetComponent<HeroHealth>(), hero.GetComponent<HeroAmmo>(),
-                hero.GetComponent<WeaponController>(), hero.GetComponent<InputService>(),
-                hero.GetComponent<HeroState>(), hero.GetComponent<Interaction>());
+                hero.GetComponent<WeaponController>(), _inputService, hero.GetComponent<HeroState>(), hero.GetComponent<HeroInteraction>());
         }
 
         public void ConstructInventoriesHolder(GameObject hero) => 

@@ -1,8 +1,10 @@
 ﻿using _Project.CodeBase.Infrastructure;
-using _Project.CodeBase.Infrastructure.States;
+using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Effects;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace _Project.CodeBase.UI.Windows.DeathScreen
 {
@@ -10,28 +12,26 @@ namespace _Project.CodeBase.UI.Windows.DeathScreen
     {
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private Button _respawnButton;
-
-        private IGameStateMachine _gameStateMachine;
-
-        public void Construct(IGameStateMachine gameStateMachine) => 
-            _gameStateMachine = gameStateMachine;
+        private SceneLoader _sceneLoader;
+        private IStaticDataService _staticDataService;
+        
+        public void Construct(SceneLoader sceneLoader, IStaticDataService staticDataService)
+        {
+            _sceneLoader = sceneLoader;
+            _staticDataService = staticDataService;
+        }
 
         private void Awake() => 
-            OnAwake();
-
-        private void Start() => 
-            OnStart();
-
-        private void OnAwake() => 
             _respawnButton.onClick.AddListener(Respawn);
 
-        private void OnStart() => 
-            StartCoroutine(Fade.DoFadeIn(_canvasGroup));
+        private void Start() => 
+            Fade.DoFadeIn(_canvasGroup).Forget();
 
-        private void Respawn()
+        private async void Respawn()
         {
-            _gameStateMachine.Enter<ReloadSceneState>();
             _respawnButton.enabled = false;
+            //var config = _staticDataService.ForProjectSettings();
+            await _sceneLoader.ReloadScene();
         }
     }
 }

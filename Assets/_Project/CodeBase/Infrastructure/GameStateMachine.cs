@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _Project.CodeBase.Infrastructure.States;
+using Cysharp.Threading.Tasks;
 
 namespace _Project.CodeBase.Infrastructure
 {
@@ -13,8 +14,8 @@ namespace _Project.CodeBase.Infrastructure
         public GameStateMachine(List<IExitableState> states) => 
             _states = states.ToDictionary(x => x.GetType(), x => x);
 
-        public void Enter<TState>() where TState : class, IState => 
-            ChangeState<TState>().Enter();
+        public async UniTask Enter<TState>() where TState : class, IState => 
+            await ChangeState<TState>().Enter();
 
         public TState ChangeState<TState>() where TState : class, IExitableState
         {

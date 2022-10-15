@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData.ItemsDataBase.Types;
+using _Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
@@ -9,7 +12,9 @@ namespace _Project.CodeBase.Logic.HeroWeapon
     {
         public WeaponData WeaponData;
         public Magazine Magazine;
-        public ScopeSettings ScopeSettings;
+        public List<ItemName> PossibleAttachments;
+        public List<ItemName> DefaultAttachments;
+        public ScopeSettings DefaultScopeData;
         public GameObject WeaponPrefab;
     }
 }

@@ -1,52 +1,38 @@
 ﻿using _Project.CodeBase.Infrastructure.AssetManagement;
-using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.SaveLoad;
+using _Project.CodeBase.Infrastructure.Scenes;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
-using _Project.CodeBase.Infrastructure.States;
 using _Project.CodeBase.StaticData;
-using _Project.CodeBase.UI.Services;
-using _Project.CodeBase.UI.Services.Windows;
 using UnityEngine;
 using Zenject;
 
 namespace _Project.CodeBase.Infrastructure.Installers
 {
-    public class BootstrapInstaller : MonoInstaller, ICoroutineRunner
+    public class ProjectInstaller : MonoInstaller
     {
         [SerializeField] private ProjectSettings _projectSettings;
         
         public override void InstallBindings()
         {
-            RegisterCompositionRoot();
-            RegisterBootstrapState();
-            RegisterLoadProgressState();
-            RegisterInitializeSceneState();
-        }
-
-        private void RegisterCompositionRoot()
-        {
             Container
-                .Bind<IGameStateMachine>()
-                .To<GameStateMachine>()
+                .Bind<IInitializable>()
+                .To<Bootstrap>()
                 .AsSingle();
-
-            Container.Bind<IExitableState>()
-                .To(x => x.AllNonAbstractClasses())
-                .AsSingle();
-
+            
             Container
-                .BindInterfacesAndSelfTo<BootstrapInstaller>()
-                .FromInstance(this)
+                .Bind<InitialScene>()
                 .AsSingle();
-
+            
             Container
                 .Bind<ProjectSettings>()
                 .FromInstance(_projectSettings)
                 .AsSingle();
+            
+            BindServices();
         }
 
-        private void RegisterBootstrapState()
+        private void BindServices()
         {
             Container
                 .Bind<LoadingCurtain>()
@@ -58,12 +44,10 @@ namespace _Project.CodeBase.Infrastructure.Installers
                 .AsSingle();
 
             Container
-                .BindInterfacesAndSelfTo<Bootstrapper>()
+                .Bind<IStaticDataService>()
+                .To<StaticDataService>()
                 .AsSingle();
-        }
 
-        private void RegisterLoadProgressState()
-        {
             Container
                 .Bind<IPersistentProgressService>()
                 .To<PersistentProgressService>()
@@ -72,24 +56,6 @@ namespace _Project.CodeBase.Infrastructure.Installers
             Container
                 .Bind<ISaveLoadService>()
                 .To<SaveLoadService>()
-                .AsSingle();
-        }
-
-        private void RegisterInitializeSceneState()
-        {
-            Container
-                .Bind<IStaticDataService>()
-                .To<StaticDataService>()
-                .AsSingle();
-
-            Container
-                .Bind<IGameFactory>()
-                .To<GameFactory>()
-                .AsSingle();
-            
-            Container
-                .Bind<IUIFactory>()
-                .To<UIFactory>()
                 .AsSingle();
 
             Container

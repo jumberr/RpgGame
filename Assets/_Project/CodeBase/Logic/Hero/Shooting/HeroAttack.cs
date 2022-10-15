@@ -9,19 +9,15 @@ using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero.Shooting
 {
-    [RequireComponent(typeof(InputService), typeof(HeroAmmo))]
+    [RequireComponent(typeof(HeroAmmo))]
     public class HeroAttack : MonoBehaviour
     {
         private const float TimeDestroyFX = 0.1f;
 
-        [SerializeField] private Camera _heroCamera;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private LineFade _lineFade;
         [SerializeField] private WeaponLight _weaponLight;
-        [SerializeField] private GameObject _weaponFX;
-        [SerializeField] private GameObject _rockParticlesFX;
-        [SerializeField] private GameObject _sandParticlesFX;
-        [SerializeField] private GameObject _bloodParticlesFX;
+        [SerializeField] private ShootingParticles _particles;
 
         private MainPoolManager _poolManager;
         private DefaultShooting _defaultShooting;
@@ -42,22 +38,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
 
         public LayerMask LayerMask => _layerMask;
 
-        public void Construct(MainPoolManager poolManager)
-        {
-            _poolManager = poolManager;
-            _poolManager.Initialize();
-            
-            _defaultShooting.SetupPoolManager(_poolManager);
-            _shotgunShooting.SetupPoolManager(_poolManager);
-        }
-
-        public void Construct(
-            HeroState state,
-            InputService inputService,
-            HeroAmmo ammo,
-            HeroReload reload,
-            HeroRecoil recoil,
-            HeroAnimator animator)
+        public void Construct(HeroState state, InputService inputService, HeroAmmo ammo, HeroReload reload, HeroRecoil recoil, HeroAnimator animator)
         {
             _state = state;
             _inputService = inputService;
@@ -65,10 +46,12 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
             _reload = reload;
             _recoil = recoil;
             _animator = animator;
-            _inputService.OnAttack += EnableDisableShoot;
-            
-            _defaultShooting = new DefaultShooting(_state, _heroCamera, _lineFade, _weaponFX, _layerMask, _rockParticlesFX, _sandParticlesFX, _bloodParticlesFX);
-            _shotgunShooting = new ShotgunShooting(_state, _heroCamera, _lineFade, _weaponFX, _layerMask, _rockParticlesFX, _sandParticlesFX, _bloodParticlesFX);
+            _inputService.AttackAction.Event += EnableDisableShoot;
+
+            _defaultShooting = new DefaultShooting(_state, _lineFade, _layerMask, _particles);
+            _shotgunShooting = new ShotgunShooting(_state, _lineFade, _layerMask, _particles);
+            _defaultShooting.SetupPoolManager(_poolManager);
+            _shotgunShooting.SetupPoolManager(_poolManager);
         }
 
         private void Update()
@@ -98,7 +81,10 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         }
 
         private void OnDisable() =>
-            _inputService.OnAttack -= EnableDisableShoot;
+            _inputService.AttackAction.Event -= EnableDisableShoot;
+
+        public void SetPool(MainPoolManager poolManager) => 
+            _poolManager = poolManager;
 
         public void UpdateStatsAndConfig(Weapon weapon, WeaponConfiguration config)
         {

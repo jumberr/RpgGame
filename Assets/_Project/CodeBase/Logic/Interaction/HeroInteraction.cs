@@ -3,13 +3,14 @@ using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Interaction
 {
-    public class Interaction : MonoBehaviour
+    public class HeroInteraction : MonoBehaviour
     {
         [SerializeField] private Camera _mainCamera;
         [SerializeField] private float _range;
         
         private IInteractable _currentTarget;
         private readonly Vector3 _defaultPosition = new Vector3(0.5F, 0.5F, 0);
+        private bool _hoverStarted;
         
         public Action<Action> OnStartHover;
         public event Action OnEndHover;
@@ -29,14 +30,9 @@ namespace _Project.CodeBase.Logic.Interaction
                 {
                     if (hit.distance <= interactable.MaxRange)
                     {
-                        if (interactable == _currentTarget) return;
-                        if (!(_currentTarget is null))
-                        {
-                            _currentTarget.OnEndHover();
-                            StartHover(interactable);
-                        }
-                        else
-                            StartHover(interactable);
+                        if (interactable == _currentTarget || _hoverStarted) return;
+                        _currentTarget?.OnEndHover();
+                        StartHover(interactable);
                     }
                     else
                         EndHover();
@@ -53,6 +49,7 @@ namespace _Project.CodeBase.Logic.Interaction
             _currentTarget = interactable;
             _currentTarget.OnStartHover();
             OnStartHover?.Invoke(_currentTarget.OnInteract);
+            _hoverStarted = true;
         }
 
         private void EndHover()
@@ -61,6 +58,7 @@ namespace _Project.CodeBase.Logic.Interaction
             _currentTarget.OnEndHover();
             _currentTarget = null;
             OnEndHover?.Invoke();
+            _hoverStarted = false;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace _Project.CodeBase.Infrastructure.Services.StaticData
         public StaticDataService(IAssetProvider assetProvider) => 
             _assetProvider = assetProvider;
 
-        public async UniTask LoadMenuStaticData() => 
+        public async UniTask LoadProjectConfig() => 
             _projectSettings = await _assetProvider.Load<ProjectSettings>(StaticDataPath.ProjectSettingsDataPath);
 
         public async UniTask LoadGameStaticData() => 

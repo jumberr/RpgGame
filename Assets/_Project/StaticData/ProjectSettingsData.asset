@@ -15,4 +15,5 @@ MonoBehaviour:
   LoadingCurtain: {fileID: 795907595884449915, guid: daa62a1d91fefd34b9e256b3e0e14309,
     type: 3}
   InitialScene: Initial
+  MenuScene: Menu
   GameScene: Game

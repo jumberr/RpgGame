@@ -5,10 +5,10 @@ namespace _Project.CodeBase.Logic.Hero.State
 {
     public class HeroState : MonoBehaviour
     {
-        public event Action<PlayerState> OnChangeState;
-        
         private PlayerState _prevPlayerState;
         private PlayerState _playerState;
+        
+        public event Action<PlayerState> OnChangeState;
         
         public PlayerState PreviousPlayerState => _prevPlayerState;
         public PlayerState CurrentPlayerState => _playerState;

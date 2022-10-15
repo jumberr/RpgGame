@@ -268,6 +268,34 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerActions"",
+            ""id"": ""f0a339dd-0e08-4b18-9482-a3ea45c2bacc"",
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""348e1c55-085d-471c-834e-470df0b8b737"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a32a4e37-6f33-49df-a60c-d46f28726211"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -299,6 +327,9 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
         m_PlayerFight_Attack = m_PlayerFight.FindAction("Attack", throwIfNotFound: true);
         m_PlayerFight_Reload = m_PlayerFight.FindAction("Reload", throwIfNotFound: true);
         m_PlayerFight_Scope = m_PlayerFight.FindAction("Scope", throwIfNotFound: true);
+        // PlayerActions
+        m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
+        m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -452,6 +483,39 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
         }
     }
     public PlayerFightActions @PlayerFight => new PlayerFightActions(this);
+
+    // PlayerActions
+    private readonly InputActionMap m_PlayerActions;
+    private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
+    private readonly InputAction m_PlayerActions_Interact;
+    public struct PlayerActionsActions
+    {
+        private @InputMaster m_Wrapper;
+        public PlayerActionsActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerActionsActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerActionsActions instance)
+        {
+            if (m_Wrapper.m_PlayerActionsActionsCallbackInterface != null)
+            {
+                @Interact.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
+            }
+            m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+            }
+        }
+    }
+    public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
     private int m_MouseandkeyboardSchemeIndex = -1;
     public InputControlScheme MouseandkeyboardScheme
     {
@@ -472,5 +536,9 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnScope(InputAction.CallbackContext context);
+    }
+    public interface IPlayerActionsActions
+    {
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2069869355385823022}
   - component: {fileID: 2069869355385823021}
-  - component: {fileID: 6525794905949041474}
+  - component: {fileID: -3106647713355847249}
   - component: {fileID: 2069869355385823023}
   - component: {fileID: 5001262662604618594}
   - component: {fileID: 2069869355385823018}
@@ -66,7 +66,7 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.12, z: 0}
---- !u!114 &6525794905949041474
+--- !u!114 &-3106647713355847249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,9 +75,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2069869355385823009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 506f9a2bf3fc42a4b297719a261de849, type: 3}
+  m_Script: {fileID: 11500000, guid: 29bef69419cb4e70829c7ad9fb0e6571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponController: {fileID: 3214247681925859823}
+  _interaction: {fileID: 6751817453903407190}
+  _inventory: {fileID: 6614678942181432447}
+  _movement: {fileID: 2069869355385823023}
+  _rotation: {fileID: 5001262662604618594}
+  _animator: {fileID: 2069869355385823018}
+  _scoping: {fileID: 5039849704631123406}
+  _attack: {fileID: 6345382572701065086}
+  _reload: {fileID: 8354393796157299354}
+  _health: {fileID: 6568509556983406653}
+  _recoil: {fileID: 4570767839213652636}
+  _death: {fileID: 4124993244672883613}
+  _state: {fileID: 6465014802036329193}
+  _ammo: {fileID: 3524021818451517063}
 --- !u!114 &2069869355385823023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,7 +107,6 @@ MonoBehaviour:
   _jumpForce: 1
   _walkingSpeed: 6
   _runningSpeed: 8
-  _inputService: {fileID: 6525794905949041474}
   _heroAnimator: {fileID: 2069869355385823018}
   _characterController: {fileID: 2069869355385823021}
 --- !u!114 &5001262662604618594
@@ -108,7 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3007e9e6f941ce8a1c95d5fd318c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputService: {fileID: 6525794905949041474}
   _player: {fileID: 2069869355385823022}
   _hands: {fileID: 3454814663676999890}
 --- !u!114 &2069869355385823018
@@ -152,7 +164,7 @@ MonoBehaviour:
   _rotation: {fileID: 5001262662604618594}
   _state: {fileID: 6465014802036329193}
   _animator: {fileID: 2069869355385823018}
-  _attack: {fileID: 0}
+  _attack: {fileID: 6345382572701065086}
   _ammo: {fileID: 3524021818451517063}
   _reload: {fileID: 8354393796157299354}
   _scoping: {fileID: 5039849704631123406}
@@ -168,20 +180,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feff99dd084442858551f520e1a26c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heroCamera: {fileID: 7950303267749795192}
   _layerMask:
     serializedVersion: 2
     m_Bits: 4104
   _lineFade: {fileID: 4949848307316654512, guid: c1c6823599ce40d4e87451f783612d59,
     type: 3}
   _weaponLight: {fileID: 7233730278501378840}
-  _weaponFX: {fileID: 4888934222848124639, guid: 43586b1e1127c63428f509860df6fb48,
-    type: 3}
-  _rockParticlesFX: {fileID: 1067471869909948, guid: 5e02303289b3c494e8e185be0fbbd405,
-    type: 3}
-  _sandParticlesFX: {fileID: 1686080349434584, guid: a9a1d08f9e8197c449e2b1f736afcefa,
-    type: 3}
-  _bloodParticlesFX: {fileID: 0}
+  _particles:
+    WeaponFX: {fileID: 4888934222848124639, guid: 43586b1e1127c63428f509860df6fb48,
+      type: 3}
+    RockParticlesFX: {fileID: 1067471869909948, guid: 5e02303289b3c494e8e185be0fbbd405,
+      type: 3}
+    SandParticlesFX: {fileID: 1686080349434584, guid: a9a1d08f9e8197c449e2b1f736afcefa,
+      type: 3}
+    BloodParticlesFX: {fileID: 0}
 --- !u!114 &3524021818451517063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _state: {fileID: 6465014802036329193}
-  _inputService: {fileID: 6525794905949041474}
   _mainCamera: {fileID: 7950303267749795192}
   _weaponHolder: {fileID: 1876233253101113680}
 --- !u!114 &8354393796157299354
@@ -239,7 +250,6 @@ MonoBehaviour:
   _ammo: {fileID: 3524021818451517063}
   _heroScoping: {fileID: 5039849704631123406}
   _state: {fileID: 6465014802036329193}
-  _inputService: {fileID: 6525794905949041474}
 --- !u!114 &7233730278501378840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +288,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventory: {fileID: 6614678942181432447}
-  _inputService: {fileID: 6525794905949041474}
   _state: {fileID: 6465014802036329193}
   _attack: {fileID: 6345382572701065086}
   _scoping: {fileID: 5039849704631123406}
@@ -286,6 +295,7 @@ MonoBehaviour:
   _reload: {fileID: 8354393796157299354}
   _recoil: {fileID: 4570767839213652636}
   _animator: {fileID: 2069869355385823018}
+  _weaponSway: {fileID: 5333124947855788501}
   _parent: {fileID: 4962749743191915194}
 --- !u!114 &6751817453903407190
 MonoBehaviour:
@@ -300,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 7950303267749795192}
-  _range: 10
+  _range: 5
 --- !u!1 &3503070965833969150
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +413,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 50
+  far clip plane: 5
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -638,6 +648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1876233253101113680}
   - component: {fileID: 5333124947855788501}
+  - component: {fileID: 4438510177609849476}
   m_Layer: 7
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -672,7 +683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df53c1c9206a4f0bb06757e30aeb2716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputService: {fileID: 6525794905949041474}
   _swayAmount: 4
   _swayInvertX: 0
   _swayInvertY: 0
@@ -690,6 +700,49 @@ MonoBehaviour:
   _swayAmountB: 2
   _swayScale: 400
   _swayLerpSpeed: 14
+--- !u!114 &4438510177609849476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8921827715432305723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b82e45c5e2541b88569aae451b4677d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 7950303267749795192}
+  _distance: 1
+  _radius: 0.125
+  _clippingLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  _newDirection: {x: -90, y: 0, z: 0}
+  _offsetCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &6842633356254779355
 PrefabInstance:
   m_ObjectHideFlags: 0

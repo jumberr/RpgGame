@@ -14,8 +14,8 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         [SerializeField] private HeroAmmo _ammo;
         [SerializeField] private HeroScoping _heroScoping;
         [SerializeField] private HeroState _state;
-        [SerializeField] private InputService _inputService;
 
+        private InputService _inputService;
         private DefaultReload _defaultReload;
         private ReloadRevolver _reloadRevolver;
         private bool _isRevolver;
@@ -45,13 +45,16 @@ namespace _Project.CodeBase.Logic.Hero.Reload
             _reloadRevolver = new ReloadRevolver(_heroAnimator);
         }
 
-        private void OnEnable() => 
-            _inputService.OnReload += Reload;
-
         private void OnDisable()
         {
-            _inputService.OnReload -= Reload;
+            _inputService.ReloadAction.Event -= Reload;
             _reloadRevolver.UnsubscribeRevolverEvents();
+        }
+
+        public void SetInputService(InputService inputService)
+        {
+            _inputService = inputService;
+            _inputService.ReloadAction.Event += Reload;
         }
 
         public async void Reload()

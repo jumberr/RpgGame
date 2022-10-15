@@ -20,6 +20,7 @@ namespace _Project.CodeBase.Logic.Inventory
         private InteractableSpawner _interactableSpawner;
         
         public event Action OnUpdate;
+        public event Action<int> OnDrop;
 
         public ItemsDataBase ItemsDataBase => _itemsDataBase;
         public Inventory Inventory => _inventory;
@@ -122,12 +123,14 @@ namespace _Project.CodeBase.Logic.Inventory
         {
             _inventory.RemoveItemFromSlot(id);
             OnUpdate?.Invoke();
+            OnDrop?.Invoke(id);
         }
 
         private void RemoveAllItemsFromSlot(int id)
         {
             _inventory.RemoveAllItemsFromSlot(id);
             OnUpdate?.Invoke();
+            OnDrop?.Invoke(id);
         }
 
         private void SpawnGroundItem(int dbId, int amount)

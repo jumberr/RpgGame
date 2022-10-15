@@ -3,27 +3,29 @@ using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
 {
-    [RequireComponent(typeof(InputService))]
     public class HeroRotation : MonoBehaviour
     {
         private const int MinRotationAngleY = -90;
         private const int MaxRotationAngleY = 90;
         private const int Multiplier = 100;
 
-        [SerializeField] private InputService _inputService;
         [SerializeField] private Transform _player;
         [SerializeField] private Transform _hands;
         
+        private InputService _inputService;
         private float _mouseSensitivity;
         private float _xRotation;
 
         public Vector2 Direction { get; private set; }
 
         private void Start() => 
-            _inputService.OnRotate += OnRotate;
+            _inputService.RotateAction.Event += OnRotate;
 
         private void OnDisable() => 
-            _inputService.OnRotate -= OnRotate;
+            _inputService.RotateAction.Event -= OnRotate;
+
+        public void SetInputService(InputService inputService) => 
+            _inputService = inputService;
 
         private void Update()
         {

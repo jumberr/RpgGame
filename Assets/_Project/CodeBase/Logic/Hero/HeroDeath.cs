@@ -1,7 +1,9 @@
 ﻿using System;
+using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero.Reload;
 using _Project.CodeBase.Logic.Hero.Shooting;
 using _Project.CodeBase.Logic.Hero.State;
+using _Project.CodeBase.Utils.Extensions;
 using DG.Tweening;
 using UnityEngine;
 
@@ -9,19 +11,19 @@ namespace _Project.CodeBase.Logic.Hero
 {
     public class HeroDeath : MonoBehaviour
     {
-        public event Action ZeroHealth;
         [SerializeField] private HeroHealth _health;
         [SerializeField] private HeroMovement _move;
         [SerializeField] private HeroRotation _rotation;
         [SerializeField] private HeroState _state;
         [SerializeField] private HeroAnimator _animator;
-        
         [SerializeField] private HeroAttack _attack;
         [SerializeField] private HeroAmmo _ammo;
         [SerializeField] private HeroReload _reload;
         [SerializeField] private HeroScoping _scoping;
-        
+
         private bool _isDead;
+        private InputService _inputService;
+        public event Action ZeroHealth;
 
         private void Start() => 
             _health.HealthChanged += HealthChanged;
@@ -45,25 +47,30 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void DisableComponents()
         {
-            _health.enabled = false;
-            _move.enabled = false;
-            _rotation.enabled = false;
-            _animator.enabled = false;
-            _state.enabled = false;
-
-            _attack.enabled = false;
-            _ammo.enabled = false;
-            _reload.enabled = false;
-            _scoping.enabled = false;
+            //_health.Deactivate();
+            //_move.Deactivate();
+            //_rotation.Deactivate();
+            //_animator.Deactivate();
+            //_state.Deactivate();
+//
+            //_attack.Deactivate();
+            //_ammo.Deactivate();
+            //_reload.Deactivate();
+            //_scoping.Deactivate();
         }
-        
+
+        public void SetInputService(InputService inputService)
+        {
+            _inputService = inputService;
+        }
+
         private void ProduceHeroDeath()
         {
             var duration = 0.3f;
-            var cc = _move.CharacterController;
-            cc.enabled = false;
+            _inputService.BlockInput();
+            //_move.CharacterController.Deactivate();
 
-            ApplyDeathPositionToHero(cc, duration);
+            ApplyDeathPositionToHero(_move.CharacterController, duration);
 
             var cams = gameObject.GetComponentsInChildren<Camera>();
             RotateHeroCamera(cams[0], duration);
@@ -77,10 +84,10 @@ namespace _Project.CodeBase.Logic.Hero
             gameObject.transform.DOLocalMove(pos, duration);
         }
 
-        private static void RotateHeroCamera(Camera heroCam, float duration) => 
+        private void RotateHeroCamera(Camera heroCam, float duration) => 
             heroCam.transform.DOLocalRotate(Vector3.left * 90, duration);
 
-        private static void SetEmptyCullingMaskToGunCamera(Camera weaponCamera) => 
+        private void SetEmptyCullingMaskToGunCamera(Camera weaponCamera) => 
             weaponCamera.cullingMask = 0;
     }
 }

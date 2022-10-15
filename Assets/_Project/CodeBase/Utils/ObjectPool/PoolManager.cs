@@ -9,13 +9,12 @@ namespace _Project.CodeBase.Utils.ObjectPool
     {
         private readonly Dictionary<T, IObjectPool<T>> _pools = new Dictionary<T, IObjectPool<T>>();
         private readonly Dictionary<T, IObjectPool<T>> _instancedObjectsPools = new Dictionary<T, IObjectPool<T>>();
-        private T _prefab;
         private GameObject _root;
 
         public void Initialize(string objName) => 
             _root = new GameObject { name = objName };
 
-        public T SpawnObject(T prefab, Vector3 position, Quaternion rotation, int size = 5)
+        public T SpawnObject(T prefab, Vector3 position, Quaternion rotation, int size = 10)
         {
             if (!_pools.ContainsKey(prefab)) 
                 WarmPool(prefab, size);
@@ -57,10 +56,8 @@ namespace _Project.CodeBase.Utils.ObjectPool
             if (_pools.ContainsKey(prefab))
                 throw new Exception("Pool for prefab " + prefab.name + " has already been created");
 
-            _prefab = prefab;
-            var pool = new ObjectPool<T>(InstantiatePrefab, size);
+            var pool = new ObjectPool<T>(InstantiatePrefab, prefab, size);
             _pools[prefab] = pool;
-            _prefab = null;
         }
 
         private T InstantiatePrefab(T prefab)
@@ -69,8 +66,5 @@ namespace _Project.CodeBase.Utils.ObjectPool
             OnInstantiate(prefab);
             return gameObject;
         }
-
-        private T InstantiatePrefab() => 
-            InstantiatePrefab(_prefab);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData.ItemsDataBase;
 using _Project.CodeBase.UI.Animation;
@@ -20,8 +19,10 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         [Space]
         [SerializeField] private SimpleScaleUIAnimation _scaleAnimation;
 
-        private List<Component> _components;
+        private HeroInventory _heroInventory;
+        private List<Component> _components = new List<Component>();
         private bool _hidden;
+        private int _slotID;
 
         private void Start()
         {
@@ -29,8 +30,15 @@ namespace _Project.CodeBase.UI.Windows.Inventory
             Hide();
         }
 
-        public void UpdateView(ItemData data)
+        public void Construct(HeroInventory heroInventory)
         {
+            _heroInventory = heroInventory;
+            _heroInventory.OnDrop += HideDroppedItem;
+        }
+
+        public void UpdateView(ItemData data, int slotID)
+        {
+            _slotID = slotID;
             Show();
             Animate();
             UpdateWeaponPart(data);
@@ -48,7 +56,7 @@ namespace _Project.CodeBase.UI.Windows.Inventory
             if (data.ItemPayloadData.ItemType == ItemType.Weapon)
             {
                 _weaponStatsUI.gameObject.SetActive(true);
-                _weaponStatsUI.UpdateView((Weapon) data);
+                _weaponStatsUI.UpdateView(data);
             }
             else
                 _weaponStatsUI.gameObject.SetActive(false);
@@ -73,6 +81,12 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         {
             _hidden = true;
             _components.DeactivateComponents();
+        }
+
+        private void HideDroppedItem(int id)
+        {
+            if (_slotID == id) 
+                Hide();
         }
     }
 }

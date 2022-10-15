@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure.AssetManagement;
+using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.Logic.Hero.Shooting;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Services;
@@ -19,39 +19,40 @@ namespace _Project.CodeBase.Infrastructure.Factory
         private readonly IUIFactory _uiFactory;
         private readonly MainPoolManager _poolManager;
         private readonly IStaticDataService _staticDataService;
+        private readonly HeroFacade.Factory _heroFactory;
+        private readonly InputService _inputService;
         private InteractableSpawner _interactableSpawner;
+        private HeroFacade _heroFacade;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
-        public MainPoolManager PoolManager => _poolManager;
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
-        
+        public MainPoolManager PoolManager => _poolManager;
+
         private GameObject HeroGameObject { get; set; }
 
         public GameFactory(
             IAssetProvider assetProvider,
             IUIFactory uiFactory,
-            IStaticDataService staticDataService)
+            IStaticDataService staticDataService,
+            HeroFacade.Factory heroFactory,
+            InputService inputService)
         {
+            _heroFactory = heroFactory;
             _assetProvider = assetProvider;
             _uiFactory = uiFactory;
             _staticDataService = staticDataService;
+            _inputService = inputService;
             _poolManager = new MainPoolManager();
+            _poolManager.Initialize();
         }
 
-        public async UniTask<GameObject> CreateHero(Vector3 at)
+        public GameObject CreateHero()
         {
-            HeroGameObject = await _assetProvider.InstantiateAsync(AssetPath.HeroPath, at);
+            _heroFacade = _heroFactory.Create();
+            HeroGameObject = _heroFacade.gameObject;
             RegisterProgressWatchers(HeroGameObject);
+            _heroFacade.Construct(_inputService, _poolManager, _staticDataService, _uiFactory.CreateDeathScreen);
 
-            var heroShooting = HeroGameObject.GetComponent<HeroAttack>();
-            heroShooting.Construct(_poolManager);
-
-            var inventory = HeroGameObject.GetComponent<HeroInventory>();
-            inventory.Construct(_staticDataService);
-            
-            var heroDeath = HeroGameObject.GetComponent<HeroDeath>();
-            heroDeath.ZeroHealth += _uiFactory.CreateDeathScreen;
-            
             return HeroGameObject;
         }
 

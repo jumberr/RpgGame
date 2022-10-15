@@ -8,6 +8,7 @@ using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements.Crosshair;
 using _Project.CodeBase.UI.Elements.Hud.HotBar;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.UI.Elements.Hud
 {
@@ -29,12 +30,12 @@ namespace _Project.CodeBase.UI.Elements.Hud
             WeaponController weaponController,
             InputService inputService,
             HeroState heroState,
-            Interaction interaction)
+            HeroInteraction heroInteraction)
         {
             SetupHealth(heroHealth);
             SetupAmmoUI(heroAmmo);
             SetupCrosshairUI(weaponController, inputService, heroState);
-            SetupInteractionUI(interaction);
+            SetupInteractionUI(inputService, heroInteraction);
         }
 
         private void OnDestroy() => 
@@ -52,10 +53,14 @@ namespace _Project.CodeBase.UI.Elements.Hud
         private void SetupCrosshairUI(WeaponController weaponController, InputService inputService, HeroState heroState) => 
             _crosshairAdapter.Construct(weaponController, inputService, heroState);
 
-        private void SetupInteractionUI(Interaction interaction) => 
-            _interactionUI.Construct(interaction);
+        private void SetupInteractionUI(InputService inputService, HeroInteraction heroInteraction) => 
+            _interactionUI.Construct(heroInteraction, inputService);
 
         private void UpdateHpBar() => 
             _hpBar.SetValue(_heroHealth.Current, _heroHealth.Max);
+        
+        public class Factory : PlaceholderFactory<ActorUI>
+        {
+        }
     }
 }

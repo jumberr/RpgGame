@@ -10,9 +10,8 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
     {
         protected int FractionCount;
 
-        public ShotgunShooting(HeroState state, Camera camera, LineFade lineFade, GameObject weaponFx, LayerMask layerMask,
-            GameObject rockParticles, GameObject sandParticles, GameObject bloodParticles) : base(state, camera, lineFade,
-            weaponFx, layerMask, rockParticles, sandParticles, bloodParticles)
+        public ShotgunShooting(HeroState state, LineFade lineFade, LayerMask layerMask, ShootingParticles particles)
+            : base(state, lineFade, layerMask, particles)
         {
         }
         
@@ -26,17 +25,17 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
 
             for (var i = 0; i < FractionCount; i++)
             {
-                if (Physics.Raycast(HeroCamera.transform.position, dir[i], out var hit, Range, LayerMask))
+                if (Physics.Raycast(FirePoint.position, dir[i], out var hit, Range, LayerMask))
                 {
                     //if (hit.transform.TryGetComponent<IHealth>(out var enemy))
                     //    Debug.Log(enemy);
 
-                    HitParticles(hit, TagConstants.SandTag, SandParticlesFX);
-                    HitParticles(hit, TagConstants.RockTag, RockParticlesFX);
+                    HitParticles(hit, TagConstants.SandTag, Particles.SandParticlesFX);
+                    HitParticles(hit, TagConstants.RockTag, Particles.RockParticlesFX);
                     SpawnBulletTrail(FirePoint.position, hit.point);
                 }
                 else
-                    SpawnBulletTrail(FirePoint.position, HeroCamera.transform.position + dir[i] * 0.15f);
+                    SpawnBulletTrail(FirePoint.position, FirePoint.position + dir[i] * 0.15f);
             }
         }
 

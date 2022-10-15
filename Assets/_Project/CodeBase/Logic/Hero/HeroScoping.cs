@@ -13,10 +13,10 @@ namespace _Project.CodeBase.Logic.Hero
     public class HeroScoping : MonoBehaviour
     {
         [SerializeField] private HeroState _state;
-        [SerializeField] private InputService _inputService;
         [SerializeField] private Camera _mainCamera;
         [SerializeField] private Transform _weaponHolder;
-        
+
+        private InputService _inputService;
         private ScopeSettings _scopeSettings;
         private Vector3 _startPos;
         private Vector3 _adsPoint;
@@ -36,9 +36,6 @@ namespace _Project.CodeBase.Logic.Hero
         public void Construct(Knife knife) => 
             _isNeedScope = false;
 
-        private void OnEnable() => 
-            _inputService.OnScope += ScopeHandling;
-
         private void Start()
         {
             _startPos = _weaponHolder.localPosition;
@@ -46,7 +43,13 @@ namespace _Project.CodeBase.Logic.Hero
         }
 
         private void OnDisable() => 
-            _inputService.OnScope -= ScopeHandling;
+            _inputService.ScopeAction.Event -= ScopeHandling;
+
+        public void SetInputService(InputService inputService)
+        {
+            _inputService = inputService;
+            _inputService.ScopeAction.Event += ScopeHandling;
+        }
 
         public void UnScope()
         {
