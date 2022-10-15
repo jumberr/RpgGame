@@ -1,9 +1,10 @@
 ﻿using _Project.CodeBase.Infrastructure.Services.InputService;
+using NTC.Global.Cache;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
-    public class WeaponSway : MonoBehaviour
+    public class WeaponSway : NightCache, INightInit, INightRun
     {
         [Header("Weapon Sway")]
         [SerializeField] private float _swayAmount;
@@ -46,22 +47,22 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private Vector2 _viewInput;
         private Vector2 _moveInput;
 
-        private void Start() => 
+        public void Init() => 
             _newRotation = transform.localRotation.eulerAngles;
 
-        private void OnDisable()
-        {
-            _inputService.RotateAction.Event -= OnRotate;
-            _inputService.MoveAction.Event -= UpdateDirection;
-        }
-
-        private void Update()
+        public void Run()
         {
             DefaultWeaponSway();
             MovementSway();
             SwayBreathing();
 
             transform.localRotation = Quaternion.Euler(_newRotation + _newMovementRotation);
+        }
+
+        private void OnDisable()
+        {
+            _inputService.RotateAction.Event -= OnRotate;
+            _inputService.MoveAction.Event -= UpdateDirection;
         }
 
         public void SetInputService(InputService inputService)

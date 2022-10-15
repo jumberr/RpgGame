@@ -2,11 +2,12 @@
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.UI.MVA;
+using NTC.Global.Cache;
 using UnityEngine;
 
 namespace _Project.CodeBase.UI.Elements.Crosshair
 {
-    public class CrosshairAdapter : MonoBehaviour, IAdapter
+    public class CrosshairAdapter : NightCache, INightRun, IAdapter
     {
         [SerializeField] private CrosshairView _view;
 
@@ -33,7 +34,7 @@ namespace _Project.CodeBase.UI.Elements.Crosshair
             HideAndShow();
         }
 
-        private void Update()
+        public void Run()
         {
             if (_state != CrosshairState.Cross) return;
 

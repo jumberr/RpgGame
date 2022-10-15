@@ -1,10 +1,11 @@
 ﻿using System;
+using NTC.Global.Cache;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
 {
-    public class DoubleClickButtonUI : MonoBehaviour, IPointerDownHandler
+    public class DoubleClickButtonUI : NightCache, INightRun, IPointerDownHandler
     {
         private const int ClicksAmount = 2;
         [SerializeField] private float _doubleClickTime;
@@ -14,7 +15,7 @@ namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
 
         public event Action OnDoubleClicked;
 
-        private void Update()
+        public void Run()
         {
             if (_clicks <= 0) return;
 

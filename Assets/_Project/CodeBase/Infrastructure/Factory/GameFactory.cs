@@ -53,8 +53,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
 
         public async UniTask CreateInteractableSpawner(GameObject hero)
         {
-            _interactableSpawner = (await _assetProvider.InstantiateAsync(AssetPath.InteractableSpawner))
-                .GetComponent<InteractableSpawner>();
+            _interactableSpawner = (await _assetProvider.InstantiateAsync(AssetPath.InteractableSpawner)).GetComponent<InteractableSpawner>();
             var inventory = hero.GetComponent<HeroInventory>();
             _interactableSpawner.Construct(inventory);
             inventory.Construct(_interactableSpawner);

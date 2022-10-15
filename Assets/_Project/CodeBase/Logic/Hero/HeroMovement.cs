@@ -1,11 +1,12 @@
 ﻿using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
+using NTC.Global.Cache;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
 {
-    public class HeroMovement : MonoBehaviour, ISavedProgress
+    public class HeroMovement : NightCache, INightFixedRun, ISavedProgress
     {
         private const float MinJoystickDeflectionToRun = 0.85f;
         private const float Gravity = -9.81f;
@@ -20,20 +21,12 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private CharacterController _characterController;
 
         private InputService _inputService;
-        private Transform _cachedTransform;
         private Vector3 _velocity;
         private Vector2 _input;
 
         public CharacterController CharacterController => _characterController;
 
-        private void Start()
-        {
-            _cachedTransform = transform;
-            _inputService.MoveAction.Event += UpdateDirection;
-            _inputService.JumpAction.Event += JumpAction;
-        }
-
-        private void FixedUpdate()
+        public void FixedRun()
         {
             if (_characterController.isGrounded && _velocity.y <= 0)
                 _velocity.y = -2f; //We're standing at the floor
@@ -48,8 +41,12 @@ namespace _Project.CodeBase.Logic.Hero
             _inputService.JumpAction.Event -= JumpAction;
         }
 
-        public void SetInputService(InputService inputService) => 
+        public void SetInputService(InputService inputService)
+        {
             _inputService = inputService;
+            _inputService.MoveAction.Event += UpdateDirection;
+            _inputService.JumpAction.Event += JumpAction;
+        }
 
         public void LoadProgress(PlayerProgress progress)
         {
@@ -86,7 +83,7 @@ namespace _Project.CodeBase.Logic.Hero
             _heroAnimator.EnterMoveState(_input.y);
 
         private Vector3 CalculateDirection() =>
-            _cachedTransform.right * _input.x + _cachedTransform.forward * _input.y;
+            CachedTransform.right * _input.x + CachedTransform.forward * _input.y;
 
         private void JumpAction()
         {
@@ -106,7 +103,7 @@ namespace _Project.CodeBase.Logic.Hero
         private void Warp(PositionData to)
         {
             _characterController.enabled = false;
-            transform.position = to.AsUnityVector().AddY(_characterController.height);
+            CachedTransform.position = to.AsUnityVector().AddY(_characterController.height);
             _characterController.enabled = true;
         }
     }

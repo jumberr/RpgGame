@@ -8,7 +8,6 @@ using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements.Crosshair;
 using _Project.CodeBase.UI.Elements.Hud.HotBar;
 using UnityEngine;
-using Zenject;
 
 namespace _Project.CodeBase.UI.Elements.Hud
 {
@@ -58,9 +57,5 @@ namespace _Project.CodeBase.UI.Elements.Hud
 
         private void UpdateHpBar() => 
             _hpBar.SetValue(_heroHealth.Current, _heroHealth.Max);
-        
-        public class Factory : PlaceholderFactory<ActorUI>
-        {
-        }
     }
 }

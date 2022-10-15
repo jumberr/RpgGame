@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using NTC.Global.Cache;
+using UnityEngine;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
-    public class ClipPrevention : MonoBehaviour
+    public class ClipPrevention : NightCache, INightRun
     {
         [SerializeField] private Camera _mainCamera;
         [SerializeField] private float _distance;
@@ -11,10 +12,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         [SerializeField] private Vector3 _newDirection;
         [SerializeField] private AnimationCurve _offsetCurve;
         
-        private void Update()
-        {
+        public void Run() => 
             PreventClipping();
-        }
 
         private void PreventClipping()
         {

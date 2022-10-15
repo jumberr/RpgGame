@@ -13,13 +13,6 @@ namespace _Project.CodeBase.Logic.Hero
     {
         [SerializeField] private HeroHealth _health;
         [SerializeField] private HeroMovement _move;
-        [SerializeField] private HeroRotation _rotation;
-        [SerializeField] private HeroState _state;
-        [SerializeField] private HeroAnimator _animator;
-        [SerializeField] private HeroAttack _attack;
-        [SerializeField] private HeroAmmo _ammo;
-        [SerializeField] private HeroReload _reload;
-        [SerializeField] private HeroScoping _scoping;
 
         private bool _isDead;
         private InputService _inputService;
@@ -31,6 +24,9 @@ namespace _Project.CodeBase.Logic.Hero
         private void OnDestroy() => 
             _health.HealthChanged -= HealthChanged;
 
+        public void SetInputService(InputService inputService) => 
+            _inputService = inputService;
+
         private void HealthChanged()
         {
             if (!_isDead && _health.Current <= 0)
@@ -41,34 +37,13 @@ namespace _Project.CodeBase.Logic.Hero
         {
             ZeroHealth?.Invoke();
             _isDead = true;
-            DisableComponents();
             ProduceHeroDeath();
-        }
-
-        private void DisableComponents()
-        {
-            //_health.Deactivate();
-            //_move.Deactivate();
-            //_rotation.Deactivate();
-            //_animator.Deactivate();
-            //_state.Deactivate();
-//
-            //_attack.Deactivate();
-            //_ammo.Deactivate();
-            //_reload.Deactivate();
-            //_scoping.Deactivate();
-        }
-
-        public void SetInputService(InputService inputService)
-        {
-            _inputService = inputService;
         }
 
         private void ProduceHeroDeath()
         {
             var duration = 0.3f;
             _inputService.BlockInput();
-            //_move.CharacterController.Deactivate();
 
             ApplyDeathPositionToHero(_move.CharacterController, duration);
 

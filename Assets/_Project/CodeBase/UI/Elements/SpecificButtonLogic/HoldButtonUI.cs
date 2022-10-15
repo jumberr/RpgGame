@@ -1,10 +1,11 @@
 ﻿using System;
+using NTC.Global.Cache;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
 {
-    public class HoldButtonUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class HoldButtonUI : NightCache, INightRun, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField] private float _holdTime;
         
@@ -19,13 +20,12 @@ namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
         public event Action OnTouchEnded;
         public event Action OnClickPerformed;
 
-        private void Update()
+        public void Run()
         {
             if (!_pointerDown || Dragging) return;
 
             if (_time >= _holdTime && !_holdApproved)
             {
-                //ResetHold();
                 OnLongClickPerformed?.Invoke();
                 _holdApproved = true;
             }
@@ -46,7 +46,6 @@ namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
             else
                 OnClickPerformed?.Invoke();
 
-            //OnTouchEnded?.Invoke(_time >= _holdTime);
             ResetHold();
         }
 

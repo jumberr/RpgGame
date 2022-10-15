@@ -4,12 +4,13 @@ using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.HeroWeapon.Effects;
 using _Project.CodeBase.StaticData.ItemsDataBase.Types;
+using NTC.Global.Cache;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero.Shooting
 {
     [RequireComponent(typeof(HeroAmmo))]
-    public class HeroAttack : MonoBehaviour
+    public class HeroAttack : NightCache, INightRun
     {
         private const float TimeDestroyFX = 0.1f;
 
@@ -50,31 +51,8 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
             _shotgunShooting = new ShotgunShooting(_state, _lineFade, _layerMask, _particles);
         }
 
-        private void Update()
-        {
-            if (_singleFireTimer > 0)
-                _singleFireTimer -= Time.deltaTime;
-
-            if (!_isShooting) return;
-
-            if (_isAutomatic)
-            {
-                if (_automaticFireTimer > 0)
-                    _automaticFireTimer -= Time.deltaTime;
-                else
-                {
-                    _automaticFireTimer = _fireSpeed;
-                    Shoot();
-                }
-            }
-            else
-            {
-                if (!(_singleFireTimer <= 0)) return;
-                _singleFireTimer = _fireSpeed;
-                Shoot();
-                ReleaseTrigger();
-            }
-        }
+        public void Run() => 
+            HandleAttack();
 
         private void OnDisable() =>
             _inputService.AttackAction.Event -= EnableDisableShoot;
@@ -117,6 +95,32 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
             
             _shotgunShooting.SetupFirePoint(config.FirePoint);
             _defaultShooting.SetupFirePoint(config.FirePoint);
+        }
+
+        private void HandleAttack()
+        {
+            if (_singleFireTimer > 0)
+                _singleFireTimer -= Time.deltaTime;
+
+            if (!_isShooting) return;
+
+            if (_isAutomatic)
+            {
+                if (_automaticFireTimer > 0)
+                    _automaticFireTimer -= Time.deltaTime;
+                else
+                {
+                    _automaticFireTimer = _fireSpeed;
+                    Shoot();
+                }
+            }
+            else
+            {
+                if (!(_singleFireTimer <= 0)) return;
+                _singleFireTimer = _fireSpeed;
+                Shoot();
+                ReleaseTrigger();
+            }
         }
 
         private void EnableDisableShoot(bool value)

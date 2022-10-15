@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.HeroWeapon.Effects
@@ -7,16 +8,19 @@ namespace _Project.CodeBase.Logic.HeroWeapon.Effects
         [SerializeField] private LineRenderer _line;
         [SerializeField] private Color _color;
         [SerializeField] private float _speed;
+
+        private Color2 _startColor;
+        private Color2 _endColor;
+        
+        public void Start()
+        {
+            var endColor = new Color(_color.r, _color.g, _color.b, 0);
+            _startColor = new Color2(_color, _color);
+            _endColor = new Color2(endColor, endColor);
+        }
         
         private void OnEnable() => 
-            _color.a = 255;
-
-        private void Update()
-        {
-            _color.a = Mathf.Lerp(_color.a, 0, Time.deltaTime * _speed);
-            _line.startColor = _color;
-            _line.endColor = _color;
-        }
+            _line.DOColor(_startColor, _endColor, _speed);
 
         public void SetPositions(Vector3 start, Vector3 end)
         {

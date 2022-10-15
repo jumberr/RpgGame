@@ -1,9 +1,10 @@
 ﻿using System;
+using NTC.Global.Cache;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Interaction
 {
-    public class HeroInteraction : MonoBehaviour
+    public class HeroInteraction : NightCache, INightRun
     {
         [SerializeField] private Camera _mainCamera;
         [SerializeField] private float _range;
@@ -15,7 +16,7 @@ namespace _Project.CodeBase.Logic.Interaction
         public Action<Action> OnStartHover;
         public event Action OnEndHover;
 
-        private void Update() => 
+        public void Run() => 
             RaycastForInteractable();
 
         private void RaycastForInteractable()
