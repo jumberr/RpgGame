@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using _Project.CodeBase.Logic.Hero;
+﻿using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.UI.Services.Windows;
 using _Project.CodeBase.UI.Windows;
 using Cysharp.Threading.Tasks;
@@ -14,8 +13,8 @@ namespace _Project.CodeBase.UI.Services
         void CreateDeathScreen();
         void CreateInventory();
         GameObject CreateSettings(HeroRotation rotation);
-        void ConstructHud(GameObject hero);
-        void ConstructInventoriesHolder(GameObject hero);
+        void ConstructHud(HeroFacade facade);
+        void ConstructInventoriesHolder(HeroFacade facade);
 
         void OpenWindow(WindowId id);
         void HideWindow(WindowId id);

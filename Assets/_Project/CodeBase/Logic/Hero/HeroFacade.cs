@@ -28,7 +28,16 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private HeroDeath _death;
         [SerializeField] private HeroState _state;
         [SerializeField] private HeroAmmo _ammo;
+        
         private InputService _inputService;
+        
+        public HeroInventory Inventory => _inventory;
+        public HeroRotation Rotation => _rotation;
+        public IHealth Health => _health;
+        public HeroAmmo Ammo => _ammo;
+        public WeaponController WeaponController => _weaponController;
+        public HeroState HeroState => _state;
+        public HeroInteraction Interaction => _interaction;
 
         public void Construct(InputService inputService, IStaticDataService staticDataService, Action zeroHealthAction)
         {

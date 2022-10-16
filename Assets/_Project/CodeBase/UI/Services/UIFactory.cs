@@ -4,10 +4,6 @@ using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.Logic.Hero.State;
-using _Project.CodeBase.Logic.HeroWeapon;
-using _Project.CodeBase.Logic.Interaction;
-using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements;
 using _Project.CodeBase.UI.Elements.Hud;
 using _Project.CodeBase.UI.Services.Windows;
@@ -17,7 +13,6 @@ using _Project.CodeBase.UI.Windows.Inventory;
 using _Project.CodeBase.UI.Windows.Settings;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Zenject;
 
 namespace _Project.CodeBase.UI.Services
 {
@@ -50,21 +45,21 @@ namespace _Project.CodeBase.UI.Services
 
         public async UniTask CreateUIRoot()
         {
-            var uiRoot = await _assetProvider.InstantiateAsync(AssetPath.UIRootPath);
-            _inventoriesHolder = uiRoot.GetComponent<InventoriesHolderUI>();
-            _uiRoot = uiRoot.transform;
+            _uiRoot = (await _assetProvider.InstantiateAsync(AssetPath.UIRootPath)).transform;
+            _inventoriesHolder = _uiRoot.GetComponent<InventoriesHolderUI>();
         }
 
         public async UniTask CreateHud()
         {
-            _hud = await _assetProvider.InstantiateAsync(AssetPath.HudPath, _uiRoot);
+            _hud = await _assetProvider.InstantiateAsync(AssetPath.HudPath, parent: _uiRoot);
+
+            SetupHud();
             SetupWindowButtons();
         }
 
         public async void CreateDeathScreen()
         {
-            var deathScreenGo = await _assetProvider.InstantiateAsync(AssetPath.DeathScreen, _uiRoot);
-            var deathScreen = deathScreenGo.GetComponent<DeathScreen>();
+            var deathScreen = await _assetProvider.InstantiateComponentAsync<DeathScreen>(AssetPath.DeathScreen, parent: _uiRoot);
             deathScreen.Construct(_sceneLoader, _staticDataService);
         }
 
@@ -86,25 +81,30 @@ namespace _Project.CodeBase.UI.Services
             return settings.gameObject;
         }
 
-        public void ConstructHud(GameObject hero)
+        public void ConstructHud(HeroFacade facade)
         {
-            var actorUI = _hud.GetComponent<ActorUI>();
-            _actorUI = actorUI;
-            actorUI.Construct(hero.GetComponent<HeroHealth>(), hero.GetComponent<HeroAmmo>(),
-                hero.GetComponent<WeaponController>(), _inputService, hero.GetComponent<HeroState>(), hero.GetComponent<HeroInteraction>());
+            _actorUI = _hud.GetComponent<ActorUI>();
+            _actorUI.Construct(_inputService, facade.Health, facade.Ammo, facade.WeaponController, facade.HeroState, facade.Interaction);
         }
 
-        public void ConstructInventoriesHolder(GameObject hero) => 
-            _inventoriesHolder.Construct(_actorUI.HotBar, _inventoryUI, hero.GetComponent<HeroInventory>());
+        public void ConstructInventoriesHolder(HeroFacade facade) => 
+            _inventoriesHolder.Construct(_actorUI.HotBar, _inventoryUI, facade.Inventory);
 
         public void OpenWindow(WindowId id) => 
             _windows[id].Show();
 
         public void HideWindow(WindowId id) => 
             _windows[id].Hide();
-        
+
         public WindowBase GetWindow(WindowId id) => 
             _windows[id];
+
+        private void SetupHud()
+        {
+            var rectTransform = _hud.GetComponent<RectTransform>();
+            rectTransform.offsetMax = Vector2.zero;
+            rectTransform.offsetMin = Vector2.zero;
+        }
 
         private void SetupWindowButtons()
         {

@@ -3,7 +3,6 @@ using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.HeroWeapon;
-using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.StaticData.ItemsDataBase;
 using _Project.CodeBase.StaticData.ItemsDataBase.Types;
 using UnityEngine;
@@ -17,10 +16,10 @@ namespace _Project.CodeBase.Logic.Inventory
         private IStaticDataService _staticDataService;
         private ItemsDataBase _itemsDataBase;
         private Inventory _inventory;
-        private InteractableSpawner _interactableSpawner;
         
         public event Action OnUpdate;
         public event Action<int> OnDrop;
+        public event Action<GameObject, int> OnSpawn;
 
         public ItemsDataBase ItemsDataBase => _itemsDataBase;
         public Inventory Inventory => _inventory;
@@ -31,10 +30,7 @@ namespace _Project.CodeBase.Logic.Inventory
             _staticDataService = staticDataService;
             _itemsDataBase = _staticDataService.ForInventory();
         }
-        
-        public void Construct(InteractableSpawner interactableSpawner) => 
-            _interactableSpawner = interactableSpawner;
-        
+
         public InventorySlot GetSlot(int index) => 
             Inventory.Slots[index];
 
@@ -133,12 +129,8 @@ namespace _Project.CodeBase.Logic.Inventory
             OnDrop?.Invoke(id);
         }
 
-        private void SpawnGroundItem(int dbId, int amount)
-        {
-            var prefab = _itemsDataBase.FindItem(dbId).ItemPayloadData.GroundPrefab;
-            var obj = _interactableSpawner.SpawnInteractableItem(prefab, transform.position + Vector3.forward);
-            _interactableSpawner.ConstructItem(obj, amount);
-        }
+        private void SpawnGroundItem(int dbId, int amount) => 
+            OnSpawn?.Invoke(_itemsDataBase.FindItem(dbId).ItemPayloadData.GroundPrefab, amount);
 
         private async void EquipWeapon(Weapon weapon, int slotID) => 
             await _weaponController.CreateNewWeapon(weapon.WeaponPrefab, weapon, slotID);

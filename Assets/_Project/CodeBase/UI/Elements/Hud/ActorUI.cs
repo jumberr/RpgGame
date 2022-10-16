@@ -24,10 +24,10 @@ namespace _Project.CodeBase.UI.Elements.Hud
 
         public HotBarUI HotBar => _hotBarUI;
 
-        public void Construct(IHealth heroHealth,
+        public void Construct(InputService inputService,
+            IHealth heroHealth,
             HeroAmmo heroAmmo,
             WeaponController weaponController,
-            InputService inputService,
             HeroState heroState,
             HeroInteraction heroInteraction)
         {

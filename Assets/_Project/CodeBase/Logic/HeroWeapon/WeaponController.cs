@@ -106,10 +106,10 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private async UniTask CreateGun(GameObject prefab, int slotID)
         {
             if (_slotID == slotID) return;
-            
-            _slotID = slotID;
+
             await DestroyWeapon();
 
+            _slotID = slotID;
             _currentWeapon = Instantiate(prefab, _parent);
             _animator.Construct(_currentWeapon.GetComponent<Animator>());
             await _animator.ShowWeaponOnInit();
@@ -139,6 +139,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             Destroy(_currentWeapon);
             _weapon = null;
             _knife = null;
+            _slotID = -1;
             OnSwitch?.Invoke(false);
         }
     }

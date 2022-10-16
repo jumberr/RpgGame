@@ -35,36 +35,36 @@ namespace _Project.CodeBase.Infrastructure.States
 
         private async UniTask InitializeGameWorld()
         {
-            var hero = InitializePlayer();
-            await InitializeInteractableSpawner(hero);
-            await InitializeUI(hero);
+            InitializePlayer();
+            await InitializeInteractableSpawner();
+            await InitializeUI(_gameFactory.HeroFacade);
         }
 
-        private async UniTask InitializeInteractableSpawner(GameObject hero) => 
-            await _gameFactory.CreateInteractableSpawner(hero);
+        private async UniTask InitializeInteractableSpawner() => 
+            await _gameFactory.CreateInteractableSpawner();
 
-        private async UniTask InitializeUI(GameObject hero)
+        private async UniTask InitializeUI(HeroFacade facade)
         {
-            await CreateUI(hero);
-            ConstructUI(hero);
+            await CreateUI(facade);
+            ConstructUI(facade);
         }
 
-        private async UniTask CreateUI(GameObject hero)
+        private async UniTask CreateUI(HeroFacade facade)
         {
             await InitializeUIRoot();
             await InitializeHud();
 
             InitializeInventory();
-            InitializeSettings(hero);
+            InitializeSettings(facade);
         }
 
-        private void ConstructUI(GameObject hero)
+        private void ConstructUI(HeroFacade facade)
         {
-            _uiFactory.ConstructHud(hero);
-            _uiFactory.ConstructInventoriesHolder(hero);
+            _uiFactory.ConstructHud(facade);
+            _uiFactory.ConstructInventoriesHolder(facade);
         }
 
-        private GameObject InitializePlayer() => 
+        private void InitializePlayer() => 
             _gameFactory.CreateHero();
 
         private async UniTask InitializeUIRoot() =>
@@ -76,9 +76,9 @@ namespace _Project.CodeBase.Infrastructure.States
         private void InitializeInventory() => 
              _uiFactory.CreateInventory();
 
-        private void InitializeSettings(GameObject hero)
+        private void InitializeSettings(HeroFacade facade)
         {
-            var settings = _uiFactory.CreateSettings(hero.GetComponent<HeroRotation>());
+            var settings = _uiFactory.CreateSettings(facade.Rotation);
             _gameFactory.AddProgressWatchers(settings);
         }
 

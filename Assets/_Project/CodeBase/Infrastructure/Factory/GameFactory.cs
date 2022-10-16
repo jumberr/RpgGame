@@ -5,7 +5,6 @@ using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Interaction;
-using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -24,6 +23,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
+        public HeroFacade HeroFacade => _heroFacade;
 
         private GameObject HeroGameObject { get; set; }
 
@@ -41,22 +41,18 @@ namespace _Project.CodeBase.Infrastructure.Factory
             _inputService = inputService;
         }
 
-        public GameObject CreateHero()
+        public void CreateHero()
         {
             _heroFacade = _heroFactory.Create();
             HeroGameObject = _heroFacade.gameObject;
             RegisterProgressWatchers(HeroGameObject);
             _heroFacade.Construct(_inputService, _staticDataService, _uiFactory.CreateDeathScreen);
-
-            return HeroGameObject;
         }
 
-        public async UniTask CreateInteractableSpawner(GameObject hero)
+        public async UniTask CreateInteractableSpawner()
         {
-            _interactableSpawner = (await _assetProvider.InstantiateAsync(AssetPath.InteractableSpawner)).GetComponent<InteractableSpawner>();
-            var inventory = hero.GetComponent<HeroInventory>();
-            _interactableSpawner.Construct(inventory);
-            inventory.Construct(_interactableSpawner);
+            _interactableSpawner = await _assetProvider.InstantiateComponentAsync<InteractableSpawner>(AssetPath.InteractableSpawner);
+            _interactableSpawner.Construct(_heroFacade.Inventory);
         }
 
         public void AddProgressWatchers(GameObject go) => 
