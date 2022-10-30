@@ -1,7 +1,7 @@
 using System;
-using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements.Slot;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +30,12 @@ namespace _Project.CodeBase.UI.Windows.Inventory
             OnConstructInitialized();
         }
 
+        protected override UniTask OnHiding()
+        {
+            _context.Clear();
+            return base.OnHiding();
+        }
+
         public void InitializeSlots(SlotTouchEvents slotTouchEvents) => 
             _slotsHolder.InitializeSlots(slotTouchEvents);
 
@@ -43,10 +49,11 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         {
             _context.Construct(_heroInventory, _slotsHolder.Parent);
             Subscribe();
-            InitializeSlots(new SlotTouchEvents(HandleClick, _handleDrop));
+            
+            InitializeSlots(InitializeSlotEvents());
             UpdateData();
         }
-        
+
         public void HandleClick(InventorySlotUI slotUI)
         {
             var dbId = _heroInventory.GetSlot(slotUI.SlotID).DbId;
@@ -60,15 +67,20 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         protected override void Cleanup()
         {
             _heroInventory.OnUpdate -= UpdateData;
-            CloseButton.onClick.RemoveAllListeners();
             _closeContext.onClick.RemoveAllListeners();
         }
 
         private void Subscribe()
         {
             _heroInventory.OnUpdate += UpdateData;
-            CloseButton.onClick.AddListener(_context.Clear);
             _closeContext.onClick.AddListener(_context.Clear);
+        }
+
+        private SlotTouchEvents InitializeSlotEvents()
+        {
+            var slotTouch = new SlotTouchEvents(HandleClick, _handleDrop);
+            slotTouch.SetBeginDragEvent(_context.Clear);
+            return slotTouch;
         }
     }
 }

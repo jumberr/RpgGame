@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Logic.Hero;
+using _Project.CodeBase.Logic.Hero.Cam;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,18 +12,18 @@ namespace _Project.CodeBase.UI.Windows.Settings
 {
     public class SettingsUI : WindowBase, ISavedProgress
     {
-        public event Action<float> OnUpdateSensitivity;
-        
         [SerializeField] private Slider _sensitivitySlider;
         [SerializeField] private TMP_Dropdown _qualityDropdown;
 
-        private HeroRotation _rotation;
+        private HeroCamera _camera;
         private SettingsData _settings;
-        
-        public void Construct(HeroRotation rotation)
+     
+        public event Action<float> OnUpdateSensitivity;
+
+        public void Construct(HeroCamera cam)
         {
-            _rotation = rotation;
-            OnUpdateSensitivity += rotation.UpdateSensitivity;
+            _camera = cam;
+            OnUpdateSensitivity += cam.UpdateSensitivity;
         }
 
         private void Start()
@@ -56,7 +57,7 @@ namespace _Project.CodeBase.UI.Windows.Settings
         protected override void Cleanup()
         {
             base.Cleanup();
-            OnUpdateSensitivity -= _rotation.UpdateSensitivity;
+            OnUpdateSensitivity -= _camera.UpdateSensitivity;
             _sensitivitySlider.onValueChanged.RemoveListener(ChangeSensitivityValue);
             _qualityDropdown.onValueChanged.RemoveListener(ChangeQualitySettings);
         }

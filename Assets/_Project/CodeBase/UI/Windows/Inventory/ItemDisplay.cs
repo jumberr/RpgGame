@@ -1,4 +1,4 @@
-﻿using System;
+﻿using _Project.CodeBase.UI.Elements.Slot;
 using _Project.CodeBase.UI.Elements.SpecificButtonLogic;
 using TMPro;
 using UnityEngine;
@@ -16,13 +16,15 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         private Canvas _canvas;
         private Transform _uiRoot;
         private InventorySlotUI _slot;
+        private SlotTouchEvents _events;
 
-        public void Construct(Canvas canvas, Transform uiRoot, InventorySlotUI slot, Action<InventorySlotUI> click)
+        public void Construct(Canvas canvas, Transform uiRoot, InventorySlotUI slot, SlotTouchEvents events)
         {
             _canvas = canvas;
             _uiRoot = uiRoot;
             _slot = slot;
-            _clickable.Construct(slot, click);
+            _events = events;
+            _clickable.Construct(slot, _events.Click);
             CreateDraggableElement(_slot.SlotData.DbId);
         }
 
@@ -41,13 +43,10 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         private void CreateDraggableElement(int dbId)
         {
             if (_draggable != null) 
-                Destroy(_draggable.gameObject);
-            
-            if (dbId != Logic.Inventory.Inventory.ErrorIndex)
-            {
-                _draggable = Instantiate(_draggablePrefab, transform);
-                _draggable.Construct(_canvas, _uiRoot, _slot);
-            }
+                CleanUpDraggable();
+
+            if (dbId != Logic.Inventory.Inventory.ErrorIndex) 
+                CreateDraggable();
         }
 
         private void UpdateSlotUI(Sprite icon, string text)
@@ -57,5 +56,21 @@ namespace _Project.CodeBase.UI.Windows.Inventory
             
             _amount.text = text;
         }
+
+        private void CreateDraggable()
+        {
+            _draggable = Instantiate(_draggablePrefab, transform);
+            _draggable.Construct(_canvas, _uiRoot, _slot);
+            _draggable.OnDragStarted += ResetInventoryContext;
+        }
+
+        private void CleanUpDraggable()
+        {
+            _draggable.OnDragStarted -= ResetInventoryContext;
+            Destroy(_draggable.gameObject);
+        }
+
+        private void ResetInventoryContext() => 
+            _events.OnBeginDrag?.Invoke();
     }
 }

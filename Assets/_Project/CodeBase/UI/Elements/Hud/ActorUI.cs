@@ -13,6 +13,8 @@ namespace _Project.CodeBase.UI.Elements.Hud
 {
     public class ActorUI : MonoBehaviour
     {
+        [SerializeField] private PlatformSpecificHud _hud;
+        [Space]
         [SerializeField] private HpBar _hpBar;
         [SerializeField] private AmmoUI _ammoUI;
         [SerializeField] private CrosshairAdapter _crosshairAdapter;
@@ -31,6 +33,7 @@ namespace _Project.CodeBase.UI.Elements.Hud
             HeroState heroState,
             HeroInteraction heroInteraction)
         {
+            _hud.Initialize();
             SetupHealth(heroHealth);
             SetupAmmoUI(heroAmmo);
             SetupCrosshairUI(weaponController, inputService, heroState);

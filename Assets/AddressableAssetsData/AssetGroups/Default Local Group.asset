@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: ccd39a3473cf5eb4fb0ebeac102458da
   m_SerializeEntries:
-  - m_GUID: 62e6c2b85dc8ff6409b8c89743a7ef42
-    m_Address: Hero
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: a378915ba21dd4e419091534c051c332
     m_Address: ItemsDataBase
     m_ReadOnly: 0

@@ -22,5 +22,17 @@ namespace _Project.CodeBase.Utils.Extensions
             foreach (var component in components) 
                 component.Deactivate();
         }
+        
+        public static void ActivateComponents(this List<GameObject> components)
+        {
+            foreach (var component in components) 
+                component.SetActive(true);
+        }
+        
+        public static void DeactivateComponents(this List<GameObject> components)
+        {
+            foreach (var component in components) 
+                component.SetActive(false);
+        }
     }
 }

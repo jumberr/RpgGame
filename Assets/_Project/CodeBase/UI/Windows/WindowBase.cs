@@ -2,17 +2,16 @@
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.UI.Animation;
-using _Project.CodeBase.UI.Windows.Inventory;
+using _Project.CodeBase.UI.Services.Windows;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _Project.CodeBase.UI.Windows
 {
     public abstract class WindowBase : MonoBehaviour
     {
+        public WindowId WindowId;
         public UiAnimation Animation;
-        public Button CloseButton;
         protected IPersistentProgressService ProgressService;
         protected PlayerProgress Progress => ProgressService.Progress;
         
@@ -29,13 +28,13 @@ namespace _Project.CodeBase.UI.Windows
         private void OnDestroy() => 
             Cleanup();
 
-        public async void Show()
+        public async UniTask Show()
         {
             gameObject.SetActive(true);
             await OnShowing();
         }
         
-        public async void Hide()
+        public async UniTask Hide()
         {
             await OnHiding();
             gameObject.SetActive(false);
@@ -44,18 +43,20 @@ namespace _Project.CodeBase.UI.Windows
         protected virtual void Initialize() { }
         protected virtual void OnConstructInitialized() { }
 
-        protected virtual void SubscribeUpdates() =>
-            CloseButton.onClick.AddListener(Hide);
-        
+        protected virtual void SubscribeUpdates()
+        {
+        }
+
         protected virtual async UniTask OnShowing() => 
             await PlayAnimation(UiAnimation.EndValue);
 
         protected virtual async UniTask OnHiding() =>
             await PlayAnimation(UiAnimation.StartValue);
 
-        protected virtual void Cleanup() => 
-            CloseButton.onClick.RemoveListener(Hide);
-        
+        protected virtual void Cleanup()
+        {
+        }
+
         private async UniTask PlayAnimation(float time)
         {
             Animation.DoAnimation(time);

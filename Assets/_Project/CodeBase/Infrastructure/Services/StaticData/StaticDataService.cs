@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Project.CodeBase.Infrastructure.AssetManagement;
@@ -13,9 +12,10 @@ namespace _Project.CodeBase.Infrastructure.Services.StaticData
     public class StaticDataService : IStaticDataService
     {
         private readonly IAssetProvider _assetProvider;
-        
-        private PlayerStaticData _playerStaticData;
+
         private ProjectSettings _projectSettings;
+        private ExceptionWindows _exceptionWindows;
+        private PlayerStaticData _playerStaticData;
         private Dictionary<WindowId, WindowConfig> _windowConfigs;
         private ItemsDataBase _itemsDataBase;
 
@@ -38,26 +38,20 @@ namespace _Project.CodeBase.Infrastructure.Services.StaticData
                 .ToDictionary(x => x.WindowId, x => x);
         }
 
-        public PlayerStaticData ForPlayer()
-        {
-            if (_playerStaticData != null)
-                return _playerStaticData;
-            throw new NullReferenceException();
-        }
+        public async UniTask LoadExceptionWindows() => 
+            _exceptionWindows = await _assetProvider.Load<ExceptionWindows>(StaticDataPath.ExceptionWindows);
 
-        public ProjectSettings ForProjectSettings()
-        {
-            if (_projectSettings != null)
-                return _projectSettings;
-            throw new NullReferenceException();
-        }
+        public ProjectSettings ForProjectSettings() => 
+            _projectSettings;
 
-        public ItemsDataBase ForInventory()
-        {
-            if (_itemsDataBase != null)
-                return _itemsDataBase;
-            throw new NullReferenceException();
-        }
+        public ExceptionWindows ForWindowService() => 
+            _exceptionWindows;
+
+        public PlayerStaticData ForPlayer() => 
+            _playerStaticData;
+
+        public ItemsDataBase ForInventory() => 
+            _itemsDataBase;
 
         public WindowConfig ForWindow(WindowId windowId) => 
             _windowConfigs[windowId];

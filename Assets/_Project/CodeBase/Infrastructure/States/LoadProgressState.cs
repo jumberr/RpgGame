@@ -37,6 +37,7 @@ namespace _Project.CodeBase.Infrastructure.States
         {
             await _staticDataService.LoadItemsDataBase();
             await _staticDataService.LoadUIWindowConfig();
+            await _staticDataService.LoadExceptionWindows();
         }
         
         private async UniTask LoadProgressOrInitNew()

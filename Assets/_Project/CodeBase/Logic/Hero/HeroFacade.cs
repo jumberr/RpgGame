@@ -1,6 +1,7 @@
 ﻿using System;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
+using _Project.CodeBase.Logic.Hero.Cam;
 using _Project.CodeBase.Logic.Hero.Reload;
 using _Project.CodeBase.Logic.Hero.Shooting;
 using _Project.CodeBase.Logic.Hero.State;
@@ -18,7 +19,7 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private HeroInteraction _interaction;
         [SerializeField] private HeroInventory _inventory;
         [SerializeField] private HeroMovement _movement;
-        [SerializeField] private HeroRotation _rotation;
+        [SerializeField] private HeroCamera _camera;
         [SerializeField] private HeroAnimator _animator;
         [SerializeField] private HeroScoping _scoping;
         [SerializeField] private HeroAttack _attack;
@@ -32,7 +33,7 @@ namespace _Project.CodeBase.Logic.Hero
         private InputService _inputService;
         
         public HeroInventory Inventory => _inventory;
-        public HeroRotation Rotation => _rotation;
+        public HeroCamera Camera => _camera;
         public IHealth Health => _health;
         public HeroAmmo Ammo => _ammo;
         public WeaponController WeaponController => _weaponController;
@@ -51,7 +52,8 @@ namespace _Project.CodeBase.Logic.Hero
         {
             _weaponController.Setup(inputService);
             _movement.SetInputService(inputService);
-            _rotation.SetInputService(inputService);
+            _state.SetInputService(inputService);
+            _camera.SetInputService(inputService);
             _scoping.SetInputService(inputService);
             _reload.SetInputService(inputService);
             _death.SetInputService(inputService);

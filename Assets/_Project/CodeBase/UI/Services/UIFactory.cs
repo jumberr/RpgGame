@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure;
 using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
+using _Project.CodeBase.Logic.Hero.Cam;
 using _Project.CodeBase.UI.Elements;
 using _Project.CodeBase.UI.Elements.Hud;
 using _Project.CodeBase.UI.Services.Windows;
@@ -23,7 +23,6 @@ namespace _Project.CodeBase.UI.Services
         private readonly IWindowService _windowService;
         private readonly InputService _inputService;
         private readonly SceneLoader _sceneLoader;
-        private readonly Dictionary<WindowId, WindowBase> _windows = new Dictionary<WindowId, WindowBase>();
         private Transform _uiRoot;
         private GameObject _hud;
         private InventoriesHolderUI _inventoriesHolder;
@@ -34,13 +33,14 @@ namespace _Project.CodeBase.UI.Services
             IAssetProvider assetProvider,
             IStaticDataService staticDataService,
             InputService inputService,
+            IWindowService windowService,
             SceneLoader sceneLoader)
         {
-            _sceneLoader = sceneLoader;
             _assetProvider = assetProvider;
             _staticDataService = staticDataService;
-            _windowService = new WindowService(this);
             _inputService = inputService;
+            _windowService = windowService;
+            _sceneLoader = sceneLoader;
         }
 
         public async UniTask CreateUIRoot()
@@ -54,8 +54,11 @@ namespace _Project.CodeBase.UI.Services
             _hud = await _assetProvider.InstantiateAsync(AssetPath.HudPath, parent: _uiRoot);
 
             SetupHud();
-            SetupWindowButtons();
+            //SetupWindowButtons();
         }
+
+        public void SetupWindowService() => 
+            _windowService.Setup();
 
         public async void CreateDeathScreen()
         {
@@ -67,15 +70,14 @@ namespace _Project.CodeBase.UI.Services
         {
             var prefab = _staticDataService.ForWindow(WindowId.Inventory).Prefab;
             _inventoryUI = Object.Instantiate(prefab, _uiRoot) as InventoryUI;
-            
             AddWindow(_inventoryUI, WindowId.Inventory);
         }
 
-        public GameObject CreateSettings(HeroRotation rotation)
+        public GameObject CreateSettings(HeroCamera camera)
         {
             var prefab = _staticDataService.ForWindow(WindowId.Settings).Prefab;
             var settings = Object.Instantiate(prefab, _uiRoot) as SettingsUI;
-            settings.Construct(rotation);
+            settings.Construct(camera);
             
             AddWindow(settings, WindowId.Settings);
             return settings.gameObject;
@@ -90,15 +92,6 @@ namespace _Project.CodeBase.UI.Services
         public void ConstructInventoriesHolder(HeroFacade facade) => 
             _inventoriesHolder.Construct(_actorUI.HotBar, _inventoryUI, facade.Inventory);
 
-        public void OpenWindow(WindowId id) => 
-            _windows[id].Show();
-
-        public void HideWindow(WindowId id) => 
-            _windows[id].Hide();
-
-        public WindowBase GetWindow(WindowId id) => 
-            _windows[id];
-
         private void SetupHud()
         {
             var rectTransform = _hud.GetComponent<RectTransform>();
@@ -106,13 +99,13 @@ namespace _Project.CodeBase.UI.Services
             rectTransform.offsetMin = Vector2.zero;
         }
 
-        private void SetupWindowButtons()
-        {
-            foreach (var button in _hud.GetComponentsInChildren<OpenWindowButton>()) 
-                button.Construct(_windowService);
-        }
-
         private void AddWindow(WindowBase window, WindowId id) => 
-            _windows.Add(id, window);
+            _windowService.AddWindow(window, id);
+        
+        //private void SetupWindowButtons()
+        //{
+        //    foreach (var button in _hud.GetComponentsInChildren<OpenWindowButton>()) 
+        //        button.Construct(_windowService);
+        //}
     }
 }

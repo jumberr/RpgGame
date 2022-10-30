@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: WindowStaticData
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4836596f8e0714c47beae1056b8a7ec1
+    m_Address: ExceptionWindows
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7f7aa7cd3321f4d4f8521b1a30e7d9ab, type: 2}
   m_SchemaSet:

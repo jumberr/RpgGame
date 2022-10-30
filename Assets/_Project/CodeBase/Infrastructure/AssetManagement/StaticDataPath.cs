@@ -6,5 +6,6 @@
         public const string ProjectSettingsDataPath = "ProjectSettingsData";
         public const string ItemsDataBase = "ItemsDataBase";
         public const string WindowStaticData = "WindowStaticData";
+        public const string ExceptionWindows = "ExceptionWindows";
     }
 }

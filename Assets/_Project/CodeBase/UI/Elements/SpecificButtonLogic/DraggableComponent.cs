@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Elements.Slot.Drop;
 using UnityEngine;
@@ -17,6 +18,8 @@ namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
         private InventorySlot _dataBuffer;
         private Transform _uiRoot;
 
+        public event Action OnDragStarted;
+        
         public IDropArea DropArea { get; private set; }
         public bool CanDrag { get; set; } = true;
 
@@ -34,6 +37,7 @@ namespace _Project.CodeBase.UI.Elements.SpecificButtonLogic
             _dataBuffer = DropArea.SlotData;
             DropArea.Release();
             transform.SetParent(_uiRoot);
+            OnDragStarted?.Invoke();
         }
 
         public virtual void OnDrag(PointerEventData eventData)

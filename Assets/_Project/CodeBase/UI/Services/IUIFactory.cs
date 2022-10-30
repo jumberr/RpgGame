@@ -1,6 +1,5 @@
 ﻿using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.UI.Services.Windows;
-using _Project.CodeBase.UI.Windows;
+using _Project.CodeBase.Logic.Hero.Cam;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -10,14 +9,11 @@ namespace _Project.CodeBase.UI.Services
     {
         UniTask CreateUIRoot();
         UniTask CreateHud();
+        void SetupWindowService();
         void CreateDeathScreen();
         void CreateInventory();
-        GameObject CreateSettings(HeroRotation rotation);
+        GameObject CreateSettings(HeroCamera camera);
         void ConstructHud(HeroFacade facade);
         void ConstructInventoriesHolder(HeroFacade facade);
-
-        void OpenWindow(WindowId id);
-        void HideWindow(WindowId id);
-        WindowBase GetWindow(WindowId id);
     }
 }

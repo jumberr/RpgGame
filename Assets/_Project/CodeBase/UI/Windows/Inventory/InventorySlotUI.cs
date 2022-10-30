@@ -62,7 +62,7 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         {
             if (Display != null) return;
             Display = Instantiate(_prefab, transform);
-            Display.Construct(_canvas, _uiRoot, this, _events.Click);
+            Display.Construct(_canvas, _uiRoot, this, _events);
         }
 
         private void ClearSlot()

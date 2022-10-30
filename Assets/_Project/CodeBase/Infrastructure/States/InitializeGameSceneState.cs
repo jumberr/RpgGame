@@ -54,6 +54,7 @@ namespace _Project.CodeBase.Infrastructure.States
             await InitializeUIRoot();
             await InitializeHud();
 
+            SetupWindowService();
             InitializeInventory();
             InitializeSettings(facade);
         }
@@ -73,12 +74,15 @@ namespace _Project.CodeBase.Infrastructure.States
         private async UniTask InitializeHud() => 
             await _uiFactory.CreateHud();
 
+        private void SetupWindowService() => 
+            _uiFactory.SetupWindowService();
+
         private void InitializeInventory() => 
              _uiFactory.CreateInventory();
 
         private void InitializeSettings(HeroFacade facade)
         {
-            var settings = _uiFactory.CreateSettings(facade.Rotation);
+            var settings = _uiFactory.CreateSettings(facade.Camera);
             _gameFactory.AddProgressWatchers(settings);
         }
 

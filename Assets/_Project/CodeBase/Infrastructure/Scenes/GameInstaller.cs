@@ -3,6 +3,7 @@ using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.States;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.UI.Services;
+using _Project.CodeBase.UI.Services.Windows;
 using UnityEngine;
 using Zenject;
 
@@ -36,12 +37,17 @@ namespace _Project.CodeBase.Infrastructure.Scenes
                 .Bind<IGameFactory>()
                 .To<GameFactory>()
                 .AsSingle();
-            
+
             Container
                 .Bind<IUIFactory>()
                 .To<UIFactory>()
                 .AsSingle();
 
+            Container
+                .Bind<IWindowService>()
+                .To<WindowService>()
+                .AsSingle();
+            
             Container
                 .BindFactory<HeroFacade, HeroFacade.Factory>()
                 .FromComponentInNewPrefab(_player);

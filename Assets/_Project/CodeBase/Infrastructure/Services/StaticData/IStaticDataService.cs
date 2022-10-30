@@ -12,8 +12,10 @@ namespace _Project.CodeBase.Infrastructure.Services.StaticData
         UniTask LoadGameStaticData();
         UniTask LoadItemsDataBase();
         UniTask LoadUIWindowConfig();
-        PlayerStaticData ForPlayer();
+        UniTask LoadExceptionWindows();
         ProjectSettings ForProjectSettings();
+        ExceptionWindows ForWindowService();
+        PlayerStaticData ForPlayer();
         ItemsDataBase ForInventory();
         WindowConfig ForWindow(WindowId windowId);
     }
