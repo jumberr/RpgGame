@@ -55,4 +55,6 @@ namespace _Project.CodeBase.Logic.Hero.State
         private void Run(bool run) => 
             Running = run;
     }
+    
+
 }

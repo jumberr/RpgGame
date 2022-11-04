@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b5dc471d17447c84d6417c2a34bc64, type: 3}
   m_Name: ExceptionWindows
   m_EditorClassIdentifier: 
-  Windows: 
+  Windows: 02000000
