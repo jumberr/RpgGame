@@ -9,21 +9,35 @@ namespace _Project.CodeBase.Logic.Hero.State
         private PlayerState _prevPlayerState;
         private PlayerState _playerState;
         private InputService _inputService;
+        private bool _crouching;
 
         public event Action<PlayerState> OnChangeState;
+        public event Action OnCrouchingChanged; 
 
         public PlayerState PreviousPlayerState => _prevPlayerState;
         public PlayerState CurrentPlayerState => _playerState;
         
         public bool Aiming { get; set; }
-        public bool Running { get; set; }
-        public bool Crouching { get; set; }
         public bool Grounded { get; set; }
         public bool WasGrounded { get; set; }
         public bool Jumping { get; set; }
+        public bool Running { get; private set; }
 
-        private void Start() => 
+        public bool Crouching 
+        {
+            get => _crouching;
+            set
+            {
+                _crouching = value;
+                OnCrouchingChanged?.Invoke();
+            }
+        }
+
+        private void Start()
+        {
             ChangeState(PlayerState.None);
+            //Crouching = false;
+        }
 
         private void OnDestroy() => 
             CleanUp();

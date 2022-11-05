@@ -111,53 +111,67 @@ namespace _Project.CodeBase.Logic.Hero
         private void MoveCharacter()
         {
             Vector2 frameInput = Vector3.ClampMagnitude(_input, 1.0f);
-            var desiredDirection = new Vector3(frameInput.x, 0.0f, frameInput.y);
-            
-            if (_state.Running)
-                desiredDirection *= _speedRunning;
-            else
-            {
-                if (_state.Crouching)
-                    desiredDirection *= _speedCrouching;
-                else
-                {
-                    if (_state.Aiming)
-                        desiredDirection *= _speedAiming;
-                    else
-                    {
-                        desiredDirection *= _speedWalking;
-                        desiredDirection.x *= _walkingMultiplierSideways;
-                        desiredDirection.z *= frameInput.y > 0 ? _walkingMultiplierForward : _walkingMultiplierBackwards;
-                    }
-                }
-            } 
+            var desiredDirection = CalculateDirection(frameInput);
 
-            desiredDirection = CachedTransform.TransformDirection(desiredDirection);
+            CalculateVelocity(desiredDirection);
 
+            var applied = ApplyVelocity();
+            _characterController.Move(applied);
+        }
+
+        private Vector3 CalculateDirection(Vector2 frameInput)
+        {
+            var desiredDirection = new Vector3(frameInput.x, 0f, frameInput.y);
+            desiredDirection = ApplySpeed(frameInput, desiredDirection);
+            return CachedTransform.TransformDirection(desiredDirection);
+        }
+
+        private void CalculateVelocity(Vector3 desiredDirection)
+        {
             if (!_state.Grounded)
             {
-                if (_state.WasGrounded && !_state.Jumping)
-                    _velocity.y = 0.0f;
-                
+                ResetVelocity();
                 _velocity += desiredDirection * _accelerationInAir * _airControl * Time.deltaTime;
                 _velocity.y -= (_velocity.y >= 0 ? _jumpGravity : _gravity) * Time.deltaTime;
             }
             else if (!_state.Jumping)
                 _velocity = Vector3.Lerp(_velocity, new Vector3(desiredDirection.x, _velocity.y, desiredDirection.z), Time.deltaTime * (desiredDirection.sqrMagnitude > 0.0f ? _acceleration : _deceleration));
+        }
 
+        private Vector3 ApplyVelocity()
+        {
             var applied = _velocity * Time.deltaTime;
             if (_characterController.isGrounded && !_state.Jumping)
                 applied.y = -_stickToGroundForce;
+            return applied;
+        }
 
-            _characterController.Move(applied);
+        private void ResetVelocity()
+        {
+            if (_state.WasGrounded && !_state.Jumping)
+                _velocity.y = 0f;
+        }
+
+        private Vector3 ApplySpeed(Vector2 frameInput, Vector3 desiredDirection)
+        {
+            if (_state.Running)
+                desiredDirection *= _speedRunning;
+            else if (_state.Crouching)
+                desiredDirection *= _speedCrouching;
+            else if (_state.Aiming)
+                desiredDirection *= _speedAiming;
+            else
+            {
+                desiredDirection *= _speedWalking;
+                desiredDirection.x *= _walkingMultiplierSideways;
+                desiredDirection.z *= frameInput.y > 0 ? _walkingMultiplierForward : _walkingMultiplierBackwards;
+            }
+            return desiredDirection;
         }
 
         private void Jump()
         {
-            if (_state.Crouching && !_canJumpWhileCrouching)
-                return;
-            
-            if (!_state.Grounded)
+            if (!_state.Grounded || _state.Crouching && !_canJumpWhileCrouching)
                 return;
 
             _state.Jumping = true;
@@ -175,10 +189,7 @@ namespace _Project.CodeBase.Logic.Hero
 
         private bool CanCrouch(bool newCrouching)
         {
-            if (!_canCrouch)
-                return false;
-
-            if (!_state.Grounded && !_canCrouchWhileFalling)
+            if (!_canCrouch || !_state.Grounded && !_canCrouchWhileFalling)
                 return false;
             
             if (newCrouching)
@@ -199,9 +210,9 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void Crouch(bool newCrouching)
         {
-            _state.Crouching = newCrouching;
-            _characterController.height = _state.Crouching ? _crouchHeight : _standingHeight;
+            _characterController.height = newCrouching ? _crouchHeight : _standingHeight;
             _characterController.center = _characterController.height / 2.0f * Vector3.up;
+            _state.Crouching = newCrouching;
         }
 
         private void Warp(PositionData to)

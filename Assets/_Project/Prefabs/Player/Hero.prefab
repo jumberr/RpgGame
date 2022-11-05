@@ -294,7 +294,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 9040526684898629060}
-  _interpolationSpeed: 12
+  _heroState: {fileID: 4068888587891572736}
+  _height: 0.9
+  _time: 0.2
 --- !u!1 &5839774623406290203
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +542,7 @@ MonoBehaviour:
   _deceleration: 11
   _speedWalking: 3.5
   _speedAiming: 3
-  _speedCrouching: 3
+  _speedCrouching: 2
   _speedRunning: 6.8
   _walkingMultiplierForward: 1
   _walkingMultiplierSideways: 0.9

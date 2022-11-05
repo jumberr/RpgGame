@@ -1,20 +1,27 @@
-﻿using NTC.Global.Cache;
+﻿using _Project.CodeBase.Logic.Hero.State;
+using DG.Tweening;
+using NTC.Global.Cache;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero.Cam
 {
-    public class CameraHeight : NightCache, INightRun
+    public class CameraHeight : NightCache
     {
         [SerializeField] private CharacterController _characterController;
-        [SerializeField] private float _interpolationSpeed;
-        
-        private float _height;
+        [SerializeField] private HeroState _heroState;
+        [SerializeField] private float _height;
+        [SerializeField] private float _time;
 
-        public void Run()
-        {
-            var heightTarget = _characterController.height * 0.9f;
-            _height = Mathf.Lerp(_height, heightTarget, _interpolationSpeed * Time.deltaTime);
-            CachedTransform.localPosition = Vector3.up * _height;
-        }
+        private void OnEnable() => 
+            _heroState.OnCrouchingChanged += ChangeCameraHeight;
+
+        private void Start() => 
+            ChangeCameraHeight();
+
+        private void OnDisable() => 
+            _heroState.OnCrouchingChanged -= ChangeCameraHeight;
+
+        private void ChangeCameraHeight() => 
+            CachedTransform.DOLocalMoveY(_characterController.height * _height, _time);
     }
 }
