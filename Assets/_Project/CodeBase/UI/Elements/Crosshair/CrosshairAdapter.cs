@@ -52,14 +52,14 @@ namespace _Project.CodeBase.UI.Elements.Crosshair
         {
             _weaponController.OnSwitch += Switch;
             _inputService.MoveAction.Event += OnMove;
-            _heroState.OnChangeState += OnChangeState;
+            _heroState.OnAimingChanged += AimingChange;
         }
 
         private void UnSubscribe()
         {
             _weaponController.OnSwitch -= Switch;
             _inputService.MoveAction.Event -= OnMove;
-            _heroState.OnChangeState -= OnChangeState;
+            _heroState.OnAimingChanged -= AimingChange;
         }
 
         private void Switch(bool isWeapon)
@@ -74,9 +74,9 @@ namespace _Project.CodeBase.UI.Elements.Crosshair
             _input = dir;
         }
 
-        private void OnChangeState(PlayerState playerState)
+        private void AimingChange()
         {
-            if (playerState == PlayerState.Scoping)
+            if (_heroState.Aiming)
                 _view.Hide();
             else
                 _view.Show(_state);

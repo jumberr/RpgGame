@@ -60,18 +60,18 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         public async void Reload()
         {
             if (!_isNeedReload) return;
-            if (_state.CurrentPlayerState == PlayerState.Reload) return;
+            if (_state.Reloading) return;
 
             var reload = _ammo.Reload();
             if (reload.Item1 == ReloadState.None) return;
 
-            if (_state.CurrentPlayerState == PlayerState.Scoping) 
+            if (_state.Aiming) 
                 _heroScoping.UnScope();
             
-            _state.Enter(PlayerState.Reload);
+            ChangeReloadingState(true);
             await PlayReloadAnimation(reload);
             _ammo.UpdateUI();
-            _state.Enter(PlayerState.None);
+            ChangeReloadingState(false);
         }
 
         private async UniTask PlayReloadAnimation((ReloadState, int, int) result)
@@ -81,5 +81,8 @@ namespace _Project.CodeBase.Logic.Hero.Reload
             else
                 await _defaultReload.Reload(result);
         }
+
+        private void ChangeReloadingState(bool value) => 
+            _state.Reloading = value;
     }
 }

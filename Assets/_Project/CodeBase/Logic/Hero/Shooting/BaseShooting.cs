@@ -81,6 +81,6 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         }
 
         private float RandDistance() => 
-            (_state.CurrentPlayerState == PlayerState.Scoping ? _aimAccuracy : _accuracy) * Mathf.Sqrt(-2 * Mathf.Log(1 - Random.Range(0, 1f)));
+            (_state.Aiming ? _aimAccuracy : _accuracy) * Mathf.Sqrt(-2 * Mathf.Log(1 - Random.Range(0, 1f)));
     }
 }

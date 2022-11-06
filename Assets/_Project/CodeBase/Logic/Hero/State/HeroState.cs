@@ -6,23 +6,29 @@ namespace _Project.CodeBase.Logic.Hero.State
 {
     public class HeroState : MonoBehaviour
     {
-        private PlayerState _prevPlayerState;
-        private PlayerState _playerState;
         private InputService _inputService;
         private bool _crouching;
+        private bool _aiming;
 
-        public event Action<PlayerState> OnChangeState;
-        public event Action OnCrouchingChanged; 
+        public event Action OnCrouchingChanged;
+        public event Action OnAimingChanged;
 
-        public PlayerState PreviousPlayerState => _prevPlayerState;
-        public PlayerState CurrentPlayerState => _playerState;
-        
-        public bool Aiming { get; set; }
+        public bool Reloading { get; set; }
         public bool Grounded { get; set; }
         public bool WasGrounded { get; set; }
         public bool Jumping { get; set; }
         public bool Running { get; private set; }
 
+        public bool Aiming
+        {
+            get => _aiming;
+            set
+            {
+                _aiming = value;
+                OnAimingChanged?.Invoke();
+            }
+        }
+        
         public bool Crouching 
         {
             get => _crouching;
@@ -33,42 +39,22 @@ namespace _Project.CodeBase.Logic.Hero.State
             }
         }
 
-        private void Start()
-        {
-            ChangeState(PlayerState.None);
-            //Crouching = false;
-        }
-
         private void OnDestroy() => 
-            CleanUp();
+            Cleanup();
 
         public void SetInputService(InputService inputService)
         {
             _inputService = inputService;
             Subscribe();
         }
-
-        public void Enter(PlayerState newPlayerState)
-        {
-            ChangeState(newPlayerState);
-            OnChangeState?.Invoke(_playerState);
-        }
-
-        private void ChangeState(PlayerState newPlayerState)
-        {
-            _prevPlayerState = _playerState;
-            _playerState = newPlayerState;
-        }
-
+        
         private void Subscribe() => 
             _inputService.RunningAction.Event += Run;
 
-        private void CleanUp() => 
+        private void Cleanup() => 
             _inputService.RunningAction.Event -= Run;
 
         private void Run(bool run) => 
             Running = run;
     }
-    
-
 }

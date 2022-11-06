@@ -133,7 +133,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
 
         private void Shoot()
         {
-            if (_weaponType == WeaponType.None || _state.CurrentPlayerState == PlayerState.Reload) return;
+            if (_weaponType == WeaponType.None || _state.Reloading) return;
 
             if (!_ammo.CanShoot() && _weaponType != WeaponType.Knife)
             {

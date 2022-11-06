@@ -23,7 +23,6 @@ namespace _Project.CodeBase.Logic.Hero
         private float _startFov;
         private float _adsFov;
         private bool _isNeedScope;
-        private bool _isScoping;
         private TweenerCore<Vector3,Vector3,VectorOptions> _weaponTween;
         private TweenerCore<float,float,FloatOptions> _cameraTween;
 
@@ -54,8 +53,7 @@ namespace _Project.CodeBase.Logic.Hero
         public void UnScope()
         {
             SmoothTranslation(_startPos, _startFov, _scopeSettings.AimingOutTime);
-            _isScoping = false;
-            _state.Enter(PlayerState.None);
+            _state.Aiming = false;
         }
 
         private void ScopeHandling()
@@ -65,7 +63,7 @@ namespace _Project.CodeBase.Logic.Hero
             _weaponTween?.Kill();
             _cameraTween?.Kill();
             
-            if (!_isScoping)
+            if (!_state.Aiming)
                 Scope();
             else
                 UnScope();
@@ -73,9 +71,8 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void Scope()
         {
-            if (_state.CurrentPlayerState == PlayerState.Reload) return;
-            _state.Enter(PlayerState.Scoping);
-            _isScoping = true;
+            if (_state.Reloading) return;
+            _state.Aiming = true;
             SmoothTranslation(_adsPoint, _adsFov, _scopeSettings.AimingInTime);
         }
 
