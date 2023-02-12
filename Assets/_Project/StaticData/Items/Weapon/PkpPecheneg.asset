@@ -45,7 +45,7 @@ MonoBehaviour:
     _aimRecoil: {x: -1.5, y: 1.5, z: 0.22}
     _snappiness: 8.526817
     _returnSpeed: 2.013845
-    _isAutomatic: 0
+    _isAutomatic: 1
     _reloadTime: 5.7481284
     _fullReloadTime: 5.7481284
     _accuracy: 0.3055705

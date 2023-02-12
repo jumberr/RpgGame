@@ -57,7 +57,7 @@ MonoBehaviour:
     _ammoType: 4
     _scoping: 1
     _magazineInfo:
-      BulletsMax: 0
+      BulletsMax: 8
   _possibleAttachments: 
   _defaultAttachments: 
   _defaultSettings:
