@@ -1,4 +1,5 @@
-﻿using _Project.CodeBase.Data;
+﻿using System.Collections.Generic;
+using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.SaveLoad;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
@@ -13,8 +14,6 @@ namespace _Project.CodeBase.Infrastructure.States
         private readonly ISaveLoadService _saveLoadService;
         private readonly IStaticDataService _staticDataService;
         
-        private readonly PositionData _defaultStartPosition = new PositionData(82, 4, 5);
-
         public LoadProgressState(
             IPersistentProgressService progressService,
             ISaveLoadService saveLoadService,
@@ -51,14 +50,8 @@ namespace _Project.CodeBase.Infrastructure.States
             var playerData = _staticDataService.ForPlayer();
             var inventory = new Inventory(8);
             var settings = new SettingsData(0.2f, 0);
-            
-            var healthData = new HealthData
-            {
-                CurrentHp = playerData.HealthData.CurrentHp,
-                MaxHp = playerData.HealthData.MaxHp
-            };
-
-            var progress = new PlayerProgress(healthData, _defaultStartPosition, inventory, settings);
+            var mapData = new MapData();
+            var progress = new PlayerProgress(playerData.HealthData, playerData.DefaultData, mapData, inventory, settings);
             return progress;
         }
     }

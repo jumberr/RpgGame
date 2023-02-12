@@ -43,7 +43,7 @@ namespace _Project.CodeBase.Infrastructure.AssetManagement
                 cacheKey: address);
         }
 
-        public void CleanUp()
+        public void Cleanup()
         {
             foreach (var resourceHandles in _handles.Values)
             foreach (var handle in resourceHandles) 

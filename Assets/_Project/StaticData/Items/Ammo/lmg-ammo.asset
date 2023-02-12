@@ -21,16 +21,16 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  ItemUIData:
-    Name: 19
-    Icon: {fileID: 21300000, guid: fbc212d2d3763684fa1aabcccf8d6535, type: 3}
-    Description: Cheap 7.62 caliber machine gun round. Its design makes it unsuitable
+  _uiInfo:
+    _name: 19
+    _icon: {fileID: 21300000, guid: 98bb695f6780f4041aecffa3d9f45d31, type: 3}
+    _description: Cheap 7.62 caliber machine gun round. Its design makes it unsuitable
       for sniper rifles, so it is used only with machine gun.
-  ItemPayloadData:
-    DbId: 1
-    ItemType: 0
-    Actions: 0200000003000000
-    GroundPrefab: {fileID: 3794080518514093639, guid: ae83a51280b71d74abaea5bef5a9dd20,
+  _payloadInfo:
+    _itemType: 1
+    _actions: 0200000003000000
+    _groundPrefab: {fileID: 5243371202953986387, guid: ae83a51280b71d74abaea5bef5a9dd20,
       type: 3}
-    MaxInContainer: 100
-  AmmoType: 0
+    _maxInContainer: 100
+    _dbId: 1
+  _ammoType: 0

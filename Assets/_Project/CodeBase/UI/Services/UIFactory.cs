@@ -4,12 +4,7 @@ using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Hero.Cam;
-using _Project.CodeBase.UI.Elements;
-using _Project.CodeBase.UI.Elements.Hud;
 using _Project.CodeBase.UI.Services.Windows;
-using _Project.CodeBase.UI.Windows;
-using _Project.CodeBase.UI.Windows.DeathScreen;
-using _Project.CodeBase.UI.Windows.Inventory;
 using _Project.CodeBase.UI.Windows.Settings;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -52,9 +47,7 @@ namespace _Project.CodeBase.UI.Services
         public async UniTask CreateHud()
         {
             _hud = await _assetProvider.InstantiateAsync(AssetPath.HudPath, parent: _uiRoot);
-
-            SetupHud();
-            //SetupWindowButtons();
+            OnWindowCreated(_hud.transform);
         }
 
         public void SetupWindowService() => 
@@ -63,7 +56,8 @@ namespace _Project.CodeBase.UI.Services
         public async void CreateDeathScreen()
         {
             var deathScreen = await _assetProvider.InstantiateComponentAsync<DeathScreen>(AssetPath.DeathScreen, parent: _uiRoot);
-            deathScreen.Construct(_sceneLoader, _staticDataService);
+            deathScreen.Construct(_sceneLoader);
+            OnWindowCreated(deathScreen.transform);
         }
 
         public void CreateInventory()
@@ -92,20 +86,14 @@ namespace _Project.CodeBase.UI.Services
         public void ConstructInventoriesHolder(HeroFacade facade) => 
             _inventoriesHolder.Construct(_actorUI.HotBar, _inventoryUI, facade.Inventory);
 
-        private void SetupHud()
+        private void OnWindowCreated(Transform window)
         {
-            var rectTransform = _hud.GetComponent<RectTransform>();
+            var rectTransform = (RectTransform) window;
             rectTransform.offsetMax = Vector2.zero;
             rectTransform.offsetMin = Vector2.zero;
         }
 
         private void AddWindow(WindowBase window, WindowId id) => 
             _windowService.AddWindow(window, id);
-        
-        //private void SetupWindowButtons()
-        //{
-        //    foreach (var button in _hud.GetComponentsInChildren<OpenWindowButton>()) 
-        //        button.Construct(_windowService);
-        //}
     }
 }

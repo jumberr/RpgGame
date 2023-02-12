@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxRange: 3
+  _itemGround: {fileID: 1760675014}
 --- !u!114 &1760675014
 MonoBehaviour:
   m_ObjectHideFlags: 0

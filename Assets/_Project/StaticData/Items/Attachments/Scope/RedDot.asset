@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6411ee083efc4a32ba11f61005c1e746, type: 3}
+  m_Name: RedDot
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _uiInfo:
+    _name: 23
+    _icon: {fileID: 21300000, guid: 63505779c3342bf44a7d398d4d3f5c88, type: 3}
+    _description: Red Dot
+  _payloadInfo:
+    _itemType: 5
+    _actions: 0100000002000000
+    _groundPrefab: {fileID: 8166203817901748311, guid: 21fee3d59b5da8a44a752a5908621700,
+      type: 3}
+    _maxInContainer: 1
+    _dbId: 7
+  _type: 1
+  _prefab: {fileID: 4099771193721268172, guid: b6f8a16f0e903a44e82d667f4f69c7c6, type: 3}
+  _offsetPosition: {x: 0, y: 0, z: 0}
+  _scopeSpecs:
+    _aimingInTime: 0.01
+    _aimingOutTime: 0.01
+    _scopeMultiplier: 8
+  _dot: {r: 0.6037736, g: 0, b: 0, a: 1}
+  _crossHair: {fileID: 21300028, guid: db63fa1c2adceb141974024b30ffa6db, type: 3}

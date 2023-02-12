@@ -20,61 +20,53 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: DefaultScopeData
-      Entry: 7
-      Data: 0|_Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments.ScopeSettings,
-        Assembly-CSharp
-    - Name: AimingInTime
-      Entry: 4
-      Data: 0.5
-    - Name: AimingOutTime
-      Entry: 4
-      Data: 0.5
-    - Name: ScopeMultiplier
-      Entry: 4
-      Data: 1.2
-    - Name: 
-      Entry: 8
-      Data: 
-  ItemUIData:
-    Name: 8
-    Icon: {fileID: 21300000, guid: 159a26d738f80b34ba16fbe1839c931e, type: 3}
-    Description: This special purpose smoothbore automatic shotgun was designed in
-      the second half of the 20th century and comes with pump-action and self-cocking
+    SerializationNodes: []
+  _uiInfo:
+    _name: 8
+    _icon: {fileID: 21300000, guid: 159a26d738f80b34ba16fbe1839c931e, type: 3}
+    _description: This special purpose smoothbore automatic shotgun was designed
+      in the second half of the 20th century and comes with pump-action and self-cocking
       firing modes. Used as an all-purpose weapon by the police and assault troops.
       Notable for its reliability and tactical flexibility. Despite its large weight,
       complex mechanism and considerable cost it is in demand due to its effectiveness
       against mutants.
-  ItemPayloadData:
-    DbId: 24
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 7070600995131026227, guid: 19e18eae50015e34a9e1a74f0ff27837,
+  _payloadInfo:
+    _itemType: 2
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: 1157129905770762, guid: 19e18eae50015e34a9e1a74f0ff27837,
       type: 3}
-    MaxInContainer: 1
-  Durability: 0
-  WeaponData:
-    Recoil: {x: -2.7, y: 2.7, z: 0.5}
-    AimRecoil: {x: -1.35, y: 1.35, z: 0.25}
-    Snappiness: 6.0000486
-    ReturnSpeed: 2.4514494
-    IsAutomatic: 0
-    Damage: 60.139023
-    ReloadTime: 1.8385872
-    FullReloadTime: 1.8385872
-    Range: 18.289583
-    FireRate: 72.81963
-    Accuracy: 0.70152414
-    AimAccuracy: 0.5999153
-    AccuracyDistance: 18.289583
-    AmmoType: 4
-    Scoping: 1
-  Magazine:
-    BulletsMax: 6
-    BulletsLeft: 0
-  PossibleAttachments: 
-  DefaultAttachments: 
-  WeaponPrefab: {fileID: 1497449805113447852, guid: cd8a5181a62f6ec43940e0fcc792cfa6,
-    type: 3}
-  FractionAmount: 8
+    _maxInContainer: 1
+    _dbId: 21
+  _durability: 0
+  _prefab: {fileID: 1497449805113447852, guid: cd8a5181a62f6ec43940e0fcc792cfa6, type: 3}
+  _weaponSpecs:
+    _damage: 60.318314
+    _range: 18.264355
+    _fireRate: 72.34304
+  _gunSpecs:
+    _recoil: {x: -2.7, y: 2.7, z: 0.5}
+    _aimRecoil: {x: -1.35, y: 1.35, z: 0.25}
+    _snappiness: 5.982013
+    _returnSpeed: 2.5314322
+    _isAutomatic: 0
+    _reloadTime: 1.7691772
+    _fullReloadTime: 1.7691772
+    _accuracy: 0.71748364
+    _aimAccuracy: 0.609653
+    _accuracyDistance: 18.695679
+    _ammoType: 4
+    _scoping: 1
+    _magazineInfo:
+      BulletsMax: 0
+  _possibleAttachments: 
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0.2
+      _aimingOutTime: 0.2
+      _scopeMultiplier: 1.2
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list: []
+  _shotgunSpecs:
+    _fractionAmount: 8

@@ -1556,6 +1556,10 @@ MonoBehaviour:
   - {fileID: 3304874585974654572}
   - {fileID: 2654037979150860735}
   - {fileID: 873794292576185809}
+  ScopeRender: {fileID: 0}
+  HandsAnimator: {fileID: -7915027202002414987}
+  MeleeWeapon: {fileID: 0}
+  RevolverAnimation: {fileID: 4812092514294698773}
 --- !u!95 &-7915027202002414987
 Animator:
   serializedVersion: 3

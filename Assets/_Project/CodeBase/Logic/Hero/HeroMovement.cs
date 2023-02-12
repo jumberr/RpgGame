@@ -3,6 +3,7 @@ using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Logic.Hero.State;
+using _Project.CodeBase.Utils.Extensions;
 using Cysharp.Threading.Tasks;
 using NTC.Global.Cache;
 using Sirenix.OdinInspector;
@@ -92,15 +93,15 @@ namespace _Project.CodeBase.Logic.Hero
             _inputService.CrouchAction.Event += ToggleCrouch;
         }
 
-        public void LoadProgress(PlayerProgress progress)
-        {
-            var savedPosition = progress.PositionData;
-            if (savedPosition != null)
-                Warp(to: savedPosition);
-        }
+        public void LoadProgress(PlayerProgress progress) => 
+            Warp(to: progress.GameObjectData);
 
-        public void UpdateProgress(PlayerProgress progress) => 
-            progress.PositionData = CachedTransform.position.AsVectorData();
+        public void UpdateProgress(PlayerProgress progress)
+        {
+            var position = CachedTransform.position.AsVectorData();
+            var rotation = CachedTransform.rotation.AsRotationData();
+            progress.GameObjectData.Update(position, rotation);
+        }
 
         private void UpdateDirection(Vector2 dir) => 
             _input = dir;
@@ -215,10 +216,14 @@ namespace _Project.CodeBase.Logic.Hero
             _state.Crouching = newCrouching;
         }
 
-        private void Warp(PositionData to)
+        private void Warp(GameObjectData to)
         {
             _characterController.enabled = false;
-            CachedTransform.position = to.AsUnityVector().AddY(_characterController.height);
+            
+            var position = to.Position.AsUnityVector().AddY(_characterController.height) + Vector3.forward * 5;
+            var quaternion = to.Rotation.AsQuaternion();
+            CachedTransform.SetPositionAndRotation(position, quaternion);
+            
             _characterController.enabled = true;
         }
     }

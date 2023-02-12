@@ -330,6 +330,10 @@ MonoBehaviour:
   LightPoint: {fileID: 4327263178820336525}
   AdsPoint: {fileID: 2127886382143666642}
   RevolverAmmo: []
+  ScopeRender: {fileID: 91616102996758548}
+  HandsAnimator: {fileID: 7021357559700292225}
+  MeleeWeapon: {fileID: 0}
+  RevolverAnimation: {fileID: 0}
 --- !u!95 &7021357559700292225
 Animator:
   serializedVersion: 3
@@ -1891,6 +1895,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 412278827024169369}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &91616102996758548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 359664772916144525, guid: 1e3445d83c84e1049b4c364e5782cb23,
+    type: 3}
+  m_PrefabInstance: {fileID: 412278827024169369}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09e3cd3887f4c368cb00e2d579ddb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8638119921940827044
 PrefabInstance:
   m_ObjectHideFlags: 0

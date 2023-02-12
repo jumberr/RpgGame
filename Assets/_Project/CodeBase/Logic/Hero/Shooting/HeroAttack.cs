@@ -3,7 +3,7 @@ using _Project.CodeBase.Logic.Hero.Reload;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.HeroWeapon.Effects;
-using _Project.CodeBase.StaticData.ItemsDataBase.Types;
+using _Project.CodeBase.StaticData;
 using NTC.Global.Cache;
 using UnityEngine;
 
@@ -13,6 +13,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
     public class HeroAttack : NightCache, INightRun
     {
         private const float TimeDestroyFX = 0.1f;
+        private const int SecondsInMinute = 60;
 
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private LineFade _lineFade;
@@ -57,32 +58,33 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         private void OnDisable() =>
             _inputService.AttackAction.Event -= EnableDisableShoot;
 
-        public void UpdateStatsAndConfig(Weapon weapon, WeaponConfiguration config)
+        public void UpdateStatsAndConfig(GunInfo gunInfo, WeaponConfiguration config)
         {
-            var data = weapon.WeaponData;
+            var gunData = gunInfo.GunSpecs;
+            var weaponData = gunInfo.WeaponSpecs;
             
-            _isAutomatic = weapon.WeaponData.IsAutomatic;
-            _fireSpeed = 60 / weapon.WeaponData.FireRate;
+            _isAutomatic = gunData.IsAutomatic;
+            UpdateFireRate(weaponData);
 
-            var shotgun = weapon as Shotgun;
+            var shotgun = gunInfo as ShotgunInfo;
             if (shotgun != null)
             {
-                _shotgunShooting.SetupConfig(data.Range, data.AccuracyDistance, data.AimAccuracy, data.Accuracy, data.Damage);
-                _shotgunShooting.SetupConfig(shotgun.FractionAmount);
+                _shotgunShooting.SetupConfig(weaponData.Damage, weaponData.Range, gunData.AccuracyDistance, gunData.AimAccuracy, gunData.Accuracy);
+                _shotgunShooting.SetupConfig(shotgun.ShotgunSpecs.FractionAmount);
                 _weaponType = WeaponType.Shotgun;
             }
             else
             {
-                _defaultShooting.SetupConfig(data.Range, data.AccuracyDistance, data.AimAccuracy, data.Accuracy, data.Damage);
+                _defaultShooting.SetupConfig(weaponData.Damage, weaponData.Range, gunData.AccuracyDistance, gunData.AimAccuracy, gunData.Accuracy);
                 _weaponType = WeaponType.Default;
             }
 
             SetupWeaponConfiguration(config);
         }
 
-        public void ApplyKnife(Knife knife)
+        public void ApplyKnife(KnifeInfo knifeInfo)
         {
-            _fireSpeed = 60 / knife.FireRate;
+            UpdateFireRate(knifeInfo.WeaponSpecs);
             _weaponType = WeaponType.Knife;
         }
 
@@ -170,5 +172,8 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
             if (_isAutomatic) 
                 _automaticFireTimer = 0;
         }
+
+        private void UpdateFireRate(WeaponSpecs weaponSpecs) => 
+            _fireSpeed = SecondsInMinute / weaponSpecs.FireRate;
     }
 }

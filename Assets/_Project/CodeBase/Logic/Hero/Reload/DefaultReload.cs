@@ -1,5 +1,5 @@
 ﻿using _Project.CodeBase.Logic.Hero.State;
-using _Project.CodeBase.Logic.HeroWeapon;
+using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
 
 namespace _Project.CodeBase.Logic.Hero.Reload
@@ -14,10 +14,10 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         public DefaultReload(HeroAnimator heroAnimator) => 
             _heroAnimator = heroAnimator;
 
-        public void Construct(Weapon weapon)
+        public void Construct(GunInfo gunInfo)
         {
-            _reloadTime = weapon.WeaponData.ReloadTime;
-            _fullReloadTime = weapon.WeaponData.FullReloadTime;
+            _reloadTime = gunInfo.GunSpecs.ReloadTime;
+            _fullReloadTime = gunInfo.GunSpecs.FullReloadTime;
         }
 
         public async UniTask Reload((ReloadState, int, int) result)

@@ -4,7 +4,7 @@ using _Project.CodeBase.UI.Elements.Slot;
 using _Project.CodeBase.UI.Elements.Slot.Drop;
 using UnityEngine;
 
-namespace _Project.CodeBase.UI.Windows.Inventory
+namespace _Project.CodeBase.UI
 {
     public class InventorySlotUI : MonoBehaviour, IDropArea
     {
@@ -51,7 +51,7 @@ namespace _Project.CodeBase.UI.Windows.Inventory
         public void UpdateSlotUI(Sprite icon, string text)
         {
             CreateDisplay();
-            Display.UpdateSlot(_slotData.DbId, icon, text);
+            Display.UpdateSlot(_slotData.ID, icon, text);
             Display.transform.localPosition = Vector3.zero;
         }
 

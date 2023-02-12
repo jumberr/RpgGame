@@ -20,58 +20,49 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: DefaultScopeData
-      Entry: 7
-      Data: 0|_Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments.ScopeSettings,
-        Assembly-CSharp
-    - Name: AimingInTime
-      Entry: 4
-      Data: 0.5
-    - Name: AimingOutTime
-      Entry: 4
-      Data: 0.5
-    - Name: ScopeMultiplier
-      Entry: 4
-      Data: 1.2
-    - Name: 
-      Entry: 8
-      Data: 
-  ItemUIData:
-    Name: 2
-    Icon: {fileID: 21300000, guid: 87b26a99a29de914a867b2bca4571085, type: 3}
-    Description: A light rifle with an effective fire range of up to 300 meters.
+    SerializationNodes: []
+  _uiInfo:
+    _name: 2
+    _icon: {fileID: 21300000, guid: 87b26a99a29de914a867b2bca4571085, type: 3}
+    _description: A light rifle with an effective fire range of up to 300 meters.
       Due its to exceptionally easy triggering, high ergonomics and low weight, the
       weapon is highly accurate, though it is too sensitive to dirt and is not always
       suitable for use under difficult field conditions.
-  ItemPayloadData:
-    DbId: 18
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 6378831021959968376, guid: 9f8c1a277d05b454b8a2f4ae9cda1155,
+  _payloadInfo:
+    _itemType: 2
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: 6856499383313882336, guid: 9f8c1a277d05b454b8a2f4ae9cda1155,
       type: 3}
-    MaxInContainer: 1
-  Durability: 0.2
-  WeaponData:
-    Recoil: {x: -2, y: 2, z: 0.35}
-    AimRecoil: {x: -1, y: 1, z: 0.15}
-    Snappiness: 6
-    ReturnSpeed: 2
-    IsAutomatic: 1
-    Damage: 15
-    ReloadTime: 2
-    FullReloadTime: 0
-    Range: 50
-    FireRate: 600
-    Accuracy: 0.5
-    AimAccuracy: 0.2
-    AccuracyDistance: 100
-    AmmoType: 1
-    Scoping: 1
-  Magazine:
-    BulletsMax: 30
-    BulletsLeft: 30
-  PossibleAttachments: 
-  DefaultAttachments: 
-  WeaponPrefab: {fileID: 1475004734686439129, guid: 8e49b557cdae8cf41a2d4d6a0eb98abe,
-    type: 3}
+    _maxInContainer: 1
+    _dbId: 15
+  _durability: 0
+  _prefab: {fileID: 1475004734686439129, guid: 8e49b557cdae8cf41a2d4d6a0eb98abe, type: 3}
+  _weaponSpecs:
+    _damage: 15.245096
+    _range: 50.182228
+    _fireRate: 600.02655
+  _gunSpecs:
+    _recoil: {x: -2, y: 2, z: 0.35}
+    _aimRecoil: {x: -1, y: 1, z: 0.17}
+    _snappiness: 5.982013
+    _returnSpeed: 2.013845
+    _isAutomatic: 1
+    _reloadTime: 1.9632723
+    _fullReloadTime: 2.0279708
+    _accuracy: 0.5061355
+    _aimAccuracy: 0.19989645
+    _accuracyDistance: 100
+    _ammoType: 1
+    _scoping: 1
+    _magazineInfo:
+      BulletsMax: 30
+  _possibleAttachments: 
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0.2
+      _aimingOutTime: 0.2
+      _scopeMultiplier: 1.2
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list: []

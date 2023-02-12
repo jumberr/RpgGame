@@ -105,7 +105,7 @@ PrefabInstance:
     - target: {fileID: 5183111110458069269, guid: 877e3352b5b816a43800ddd67c308b64,
         type: 3}
       propertyPath: m_Name
-      value: BerettaGround Variant
+      value: BerettaGround
       objectReference: {fileID: 0}
     - target: {fileID: 5183111110458069269, guid: 877e3352b5b816a43800ddd67c308b64,
         type: 3}
@@ -196,3 +196,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxRange: 3
+  _itemGround: {fileID: 2254169922169155618}

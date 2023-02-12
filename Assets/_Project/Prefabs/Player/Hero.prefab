@@ -663,6 +663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _state: {fileID: 4068888587891572736}
   _mainCamera: {fileID: 1124464607595143057}
+  _weaponCamera: {fileID: 1187891352048496399}
   _weaponHolder: {fileID: 8918948168309251001}
 --- !u!114 &1314774897637019763
 MonoBehaviour:

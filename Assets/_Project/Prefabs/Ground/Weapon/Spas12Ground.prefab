@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2006380128936694648, guid: 05bb0c49d617f3f498d977bd68b4f4c8,
         type: 3}
       propertyPath: m_Name
-      value: shotgun
+      value: Spas12Ground
       objectReference: {fileID: 0}
     - target: {fileID: 2006380128936694648, guid: 05bb0c49d617f3f498d977bd68b4f4c8,
         type: 3}
@@ -105,19 +105,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8775204759660558411}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &3423503764544818134
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7070600995131026227}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.068436384, y: 0.2290625, z: 0.8928313}
-  m_Center: {x: -0.000046866015, y: 0.034279406, z: 0.3851695}
 --- !u!54 &5420564138045259601
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,6 +121,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3423503764544818134
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070600995131026227}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.068436384, y: 0.2290625, z: 0.8928313}
+  m_Center: {x: -0.000046866015, y: 0.034279406, z: 0.3851695}
 --- !u!114 &1157129905770762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxRange: 3
+  _itemGround: {fileID: 5400886425314816430}
 --- !u!114 &5400886425314816430
 MonoBehaviour:
   m_ObjectHideFlags: 0

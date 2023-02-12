@@ -1,7 +1,6 @@
 ﻿using _Project.CodeBase.Infrastructure.Services.StaticData;
-using Zenject;
 
-namespace _Project.CodeBase.Infrastructure.Scenes
+namespace _Project.CodeBase.Infrastructure
 {
     public class InitialScene
     {

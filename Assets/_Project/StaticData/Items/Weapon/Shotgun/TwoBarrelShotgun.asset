@@ -20,58 +20,50 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: DefaultScopeData
-      Entry: 7
-      Data: 0|_Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments.ScopeSettings,
-        Assembly-CSharp
-    - Name: AimingInTime
-      Entry: 4
-      Data: 0.5
-    - Name: AimingOutTime
-      Entry: 4
-      Data: 0.5
-    - Name: ScopeMultiplier
-      Entry: 4
-      Data: 1.2
-    - Name: 
-      Entry: 8
-      Data: 
-  ItemUIData:
-    Name: 7
-    Icon: {fileID: 21300000, guid: b99b0a9b84facda4886c0786ca070fe0, type: 3}
-    Description: A sawn-off BM-17 rifle. It is lighter and more compact then the
+    SerializationNodes: []
+  _uiInfo:
+    _name: 7
+    _icon: {fileID: 21300000, guid: b99b0a9b84facda4886c0786ca070fe0, type: 3}
+    _description: A sawn-off BM-17 rifle. It is lighter and more compact then the
       original two-barrel rifle, but it is effective only at a close range. One of
       the weapons most commonly used by beginners.
-  ItemPayloadData:
-    DbId: 25
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 6607413444922787224, guid: d832494099aa64047908ba75dbcd4c70,
+  _payloadInfo:
+    _itemType: 2
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: 9185720882482234474, guid: d832494099aa64047908ba75dbcd4c70,
       type: 3}
-    MaxInContainer: 1
-  Durability: 0
-  WeaponData:
-    Recoil: {x: -1, y: 1, z: 0.2}
-    AimRecoil: {x: -0.5, y: 0.5, z: 0.1}
-    Snappiness: 6.026948
-    ReturnSpeed: 2.0346472
-    IsAutomatic: 0
-    Damage: 35.10439
-    ReloadTime: 2.9518073
-    FullReloadTime: 2.9161615
-    Range: 14.267569
-    FireRate: 110.922935
-    Accuracy: 0.75021166
-    AimAccuracy: 0.6507197
-    AccuracyDistance: 14.267569
-    AmmoType: 4
-    Scoping: 1
-  Magazine:
-    BulletsMax: 2
-    BulletsLeft: 0
-  PossibleAttachments: 
-  DefaultAttachments: 
-  WeaponPrefab: {fileID: 6322586335249049182, guid: 18466cc1393e8e149a35353350b20dad,
-    type: 3}
-  FractionAmount: 6
+    _maxInContainer: 1
+    _dbId: 22
+  _durability: 0
+  _prefab: {fileID: 6322586335249049182, guid: 18466cc1393e8e149a35353350b20dad, type: 3}
+  _weaponSpecs:
+    _damage: 35.301598
+    _range: 14.16679
+    _fireRate: 110.318695
+  _gunSpecs:
+    _recoil: {x: -1, y: 1, z: 0.2}
+    _aimRecoil: {x: -0.5, y: 0.5, z: 0.1}
+    _snappiness: 5.982013
+    _returnSpeed: 1.9707127
+    _isAutomatic: 0
+    _reloadTime: 2.998447
+    _fullReloadTime: 3.030796
+    _accuracy: 0.7498328
+    _aimAccuracy: 0.6506286
+    _accuracyDistance: 14.38245
+    _ammoType: 4
+    _scoping: 1
+    _magazineInfo:
+      BulletsMax: 2
+  _possibleAttachments: 
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0.2
+      _aimingOutTime: 0.2
+      _scopeMultiplier: 1.2
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list: []
+  _shotgunSpecs:
+    _fractionAmount: 6

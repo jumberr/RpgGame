@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.HeroWeapon.Animations;
-using _Project.CodeBase.StaticData.ItemsDataBase.Types;
+using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -25,7 +25,7 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         public ReloadRevolver(HeroAnimator heroAnimator) => 
             _heroAnimator = heroAnimator;
 
-        public void Construct(Weapon weapon, WeaponConfiguration config, RevolverAnimation revolverAnimation)
+        public void Construct(GunInfo gunInfo, WeaponConfiguration config, RevolverAnimation revolverAnimation)
         {
             if (_subscribed)
                 UnsubscribeRevolverEvents();
@@ -34,10 +34,10 @@ namespace _Project.CodeBase.Logic.Hero.Reload
             _revolverAnimation = revolverAnimation;
             SubscribeRevolverEvents();
 
-            var revolver = weapon as Revolver;
-            _startReloadAnimation = revolver.StartReloadDuration;
-            _oneAmmoReload = revolver.OneAmmoReloadDuration;
-            _endReloadAnimation = revolver.EndReloadAnimation;
+            var data = (gunInfo as RevolverInfo).RevolverSpecs;
+            _startReloadAnimation = data.StartReloadDuration;
+            _oneAmmoReload = data.OneAmmoReloadDuration;
+            _endReloadAnimation = data.EndReloadAnimation;
         }
 
         public async UniTask Reload((ReloadState, int, int) result)

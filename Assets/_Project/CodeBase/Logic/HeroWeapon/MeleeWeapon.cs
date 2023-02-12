@@ -1,4 +1,4 @@
-﻿using _Project.CodeBase.StaticData.ItemsDataBase.Types;
+﻿using _Project.CodeBase.StaticData;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -14,12 +14,12 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private float _damage;
         private float _radius;
 
-        public void Construct(LayerMask mask, Knife knife)
+        public void Construct(LayerMask mask, KnifeInfo knifeInfo)
         {
             _layerMask = mask;
 
-            _damage = knife.Damage;
-            _radius = knife.Radius;
+            _damage = knifeInfo.WeaponSpecs.Damage;
+            _radius = knifeInfo.KnifeSpecs.Radius;
         }
 
         [UsedImplicitly]

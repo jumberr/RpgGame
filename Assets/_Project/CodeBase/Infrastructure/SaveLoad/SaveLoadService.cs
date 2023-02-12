@@ -1,7 +1,3 @@
-using System;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
@@ -11,21 +7,25 @@ namespace _Project.CodeBase.Infrastructure.SaveLoad
 {
     public class SaveLoadService : ISaveLoadService
     {
-        private readonly string _path = Path.Combine($"{Application.persistentDataPath}", "Progress");
+        private const string Progress = "Progress";
         
-        //private readonly IGameFactory _gameFactory;
+        private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
-
-        public SaveLoadService(IPersistentProgressService progressService)
-        {
-            //_gameFactory = gameFactory;
-            _progressService = progressService;
-        }
+        protected string Path;
         
+        protected virtual string Extension => "";
+
+        protected SaveLoadService(IPersistentProgressService progressService, IGameFactory gameFactory)
+        {
+            _gameFactory = gameFactory;
+            _progressService = progressService;
+            InitializePath();
+        }
+
         public void SaveProgress()
         {
-            //foreach (var progressWriter in _gameFactory.ProgressWriters)
-            //    progressWriter.UpdateProgress(_progressService.Progress);
+            foreach (var progressWriter in _gameFactory.ProgressWriters)
+                progressWriter.UpdateProgress(_progressService.Progress);
 
             Serialize(_progressService);
         }
@@ -33,43 +33,12 @@ namespace _Project.CodeBase.Infrastructure.SaveLoad
         public PlayerProgress LoadProgress() => 
             Deserialize();
 
-        private void Serialize(IPersistentProgressService progressService)
-        {
-            var fs = new FileStream(_path, FileMode.OpenOrCreate);
-            var bf = new BinaryFormatter();
-            try
-            {
-                bf.Serialize(fs, progressService.Progress);
-            }
-            catch (SerializationException e)
-            {
-                Console.WriteLine("Failed to serialize. Reason: " + e.Message);
-                throw;
-            }
-            finally
-            {
-                fs.Close();
-            }
-        }
+        protected virtual void Serialize(IPersistentProgressService progressService) { }
 
-        private PlayerProgress Deserialize()
-        {
-            if (!File.Exists(_path)) return null;
-            var fs = new FileStream(_path, FileMode.Open);
-            try
-            {
-                var bf = new BinaryFormatter();
-                return (PlayerProgress) bf.Deserialize(fs);
-            }
-            catch (SerializationException e)
-            {
-                Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
-                throw;
-            }
-            finally
-            {
-                fs.Close();
-            }
-        }
+        protected virtual PlayerProgress Deserialize() => 
+            null;
+
+        private void InitializePath() =>
+            Path = System.IO.Path.Combine(Application.persistentDataPath, $"{Progress}{Extension}");
     }
 }

@@ -2,7 +2,7 @@
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.HeroWeapon.Animations;
-using _Project.CodeBase.StaticData.ItemsDataBase.Types;
+using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -21,22 +21,22 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         private bool _isRevolver;
         private bool _isNeedReload;
         
-        public void Construct(Weapon weapon, WeaponConfiguration config, RevolverAnimation revolverAnimation)
+        public void Construct(GunInfo gunInfo, WeaponConfiguration config, RevolverAnimation revolverAnimation)
         {
             if (!(revolverAnimation is null))
             {
                 _isRevolver = true;
-                _reloadRevolver.Construct(weapon, config, revolverAnimation);
+                _reloadRevolver.Construct(gunInfo, config, revolverAnimation);
             }
             else
             {
                 _isRevolver = false;
-                _defaultReload.Construct(weapon);
+                _defaultReload.Construct(gunInfo);
             }
             _isNeedReload = true;
         }
         
-        public void Construct(Knife knife) => 
+        public void Construct(KnifeInfo knifeInfo) => 
             _isNeedReload = false;
 
         private void Start()

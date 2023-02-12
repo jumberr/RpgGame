@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 2881491799534309136, guid: 7cd57d0eb4b29714b97cf7eb3887bc61,
         type: 3}
       propertyPath: m_Name
-      value: Glock
+      value: GlockGround
       objectReference: {fileID: 0}
     - target: {fileID: 2881491799534309136, guid: 7cd57d0eb4b29714b97cf7eb3887bc61,
         type: 3}
@@ -181,3 +181,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxRange: 3
+  _itemGround: {fileID: 669240085523375660}

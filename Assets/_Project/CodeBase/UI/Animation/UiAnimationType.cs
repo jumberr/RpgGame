@@ -1,4 +1,4 @@
-namespace _Project.CodeBase.UI.Animation
+namespace _Project.CodeBase.UI
 {
     public enum UiAnimationType
     {

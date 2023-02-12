@@ -20,57 +20,48 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: DefaultScopeData
-      Entry: 7
-      Data: 0|_Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments.ScopeSettings,
-        Assembly-CSharp
-    - Name: AimingInTime
-      Entry: 4
-      Data: 0.5
-    - Name: AimingOutTime
-      Entry: 4
-      Data: 0.5
-    - Name: ScopeMultiplier
-      Entry: 4
-      Data: 1.2
-    - Name: 
-      Entry: 8
-      Data: 
-  ItemUIData:
-    Name: 4
-    Icon: {fileID: 21300000, guid: f0a3d494b6b7aa64c9053e472decaa82, type: 3}
-    Description: Adopted by the American army and police, as well as many military
+    SerializationNodes: []
+  _uiInfo:
+    _name: 4
+    _icon: {fileID: 21300000, guid: f0a3d494b6b7aa64c9053e472decaa82, type: 3}
+    _description: Adopted by the American army and police, as well as many military
       and police units all over the world. It is also very popular among the criminals
       for its high-powered round and its high-capacity magazine.
-  ItemPayloadData:
-    DbId: 13
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 226407184526406250, guid: f4c5ae4d0ebf4444fa93cbabc4ecf4ca,
+  _payloadInfo:
+    _itemType: 2
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: 6954425617912172576, guid: f4c5ae4d0ebf4444fa93cbabc4ecf4ca,
       type: 3}
-    MaxInContainer: 1
-  Durability: 0
-  WeaponData:
-    Recoil: {x: -0.5, y: 0.5, z: 0.17}
-    AimRecoil: {x: -0.25, y: 0.25, z: 0.08}
-    Snappiness: 3.3264465
-    ReturnSpeed: 2.5486712
-    IsAutomatic: 0
-    Damage: 11.041974
-    ReloadTime: 2.2760856
-    FullReloadTime: 2.7135842
-    Range: 20.521107
-    FireRate: 200.34999
-    Accuracy: 0.10798919
-    AimAccuracy: 0.061808795
-    AccuracyDistance: 100
-    AmmoType: 3
-    Scoping: 1
-  Magazine:
-    BulletsMax: 10
-    BulletsLeft: 0
-  PossibleAttachments: 
-  DefaultAttachments: 
-  WeaponPrefab: {fileID: 2117939424415251141, guid: ca23dfcd1ff72804a8a18a7a01e4a979,
-    type: 3}
+    _maxInContainer: 1
+    _dbId: 10
+  _durability: 0
+  _prefab: {fileID: 2117939424415251141, guid: ca23dfcd1ff72804a8a18a7a01e4a979, type: 3}
+  _weaponSpecs:
+    _damage: 11.1475315
+    _range: 20.420969
+    _fireRate: 200.20969
+  _gunSpecs:
+    _recoil: {x: -0.5, y: 0.5, z: 0.17}
+    _aimRecoil: {x: -0.25, y: 0.25, z: 0.085}
+    _snappiness: 3.3078127
+    _returnSpeed: 2.4882998
+    _isAutomatic: 0
+    _reloadTime: 2.2544153
+    _fullReloadTime: 2.707304
+    _accuracy: 0.109318696
+    _aimAccuracy: 0.061873205
+    _accuracyDistance: 100
+    _ammoType: 3
+    _scoping: 1
+    _magazineInfo:
+      BulletsMax: 10
+  _possibleAttachments: 
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0.2
+      _aimingOutTime: 0.2
+      _scopeMultiplier: 1.2
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list: []

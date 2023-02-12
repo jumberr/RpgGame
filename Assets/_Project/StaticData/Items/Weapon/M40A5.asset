@@ -20,59 +20,50 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: DefaultScopeData
-      Entry: 7
-      Data: 0|_Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments.ScopeSettings,
-        Assembly-CSharp
-    - Name: AimingInTime
-      Entry: 4
-      Data: 0.5
-    - Name: AimingOutTime
-      Entry: 4
-      Data: 0.5
-    - Name: ScopeMultiplier
-      Entry: 4
-      Data: 1.2
-    - Name: 
-      Entry: 8
-      Data: 
-  ItemUIData:
-    Name: 3
-    Icon: {fileID: 21300000, guid: f085544878ed9bf4fbe1634dabd8ee30, type: 3}
-    Description: An army sniper rifle that has been on the market for more than fifty
-      years and has earned its reputation for exceptional reliability and ease of
-      use. The rifle is normally used by the army to improve the effective range
+    SerializationNodes: []
+  _uiInfo:
+    _name: 3
+    _icon: {fileID: 21300000, guid: f085544878ed9bf4fbe1634dabd8ee30, type: 3}
+    _description: An army sniper rifle that has been on the market for more than
+      fifty years and has earned its reputation for exceptional reliability and ease
+      of use. The rifle is normally used by the army to improve the effective range
       of its units. Soldiers respect this weapon for its armor-piercing properties,
       which allow it to penetrate army body armor.
-  ItemPayloadData:
-    DbId: 17
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 1896483440669827849, guid: 3fc481a36e8775147841a072fec3b3a9,
+  _payloadInfo:
+    _itemType: 2
+    _actions: 00000000010000000200000003000000
+    _groundPrefab: {fileID: 4211560879013578904, guid: 3fc481a36e8775147841a072fec3b3a9,
       type: 3}
-    MaxInContainer: 1
-  Durability: 0
-  WeaponData:
-    Recoil: {x: -5, y: 5, z: 1}
-    AimRecoil: {x: -2, y: 2, z: 0.35}
-    Snappiness: 7.9930973
-    ReturnSpeed: 2.7431152
-    IsAutomatic: 0
-    Damage: 100
-    ReloadTime: 1.5833797
-    FullReloadTime: 2.859417
-    Range: 100
-    FireRate: 39.933872
-    Accuracy: 0.4336825
-    AimAccuracy: 0.027781136
-    AccuracyDistance: 100
-    AmmoType: 2
-    Scoping: 1
-  Magazine:
-    BulletsMax: 5
-    BulletsLeft: 0
-  PossibleAttachments: 
-  DefaultAttachments: 
-  WeaponPrefab: {fileID: 2089622913178447811, guid: 25f066bd7c242274db8f3beb13c4df25,
-    type: 3}
+    _maxInContainer: 1
+    _dbId: 14
+  _durability: 0
+  _prefab: {fileID: 2089622913178447811, guid: 25f066bd7c242274db8f3beb13c4df25, type: 3}
+  _weaponSpecs:
+    _damage: 100
+    _range: 100
+    _fireRate: 40.307076
+  _gunSpecs:
+    _recoil: {x: -5, y: 5, z: 1}
+    _aimRecoil: {x: -2.5, y: 2.5, z: 0.5}
+    _snappiness: 8.00923
+    _returnSpeed: 2.7039611
+    _isAutomatic: 0
+    _reloadTime: 1.6397804
+    _fullReloadTime: 2.86905
+    _accuracy: 0.40908793
+    _aimAccuracy: 0.023054168
+    _accuracyDistance: 100
+    _ammoType: 2
+    _scoping: 1
+    _magazineInfo:
+      BulletsMax: 5
+  _possibleAttachments: 
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0.2
+      _aimingOutTime: 0.2
+      _scopeMultiplier: 1.2
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list: []

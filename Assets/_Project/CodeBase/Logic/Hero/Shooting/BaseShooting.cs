@@ -36,10 +36,10 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         public void SetupFirePoint(Transform firePoint) => 
             FirePoint = firePoint;
 
-        public void SetupConfig(float range, float accuracyDistance, float aimAccuracy, float accuracy, float damage)
+        public void SetupConfig(float damage, float range, float accuracyDistance, float aimAccuracy, float accuracy)
         {
-            Range = range;
             Damage = damage;
+            Range = range;
             _accuracyDistance = accuracyDistance;
             _aimAccuracy = aimAccuracy;
             _accuracy = accuracy;

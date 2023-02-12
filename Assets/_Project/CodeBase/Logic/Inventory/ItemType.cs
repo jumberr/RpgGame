@@ -2,9 +2,11 @@
 {
     public enum ItemType
     {
+        None,
         Ammo,
         Weapon,
         Armor,
-        Food
+        Food,
+        Attachment = 5
     }
 }

@@ -1,5 +1,4 @@
 ﻿using _Project.CodeBase.StaticData;
-using _Project.CodeBase.StaticData.ItemsDataBase;
 using _Project.CodeBase.StaticData.UI;
 using _Project.CodeBase.UI.Services.Windows;
 using Cysharp.Threading.Tasks;
@@ -16,7 +15,7 @@ namespace _Project.CodeBase.Infrastructure.Services.StaticData
         ProjectSettings ForProjectSettings();
         ExceptionWindows ForWindowService();
         PlayerStaticData ForPlayer();
-        ItemsDataBase ForInventory();
+        ItemsInfo ForInventory();
         WindowConfig ForWindow(WindowId windowId);
     }
 }

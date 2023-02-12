@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Project.CodeBase.UI.Windows.Inventory
+namespace _Project.CodeBase.UI
 {
     public class InventoryActionUI : MonoBehaviour
     {

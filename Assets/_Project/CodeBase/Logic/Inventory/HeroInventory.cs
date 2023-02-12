@@ -3,8 +3,8 @@ using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.HeroWeapon;
-using _Project.CodeBase.StaticData.ItemsDataBase;
-using _Project.CodeBase.StaticData.ItemsDataBase.Types;
+using _Project.CodeBase.Logic.Interaction;
+using _Project.CodeBase.StaticData;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Inventory
@@ -14,22 +14,20 @@ namespace _Project.CodeBase.Logic.Inventory
         [SerializeField] private WeaponController _weaponController;
         
         private IStaticDataService _staticDataService;
-        private ItemsDataBase _itemsDataBase;
+        private ItemsInfo _itemsInfo;
         private Inventory _inventory;
-        
+
         public event Action OnUpdate;
         public event Action<int> OnDrop;
-        public event Action<GameObject, int> OnSpawn;
+        public event Action<InventorySlot, InteractableGroundItem> OnItemPickup;
+        public event Action<CommonItemPart> OnSpawnItemAtMap;
 
-        public ItemsDataBase ItemsDataBase => _itemsDataBase;
+        public ItemsInfo ItemsInfo => _itemsInfo;
         public Inventory Inventory => _inventory;
-        public int ErrorIndex => Inventory.ErrorIndex;
+        private int ErrorIndex => Inventory.ErrorIndex;
 
-        public void Construct(IStaticDataService staticDataService)
-        {
-            _staticDataService = staticDataService;
-            _itemsDataBase = _staticDataService.ForInventory();
-        }
+        public void Construct(ItemsInfo itemsInfo) => 
+            _itemsInfo = itemsInfo;
 
         public InventorySlot GetSlot(int index) => 
             Inventory.Slots[index];
@@ -42,29 +40,41 @@ namespace _Project.CodeBase.Logic.Inventory
 
         public void EquipItem(int slotID)
         {
-            var dbId = _inventory.Slots[slotID].DbId;
-            var item = _itemsDataBase.FindItem(dbId);
-            if (item is Weapon weapon) 
-                EquipWeapon(weapon, slotID);
-            if (item is Knife knife) 
+            var slot = _inventory.Slots[slotID];
+            var info = _itemsInfo.FindItem(slot.ID);
+            
+            if (info is GunInfo weapon) 
+                EquipWeapon(slotID, slot.CommonItemPart, weapon);
+            if (info is KnifeInfo knife) 
                 EquipWeapon(knife, slotID);
-            if (item is Armor armor) 
-                EquipArmor(armor);
+            //if (item is ArmorInfo armor) 
+            //    EquipArmor(armor);
         }
 
-        public int AddItemWithReturnAmount(int dbID, ItemPayloadData data, int amount)
+        public void AddItem(InteractableGroundItem interactable)
         {
-            var amountNotStored = _inventory.AddItemWithReturnAmount(dbID, data, amount);
+            var groundItem = interactable.ItemGround;
+            
+            var payloadData = _itemsInfo.FindItem(groundItem.DbID).PayloadInfo;
+            var amountNotStored = _inventory.AddItemWithReturnAmount(groundItem.DbID, payloadData, groundItem.Amount);
+            if (amountNotStored == 0)
+            {
+                interactable.SetPickUpStatus(true);
+                var slot = _inventory.FindSlot(groundItem.DbID, groundItem.Amount);
+                OnItemPickup?.Invoke(slot, interactable);
+            }
+            else
+            {
+                groundItem.UpdateAmount(amountNotStored);
+                Debug.Log("Inventory is full!");
+            }
+
             OnUpdate?.Invoke();
-            return amountNotStored;
         }
-        
-        public void RemoveItem(ItemName itemName, int amount) => 
-            RemoveItem(ItemsDataBase.FindIndex(itemName), amount);
 
-        public void RemoveItem(int dbID, int amount)
+        public void RemoveItem(ItemName itemName, int amount)
         {
-            _inventory.RemoveItemFromInventory(dbID, amount);
+            _inventory.RemoveItemFromInventory(ItemsInfo.FindIndex(itemName), amount);
             OnUpdate?.Invoke();
         }
 
@@ -74,39 +84,42 @@ namespace _Project.CodeBase.Logic.Inventory
             if (index == ErrorIndex) return;
             RemoveItemFromSlot(index);
         }
-        
+
         public void DropItemFromSlot(int slotId)
         {
-            SpawnGroundItem(_inventory.Slots[slotId].DbId, 1);
+            var slot = _inventory.Slots[slotId];
+            SpawnGroundItem(new CommonItemPart(slot.ID, 1, slot.CommonItemPart.Item));
             RemoveItemFromSlot(slotId);
         }
 
         public void DropAllItemsFromSlot(int slotId)
         {
-            var slot = _inventory.Slots[slotId];
-            SpawnGroundItem(slot.DbId, slot.Amount);
+            SpawnGroundItem(_inventory.Slots[slotId].CommonItemPart);
             RemoveAllItemsFromSlot(slotId);
         }
+
+        public void SetItemInSlot(InventorySlot slot, BaseItem data) => 
+            slot.CommonItemPart.Item = data;
 
         public int FindItemAmount(ItemName itemName)
         {
             var count = 0;
-            var dbIndex = _itemsDataBase.FindIndex(itemName);
+            var dbIndex = _itemsInfo.FindIndex(itemName);
             foreach (var slot in _inventory.Slots)
-                if (slot.DbId == dbIndex) 
-                    count += slot.Amount;
+                if (slot.ID == dbIndex) 
+                    count += slot.CommonItemPart.Amount;
             return count;
         }
 
         public int FindFirstItemIndex(ItemName itemName)
         {
-            var dbIndex = _itemsDataBase.FindIndex(itemName);
+            var dbIndex = _itemsInfo.FindIndex(itemName);
             foreach (var slot in _inventory.Slots)
-                if (slot.DbId == dbIndex)
-                    return slot.DbId;
+                if (slot.ID == dbIndex)
+                    return slot.ID;
             return ErrorIndex;
         }
-        
+
         public int FindIndex(InventorySlot slot) => 
             slot != null 
                 ? Array.IndexOf(Inventory.Slots, slot) 
@@ -118,27 +131,31 @@ namespace _Project.CodeBase.Logic.Inventory
         private void RemoveItemFromSlot(int id)
         {
             _inventory.RemoveItemFromSlot(id);
-            OnUpdate?.Invoke();
-            OnDrop?.Invoke(id);
+            InvokeRemoveEvents(id);
         }
 
         private void RemoveAllItemsFromSlot(int id)
         {
             _inventory.RemoveAllItemsFromSlot(id);
+            InvokeRemoveEvents(id);
+        }
+
+        private void InvokeRemoveEvents(int id)
+        {
             OnUpdate?.Invoke();
             OnDrop?.Invoke(id);
         }
 
-        private void SpawnGroundItem(int dbId, int amount) => 
-            OnSpawn?.Invoke(_itemsDataBase.FindItem(dbId).ItemPayloadData.GroundPrefab, amount);
+        private void SpawnGroundItem(CommonItemPart part) => 
+            OnSpawnItemAtMap?.Invoke(part);
 
-        private async void EquipWeapon(Weapon weapon, int slotID) => 
-            await _weaponController.CreateNewWeapon(weapon.WeaponPrefab, weapon, slotID);
+        private async void EquipWeapon(int slotID, CommonItemPart item, GunInfo gunInfo) => 
+            await _weaponController.CreateNewWeapon(slotID, item, gunInfo, gunInfo.Prefab);
 
-        private async void EquipWeapon(Knife weapon, int slotID) => 
-            await _weaponController.CreateNewMeleeWeapon(weapon.Prefab, weapon, slotID);
+        private async void EquipWeapon(KnifeInfo knifeInfo, int slotID) => 
+            await _weaponController.CreateNewMeleeWeapon(knifeInfo.Prefab, knifeInfo, slotID);
 
-        private void EquipArmor(Armor armor)
+        private void EquipArmor(ArmorInfo armorInfo)
         {
             
         }

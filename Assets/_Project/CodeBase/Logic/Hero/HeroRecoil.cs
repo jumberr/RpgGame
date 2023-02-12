@@ -1,6 +1,5 @@
 ﻿using _Project.CodeBase.Logic.Hero.State;
-using _Project.CodeBase.Logic.HeroWeapon;
-using _Project.CodeBase.StaticData.ItemsDataBase.Types;
+using _Project.CodeBase.StaticData;
 using NTC.Global.Cache;
 using UnityEngine;
 
@@ -18,15 +17,15 @@ namespace _Project.CodeBase.Logic.Hero
         private Vector3 _currentRotation;
         private Vector3 _targetRotation;
 
-        public void Construct(Weapon weapon)
+        public void Construct(GunInfo gunInfo)
         {
-            _recoil = weapon.WeaponData.Recoil;
-            _aimRecoil = weapon.WeaponData.AimRecoil;
-            _snappiness = weapon.WeaponData.Snappiness;
-            _returnSpeed = weapon.WeaponData.ReturnSpeed;
+            _recoil = gunInfo.GunSpecs.Recoil;
+            _aimRecoil = gunInfo.GunSpecs.AimRecoil;
+            _snappiness = gunInfo.GunSpecs.Snappiness;
+            _returnSpeed = gunInfo.GunSpecs.ReturnSpeed;
         }
         
-        public void Construct(Knife knife)
+        public void Construct(KnifeInfo knifeInfo)
         {
             _recoil = Vector3.zero;
             _aimRecoil = Vector3.zero;

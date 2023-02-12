@@ -43,9 +43,16 @@ namespace _Project.CodeBase.Logic.Hero
         public void Construct(InputService inputService, IStaticDataService staticDataService, Action zeroHealthAction)
         {
             _inputService = inputService;
-            _inventory.Construct(staticDataService);
-            _death.ZeroHealth += zeroHealthAction;
+            SetupItemDatabase(staticDataService);
             SetupInputService(_inputService);
+            _death.ZeroHealth += zeroHealthAction;
+        }
+
+        private void SetupItemDatabase(IStaticDataService staticDataService)
+        {
+            var itemsDataBase = staticDataService.ForInventory();
+            _inventory.Construct(itemsDataBase);
+            _weaponController.Construct(itemsDataBase);
         }
 
         private void SetupInputService(InputService inputService)

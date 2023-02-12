@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.StaticData;
-using _Project.CodeBase.StaticData.ItemsDataBase;
 using _Project.CodeBase.StaticData.UI;
 using _Project.CodeBase.UI.Services.Windows;
 using Cysharp.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace _Project.CodeBase.Infrastructure.Services.StaticData
         private ExceptionWindows _exceptionWindows;
         private PlayerStaticData _playerStaticData;
         private Dictionary<WindowId, WindowConfig> _windowConfigs;
-        private ItemsDataBase _itemsDataBase;
+        private ItemsInfo _itemsInfo;
 
         public StaticDataService(IAssetProvider assetProvider) => 
             _assetProvider = assetProvider;
@@ -29,7 +28,7 @@ namespace _Project.CodeBase.Infrastructure.Services.StaticData
             _playerStaticData = await _assetProvider.Load<PlayerStaticData>(StaticDataPath.PlayerDataPath);
 
         public async UniTask LoadItemsDataBase() => 
-            _itemsDataBase = await _assetProvider.Load<ItemsDataBase>(StaticDataPath.ItemsDataBase);
+            _itemsInfo = await _assetProvider.Load<ItemsInfo>(StaticDataPath.ItemsInfo);
 
         public async UniTask LoadUIWindowConfig()
         {
@@ -50,8 +49,8 @@ namespace _Project.CodeBase.Infrastructure.Services.StaticData
         public PlayerStaticData ForPlayer() => 
             _playerStaticData;
 
-        public ItemsDataBase ForInventory() => 
-            _itemsDataBase;
+        public ItemsInfo ForInventory() => 
+            _itemsInfo;
 
         public WindowConfig ForWindow(WindowId windowId) => 
             _windowConfigs[windowId];

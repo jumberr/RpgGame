@@ -7,9 +7,9 @@ namespace _Project.CodeBase.Logic.Hero
 {
     public class HeroHealth : MonoBehaviour, IHealth, ISavedProgress
     {
-        public event Action HealthChanged;
         private HealthData _healthData;
-        
+        public event Action HealthChanged;
+
         public float Current
         {
             get => _healthData.CurrentHp;

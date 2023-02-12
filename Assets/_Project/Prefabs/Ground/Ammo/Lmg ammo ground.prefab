@@ -429,6 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxRange: 3
+  _itemGround: {fileID: 7009793078235184260}
 --- !u!1 &4556303895688688430
 GameObject:
   m_ObjectHideFlags: 0

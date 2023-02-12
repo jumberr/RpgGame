@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace _Project.CodeBase.UI.Animation
+namespace _Project.CodeBase.UI
 {
     public class SimpleScaleUIAnimation : MonoBehaviour
     {

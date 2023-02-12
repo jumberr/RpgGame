@@ -20,57 +20,48 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: DefaultScopeData
-      Entry: 7
-      Data: 0|_Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments.ScopeSettings,
-        Assembly-CSharp
-    - Name: AimingInTime
-      Entry: 4
-      Data: 0.5
-    - Name: AimingOutTime
-      Entry: 4
-      Data: 0.5
-    - Name: ScopeMultiplier
-      Entry: 4
-      Data: 1.2
-    - Name: 
-      Entry: 8
-      Data: 
-  ItemUIData:
-    Name: 9
-    Icon: {fileID: 21300000, guid: a16040381df404344816ef107b7eb392, type: 3}
-    Description: "An excellent pistol. Highly reliable with a high capacity magazine
+    SerializationNodes: []
+  _uiInfo:
+    _name: 9
+    _icon: {fileID: 21300000, guid: a16040381df404344816ef107b7eb392, type: 3}
+    _description: An excellent pistol. Highly reliable with a high capacity magazine
       and a good fire accuracy, especially in the case of the model designed for
-      the 9 mm FMJ round.\r"
-  ItemPayloadData:
-    DbId: 15
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 7401590430147484586, guid: a38c357a203f8384680376573cb90672,
+      the 9 mm FMJ round.
+  _payloadInfo:
+    _itemType: 2
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: 6585504469280423081, guid: a38c357a203f8384680376573cb90672,
       type: 3}
-    MaxInContainer: 1
-  Durability: 0
-  WeaponData:
-    Recoil: {x: -0.6, y: 0.6, z: 0.3}
-    AimRecoil: {x: -3, y: 0.3, z: 0.15}
-    Snappiness: 3.3264465
-    ReturnSpeed: 2.3056169
-    IsAutomatic: 0
-    Damage: 7.8822627
-    ReloadTime: 2.166711
-    FullReloadTime: 2.203169
-    Range: 30.000242
-    FireRate: 244.09984
-    Accuracy: 0.1395863
-    AimAccuracy: 0.06910044
-    AccuracyDistance: 100
-    AmmoType: 3
-    Scoping: 1
-  Magazine:
-    BulletsMax: 15
-    BulletsLeft: 0
-  PossibleAttachments: 
-  DefaultAttachments: 
-  WeaponPrefab: {fileID: 2932715034025936234, guid: 77fa285f15caf4241b71fc1da4a0fcab,
-    type: 3}
+    _maxInContainer: 1
+    _dbId: 12
+  _durability: 0
+  _prefab: {fileID: 2932715034025936234, guid: 77fa285f15caf4241b71fc1da4a0fcab, type: 3}
+  _weaponSpecs:
+    _damage: 7.912611
+    _range: 29.910067
+    _fireRate: 204.20969
+  _gunSpecs:
+    _recoil: {x: -0.6, y: 0.6, z: 0.3}
+    _aimRecoil: {x: -0.3, y: 0.3, z: 0.15}
+    _snappiness: 3.3078127
+    _returnSpeed: 2.2726386
+    _isAutomatic: 0
+    _reloadTime: 2.1573675
+    _fullReloadTime: 2.1573675
+    _accuracy: 0.13951129
+    _aimAccuracy: 0.07049966
+    _accuracyDistance: 84.9037
+    _ammoType: 3
+    _scoping: 1
+    _magazineInfo:
+      BulletsMax: 15
+  _possibleAttachments: 
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0.2
+      _aimingOutTime: 0.2
+      _scopeMultiplier: 1.2
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list: []

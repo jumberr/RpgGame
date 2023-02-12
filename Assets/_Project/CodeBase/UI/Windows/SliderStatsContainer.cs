@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Project.CodeBase.UI.Windows
+namespace _Project.CodeBase
 {
     public class SliderStatsContainer : BaseStatsContainer
     {

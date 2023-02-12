@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
@@ -6,54 +7,52 @@ using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.UI.Services;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.CodeBase.Infrastructure.Factory
 {
-    public class GameFactory : IGameFactory
+    public class GameFactory : IGameFactory, IDisposable
     {
         private readonly IAssetProvider _assetProvider;
         private readonly IUIFactory _uiFactory;
         private readonly IStaticDataService _staticDataService;
         private readonly HeroFacade.Factory _heroFactory;
+        private readonly InteractableSpawner _interactableSpawner;
         private readonly InputService _inputService;
-        private InteractableSpawner _interactableSpawner;
         private HeroFacade _heroFacade;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
         public HeroFacade HeroFacade => _heroFacade;
-
-        private GameObject HeroGameObject { get; set; }
-
+        
         public GameFactory(
             IAssetProvider assetProvider,
             IUIFactory uiFactory,
             IStaticDataService staticDataService,
             HeroFacade.Factory heroFactory,
+            InteractableSpawner spawner,
             InputService inputService)
         {
-            _heroFactory = heroFactory;
             _assetProvider = assetProvider;
             _uiFactory = uiFactory;
             _staticDataService = staticDataService;
+            _heroFactory = heroFactory;
+            _interactableSpawner = spawner;
             _inputService = inputService;
         }
+
+        public void Dispose() => 
+            Cleanup();
 
         public void CreateHero()
         {
             _heroFacade = _heroFactory.Create();
-            HeroGameObject = _heroFacade.gameObject;
-            RegisterProgressWatchers(HeroGameObject);
+            RegisterProgressWatchers(_heroFacade.gameObject);
             _heroFacade.Construct(_inputService, _staticDataService, _uiFactory.CreateDeathScreen);
         }
 
-        public async UniTask CreateInteractableSpawner()
-        {
-            _interactableSpawner = await _assetProvider.InstantiateComponentAsync<InteractableSpawner>(AssetPath.InteractableSpawner);
-            _interactableSpawner.Construct(_heroFacade.Inventory);
-        }
+        public void SetupInteractableSpawner() => 
+            _interactableSpawner.Setup(_heroFacade.Inventory);
 
         public void AddProgressWatchers(GameObject go) => 
             RegisterProgressWatchers(go);
@@ -62,18 +61,10 @@ namespace _Project.CodeBase.Infrastructure.Factory
         {
             ProgressReaders.Clear();
             ProgressWriters.Clear();
-            _assetProvider.CleanUp();
+            _assetProvider.Cleanup();
         }
 
-        public void WarmUp() { }
-
-        private void RegisterProgressWatchers(GameObject go)
-        {
-            foreach (var progressReader in go.GetComponentsInChildren<ISavedProgressReader>())
-                Register(progressReader);
-        }
-
-        private void Register(ISavedProgressReader progressReader)
+        public void Register(ISavedProgressReader progressReader)
         {
             if (progressReader is ISavedProgress progressWriter)
                 ProgressWriters.Add(progressWriter);
@@ -81,11 +72,10 @@ namespace _Project.CodeBase.Infrastructure.Factory
             ProgressReaders.Add(progressReader);
         }
 
-        private GameObject InstantiateAndRegister(GameObject prefab)
+        private void RegisterProgressWatchers(GameObject go)
         {
-            var instance = Object.Instantiate(prefab);
-            RegisterProgressWatchers(instance);
-            return instance;
+            foreach (var progressReader in go.GetComponentsInChildren<ISavedProgressReader>())
+                Register(progressReader);
         }
     }
 }

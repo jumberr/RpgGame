@@ -7,18 +7,21 @@ namespace _Project.CodeBase.Data
     public class PlayerProgress
     {
         public HealthData HealthData;
-        public PositionData PositionData;
+        public GameObjectData GameObjectData;
+        public MapData MapData;
         public Inventory Inventory;
         public SettingsData Settings;
 
         public PlayerProgress(
             HealthData healthData,
-            PositionData positionData,
+            GameObjectData gameObjectData,
+            MapData mapData,
             Inventory inventory,
             SettingsData settings)
         {
             HealthData = healthData;
-            PositionData = positionData;
+            GameObjectData = gameObjectData;
+            MapData = mapData;
             Inventory = inventory;
             Settings = settings;
         }

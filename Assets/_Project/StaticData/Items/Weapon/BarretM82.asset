@@ -20,58 +20,49 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: DefaultScopeData
-      Entry: 7
-      Data: 0|_Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments.ScopeSettings,
-        Assembly-CSharp
-    - Name: AimingInTime
-      Entry: 4
-      Data: 0.5
-    - Name: AimingOutTime
-      Entry: 4
-      Data: 0.5
-    - Name: ScopeMultiplier
-      Entry: 4
-      Data: 1.2
-    - Name: 
-      Entry: 8
-      Data: 
-  ItemUIData:
-    Name: 5
-    Icon: {fileID: 21300000, guid: 2515e8a57ac94cd4fa9e3b5fd27a665d, type: 3}
-    Description: A modernized version of the sniper rifle in a compact bullpup design
+    SerializationNodes: []
+  _uiInfo:
+    _name: 5
+    _icon: {fileID: 21300000, guid: 2515e8a57ac94cd4fa9e3b5fd27a665d, type: 3}
+    _description: A modernized version of the sniper rifle in a compact bullpup design
       made on the order of rapid response forces. It allows faster precision fire
       and is considerably lighter, while its single shot firing accuracy at short
       and medium range is similar to that of its predecessor.
-  ItemPayloadData:
-    DbId: 12
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 8252672009285812156, guid: 1c4b4730ef4d7eb49a0e5f29222f88de,
+  _payloadInfo:
+    _itemType: 2
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: 3705053751490629314, guid: 1c4b4730ef4d7eb49a0e5f29222f88de,
       type: 3}
-    MaxInContainer: 1
-  Durability: 0
-  WeaponData:
-    Recoil: {x: -2, y: 2, z: 0.28}
-    AimRecoil: {x: -1.23, y: 1.23, z: 0.16}
-    Snappiness: 7.312544
-    ReturnSpeed: 2.4514494
-    IsAutomatic: 0
-    Damage: 100
-    ReloadTime: 1.7292125
-    FullReloadTime: 2.3854601
-    Range: 100
-    FireRate: 52.086605
-    Accuracy: 0.6086819
-    AimAccuracy: 0.022920042
-    AccuracyDistance: 100
-    AmmoType: 2
-    Scoping: 1
-  Magazine:
-    BulletsMax: 10
-    BulletsLeft: 0
-  PossibleAttachments: 
-  DefaultAttachments: 
-  WeaponPrefab: {fileID: 1263574551393705365, guid: dad35b25036a5d14eaa63dc28af916ee,
-    type: 3}
+    _maxInContainer: 1
+    _dbId: 9
+  _durability: 0
+  _prefab: {fileID: 1263574551393705365, guid: dad35b25036a5d14eaa63dc28af916ee, type: 3}
+  _weaponSpecs:
+    _damage: 100
+    _range: 100
+    _fireRate: 53.246754
+  _gunSpecs:
+    _recoil: {x: -2, y: 2, z: 0.28}
+    _aimRecoil: {x: -1, y: 1, z: 0.14}
+    _snappiness: 7.2759814
+    _returnSpeed: 2.5314322
+    _isAutomatic: 0
+    _reloadTime: 1.6721296
+    _fullReloadTime: 2.416161
+    _accuracy: 0.620436
+    _aimAccuracy: 0.023054168
+    _accuracyDistance: 100
+    _ammoType: 2
+    _scoping: 1
+    _magazineInfo:
+      BulletsMax: 10
+  _possibleAttachments: 
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0.2
+      _aimingOutTime: 0.2
+      _scopeMultiplier: 1.2
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list: []

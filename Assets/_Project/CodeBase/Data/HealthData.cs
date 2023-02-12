@@ -3,7 +3,7 @@ using System;
 namespace _Project.CodeBase.Data
 {
     [Serializable]
-    public class HealthData
+    public struct HealthData
     {
         public float CurrentHp;
         public float MaxHp;

@@ -1,12 +1,12 @@
 ﻿using System;
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
-using _Project.CodeBase.UI.Animation;
+using _Project.CodeBase.UI;
 using _Project.CodeBase.UI.Services.Windows;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace _Project.CodeBase.UI.Windows
+namespace _Project.CodeBase
 {
     public abstract class WindowBase : MonoBehaviour
     {

@@ -1,17 +1,19 @@
 ﻿using System;
+using _Project.CodeBase.Data;
 
 namespace _Project.CodeBase.Logic.Inventory
 {
     [Serializable]
     public class InventorySlot
     {
-        public int DbId;
-        public int Amount;
+        public CommonItemPart CommonItemPart;
         public SlotState State;
 
+        public int ID => CommonItemPart.DbId;
+        
         public InventorySlot()
         {
-            DbId = -1;
+            CommonItemPart = new CommonItemPart();
             State = SlotState.Empty;
         }
     }

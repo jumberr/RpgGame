@@ -5,7 +5,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Project.CodeBase.UI.Windows.Inventory
+namespace _Project.CodeBase.UI
 {
     public class InventoryUI : WindowBase, ISlotHolderUI
     {
@@ -56,10 +56,10 @@ namespace _Project.CodeBase.UI.Windows.Inventory
 
         public void HandleClick(InventorySlotUI slotUI)
         {
-            var dbId = _heroInventory.GetSlot(slotUI.SlotID).DbId;
+            var dbId = _heroInventory.GetSlot(slotUI.SlotID).ID;
             if (dbId == -1) return;
-            var item = _heroInventory.ItemsDataBase.FindItem(dbId);
-            _context.InitializeContext(item.ItemPayloadData.Actions, slotUI);
+            var item = _heroInventory.ItemsInfo.FindItem(dbId);
+            _context.InitializeContext(item.PayloadInfo.Actions, slotUI);
             
             _itemDescription.UpdateView(item, slotUI.SlotID);
         }

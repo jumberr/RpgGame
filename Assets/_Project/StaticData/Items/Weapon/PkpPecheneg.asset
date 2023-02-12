@@ -20,58 +20,48 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: DefaultScopeData
-      Entry: 7
-      Data: 0|_Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments.ScopeSettings,
-        Assembly-CSharp
-    - Name: AimingInTime
-      Entry: 4
-      Data: 0.5
-    - Name: AimingOutTime
-      Entry: 4
-      Data: 0.5
-    - Name: ScopeMultiplier
-      Entry: 4
-      Data: 1.2
-    - Name: 
-      Entry: 8
-      Data: 
-  ItemUIData:
-    Name: 15
-    Icon: {fileID: 21300000, guid: 39648fc2c4ca73b47a97effe3cb1a322, type: 3}
-    Description: This belt-fed machine gun is a portable modification with a complex
+    SerializationNodes: []
+  _uiInfo:
+    _name: 15
+    _icon: {fileID: 21300000, guid: 39648fc2c4ca73b47a97effe3cb1a322, type: 3}
+    _description: This belt-fed machine gun is a portable modification with a complex
       two-stage feeding system. Despite its weight and low precision, this LMG has
       found admirers. Used primarily to fight off outnumbering enemy forces during
       faction conflicts.
-  ItemPayloadData:
-    DbId: 20
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 1758759497113259200, guid: b6779cb2202d5fc43bcf4ba822ab8a63,
-      type: 3}
-    MaxInContainer: 1
-  Durability: 0
-  WeaponData:
-    Recoil: {x: -3, y: 3, z: 0.45}
-    AimRecoil: {x: -1.5, y: 1.5, z: 0.225}
-    Snappiness: 8.527817
-    ReturnSpeed: 2.013951
-    IsAutomatic: 1
-    Damage: 17.118341
-    ReloadTime: 5.666699
-    FullReloadTime: 5.666699
-    Range: 52.118225
-    FireRate: 360.76608
-    Accuracy: 0.30000243
-    AimAccuracy: 0.12743357
-    AccuracyDistance: 100
-    AmmoType: 0
-    Scoping: 1
-  Magazine:
-    BulletsMax: 100
-    BulletsLeft: 0
-  PossibleAttachments: 
-  DefaultAttachments: 
-  WeaponPrefab: {fileID: 3106282260002605525, guid: 8ffb6268994afcc49885449d933a655f,
-    type: 3}
+  _payloadInfo:
+    _itemType: 2
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: 1760675013, guid: b6779cb2202d5fc43bcf4ba822ab8a63, type: 3}
+    _maxInContainer: 1
+    _dbId: 17
+  _durability: 0
+  _prefab: {fileID: 3106282260002605525, guid: 8ffb6268994afcc49885449d933a655f, type: 3}
+  _weaponSpecs:
+    _damage: 16.970387
+    _range: 52.338844
+    _fireRate: 361.64246
+  _gunSpecs:
+    _recoil: {x: -3, y: 3, z: 0.45}
+    _aimRecoil: {x: -1.5, y: 1.5, z: 0.22}
+    _snappiness: 8.526817
+    _returnSpeed: 2.013845
+    _isAutomatic: 0
+    _reloadTime: 5.7481284
+    _fullReloadTime: 5.7481284
+    _accuracy: 0.3055705
+    _aimAccuracy: 0.12872821
+    _accuracyDistance: 100
+    _ammoType: 0
+    _scoping: 1
+    _magazineInfo:
+      BulletsMax: 100
+  _possibleAttachments: 
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0.2
+      _aimingOutTime: 0.2
+      _scopeMultiplier: 1.2
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list: []

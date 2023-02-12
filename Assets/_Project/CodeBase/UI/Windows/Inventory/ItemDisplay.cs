@@ -3,7 +3,7 @@ using _Project.CodeBase.UI.Elements.SpecificButtonLogic;
 using TMPro;
 using UnityEngine;
 
-namespace _Project.CodeBase.UI.Windows.Inventory
+namespace _Project.CodeBase.UI
 {
     public class ItemDisplay : MonoBehaviour
     {
@@ -25,7 +25,7 @@ namespace _Project.CodeBase.UI.Windows.Inventory
             _slot = slot;
             _events = events;
             _clickable.Construct(slot, _events.Click);
-            CreateDraggableElement(_slot.SlotData.DbId);
+            CreateDraggableElement(_slot.SlotData.ID);
         }
 
         public void UpdateSlot(int dbId, Sprite icon, string text)

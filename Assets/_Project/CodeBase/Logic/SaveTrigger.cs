@@ -24,7 +24,6 @@ namespace _Project.CodeBase.Logic
             _saved = true;
             _saveLoadService.SaveProgress();
             ResetAbilityToSave().Forget();
-            Debug.Log("Progress Saved");
         }
 
         private void OnDrawGizmos()

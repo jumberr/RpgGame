@@ -1,8 +1,7 @@
 ﻿using System;
 using _Project.CodeBase.Logic.Hero.State;
-using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Inventory;
-using _Project.CodeBase.StaticData.ItemsDataBase.Types;
+using _Project.CodeBase.StaticData;
 using _Project.CodeBase.Utils.Extensions;
 using UnityEngine;
 
@@ -11,27 +10,31 @@ namespace _Project.CodeBase.Logic.Hero
     public class HeroAmmo : MonoBehaviour
     {
         [SerializeField] private HeroInventory _inventory;
+
+        private MagazineData _magazineData;
         private int _bulletMaxMagazine;
-        private AmmoType _type;
         private ItemName _itemName;
-        
+
         public event Action<int, int> OnUpdateAmmo;
         public event Action<int, int, Sprite> OnChangeWeapon;
         public event Action OnHideWeapon;
 
-        public int BulletLeft { get; private set; }
-        public int BulletAll { get; private set; }
+        public MagazineData MagazineData => _magazineData;
+        private int BulletLeft => _magazineData.BulletsLeft;
+        private int BulletAll { get; set; }
 
-        public void Construct(Weapon weapon)
+        public void Construct(MagazineData magazineData, GunInfo gunInfo)
         {
-            SetupWeaponData(weapon);
+            _magazineData = magazineData;
+            
+            SetupWeaponInfo(gunInfo);
             UpdateAmmoValue();
-            var sprite = _inventory.ItemsDataBase.FindItem(_itemName).ItemUIData.Icon;
+            var sprite = _inventory.ItemsInfo.FindItem(_itemName).UIInfo.Icon;
             OnChangeWeapon?.Invoke(BulletLeft, BulletAll, sprite);
         }
         
-        public void Construct(Knife knife) => 
-            SetupKnifeData();
+        public void Construct(KnifeInfo knifeInfo) => 
+            SetupKnifeInfo();
 
         private void OnEnable() => 
             _inventory.OnUpdate += UpdateAmmoValue;
@@ -40,11 +43,11 @@ namespace _Project.CodeBase.Logic.Hero
             _inventory.OnUpdate -= UpdateAmmoValue;
 
         public bool CanShoot() => 
-            BulletLeft > 0;
+            BulletLeft > MagazineData.Empty;
 
         public void UseOneAmmo()
         {
-            BulletLeft -= 1;
+            _magazineData.BulletsLeft -= 1;
             _inventory.RemoveItemFromSlot(_itemName);
             UpdateUI();
         }
@@ -59,20 +62,20 @@ namespace _Project.CodeBase.Logic.Hero
         {
             var usedAmmo = _bulletMaxMagazine - BulletLeft;
             
-            if (usedAmmo <= 0 || BulletAll <= 0)
-                return (ReloadState.None, usedAmmo, 0);
+            if (usedAmmo <= MagazineData.Empty || BulletAll <= MagazineData.Empty)
+                return (ReloadState.None, usedAmmo, MagazineData.Empty);
 
             int grabbedFromInventory;
             if (BulletAll < usedAmmo)
             {
                 grabbedFromInventory = BulletAll;
-                BulletLeft += BulletAll;
-                BulletAll = 0;
+                _magazineData.BulletsLeft += BulletAll;
+                BulletAll = MagazineData.Empty;
             }
             else
             {
                 grabbedFromInventory = usedAmmo;
-                BulletLeft += usedAmmo;
+                _magazineData.BulletsLeft += usedAmmo;
                 BulletAll -= usedAmmo;
             }
 
@@ -83,18 +86,16 @@ namespace _Project.CodeBase.Logic.Hero
                 ReloadState.Reload, usedAmmo, grabbedFromInventory);
         }
 
-        private void SetupWeaponData(Weapon weapon)
+        private void SetupWeaponInfo(GunInfo gunInfo)
         {
-            BulletLeft = weapon.Magazine.BulletsLeft;
-            _bulletMaxMagazine = weapon.Magazine.BulletsMax;
-            _type = weapon.WeaponData.AmmoType;
-            _itemName = _type.ToItemName();
+            _bulletMaxMagazine = gunInfo.GunSpecs.MagazineInfo.BulletsMax;
+            _itemName = gunInfo.GunSpecs.AmmoType.ToItemName();
         }
         
-        private void SetupKnifeData()
+        private void SetupKnifeInfo()
         {
-            BulletLeft = 0;
-            _bulletMaxMagazine = 0;
+            _magazineData.BulletsLeft = MagazineData.Empty;
+            _bulletMaxMagazine = MagazineData.Empty;
         }
 
         private void UpdateAmmoValue()

@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c84acc8aaf04245a2fa9f524fd1e59d, type: 3}
   m_Name: PlayerStaticData
   m_EditorClassIdentifier: 
+  DefaultData:
+    Position:
+      X: 82
+      Y: 5
+      Z: 4
+    Rotation:
+      X: 0
+      Y: 0
+      Z: 0
+      W: 0
   HealthData:
     CurrentHp: 100
     MaxHp: 100

@@ -21,23 +21,24 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  ItemUIData:
-    Name: 14
-    Icon: {fileID: 21300000, guid: d4de1a0cdd0fe614383b510cfaf04376, type: 3}
-    Description: Standard hunting knife. The grip is made of a metal and synthetic
+  _uiInfo:
+    _name: 14
+    _icon: {fileID: 21300000, guid: d4de1a0cdd0fe614383b510cfaf04376, type: 3}
+    _description: Standard hunting knife. The grip is made of a metal and synthetic
       finish with the hilt sporting a bayonet lug. The other edge of the blade is
       serrated which is typically used for cutting objects rather than for combat.
-  ItemPayloadData:
-    DbId: 22
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 215372590480101995, guid: ae552448de10f7f4eb4c4ea57df4ab05,
+  _payloadInfo:
+    _itemType: 2
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: -3157743819921306630, guid: 58c0a329d11a098408d5ee1e90bcac4a,
       type: 3}
-    MaxInContainer: 1
-  Durability: 0
-  Damage: 35
-  Range: 1.5
-  FireRate: 60
-  Radius: 0.3
-  Prefab: {fileID: 4828828816598372186, guid: fafa64bbfabcd47438f9aea0e04fb277, type: 3}
-  Scoping: 0
+    _maxInContainer: 1
+    _dbId: 19
+  _durability: 0
+  _prefab: {fileID: 4828828816598372186, guid: fafa64bbfabcd47438f9aea0e04fb277, type: 3}
+  _weaponSpecs:
+    _damage: 30.143944
+    _range: 1.5664678
+    _fireRate: 60.001682
+  KnifeSpecs:
+    _radius: 0.3

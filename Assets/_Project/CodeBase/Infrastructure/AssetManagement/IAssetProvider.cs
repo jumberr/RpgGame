@@ -12,6 +12,6 @@ namespace _Project.CodeBase.Infrastructure.AssetManagement
         UniTask<T> Load<T>(AssetReferenceGameObject assetReference) where T : class;
         UniTask<T> LoadComponent<T>(string address) where T : Component;
         UniTask<T> Load<T>(string address) where T : class;
-        void CleanUp();
+        void Cleanup();
     }
 }

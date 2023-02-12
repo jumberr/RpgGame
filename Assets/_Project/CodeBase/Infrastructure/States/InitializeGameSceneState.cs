@@ -1,10 +1,10 @@
-﻿using _Project.CodeBase.Infrastructure.Factory;
+﻿using _Project.CodeBase.Data;
+using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.UI.Services.Windows;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace _Project.CodeBase.Infrastructure.States
 {
@@ -14,15 +14,18 @@ namespace _Project.CodeBase.Infrastructure.States
         private readonly IUIFactory _uiFactory;
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly IWindowService _windowService;
+        private readonly MapStorage _mapStorage;
 
         public InitializeGameSceneState(
             IGameFactory gameFactory,
             IUIFactory uiFactory,
-            IPersistentProgressService persistentProgressService)
+            IPersistentProgressService persistentProgressService,
+            MapStorage mapStorage)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFactory;
             _persistentProgressService = persistentProgressService;
+            _mapStorage = mapStorage;
         }
 
         public async UniTask Enter()
@@ -36,12 +39,15 @@ namespace _Project.CodeBase.Infrastructure.States
         private async UniTask InitializeGameWorld()
         {
             InitializePlayer();
-            await InitializeInteractableSpawner();
+            SetupComponents();
             await InitializeUI(_gameFactory.HeroFacade);
         }
 
-        private async UniTask InitializeInteractableSpawner() => 
-            await _gameFactory.CreateInteractableSpawner();
+        private void SetupComponents()
+        {
+            _gameFactory.Register(_mapStorage);
+            _gameFactory.SetupInteractableSpawner();
+        }
 
         private async UniTask InitializeUI(HeroFacade facade)
         {

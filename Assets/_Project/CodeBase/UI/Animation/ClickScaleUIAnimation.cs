@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace _Project.CodeBase.UI.Animation
+namespace _Project.CodeBase.UI
 {
     public class ClickScaleUIAnimation : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {

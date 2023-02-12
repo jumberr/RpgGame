@@ -1,5 +1,6 @@
 ﻿using System;
-using _Project.CodeBase.StaticData.ItemsDataBase;
+using System.Linq;
+using _Project.CodeBase.StaticData;
 
 namespace _Project.CodeBase.Logic.Inventory
 {
@@ -25,31 +26,32 @@ namespace _Project.CodeBase.Logic.Inventory
                 Slots[i] = new InventorySlot();
         }
 
-        public void AddItemToInventory(int dbId, ItemPayloadData item,  int amount) => 
+        public void AddItemToInventory(int dbId, ItemPayloadInfo item,  int amount) => 
             AddItemWithReturnAmount(dbId, item, amount);
 
-        public int AddItemWithReturnAmount(int dbId, ItemPayloadData item,  int amount)
+        public int AddItemWithReturnAmount(int dbId, ItemPayloadInfo item,  int amount)
         {
             while (amount > 0)
             {
                 var id = FindSlotOrEmpty(dbId);
                 if (id != ErrorIndex)
                 {
-                    Slots[id].DbId = dbId;
-                    var startAmount = Slots[id].Amount;
+                    var part = Slots[id].CommonItemPart;
+                    part.DbId = dbId;
+                    var startAmount = part.Amount;
                     var maxItems = item.MaxInContainer;
 
                     var diff = maxItems - startAmount;
                     if (diff > amount)
                     {
                         Slots[id].State = SlotState.Middle;
-                        Slots[id].Amount += amount;
+                        part.Amount += amount;
                         amount = 0;
                         return amount;
                     }
 
                     Slots[id].State = SlotState.Full;
-                    Slots[id].Amount += diff;
+                    part.Amount += diff;
                     amount -= diff;
                 }
                 else
@@ -65,17 +67,18 @@ namespace _Project.CodeBase.Logic.Inventory
                 var id = FindSlotReversed(dbId);
                 if (id != ErrorIndex)
                 {
-                    var startAmount = Slots[id].Amount;
+                    var part = Slots[id].CommonItemPart;
+                    var startAmount = part.Amount;
                     if (startAmount > amount)
                     {
-                        Slots[id].Amount -= amount;
+                        part.Amount -= amount;
                         Slots[id].State = SlotState.Middle;
                         return;
                     }
 
-                    amount -= Slots[id].Amount;
-                    Slots[id].Amount = 0;
-                    Slots[id].DbId = ErrorIndex;
+                    amount -= part.Amount;
+                    part.Amount = 0;
+                    part.DbId = ErrorIndex;
                     Slots[id].State = SlotState.Empty;
                 }
                 else
@@ -87,10 +90,10 @@ namespace _Project.CodeBase.Logic.Inventory
         {
             if (Slots.Length <= id || Slots[id].State == SlotState.Empty) return;
             
-            if (Slots[id].Amount <= 1) 
+            if (Slots[id].CommonItemPart.Amount <= 1) 
                 RemoveAllItemsFromSlot(id);
             else
-                Slots[id].Amount -= 1;
+                Slots[id].CommonItemPart.Amount -= 1;
         }
 
         public void SwapSlots(int one, int two) => 
@@ -99,16 +102,20 @@ namespace _Project.CodeBase.Logic.Inventory
         public void RemoveAllItemsFromSlot(int id)
         {
             if (Slots.Length <= id || Slots[id].State == SlotState.Empty) return;
-            Slots[id].DbId = ErrorIndex;
+            var part = Slots[id].CommonItemPart;
+            part.DbId = ErrorIndex;
+            part.Amount = 0;
             Slots[id].State = SlotState.Empty;
-            Slots[id].Amount = 0;
         }
+
+        public InventorySlot FindSlot(int id, int amount) => 
+            Slots.FirstOrDefault(slot => slot.ID == id && slot.CommonItemPart.Amount == amount);
 
         private int FindSlotOrEmpty(int dbId)
         {
             for (var i = 0; i < Slots.Length; i++)
             {
-                if (Slots[i].DbId == dbId && Slots[i].State == SlotState.Middle)
+                if (Slots[i].ID == dbId && Slots[i].State == SlotState.Middle)
                     return i;
             }
 
@@ -119,7 +126,7 @@ namespace _Project.CodeBase.Logic.Inventory
         {
             for (var i = Slots.Length - 1; i >= 0; i--)
             {
-                if (Slots[i].DbId == dbId && Slots[i].State != SlotState.Empty)
+                if (Slots[i].ID == dbId && Slots[i].State != SlotState.Empty)
                     return i;
             }
             return ErrorIndex;

@@ -21,16 +21,16 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  ItemUIData:
-    Name: 17
-    Icon: {fileID: 21300000, guid: ed6c4ecca00912c46bfee9db3fd11886, type: 3}
-    Description: 7.62-caliber high precision armor-piercing sniper round. Used with
+  _uiInfo:
+    _name: 17
+    _icon: {fileID: 21300000, guid: ed6c4ecca00912c46bfee9db3fd11886, type: 3}
+    _description: 7.62-caliber high precision armor-piercing sniper round. Used with
       the sniper rifles.
-  ItemPayloadData:
-    DbId: 5
-    ItemType: 0
-    Actions: 0200000003000000
-    GroundPrefab: {fileID: 2830024193187311214, guid: fe294fbb13f178d4596f36918d0d391d,
+  _payloadInfo:
+    _itemType: 1
+    _actions: 0200000003000000
+    _groundPrefab: {fileID: 1237556440897113397, guid: fe294fbb13f178d4596f36918d0d391d,
       type: 3}
-    MaxInContainer: 100
-  AmmoType: 2
+    _maxInContainer: 20
+    _dbId: 5
+  _ammoType: 2

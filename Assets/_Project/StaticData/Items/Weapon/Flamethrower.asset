@@ -21,37 +21,47 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  ItemUIData:
-    Name: 13
-    Icon: {fileID: 21300000, guid: eccb13442c9948f4eaf0fb49f726a904, type: 3}
-    Description: Like it says on the box, this fuel-injected incendiary device throws
+  _uiInfo:
+    _name: 13
+    _icon: {fileID: 21300000, guid: eccb13442c9948f4eaf0fb49f726a904, type: 3}
+    _description: Like it says on the box, this fuel-injected incendiary device throws
       flames in a wide arc, capable of dealing continuous damage to enemies who are
       set ablaze. Flamethrower also creates environmental chaos, which savvy fighters
       can use to their advantage.
-  ItemPayloadData:
-    DbId: 14
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 0}
-    MaxInContainer: 1
-  Durability: 0
-  WeaponData:
-    Recoil: {x: 0, y: 0, z: 0}
-    AimRecoil: {x: 0, y: 0, z: 0}
-    Snappiness: 0
-    ReturnSpeed: 0
-    IsAutomatic: 0
-    Damage: 0
-    ReloadTime: 0
-    FullReloadTime: 0
-    Range: 0
-    FireRate: 0
-    Accuracy: 0
-    AimAccuracy: 0
-    AccuracyDistance: 0
-    AmmoType: 0
-    Scoping: 0
-  Magazine:
-    BulletsMax: 0
-    BulletsLeft: 0
-  WeaponPrefab: {fileID: 0}
+  _payloadInfo:
+    _itemType: 0
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: 0}
+    _maxInContainer: 1
+    _dbId: 11
+  _durability: 0
+  _prefab: {fileID: 0}
+  _weaponSpecs:
+    _damage: 0
+    _range: 0
+    _fireRate: 0
+  _gunSpecs:
+    _recoil: {x: 0, y: 0, z: 0}
+    _aimRecoil: {x: 0, y: 0, z: 0}
+    _snappiness: 0
+    _returnSpeed: 0
+    _isAutomatic: 0
+    _reloadTime: 0
+    _fullReloadTime: 0
+    _accuracy: 0
+    _aimAccuracy: 0
+    _accuracyDistance: 0
+    _ammoType: 0
+    _scoping: 0
+    _magazineInfo:
+      BulletsMax: 0
+  _possibleAttachments: 
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0
+      _aimingOutTime: 0
+      _scopeMultiplier: 0
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list: []

@@ -21,44 +21,54 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  ItemUIData:
-    Name: 10
-    Icon: {fileID: 21300000, guid: d747d773afd678946939360ae1122d66, type: 3}
-    Description: "The Colt Revolver is a large frame double-action revolver featuring
+  _uiInfo:
+    _name: 10
+    _icon: {fileID: 21300000, guid: d747d773afd678946939360ae1122d66, type: 3}
+    _description: "The Colt Revolver is a large frame double-action revolver featuring
       a full length under-barrel ejection-rod lug and six round cylinder, designed
       and produced by the Colt's Manufacturing Company in 1990. Chambered for the
       powerful .44 Magnum and .45 Colt centerfire ammunition cartridges, the Anaconda
       marked the Hartford, Connecticut firm\u2019s first foray into the popular large-bore
       Magnum pistol market."
-  ItemPayloadData:
-    DbId: 23
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 1758916937797778874, guid: 9397bc7a508a93e4dbc5565e5fe4b581,
+  _payloadInfo:
+    _itemType: 2
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: 3494465362296148278, guid: 9397bc7a508a93e4dbc5565e5fe4b581,
       type: 3}
-    MaxInContainer: 1
-  Durability: 0
-  WeaponData:
-    Recoil: {x: -1, y: 1, z: 0.4}
-    AimRecoil: {x: -0.5, y: 0.5, z: 0.2}
-    Snappiness: 6.6319904
-    ReturnSpeed: 2.5000606
-    IsAutomatic: 0
-    Damage: 24.409985
-    ReloadTime: 6.9791946
-    FullReloadTime: 7.0156527
-    Range: 74.96536
-    FireRate: 125.00302
-    Accuracy: 0.11041974
-    AimAccuracy: 0.030211683
-    AccuracyDistance: 100
-    AmmoType: 3
-    Scoping: 1
-  Magazine:
-    BulletsMax: 6
-    BulletsLeft: 0
-  WeaponPrefab: {fileID: 7749649111390227278, guid: 56094bc7fe29773418b72fa178dbc5cf,
-    type: 3}
-  StartReloadDuration: 1.26
-  OneAmmoReloadDuration: 0.8
-  EndReloadAnimation: 1.2
+    _maxInContainer: 1
+    _dbId: 20
+  _durability: 0
+  _prefab: {fileID: 7749649111390227278, guid: 56094bc7fe29773418b72fa178dbc5cf, type: 3}
+  _weaponSpecs:
+    _damage: 24.518534
+    _range: 74.983284
+    _fireRate: 125.414986
+  _gunSpecs:
+    _recoil: {x: -1, y: 1, z: 0.4}
+    _aimRecoil: {x: -0.5, y: 0.5, z: 0.2}
+    _snappiness: 6.6289973
+    _returnSpeed: 2.5314322
+    _isAutomatic: 0
+    _reloadTime: 6.9773984
+    _fullReloadTime: 7.0097475
+    _accuracy: 0.11147531
+    _aimAccuracy: 0.03168062
+    _accuracyDistance: 84.9037
+    _ammoType: 3
+    _scoping: 1
+    _magazineInfo:
+      BulletsMax: 6
+  _possibleAttachments: 
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0.2
+      _aimingOutTime: 0.2
+      _scopeMultiplier: 1.2
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list: []
+  _revolverSpecs:
+    _startReloadDuration: 1.26
+    _oneAmmoReloadDuration: 0.8
+    _endReloadAnimation: 1.2

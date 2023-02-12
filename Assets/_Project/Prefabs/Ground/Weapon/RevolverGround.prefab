@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 5901090366089511629, guid: ff3b50767d23dbb47b4c5985bb303521,
         type: 3}
       propertyPath: m_Name
-      value: revolver
+      value: RevolverGround
       objectReference: {fileID: 0}
     - target: {fileID: 5901090366089511629, guid: ff3b50767d23dbb47b4c5985bb303521,
         type: 3}
@@ -169,6 +169,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06774785, y: 0.24307047, z: 0.40288436}
   m_Center: {x: 0.0012876652, y: 0.021003462, z: 0.13995191}
+--- !u!114 &3494465362296148278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758916937797778874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014f6bff34ba4f4699dfec36ced1e5f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxRange: 3
+  _itemGround: {fileID: 4987431482274293404}
 --- !u!114 &4987431482274293404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,16 +197,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Amount: 1
   _itemName: 10
---- !u!114 &3494465362296148278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758916937797778874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 014f6bff34ba4f4699dfec36ced1e5f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxRange: 3

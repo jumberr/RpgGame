@@ -1269,6 +1269,11 @@ MonoBehaviour:
   FirePoint: {fileID: 1092077322717449805}
   LightPoint: {fileID: 1400960946191385688}
   AdsPoint: {fileID: 3673658572514264583}
+  RevolverAmmo: []
+  ScopeRender: {fileID: 0}
+  HandsAnimator: {fileID: 2559379488738006120}
+  MeleeWeapon: {fileID: 0}
+  RevolverAnimation: {fileID: 0}
 --- !u!95 &2559379488738006120
 Animator:
   serializedVersion: 3

@@ -6,6 +6,7 @@ namespace _Project.CodeBase.StaticData
     [CreateAssetMenu(fileName = "PlayerStaticData", menuName = "Static Data/Player Stats", order = 0)]
     public class PlayerStaticData : ScriptableObject
     {
+        public GameObjectData DefaultData;
         public HealthData HealthData;
     }
 }

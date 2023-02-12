@@ -20,57 +20,54 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: DefaultScopeData
-      Entry: 7
-      Data: 0|_Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments.ScopeSettings,
-        Assembly-CSharp
-    - Name: AimingInTime
-      Entry: 4
-      Data: 0.5
-    - Name: AimingOutTime
-      Entry: 4
-      Data: 0.5
-    - Name: ScopeMultiplier
-      Entry: 4
-      Data: 1.2
-    - Name: 
-      Entry: 8
-      Data: 
-  ItemUIData:
-    Name: 1
-    Icon: {fileID: 21300000, guid: 6f81b7a9566657545973549959c58f1a, type: 3}
-    Description: Assault rifle with a folding butt, 1974 model, uses 5.45x39 mm ammunition.
-      It is a simple and reliable weapon, but the cheapness of its production affected
-      its ergonomy and accuracy.
-  ItemPayloadData:
-    DbId: 11
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 8620316603796878593, guid: 9c18a8e7b0638cd4883371031fd15352,
+    SerializationNodes: []
+  _uiInfo:
+    _name: 1
+    _icon: {fileID: 21300000, guid: 6f81b7a9566657545973549959c58f1a, type: 3}
+    _description: Assault rifle with a folding butt, 1974 model, uses 5.45x39 mm
+      ammunition. It is a simple and reliable weapon, but the cheapness of its production
+      affected its ergonomy and accuracy.
+  _payloadInfo:
+    _itemType: 2
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: -5048874952596311458, guid: 9c18a8e7b0638cd4883371031fd15352,
       type: 3}
-    MaxInContainer: 1
-  Durability: 0
-  WeaponData:
-    Recoil: {x: -2, y: 2, z: 0.35}
-    AimRecoil: {x: -1, y: 1, z: 0.15}
-    Snappiness: 5.9514375
-    ReturnSpeed: 1.9653401
-    IsAutomatic: 1
-    Damage: 21.979437
-    ReloadTime: 1.8385872
-    FullReloadTime: 2.859417
-    Range: 63.298737
-    FireRate: 601.39026
-    Accuracy: 0.56979316
-    AimAccuracy: 0.22708601
-    AccuracyDistance: 100
-    AmmoType: 1
-    Scoping: 1
-  Magazine:
-    BulletsMax: 30
-    BulletsLeft: 0
-  PossibleAttachments: 
-  DefaultAttachments: 
-  WeaponPrefab: {fileID: 6566511255792288664, guid: a5c2eb730ca944148bd5570b16af700c,
-    type: 3}
+    _maxInContainer: 1
+    _dbId: 8
+  _durability: 0
+  _prefab: {fileID: 6566511255792288664, guid: a5c2eb730ca944148bd5570b16af700c, type: 3}
+  _weaponSpecs:
+    _damage: 24.734194
+    _range: 48.45694
+    _fireRate: 454.37683
+  _gunSpecs:
+    _recoil: {x: -2, y: 2, z: 0.35}
+    _aimRecoil: {x: -1, y: 1, z: 0.17}
+    _snappiness: 6.0251455
+    _returnSpeed: 2.013845
+    _isAutomatic: 1
+    _reloadTime: 1.8338757
+    _fullReloadTime: 2.9337482
+    _accuracy: 0.5708339
+    _aimAccuracy: 0.22793242
+    _accuracyDistance: 100
+    _ammoType: 1
+    _scoping: 1
+    _magazineInfo:
+      BulletsMax: 30
+  _possibleAttachments: 17000000
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0.2
+      _aimingOutTime: 0.2
+      _scopeMultiplier: 1.2
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list:
+    - _type: 1
+      _possibility: 1
+      _position: {x: 0, y: 0, z: 0}
+    - _type: 2
+      _possibility: 1
+      _position: {x: 0, y: 0, z: 0}

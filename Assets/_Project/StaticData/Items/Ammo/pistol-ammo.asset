@@ -21,17 +21,17 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  ItemUIData:
-    Name: 18
-    Icon: {fileID: 21300000, guid: 3119b3af927d93c41b76a7fb1602b951, type: 3}
-    Description: This basic 9x19 caliber round with a jacketed bullet has good characteristics
+  _uiInfo:
+    _name: 18
+    _icon: {fileID: 21300000, guid: 3119b3af927d93c41b76a7fb1602b951, type: 3}
+    _description: This basic 9x19 caliber round with a jacketed bullet has good characteristics
       while being simple to produce. The round is popular due to the fact that international
       conventions prohibit the use of expanding ammunition in combat.
-  ItemPayloadData:
-    DbId: 2
-    ItemType: 0
-    Actions: 0200000003000000
-    GroundPrefab: {fileID: 4213778230533454821, guid: 975c701ff80889f459e084fb6a0daa09,
+  _payloadInfo:
+    _itemType: 1
+    _actions: 0200000003000000
+    _groundPrefab: {fileID: 1726882879739812041, guid: 975c701ff80889f459e084fb6a0daa09,
       type: 3}
-    MaxInContainer: 100
-  AmmoType: 3
+    _maxInContainer: 100
+    _dbId: 2
+  _ammoType: 3

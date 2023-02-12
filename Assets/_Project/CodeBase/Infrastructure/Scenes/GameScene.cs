@@ -2,7 +2,7 @@
 using Cysharp.Threading.Tasks;
 using Zenject;
 
-namespace _Project.CodeBase.Infrastructure.Scenes
+namespace _Project.CodeBase.Infrastructure
 {
     public class GameScene : IInitializable
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using _Project.CodeBase.Logic.Inventory;
 using UnityEngine;
 
-namespace _Project.CodeBase.UI.Windows.Inventory
+namespace _Project.CodeBase.UI
 {
     public class InventoryContextUI : MonoBehaviour
     {

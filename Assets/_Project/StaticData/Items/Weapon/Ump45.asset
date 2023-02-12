@@ -20,57 +20,48 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: DefaultScopeData
-      Entry: 7
-      Data: 0|_Project.CodeBase.StaticData.ItemsDataBase.Types.Attachments.ScopeSettings,
-        Assembly-CSharp
-    - Name: AimingInTime
-      Entry: 4
-      Data: 0.5
-    - Name: AimingOutTime
-      Entry: 4
-      Data: 0.5
-    - Name: ScopeMultiplier
-      Entry: 4
-      Data: 1.2
-    - Name: 
-      Entry: 8
-      Data: 
-  ItemUIData:
-    Name: 11
-    Icon: {fileID: 21300000, guid: f37d2c51f2934e241b4c10ba8f0d4cab, type: 3}
-    Description: A submachine gun prototype. Designed as a next generation close
+    SerializationNodes: []
+  _uiInfo:
+    _name: 11
+    _icon: {fileID: 21300000, guid: f37d2c51f2934e241b4c10ba8f0d4cab, type: 3}
+    _description: A submachine gun prototype. Designed as a next generation close
       quarter combat weapon, it benefits from a higher caliber, rate of fire and
       accuracy.
-  ItemPayloadData:
-    DbId: 21
-    ItemType: 1
-    Actions: 0000000002000000
-    GroundPrefab: {fileID: 8443152457567335728, guid: 7450c06ff7ec33649baaa2bb42bddda9,
+  _payloadInfo:
+    _itemType: 2
+    _actions: 0000000002000000
+    _groundPrefab: {fileID: -3634304715524899571, guid: 7450c06ff7ec33649baaa2bb42bddda9,
       type: 3}
-    MaxInContainer: 1
-  Durability: 0
-  WeaponData:
-    Recoil: {x: -0.9, y: 0.9, z: 0.25}
-    AimRecoil: {x: -0.45, y: 0.45, z: 0.125}
-    Snappiness: 6.0486593
-    ReturnSpeed: 2.5486712
-    IsAutomatic: 1
-    Damage: 22.951654
-    ReloadTime: 1.6198379
-    FullReloadTime: 2.3854601
-    Range: 35.5905
-    FireRate: 701.0427
-    Accuracy: 0.17361397
-    AimAccuracy: 0.088544816
-    AccuracyDistance: 100
-    AmmoType: 3
-    Scoping: 1
-  Magazine:
-    BulletsMax: 25
-    BulletsLeft: 0
-  PossibleAttachments: 
-  DefaultAttachments: 
-  WeaponPrefab: {fileID: 1177629301431990064, guid: f64ff507f0eabd34e9f5df0fc41fd099,
-    type: 3}
+    _maxInContainer: 1
+    _dbId: 18
+  _durability: 0
+  _prefab: {fileID: 1177629301431990064, guid: f64ff507f0eabd34e9f5df0fc41fd099, type: 3}
+  _weaponSpecs:
+    _damage: 23.008904
+    _range: 35.085938
+    _fireRate: 700.3873
+  _gunSpecs:
+    _recoil: {x: -0.9, y: 0.9, z: 0.25}
+    _aimRecoil: {x: -0.45, y: 0.45, z: 0.125}
+    _snappiness: 6.0251455
+    _returnSpeed: 2.5314322
+    _isAutomatic: 1
+    _reloadTime: 1.6397804
+    _fullReloadTime: 2.416161
+    _accuracy: 0.1740171
+    _aimAccuracy: 0.094222404
+    _accuracyDistance: 100
+    _ammoType: 3
+    _scoping: 1
+    _magazineInfo:
+      BulletsMax: 25
+  _possibleAttachments: 
+  _defaultAttachments: 
+  _defaultSettings:
+    _scopeSpecs:
+      _aimingInTime: 0.2
+      _aimingOutTime: 0.2
+      _scopeMultiplier: 1.2
+    _shootSound: {fileID: 0}
+  _attachmentPossibility:
+    _list: []

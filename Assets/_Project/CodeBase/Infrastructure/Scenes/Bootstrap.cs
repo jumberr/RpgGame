@@ -1,8 +1,7 @@
 ﻿using _Project.CodeBase.Infrastructure.Services.StaticData;
-using _Project.CodeBase.StaticData;
 using Zenject;
 
-namespace _Project.CodeBase.Infrastructure.Scenes
+namespace _Project.CodeBase.Infrastructure
 {
     public class Bootstrap : IInitializable
     {
