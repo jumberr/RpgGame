@@ -81,7 +81,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         private async UniTask DestroyWeapon()
         {
-            if (_currentWeapon.SlotID == Inventory.Inventory.ErrorIndex) return; // todo: upd error index naming
+            if (_currentWeapon.SlotID == Inventory.Inventory.ErrorIndex) return;
             
             _ammo.HideUI();
             await AnimatorHideWeapon();
@@ -133,7 +133,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         private async void OnInventoryUpdate()
         {
-            if (_currentWeapon.SlotID == Inventory.Inventory.ErrorIndex) return; // todo: upd error index naming
+            if (_currentWeapon.SlotID == Inventory.Inventory.ErrorIndex) return;
             
             await CheckIfDestroy(_currentWeapon.GunInfo);
             await CheckIfDestroy(_currentWeapon.KnifeInfo);
@@ -141,7 +141,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         private async UniTask CheckIfDestroy(WeaponInfo weaponInfo)
         {
-            if (weaponInfo != null && _inventory.FindFirstItemIndex(weaponInfo.UIInfo.Name) == Inventory.Inventory.ErrorIndex) // todo: upd error index naming
+            if (weaponInfo != null && _inventory.FindFirstItemIndex(weaponInfo.UIInfo.Name) == Inventory.Inventory.ErrorIndex)
                 await DestroyWeapon();
         }
 

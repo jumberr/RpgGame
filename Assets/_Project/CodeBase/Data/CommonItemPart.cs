@@ -11,11 +11,8 @@ namespace _Project.CodeBase.Data
         public int Amount;
         public BaseItem Item;
 
-        public CommonItemPart()
-        {
+        public CommonItemPart() => 
             DbId = Inventory.ErrorIndex;
-            //Item = new BaseItem();
-        }
 
         public CommonItemPart(int dbId, int amount, BaseItem item)
         {
