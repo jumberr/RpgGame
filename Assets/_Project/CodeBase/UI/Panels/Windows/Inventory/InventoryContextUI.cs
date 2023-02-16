@@ -38,6 +38,8 @@ namespace _Project.CodeBase.UI
 
         public void Clear()
         {
+            if (_list.Count == 0) return;
+            
             foreach (var action in _list) 
                 Destroy(action.gameObject);
             _list.Clear();

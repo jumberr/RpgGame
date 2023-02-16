@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace _Project.CodeBase.UI
 {
-    public class InventoryUI : WindowBase, ISlotHolderUI
+    public class InventoryWindow : WindowBase, ISlotHolderUI
     {
         [SerializeField] private SlotsHolderUI _slotsHolder;
         [SerializeField] private InventoryContextUI _context;

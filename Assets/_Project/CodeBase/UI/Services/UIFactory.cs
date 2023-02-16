@@ -1,99 +1,55 @@
-using _Project.CodeBase.Infrastructure;
 using _Project.CodeBase.Infrastructure.AssetManagement;
-using _Project.CodeBase.Infrastructure.Services.InputService;
-using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Hero.Cam;
 using _Project.CodeBase.UI.Services.Windows;
 using _Project.CodeBase.UI.Windows.Settings;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Screen = _Project.CodeBase.UI.Screens.Screen;
 
 namespace _Project.CodeBase.UI.Services
 {
     public class UIFactory : IUIFactory
     {
         private readonly IAssetProvider _assetProvider;
-        private readonly IStaticDataService _staticDataService;
-        private readonly IWindowService _windowService;
-        private readonly InputService _inputService;
-        private readonly SceneLoader _sceneLoader;
+        private readonly WindowBase.Factory _windowFactory;
+        private readonly Screen.Factory _screenFactory;
+
         private Transform _uiRoot;
-        private GameObject _hud;
         private InventoriesHolderUI _inventoriesHolder;
         private ActorUI _actorUI;
-        private InventoryUI _inventoryUI;
+        private InventoryWindow _inventoryWindow;
 
         public UIFactory(
             IAssetProvider assetProvider,
-            IStaticDataService staticDataService,
-            InputService inputService,
-            IWindowService windowService,
-            SceneLoader sceneLoader)
+            WindowBase.Factory windowFactory,
+            Screen.Factory screenFactory)
         {
             _assetProvider = assetProvider;
-            _staticDataService = staticDataService;
-            _inputService = inputService;
-            _windowService = windowService;
-            _sceneLoader = sceneLoader;
+            _windowFactory = windowFactory;
+            _screenFactory = screenFactory;
         }
 
         public async UniTask CreateUIRoot()
         {
+            // todo: add factory for it!
             _uiRoot = (await _assetProvider.InstantiateAsync(AssetPath.UIRootPath)).transform;
             _inventoriesHolder = _uiRoot.GetComponent<InventoriesHolderUI>();
         }
 
-        public async UniTask CreateHud()
-        {
-            _hud = await _assetProvider.InstantiateAsync(AssetPath.HudPath, parent: _uiRoot);
-            OnWindowCreated(_hud.transform);
-        }
+        public async UniTask CreateHud() => 
+            _actorUI = (ActorUI) await _screenFactory.Create(AssetPath.HudPath, _uiRoot);
 
-        public void SetupWindowService() => 
-            _windowService.Setup();
+        public async void CreateDeathScreen() => 
+            await _screenFactory.Create(AssetPath.DeathScreen, _uiRoot);
 
-        public async void CreateDeathScreen()
-        {
-            var deathScreen = await _assetProvider.InstantiateComponentAsync<DeathScreen>(AssetPath.DeathScreen, parent: _uiRoot);
-            deathScreen.Construct(_sceneLoader);
-            OnWindowCreated(deathScreen.transform);
-        }
+        public void CreateInventory() => 
+            _inventoryWindow = (InventoryWindow) _windowFactory.Create(WindowId.Inventory, _uiRoot);
 
-        public void CreateInventory()
-        {
-            var prefab = _staticDataService.ForWindow(WindowId.Inventory).Prefab;
-            _inventoryUI = Object.Instantiate(prefab, _uiRoot) as InventoryUI;
-            AddWindow(_inventoryUI, WindowId.Inventory);
-        }
-
-        public GameObject CreateSettings(HeroCamera camera)
-        {
-            var prefab = _staticDataService.ForWindow(WindowId.Settings).Prefab;
-            var settings = Object.Instantiate(prefab, _uiRoot) as SettingsUI;
-            settings.Construct(camera);
-            
-            AddWindow(settings, WindowId.Settings);
-            return settings.gameObject;
-        }
-
-        public void ConstructHud(HeroFacade facade)
-        {
-            _actorUI = _hud.GetComponent<ActorUI>();
-            _actorUI.Construct(_inputService, facade.Health, facade.Ammo, facade.WeaponController, facade.HeroState, facade.Interaction);
-        }
+        public SettingsUI CreateSettings() => 
+            (SettingsUI) _windowFactory.Create(WindowId.Settings, _uiRoot);
 
         public void ConstructInventoriesHolder(HeroFacade facade) => 
-            _inventoriesHolder.Construct(_actorUI.HotBar, _inventoryUI, facade.Inventory);
-
-        private void OnWindowCreated(Transform window)
-        {
-            var rectTransform = (RectTransform) window;
-            rectTransform.offsetMax = Vector2.zero;
-            rectTransform.offsetMin = Vector2.zero;
-        }
-
-        private void AddWindow(WindowBase window, WindowId id) => 
-            _windowService.AddWindow(window, id);
+            _inventoriesHolder.Construct(_actorUI.HotBar, _inventoryWindow, facade.Inventory);
     }
 }

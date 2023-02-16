@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using _Project.CodeBase.Logic.Inventory;
-using _Project.CodeBase.UI.Elements.Slot;
 using _Project.CodeBase.UI.Elements.Slot.Drop;
 using UnityEngine;
 

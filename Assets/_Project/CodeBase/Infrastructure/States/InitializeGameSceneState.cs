@@ -38,7 +38,7 @@ namespace _Project.CodeBase.Infrastructure.States
 
         private async UniTask InitializeGameWorld()
         {
-            InitializePlayer();
+            await InitializePlayer();
             SetupComponents();
             await InitializeUI(_gameFactory.HeroFacade);
         }
@@ -51,28 +51,24 @@ namespace _Project.CodeBase.Infrastructure.States
 
         private async UniTask InitializeUI(HeroFacade facade)
         {
-            await CreateUI(facade);
+            await CreateUI();
             ConstructUI(facade);
         }
 
-        private async UniTask CreateUI(HeroFacade facade)
+        private async UniTask CreateUI()
         {
             await InitializeUIRoot();
             await InitializeHud();
 
-            SetupWindowService();
             InitializeInventory();
-            InitializeSettings(facade);
+            InitializeSettings();
         }
 
-        private void ConstructUI(HeroFacade facade)
-        {
-            _uiFactory.ConstructHud(facade);
+        private void ConstructUI(HeroFacade facade) => 
             _uiFactory.ConstructInventoriesHolder(facade);
-        }
 
-        private void InitializePlayer() => 
-            _gameFactory.CreateHero();
+        private async UniTask InitializePlayer() => 
+            await _gameFactory.CreateHero();
 
         private async UniTask InitializeUIRoot() =>
             await _uiFactory.CreateUIRoot();
@@ -80,16 +76,13 @@ namespace _Project.CodeBase.Infrastructure.States
         private async UniTask InitializeHud() => 
             await _uiFactory.CreateHud();
 
-        private void SetupWindowService() => 
-            _uiFactory.SetupWindowService();
-
         private void InitializeInventory() => 
              _uiFactory.CreateInventory();
 
-        private void InitializeSettings(HeroFacade facade)
+        private void InitializeSettings()
         {
-            var settings = _uiFactory.CreateSettings(facade.Camera);
-            _gameFactory.AddProgressWatchers(settings);
+            var settings = _uiFactory.CreateSettings();
+            _gameFactory.Register(settings);
         }
 
         private void InformProgressReaders()

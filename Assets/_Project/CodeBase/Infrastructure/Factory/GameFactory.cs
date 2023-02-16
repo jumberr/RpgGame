@@ -7,6 +7,7 @@ using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.UI.Services;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.CodeBase.Infrastructure.Factory
@@ -44,18 +45,15 @@ namespace _Project.CodeBase.Infrastructure.Factory
         public void Dispose() => 
             Cleanup();
 
-        public void CreateHero()
+        public async UniTask CreateHero()
         {
-            _heroFacade = _heroFactory.Create();
+            _heroFacade = await _heroFactory.Create(AssetPath.HeroPath);
             RegisterProgressWatchers(_heroFacade.gameObject);
             _heroFacade.Construct(_inputService, _staticDataService, _uiFactory.CreateDeathScreen);
         }
 
         public void SetupInteractableSpawner() => 
             _interactableSpawner.Setup(_heroFacade.Inventory);
-
-        public void AddProgressWatchers(GameObject go) => 
-            RegisterProgressWatchers(go);
 
         public void Cleanup()
         {

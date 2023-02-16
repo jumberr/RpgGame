@@ -6,10 +6,12 @@ using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.Logic.Inventory;
 using UnityEngine;
+using Zenject;
+using Screen = _Project.CodeBase.UI.Screens.Screen;
 
 namespace _Project.CodeBase.UI
 {
-    public class ActorUI : MonoBehaviour
+    public class ActorUI : Screen
     {
         [SerializeField] private PlatformSpecificHud _hud;
         [Space]
@@ -19,23 +21,23 @@ namespace _Project.CodeBase.UI
         [SerializeField] private InteractionUI _interactionUI;
         [SerializeField] private HotBarUI _hotBarUI;
 
+        private InputService _inputService;
         private IHealth _heroHealth;
         private HeroInventory _heroInventory;
 
         public HotBarUI HotBar => _hotBarUI;
 
-        public void Construct(InputService inputService,
-            IHealth heroHealth,
-            HeroAmmo heroAmmo,
-            WeaponController weaponController,
-            HeroState heroState,
-            HeroInteraction heroInteraction)
+        [Inject]
+        public void Construct(InputService inputService, HeroFacade.Factory factory)
         {
             _hud.Initialize();
-            SetupHealth(heroHealth);
-            SetupAmmoUI(heroAmmo);
-            SetupCrosshairUI(weaponController, inputService, heroState);
-            SetupInteractionUI(inputService, heroInteraction);
+            _inputService = inputService;
+            var facade = factory.Facade;
+
+            SetupHealth(facade.Health);
+            SetupAmmoUI(facade.Ammo);
+            SetupCrosshairUI(facade.WeaponController, _inputService, facade.HeroState);
+            SetupInteractionUI(_inputService, facade.Interaction);
         }
 
         private void OnDestroy() => 

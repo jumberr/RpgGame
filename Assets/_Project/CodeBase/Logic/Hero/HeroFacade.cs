@@ -8,6 +8,7 @@ using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.Logic.Inventory;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -66,8 +67,17 @@ namespace _Project.CodeBase.Logic.Hero
             _death.SetInputService(inputService);
         }
 
-        public class Factory : PlaceholderFactory<HeroFacade>
+        public class Factory : PlaceholderFactory<string, UniTask<HeroFacade>>
         {
+            private HeroFacade _facade;
+        
+            public HeroFacade Facade => _facade;
+            
+            public override async UniTask<HeroFacade> Create(string path)
+            {
+                _facade = await base.Create(path);
+                return _facade;
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ using _Project.CodeBase.Logic.Hero.Cam;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace _Project.CodeBase.UI.Windows.Settings
 {
@@ -20,10 +21,11 @@ namespace _Project.CodeBase.UI.Windows.Settings
      
         public event Action<float> OnUpdateSensitivity;
 
-        public void Construct(HeroCamera cam)
+        [Inject]
+        public void Construct(HeroFacade.Factory factory)
         {
-            _camera = cam;
-            OnUpdateSensitivity += cam.UpdateSensitivity;
+            _camera = factory.Facade.Camera;
+            OnUpdateSensitivity += _camera.UpdateSensitivity;
         }
 
         private void Start()

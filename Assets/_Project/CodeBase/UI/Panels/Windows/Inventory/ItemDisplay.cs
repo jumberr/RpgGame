@@ -1,5 +1,4 @@
-﻿using _Project.CodeBase.UI.Elements.Slot;
-using _Project.CodeBase.UI.Elements.SpecificButtonLogic;
+﻿using _Project.CodeBase.UI.Elements.SpecificButtonLogic;
 using TMPro;
 using UnityEngine;
 

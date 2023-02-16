@@ -3,16 +3,19 @@ using _Project.CodeBase.Logic.Effects;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
+using Screen = _Project.CodeBase.UI.Screens.Screen;
 
 namespace _Project.CodeBase.UI
 {
-    public class DeathScreen : MonoBehaviour
+    public class DeathScreen : Screen
     {
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private Button _respawnButton;
         private SceneLoader _sceneLoader;
         
-        public void Construct(SceneLoader sceneLoader) => 
+        [Inject]
+        private void Construct(SceneLoader sceneLoader) => 
             _sceneLoader = sceneLoader;
 
         private void OnEnable() => 
@@ -26,7 +29,7 @@ namespace _Project.CodeBase.UI
 
         private async void Respawn()
         {
-            _respawnButton.enabled = false;
+            _respawnButton.interactable = false;
             await _sceneLoader.ReloadScene();
         }
     }

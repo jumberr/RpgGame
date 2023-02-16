@@ -10,20 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: GameAssets
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Packed Assets
   m_Data:
     m_SerializedData: []
-  m_GUID: ccd39a3473cf5eb4fb0ebeac102458da
-  m_SerializeEntries:
-  - m_GUID: 36137fff72c72ca429726e951c8b04db
-    m_Address: Hero
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_GUID: abaeb5745426cb64baeaaaec6d89dc78
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7f7aa7cd3321f4d4f8521b1a30e7d9ab, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 12b6d5bf4b2c8f24ba971503ab8bb510, type: 2}
-    - {fileID: 11400000, guid: 7346cd7bbade4894db9f6ba52462e103, type: 2}
+    - {fileID: 11400000, guid: caa2cb57558b4284bb764e092a3a60c2, type: 2}
+    - {fileID: 11400000, guid: a4afcd12dc1c0a7458637d5b94d8275c, type: 2}

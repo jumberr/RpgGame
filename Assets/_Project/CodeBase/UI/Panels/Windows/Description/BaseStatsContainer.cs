@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace _Project.CodeBase
+namespace _Project.CodeBase.UI
 {
     public class BaseStatsContainer : MonoBehaviour
     {

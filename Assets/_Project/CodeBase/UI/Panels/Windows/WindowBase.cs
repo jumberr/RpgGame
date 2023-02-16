@@ -5,16 +5,18 @@ using _Project.CodeBase.UI;
 using _Project.CodeBase.UI.Services.Windows;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase
 {
-    public abstract class WindowBase : MonoBehaviour
+    public class WindowBase : MonoBehaviour
     {
         public WindowId WindowId;
         public UiAnimation Animation;
         protected IPersistentProgressService ProgressService;
         protected PlayerProgress Progress => ProgressService.Progress;
         
+        [Inject]
         public void Construct(IPersistentProgressService progressService) => 
             ProgressService = progressService;
 
@@ -61,6 +63,10 @@ namespace _Project.CodeBase
         {
             Animation.DoAnimation(time);
             await UniTask.Delay(TimeSpan.FromSeconds(Animation.AnimationTime));
+        }
+        
+        public class Factory : PlaceholderFactory<WindowId, Transform, WindowBase>
+        {
         }
     }
 }
