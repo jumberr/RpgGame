@@ -1,4 +1,5 @@
-﻿using _Project.CodeBase.UI.Core;
+﻿using _Project.CodeBase.UI;
+using _Project.CodeBase.UI.Core;
 using _Project.CodeBase.UI.Screens;
 using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.UI.Services.Windows;
@@ -34,6 +35,11 @@ namespace _Project.CodeBase.Infrastructure
                 .Bind<IWindowService>()
                 .To<WindowService>()
                 .AsSingle();
+            
+            Container
+                .Bind<InventoriesHolderUI>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }

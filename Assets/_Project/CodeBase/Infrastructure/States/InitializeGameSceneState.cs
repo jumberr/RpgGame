@@ -1,7 +1,6 @@
 ﻿using System;
 using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
-using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.UI.Services;
 using Cysharp.Threading.Tasks;
 
@@ -28,6 +27,7 @@ namespace _Project.CodeBase.Infrastructure.States
             _uiFactory = uiFactory;
             _persistentProgressService = persistentProgressService;
             _componentInitializer = componentInitializer;
+            
             OnWorldInitialized += _componentInitializer.RegisterProgressWatchers;
             OnProgressWatchersInformed += _componentInitializer.InitializeComponents;
         }
@@ -49,24 +49,15 @@ namespace _Project.CodeBase.Infrastructure.States
         private async UniTask InitializeGameWorld()
         {
             await InitializePlayer();
-            await InitializeUI(_gameFactory.HeroFacade);
+            await InitializeUI();
             OnWorldInitialized?.Invoke();
         }
 
         private async UniTask InitializePlayer() => 
             await _gameFactory.CreateHero();
 
-        private async UniTask InitializeUI(HeroFacade facade)
-        {
-            await CreateUI();
-            ConstructUI(facade);
-        }
-
-        private async UniTask CreateUI() => 
+        private async UniTask InitializeUI() => 
             await _uiFactory.CreateUI();
-
-        private void ConstructUI(HeroFacade facade) => 
-            _uiFactory.ConstructInventoriesHolder(facade);
 
         private void InformProgressReaders()
         {

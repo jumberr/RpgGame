@@ -1,5 +1,4 @@
 using _Project.CodeBase.Infrastructure.AssetManagement;
-using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.UI.Core;
 using _Project.CodeBase.UI.Services.Windows;
 using Cysharp.Threading.Tasks;
@@ -20,6 +19,10 @@ namespace _Project.CodeBase.UI.Services
         private InventoryWindow _inventoryWindow;
         private DeathScreen _deathScreen;
 
+        public Transform UIRoot => _uiRoot;
+        public ActorUI ActorUI => _actorUI;
+        public InventoryWindow InventoryWindow => _inventoryWindow;
+        
         public UIFactory(
             UIRoot.Factory uiRootFactory,
             WindowBase.Factory windowFactory,
@@ -40,11 +43,8 @@ namespace _Project.CodeBase.UI.Services
         public void ShowDeathScreen() => 
             _deathScreen.Show();
 
-        private async UniTask CreateUIRoot()
-        {
+        private async UniTask CreateUIRoot() => 
             _uiRoot = (await _uiRootFactory.Create(AssetPath.UIRootPath)).transform;
-            _inventoriesHolder = _uiRoot.GetComponent<InventoriesHolderUI>();
-        }
 
         private async UniTask CreateScreens()
         {
@@ -69,8 +69,5 @@ namespace _Project.CodeBase.UI.Services
 
         private void CreateSettings() => 
             _windowFactory.Create(WindowId.Settings, _uiRoot);
-
-        public void ConstructInventoriesHolder(HeroFacade facade) => 
-            _inventoriesHolder.Construct(_actorUI.HotBar, _inventoryWindow, facade.Inventory);
     }
 }
