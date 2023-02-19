@@ -19,10 +19,12 @@ namespace _Project.CodeBase.Logic.Interaction
 
         private List<InteractableGroundItem> _items = new List<InteractableGroundItem>();
 
-        private InteractableSpawner(HeroFacade.Factory factory)
-        {
+        private InteractableSpawner(HeroFacade.Factory factory) => 
             _factory = factory;
-            Setup();
+
+        public void Initialize()
+        {
+            Construct();
             GrabItems();
         }
 
@@ -56,9 +58,9 @@ namespace _Project.CodeBase.Logic.Interaction
             return itemsData;
         }
 
-        private async void Setup()
+        private void Construct()
         {
-            _heroInventory = (await _factory.WaitInstance()).Inventory;
+            _heroInventory = _factory.Instance.Inventory;
             _itemsInfo = _heroInventory.ItemsInfo;
             _heroInventory.OnSpawnItemAtMap += SpawnItemAtMap;
             _heroInventory.OnItemPickup += ItemPickup;

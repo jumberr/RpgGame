@@ -1,4 +1,5 @@
-﻿using _Project.CodeBase.Infrastructure.Factory;
+﻿using System;
+using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.UI.Services;
@@ -11,16 +12,30 @@ namespace _Project.CodeBase.Infrastructure.States
         private readonly IGameFactory _gameFactory;
         private readonly IUIFactory _uiFactory;
         private readonly IPersistentProgressService _persistentProgressService;
+        private readonly GameStateComponentInitializer _componentInitializer;
+
+        public event Action OnWorldInitialized;
+        private event Action OnProgressWatchersInformed;
 
         public InitializeGameSceneState(
             IGameFactory gameFactory,
             IUIFactory uiFactory,
-            IPersistentProgressService persistentProgressService
-            )
+            IPersistentProgressService persistentProgressService,
+            GameStateComponentInitializer componentInitializer
+        )
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFactory;
             _persistentProgressService = persistentProgressService;
+            _componentInitializer = componentInitializer;
+            OnWorldInitialized += _componentInitializer.RegisterProgressWatchers;
+            OnProgressWatchersInformed += _componentInitializer.InitializeComponents;
+        }
+
+        ~InitializeGameSceneState()
+        {
+            OnWorldInitialized -= _componentInitializer.RegisterProgressWatchers;
+            OnProgressWatchersInformed -= _componentInitializer.InitializeComponents;
         }
 
         public async UniTask Enter()
@@ -35,6 +50,7 @@ namespace _Project.CodeBase.Infrastructure.States
         {
             await InitializePlayer();
             await InitializeUI(_gameFactory.HeroFacade);
+            OnWorldInitialized?.Invoke();
         }
 
         private async UniTask InitializePlayer() => 
@@ -46,37 +62,18 @@ namespace _Project.CodeBase.Infrastructure.States
             ConstructUI(facade);
         }
 
-        private async UniTask CreateUI()
-        {
-            await InitializeUIRoot();
-            await InitializeHud();
-
-            InitializeInventory();
-            InitializeSettings();
-        }
+        private async UniTask CreateUI() => 
+            await _uiFactory.CreateUI();
 
         private void ConstructUI(HeroFacade facade) => 
             _uiFactory.ConstructInventoriesHolder(facade);
-
-        private async UniTask InitializeUIRoot() =>
-            await _uiFactory.CreateUIRoot();
-
-        private async UniTask InitializeHud() => 
-            await _uiFactory.CreateHud();
-
-        private void InitializeInventory() => 
-             _uiFactory.CreateInventory();
-
-        private void InitializeSettings()
-        {
-            var settings = _uiFactory.CreateSettings();
-            _gameFactory.Register(settings);
-        }
 
         private void InformProgressReaders()
         {
             foreach (var reader in _gameFactory.ProgressReaders)
                 reader.LoadProgress(_persistentProgressService.Progress);
+
+            OnProgressWatchersInformed?.Invoke();
         }
     }
 }

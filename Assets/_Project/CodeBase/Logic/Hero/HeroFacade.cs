@@ -1,5 +1,4 @@
-﻿using System;
-using _Project.CodeBase.Infrastructure.Services.InputService;
+﻿using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero.Cam;
 using _Project.CodeBase.Logic.Hero.Reload;
@@ -8,6 +7,7 @@ using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.Logic.Inventory;
+using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.Utils.Factory;
 using UnityEngine;
 using Zenject;
@@ -32,7 +32,8 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private HeroAmmo _ammo;
         
         private InputService _inputService;
-        
+        private IUIFactory _uiFactory;
+
         public HeroInventory Inventory => _inventory;
         public HeroCamera Camera => _camera;
         public IHealth Health => _health;
@@ -42,15 +43,18 @@ namespace _Project.CodeBase.Logic.Hero
         public HeroInteraction Interaction => _interaction;
 
         [Inject]
-        private void Construct(InputService inputService, IStaticDataService staticDataService)
+        private void Construct(InputService inputService, IStaticDataService staticDataService, IUIFactory uiFactory)
         {
             _inputService = inputService;
+            _uiFactory = uiFactory;
             SetupItemDatabase(staticDataService);
             SetupInputService(_inputService);
+            
+            _death.ZeroHealth += _uiFactory.ShowDeathScreen;
         }
 
-        public void Setup(Action zeroHealthAction) => 
-            _death.ZeroHealth += zeroHealthAction;
+        private void OnDestroy() => 
+            _death.ZeroHealth -= _uiFactory.ShowDeathScreen;
 
         private void SetupItemDatabase(IStaticDataService staticDataService)
         {

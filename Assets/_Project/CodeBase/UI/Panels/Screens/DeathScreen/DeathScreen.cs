@@ -21,11 +21,17 @@ namespace _Project.CodeBase.UI
         private void OnEnable() => 
             _respawnButton.onClick.AddListener(Respawn);
 
-        private void Start() => 
-            Fade.DoFadeIn(_canvasGroup).Forget();
+        private void Start() =>
+            Hide();
 
         private void OnDisable() => 
             _respawnButton.onClick.RemoveListener(Respawn);
+
+        public void Show() => 
+            Fade.DoFadeIn(_canvasGroup).Forget();
+
+        private void Hide() => 
+            Fade.DoFadeOut(_canvasGroup).Forget();
 
         private async void Respawn()
         {

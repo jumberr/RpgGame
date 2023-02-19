@@ -28,11 +28,11 @@ namespace _Project.CodeBase.UI
         public HotBarUI HotBar => _hotBarUI;
 
         [Inject]
-        public async void Construct(InputService inputService, HeroFacade.Factory factory)
+        public void Construct(InputService inputService, HeroFacade.Factory factory)
         {
             _hud.Initialize();
             _inputService = inputService;
-            var facade = await factory.WaitInstance();
+            var facade = factory.Instance;
 
             SetupHealth(facade.Health);
             SetupAmmoUI(facade.Ammo);

@@ -2,7 +2,6 @@ using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.UI.Core;
 using _Project.CodeBase.UI.Services.Windows;
-using _Project.CodeBase.UI.Windows.Settings;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Screen = _Project.CodeBase.UI.Screens.Screen;
@@ -19,6 +18,7 @@ namespace _Project.CodeBase.UI.Services
         private InventoriesHolderUI _inventoriesHolder;
         private ActorUI _actorUI;
         private InventoryWindow _inventoryWindow;
+        private DeathScreen _deathScreen;
 
         public UIFactory(
             UIRoot.Factory uiRootFactory,
@@ -30,23 +30,45 @@ namespace _Project.CodeBase.UI.Services
             _screenFactory = screenFactory;
         }
 
-        public async UniTask CreateUIRoot()
+        public async UniTask CreateUI()
+        {
+            await CreateUIRoot();
+            await CreateScreens();
+            CreateWindows();
+        }
+
+        public void ShowDeathScreen() => 
+            _deathScreen.Show();
+
+        private async UniTask CreateUIRoot()
         {
             _uiRoot = (await _uiRootFactory.Create(AssetPath.UIRootPath)).transform;
             _inventoriesHolder = _uiRoot.GetComponent<InventoriesHolderUI>();
         }
 
-        public async UniTask CreateHud() => 
+        private async UniTask CreateScreens()
+        {
+            await CreateHud();
+            await CreateDeathScreen();
+        }
+
+        private void CreateWindows()
+        {
+            CreateInventory();
+            CreateSettings();
+        }
+
+        private async UniTask CreateHud() => 
             _actorUI = (ActorUI) await _screenFactory.Create(AssetPath.HudPath, _uiRoot);
 
-        public async void CreateDeathScreen() => 
-            await _screenFactory.Create(AssetPath.DeathScreen, _uiRoot);
+        private async UniTask CreateDeathScreen() => 
+            _deathScreen = (DeathScreen) await _screenFactory.Create(AssetPath.DeathScreen, _uiRoot);
 
-        public void CreateInventory() => 
+        private void CreateInventory() => 
             _inventoryWindow = (InventoryWindow) _windowFactory.Create(WindowId.Inventory, _uiRoot);
 
-        public SettingsUI CreateSettings() => 
-            (SettingsUI) _windowFactory.Create(WindowId.Settings, _uiRoot);
+        private void CreateSettings() => 
+            _windowFactory.Create(WindowId.Settings, _uiRoot);
 
         public void ConstructInventoriesHolder(HeroFacade facade) => 
             _inventoriesHolder.Construct(_actorUI.HotBar, _inventoryWindow, facade.Inventory);

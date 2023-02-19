@@ -29,6 +29,10 @@ namespace _Project.CodeBase.Infrastructure
                 .FromFactory<HeroFacadeFactory>();
 
             Container
+                .Bind<GameStateComponentInitializer>()
+                .AsSingle();
+            
+            Container
                 .BindInterfacesAndSelfTo<InteractableSpawner>()
                 .AsSingle();
         }

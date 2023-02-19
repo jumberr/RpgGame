@@ -7,13 +7,7 @@ namespace _Project.CodeBase.Utils.Factory
     {
         private T _instance;
 
-        public async UniTask<T> WaitInstance()
-        {
-            while (_instance is null) 
-                await UniTask.Yield();
-
-            return _instance;
-        }
+        public T Instance => _instance;
 
         public override async UniTask<T> Create(string path)
         {

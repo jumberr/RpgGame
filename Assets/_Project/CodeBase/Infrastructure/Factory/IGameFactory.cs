@@ -12,7 +12,6 @@ namespace _Project.CodeBase.Infrastructure.Factory
         HeroFacade HeroFacade { get; }
 
         UniTask CreateHero();
-        void SetupComponents();
         void Register(ISavedProgressReader progressReader);
 
         void Cleanup();
