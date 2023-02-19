@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: GameAssets
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets
+  m_GroupName: GameAssets
   m_Data:
     m_SerializedData: []
   m_GUID: abaeb5745426cb64baeaaaec6d89dc78
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 36137fff72c72ca429726e951c8b04db
+    m_Address: Hero
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7f7aa7cd3321f4d4f8521b1a30e7d9ab, type: 2}
   m_SchemaSet:

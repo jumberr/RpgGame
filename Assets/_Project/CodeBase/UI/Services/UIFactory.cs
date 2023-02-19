@@ -1,6 +1,6 @@
 using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.Logic.Hero.Cam;
+using _Project.CodeBase.UI.Core;
 using _Project.CodeBase.UI.Services.Windows;
 using _Project.CodeBase.UI.Windows.Settings;
 using Cysharp.Threading.Tasks;
@@ -11,7 +11,7 @@ namespace _Project.CodeBase.UI.Services
 {
     public class UIFactory : IUIFactory
     {
-        private readonly IAssetProvider _assetProvider;
+        private readonly UIRoot.Factory _uiRootFactory;
         private readonly WindowBase.Factory _windowFactory;
         private readonly Screen.Factory _screenFactory;
 
@@ -21,19 +21,18 @@ namespace _Project.CodeBase.UI.Services
         private InventoryWindow _inventoryWindow;
 
         public UIFactory(
-            IAssetProvider assetProvider,
+            UIRoot.Factory uiRootFactory,
             WindowBase.Factory windowFactory,
             Screen.Factory screenFactory)
         {
-            _assetProvider = assetProvider;
+            _uiRootFactory = uiRootFactory;
             _windowFactory = windowFactory;
             _screenFactory = screenFactory;
         }
 
         public async UniTask CreateUIRoot()
         {
-            // todo: add factory for it!
-            _uiRoot = (await _assetProvider.InstantiateAsync(AssetPath.UIRootPath)).transform;
+            _uiRoot = (await _uiRootFactory.Create(AssetPath.UIRootPath)).transform;
             _inventoriesHolder = _uiRoot.GetComponent<InventoriesHolderUI>();
         }
 

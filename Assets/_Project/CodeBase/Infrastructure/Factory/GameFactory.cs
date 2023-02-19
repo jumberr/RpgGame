@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.AssetManagement;
-using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
-using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.UI.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -16,10 +14,8 @@ namespace _Project.CodeBase.Infrastructure.Factory
     {
         private readonly IAssetProvider _assetProvider;
         private readonly IUIFactory _uiFactory;
-        private readonly IStaticDataService _staticDataService;
         private readonly HeroFacade.Factory _heroFactory;
-        private readonly InteractableSpawner _interactableSpawner;
-        private readonly InputService _inputService;
+        private readonly MapStorage _mapStorage;
         private HeroFacade _heroFacade;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
@@ -29,17 +25,13 @@ namespace _Project.CodeBase.Infrastructure.Factory
         public GameFactory(
             IAssetProvider assetProvider,
             IUIFactory uiFactory,
-            IStaticDataService staticDataService,
             HeroFacade.Factory heroFactory,
-            InteractableSpawner spawner,
-            InputService inputService)
+            MapStorage mapStorage)
         {
             _assetProvider = assetProvider;
             _uiFactory = uiFactory;
-            _staticDataService = staticDataService;
             _heroFactory = heroFactory;
-            _interactableSpawner = spawner;
-            _inputService = inputService;
+            _mapStorage = mapStorage;
         }
 
         public void Dispose() => 
@@ -49,11 +41,11 @@ namespace _Project.CodeBase.Infrastructure.Factory
         {
             _heroFacade = await _heroFactory.Create(AssetPath.HeroPath);
             RegisterProgressWatchers(_heroFacade.gameObject);
-            _heroFacade.Construct(_inputService, _staticDataService, _uiFactory.CreateDeathScreen);
+            _heroFacade.Setup(_uiFactory.CreateDeathScreen);
         }
 
-        public void SetupInteractableSpawner() => 
-            _interactableSpawner.Setup(_heroFacade.Inventory);
+        public void SetupComponents() => 
+            Register(_mapStorage);
 
         public void Cleanup()
         {

@@ -1,9 +1,7 @@
-﻿using _Project.CodeBase.Data;
-using _Project.CodeBase.Infrastructure.Factory;
+﻿using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.UI.Services;
-using _Project.CodeBase.UI.Services.Windows;
 using Cysharp.Threading.Tasks;
 
 namespace _Project.CodeBase.Infrastructure.States
@@ -13,19 +11,16 @@ namespace _Project.CodeBase.Infrastructure.States
         private readonly IGameFactory _gameFactory;
         private readonly IUIFactory _uiFactory;
         private readonly IPersistentProgressService _persistentProgressService;
-        private readonly IWindowService _windowService;
-        private readonly MapStorage _mapStorage;
 
         public InitializeGameSceneState(
             IGameFactory gameFactory,
             IUIFactory uiFactory,
-            IPersistentProgressService persistentProgressService,
-            MapStorage mapStorage)
+            IPersistentProgressService persistentProgressService
+            )
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFactory;
             _persistentProgressService = persistentProgressService;
-            _mapStorage = mapStorage;
         }
 
         public async UniTask Enter()
@@ -39,15 +34,11 @@ namespace _Project.CodeBase.Infrastructure.States
         private async UniTask InitializeGameWorld()
         {
             await InitializePlayer();
-            SetupComponents();
             await InitializeUI(_gameFactory.HeroFacade);
         }
 
-        private void SetupComponents()
-        {
-            _gameFactory.Register(_mapStorage);
-            _gameFactory.SetupInteractableSpawner();
-        }
+        private async UniTask InitializePlayer() => 
+            await _gameFactory.CreateHero();
 
         private async UniTask InitializeUI(HeroFacade facade)
         {
@@ -66,9 +57,6 @@ namespace _Project.CodeBase.Infrastructure.States
 
         private void ConstructUI(HeroFacade facade) => 
             _uiFactory.ConstructInventoriesHolder(facade);
-
-        private async UniTask InitializePlayer() => 
-            await _gameFactory.CreateHero();
 
         private async UniTask InitializeUIRoot() =>
             await _uiFactory.CreateUIRoot();

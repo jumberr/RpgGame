@@ -22,9 +22,9 @@ namespace _Project.CodeBase.UI.Windows.Settings
         public event Action<float> OnUpdateSensitivity;
 
         [Inject]
-        public void Construct(HeroFacade.Factory factory)
+        public async void Construct(HeroFacade.Factory factory)
         {
-            _camera = factory.Facade.Camera;
+            _camera = (await factory.WaitInstance()).Camera;
             OnUpdateSensitivity += _camera.UpdateSensitivity;
         }
 

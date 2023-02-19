@@ -8,7 +8,7 @@ using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.Logic.Inventory;
-using Cysharp.Threading.Tasks;
+using _Project.CodeBase.Utils.Factory;
 using UnityEngine;
 using Zenject;
 
@@ -41,13 +41,16 @@ namespace _Project.CodeBase.Logic.Hero
         public HeroState HeroState => _state;
         public HeroInteraction Interaction => _interaction;
 
-        public void Construct(InputService inputService, IStaticDataService staticDataService, Action zeroHealthAction)
+        [Inject]
+        private void Construct(InputService inputService, IStaticDataService staticDataService)
         {
             _inputService = inputService;
             SetupItemDatabase(staticDataService);
             SetupInputService(_inputService);
-            _death.ZeroHealth += zeroHealthAction;
         }
+
+        public void Setup(Action zeroHealthAction) => 
+            _death.ZeroHealth += zeroHealthAction;
 
         private void SetupItemDatabase(IStaticDataService staticDataService)
         {
@@ -67,17 +70,8 @@ namespace _Project.CodeBase.Logic.Hero
             _death.SetInputService(inputService);
         }
 
-        public class Factory : PlaceholderFactory<string, UniTask<HeroFacade>>
+        public class Factory : ComponentPlaceholderFactory<HeroFacade>
         {
-            private HeroFacade _facade;
-        
-            public HeroFacade Facade => _facade;
-            
-            public override async UniTask<HeroFacade> Create(string path)
-            {
-                _facade = await base.Create(path);
-                return _facade;
-            }
         }
     }
 }

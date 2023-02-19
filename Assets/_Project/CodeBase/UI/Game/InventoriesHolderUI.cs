@@ -8,15 +8,15 @@ namespace _Project.CodeBase.UI
     {
         private WeaponStatsUI _weaponStatsUI;
         private HotBarUI _hotBarUI;
-        private InventoryUI _inventoryUI;
+        private InventoryWindow _inventoryWindow;
         private HeroInventory _heroInventory;
 
-        public void Construct(HotBarUI hotBarUI, InventoryUI inventoryUI, HeroInventory heroInventory)
+        public void Construct(HotBarUI hotBarUI, InventoryWindow inventoryWindow, HeroInventory heroInventory)
         {
             _heroInventory = heroInventory;
             _hotBarUI = hotBarUI;
-            _inventoryUI = inventoryUI;
-            _inventoryUI.ItemDescription.Construct(heroInventory);
+            _inventoryWindow = inventoryWindow;
+            _inventoryWindow.ItemDescription.Construct(heroInventory);
             
             ConstructInventories().Forget();
         }
@@ -24,8 +24,8 @@ namespace _Project.CodeBase.UI
         private async UniTaskVoid ConstructInventories()
         {
             await UniTask.WaitUntil(InventoryInitialized);
-            _hotBarUI.Construct(_heroInventory, _inventoryUI.ItemDescription, transform, HandleDrop);
-            _inventoryUI.Construct(_heroInventory, transform, HandleDrop);
+            _hotBarUI.Construct(_heroInventory, _inventoryWindow.ItemDescription, transform, HandleDrop);
+            _inventoryWindow.Construct(_heroInventory, transform, HandleDrop);
         }
 
         private bool InventoryInitialized() => 
@@ -54,7 +54,7 @@ namespace _Project.CodeBase.UI
             
             var slotsHolder = index < _heroInventory.Inventory.HotBarSlots 
                 ? _hotBarUI.SlotsHolder 
-                : _inventoryUI.SlotsHolder;
+                : _inventoryWindow.SlotsHolder;
 
             slotsHolder.UpdateSlot(index);
         }

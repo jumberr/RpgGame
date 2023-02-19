@@ -1,35 +1,35 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _Project.CodeBase.Data;
+using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData;
 using _Project.CodeBase.Utils.Extensions;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace _Project.CodeBase.Logic.Interaction
 {
-    public class InteractableSpawner : MonoBehaviour
+    public class InteractableSpawner : IDisposable
     {
-        private List<InteractableGroundItem> _items = new List<InteractableGroundItem>();
-
+        private readonly HeroFacade.Factory _factory;
         private HeroInventory _heroInventory;
         private ItemsInfo _itemsInfo;
 
-        private void OnValidate() => 
-            _items = FindObjectsOfType<InteractableGroundItem>().ToList();
+        private List<InteractableGroundItem> _items = new List<InteractableGroundItem>();
 
-        public void OnDestroy()
+        private InteractableSpawner(HeroFacade.Factory factory)
+        {
+            _factory = factory;
+            Setup();
+            GrabItems();
+        }
+
+        public void Dispose()
         {
             _heroInventory.OnSpawnItemAtMap -= SpawnItemAtMap;
             _heroInventory.OnItemPickup -= ItemPickup;
-        }
-
-        public void Setup(HeroInventory heroInventory)
-        {
-            _heroInventory = heroInventory;
-            _itemsInfo = _heroInventory.ItemsInfo;
-            _heroInventory.OnSpawnItemAtMap += SpawnItemAtMap;
-            _heroInventory.OnItemPickup += ItemPickup;
         }
 
         public void InitializeOnStart(List<ItemData> savedItems)
@@ -56,6 +56,14 @@ namespace _Project.CodeBase.Logic.Interaction
             return itemsData;
         }
 
+        private async void Setup()
+        {
+            _heroInventory = (await _factory.WaitInstance()).Inventory;
+            _itemsInfo = _heroInventory.ItemsInfo;
+            _heroInventory.OnSpawnItemAtMap += SpawnItemAtMap;
+            _heroInventory.OnItemPickup += ItemPickup;
+        }
+
         private void SetupFirstTime(List<InteractableGroundItem> items)
         {
             foreach (var item in items)
@@ -77,11 +85,6 @@ namespace _Project.CodeBase.Logic.Interaction
             {
                 var part = savedItem.CommonItemPart;
 
-                //if (_itemsInfo.FindItem(part.DbId).PayloadInfo.ItemType == ItemType.Weapon)
-                //{
-                //    part.Item = (WeaponItem) part.Item;
-                //}
-
                 CreateObject(part.DbId, part.Amount, part.Item, savedItem.GameObjectData.Position.AsUnityVector(),
                     savedItem.GameObjectData.Rotation.AsQuaternion());
             }
@@ -98,7 +101,7 @@ namespace _Project.CodeBase.Logic.Interaction
         }
 
         private InteractableGroundItem SpawnInteractableItem(InteractableGroundItem prefab, Vector3 position, Quaternion rotation) => 
-            Instantiate(prefab, position, rotation, transform);
+            Object.Instantiate(prefab, position, rotation);
 
         private void ConstructItem(InteractableGroundItem item, BaseItem data, int amount) => 
             item.Construct(_heroInventory, data, amount);
@@ -118,6 +121,9 @@ namespace _Project.CodeBase.Logic.Interaction
         }
 
         private void DestroyGO(InteractableGroundItem interactable) => 
-            Destroy(interactable.gameObject);
+            Object.Destroy(interactable.gameObject);
+
+        private void GrabItems() => 
+            _items = Object.FindObjectsOfType<InteractableGroundItem>().ToList();
     }
 }
