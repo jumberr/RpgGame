@@ -8,7 +8,6 @@ namespace _Project.CodeBase.UI.Services.Windows
         event Action<WindowId, WindowId> OnSwitchingScreens;
         event Action<WindowId> OnShowingScreen;
         WindowId CurrentWindowId { get; }
-        void Setup();
         void Show(WindowId id);
         void Back();
         WindowBase GetWindow(WindowId id);

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Logic.Hero;
-using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 namespace _Project.CodeBase.Infrastructure.Factory
 {
@@ -11,9 +11,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
         List<ISavedProgressReader> ProgressReaders { get; }
         HeroFacade HeroFacade { get; }
 
-        void CreateHero();
-        void SetupInteractableSpawner();
-        void AddProgressWatchers(GameObject go);
+        UniTask CreateHero();
         void Register(ISavedProgressReader progressReader);
 
         void Cleanup();

@@ -9,18 +9,19 @@ namespace _Project.CodeBase.Data
         private readonly InteractableSpawner _spawner;
         private MapData _mapData;
 
-        public MapStorage(ItemStorage itemStorage, InteractableSpawner spawner)
+        private MapStorage(ItemStorage itemStorage, InteractableSpawner interactableSpawner)
         {
-            _spawner = spawner;
+            _spawner = interactableSpawner;
             _itemStorage = itemStorage;
         }
+
+        public void Initialize() => 
+            InitializeItems();
 
         public void LoadProgress(PlayerProgress progress)
         {
             _mapData = progress.MapData;
             _itemStorage.ApplyProgress(_mapData.ItemsData);
-
-            InitializeItems();
         }
 
         public void UpdateProgress(PlayerProgress progress)
