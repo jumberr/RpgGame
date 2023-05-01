@@ -23,8 +23,8 @@ namespace _Project.CodeBase.UI
 
         public void Initialize()
         {
-            InitializeInventory();
             InitializeUI();
+            InitializeInventory();
         }
 
         private void InitializeInventory()
