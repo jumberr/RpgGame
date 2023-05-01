@@ -49,12 +49,16 @@ namespace _Project.CodeBase.Infrastructure.States
         private async UniTask InitializeGameWorld()
         {
             await InitializePlayer();
+            InitializeAI();
             await InitializeUI();
             OnWorldInitialized?.Invoke();
         }
 
         private async UniTask InitializePlayer() => 
             await _gameFactory.CreateHero();
+
+        private void InitializeAI() => 
+            _gameFactory.InitializeAI();
 
         private async UniTask InitializeUI() => 
             await _uiFactory.CreateUI();

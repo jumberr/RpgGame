@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
+using _Project.CodeBase.Logic;
 using _Project.CodeBase.Logic.Hero;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
     {
         private readonly IAssetProvider _assetProvider;
         private readonly HeroFacade.Factory _heroFactory;
+        private readonly AIObserver _aiObserver;
         private HeroFacade _heroFacade;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
@@ -20,8 +22,10 @@ namespace _Project.CodeBase.Infrastructure.Factory
         
         public GameFactory(
             IAssetProvider assetProvider,
-            HeroFacade.Factory heroFactory)
+            HeroFacade.Factory heroFactory,
+            AIObserver aiObserver)
         {
+            _aiObserver = aiObserver;
             _assetProvider = assetProvider;
             _heroFactory = heroFactory;
         }
@@ -34,6 +38,9 @@ namespace _Project.CodeBase.Infrastructure.Factory
             _heroFacade = await _heroFactory.Create(AssetPath.HeroPath);
             RegisterProgressWatchers(_heroFacade.gameObject);
         }
+
+        public void InitializeAI() => 
+            _aiObserver.Initialize();
 
         public void Cleanup()
         {
