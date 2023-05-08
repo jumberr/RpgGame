@@ -14,3 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EnemyPrefab>k__BackingField: {fileID: 2190050724543063877, guid: 6dc4cf4496348884d8ee27743ae38562,
     type: 3}
+  <HitboxData>k__BackingField:
+  - <Name>k__BackingField: 0
+    <Multiplier>k__BackingField: 5
+  - <Name>k__BackingField: 1
+    <Multiplier>k__BackingField: 1
+  - <Name>k__BackingField: 2
+    <Multiplier>k__BackingField: 0.9
+  - <Name>k__BackingField: 3
+    <Multiplier>k__BackingField: 0.9

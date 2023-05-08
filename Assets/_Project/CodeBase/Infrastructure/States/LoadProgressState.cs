@@ -48,7 +48,7 @@ namespace _Project.CodeBase.Infrastructure.States
         private PlayerProgress NewProgress()
         {
             var playerData = _staticDataService.ForPlayer();
-            var inventory = new Inventory(8);
+            var inventory = new Inventory(playerData.InventoryData);
             var settings = new SettingsData(0.2f, 0);
             var mapData = new MapData();
             var progress = new PlayerProgress(playerData.HealthData, playerData.DefaultData, mapData, inventory, settings);

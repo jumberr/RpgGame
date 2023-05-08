@@ -1,4 +1,5 @@
-﻿using _Project.CodeBase.StaticData;
+﻿using _Project.CodeBase.Logic.Enemy;
+using _Project.CodeBase.StaticData;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -27,8 +28,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         {
             for (var i = 0; i < Hit(); i++)
             {
-                if (_hits[i].transform.TryGetComponent<IHealth>(out var health)) 
-                    health.TakeDamage(_damage);
+                if (_hits[i].transform.TryGetComponent<IHitBox>(out var hitBox)) 
+                    hitBox.Hit(_damage);
             }
         }
 

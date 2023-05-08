@@ -1,8 +1,6 @@
-using _Project.CodeBase.Logic.Hero;
 using NTC.Global.Cache;
 using UnityEngine;
 using UnityEngine.AI;
-using Zenject;
 
 namespace _Project.CodeBase.Logic.Enemy
 {
