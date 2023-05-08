@@ -15,7 +15,7 @@ namespace _Project.CodeBase.Logic.Enemy
 
         private void SwitchComponents(bool animatorValue)
         {
-            animator.enabled = animatorValue;
+            animator.ToggleAnimator(animatorValue);
             ragdoll.ToggleRagdoll(!animatorValue);
         }
     }

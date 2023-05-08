@@ -12,7 +12,7 @@ namespace _Project.CodeBase.Logic.Enemy
         public void DisableAnimator() =>
             ToggleAnimator(false);
 
-        private void ToggleAnimator(bool value) => 
+        public void ToggleAnimator(bool value) => 
             animator.enabled = value;
     }
 }

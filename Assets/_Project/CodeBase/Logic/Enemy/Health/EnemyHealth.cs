@@ -1,4 +1,4 @@
-﻿using _Project.CodeBase.StaticData.Enemy;
+﻿using _Project.CodeBase.Infrastructure.Services.StaticData;
 using Zenject;
 
 namespace _Project.CodeBase.Logic
@@ -6,7 +6,7 @@ namespace _Project.CodeBase.Logic
     public class EnemyHealth : BaseHealthComponent
     {
         [Inject]
-        public void Construct(EnemyStaticData staticData) => 
-            HealthData = staticData.HealthData;
+        public void Construct(IStaticDataService staticData) => 
+            HealthData = staticData.ForEnemy().HealthData;
     }
 }

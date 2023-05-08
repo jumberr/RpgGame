@@ -11,6 +11,7 @@ namespace _Project.CodeBase.Logic.Enemy
         [SerializeField] private float maxTime;
 
         private Transform _hero;
+        private bool _movePossibility;
         private float _timer;
 
         public void Initialize(Transform hero) => 
@@ -18,6 +19,8 @@ namespace _Project.CodeBase.Logic.Enemy
 
         public void Run()
         {
+            if (!_movePossibility) return;
+            
             _timer -= Time.deltaTime;
             if (_timer < 0f)
             {
@@ -26,6 +29,12 @@ namespace _Project.CodeBase.Logic.Enemy
                     agent.destination = _hero.position;
                 _timer = maxTime;
             }
+        }
+
+        public void Disable()
+        {
+            _movePossibility = false;
+            agent.ResetPath();
         }
     }
 }

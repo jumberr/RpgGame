@@ -7,6 +7,7 @@ namespace _Project.CodeBase.Logic.Enemy
     public class EnemyFacade : MonoBehaviour
     {
         [SerializeField] private EnemyMovement movement;
+        [SerializeField] private EnemyDeath death;
         [SerializeField] private EnemyHealth health;
         [SerializeField] private EnemyAnimationController animatorController;
         [SerializeField] private EnemyRagdoll ragdoll;
@@ -24,6 +25,7 @@ namespace _Project.CodeBase.Logic.Enemy
         {
             movement.Initialize(_player.transform);
             animatorController.TurnAnimator();
+            death.SetHealthComponent(health);
             ragdoll.Setup(health);
         }
 

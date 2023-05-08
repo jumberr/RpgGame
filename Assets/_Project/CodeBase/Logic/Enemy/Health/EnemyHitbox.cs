@@ -22,8 +22,12 @@ namespace _Project.CodeBase.Logic.Enemy
         public void SetupHealth(EnemyHealth health) => 
             _enemyHealth = health;
 
-        public void Hit(float dmg) => 
-            _enemyHealth.TakeDamage(_multiplier * dmg);
+        public void Hit(float dmg)
+        {
+            var damage = _multiplier * dmg;
+            _enemyHealth.TakeDamage(damage);
+            Debug.Log($" [HitBox]: Hit! {damage}");
+        }
 
         public void ToggleRagdoll(bool value) => 
             Rigidbody.isKinematic = value;

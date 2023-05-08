@@ -596,8 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db79300ea97b4cd1bcf0f985afa72336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 4244581671924312788}
-  _move: {fileID: 9040526684898629062}
+  move: {fileID: 9040526684898629062}
 --- !u!114 &4161488774437705111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,7 +661,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _state: {fileID: 4068888587891572736}
-  _mainCamera: {fileID: 1124464607595143057}
   _weaponCamera: {fileID: 1187891352048496399}
   _weaponHolder: {fileID: 8918948168309251001}
 --- !u!114 &1314774897637019763

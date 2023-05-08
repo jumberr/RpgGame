@@ -49,6 +49,7 @@ namespace _Project.CodeBase.Logic.Hero
             _uiFactory = uiFactory;
             SetupItemDatabase(staticDataService);
             SetupInputService(_inputService);
+            _death.SetHealthComponent(_health);
             
             _death.ZeroHealth += _uiFactory.ShowDeathScreen;
         }
@@ -71,7 +72,6 @@ namespace _Project.CodeBase.Logic.Hero
             _camera.SetInputService(inputService);
             _scoping.SetInputService(inputService);
             _reload.SetInputService(inputService);
-            _death.SetInputService(inputService);
         }
 
         public class Factory : ComponentPlaceholderFactory<HeroFacade>
