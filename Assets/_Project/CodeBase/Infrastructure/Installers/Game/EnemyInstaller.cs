@@ -1,5 +1,7 @@
 using _Project.CodeBase.Logic;
 using _Project.CodeBase.Logic.Enemy;
+using _Project.CodeBase.Logic.Enemy.FSM;
+using _Project.CodeBase.Logic.Enemy.FSM.States;
 using Zenject;
 
 namespace _Project.CodeBase.Infrastructure
@@ -19,6 +21,22 @@ namespace _Project.CodeBase.Infrastructure
             Container
                 .Bind<AIObserver>()
                 .AsSingle();
+
+            Container
+                .Bind<AIStateMachine>()
+                .AsTransient();
+
+            Container
+                .BindInterfacesAndSelfTo<IdleState>()
+                .AsTransient();
+            
+            Container
+                .BindInterfacesAndSelfTo<ChaseState>()
+                .AsTransient();
+
+            Container
+                .BindInterfacesAndSelfTo<DeathState>()
+                .AsTransient();
         }
     }
 }

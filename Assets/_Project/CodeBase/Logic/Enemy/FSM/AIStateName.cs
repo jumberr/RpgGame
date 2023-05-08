@@ -1,10 +1,11 @@
 namespace _Project.CodeBase.Logic.Enemy.FSM
 {
-    public enum EnemyState
+    public enum AIStateName
     {
         Spawn,
         Idle,
         Patrol,
-        Chase
+        Chase,
+        Death
     }
 }

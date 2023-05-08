@@ -10,20 +10,19 @@ namespace _Project.CodeBase.UI
         
         [SerializeField] private MeshRenderer meshRenderer;
 
-        private readonly MaterialPropertyBlock _materialBlock = new MaterialPropertyBlock();
         private IHealth _health;
+        private MaterialPropertyBlock _materialBlock;
         private Transform _mainCamera;
         private static readonly int ShaderProperty = Shader.PropertyToID(Fill);
 
-        public void Init() => 
-            _mainCamera = Camera.main.transform;
-
-        public void Run()
+        public void Init()
         {
-            if (_mainCamera is null) return;
-            
-            AlignCamera();
+            _materialBlock = new MaterialPropertyBlock();
+            _mainCamera = Camera.main.transform;
         }
+
+        public void Run() => 
+            AlignCamera();
 
         private void OnDestroy() => 
             _health.HealthChanged -= UpdateHealth;
@@ -43,6 +42,8 @@ namespace _Project.CodeBase.UI
         
         private void AlignCamera()
         {
+            if (_mainCamera is null) return;
+            
             var forward = transform.position - _mainCamera.position;
             forward.Normalize();
             var up = Vector3.Cross(forward, _mainCamera.right);

@@ -2378,7 +2378,6 @@ GameObject:
   - component: {fileID: 578376449398627443}
   - component: {fileID: 7389507112651452681}
   - component: {fileID: 2190050724543063877}
-  - component: {fileID: 5054920052782304530}
   - component: {fileID: 2871355405900924456}
   - component: {fileID: 8868360271570249062}
   - component: {fileID: 2999307179002613742}
@@ -2386,6 +2385,7 @@ GameObject:
   - component: {fileID: 1443498477751166157}
   - component: {fileID: 4230964418422681727}
   - component: {fileID: 3099600198521337191}
+  - component: {fileID: 1142408978888442703}
   m_Layer: 12
   m_Name: Zombie
   m_TagString: Untagged
@@ -2454,26 +2454,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f33cf8b648864e8c91b0feb0987635d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 5054920052782304530}
   death: {fileID: 3099600198521337191}
   health: {fileID: 4230964418422681727}
   animatorController: {fileID: 2871355405900924456}
   ragdoll: {fileID: 2999307179002613742}
---- !u!114 &5054920052782304530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4493914613880827488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d463a29ed6433cbfb21958b61cd77f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 2170126740793085257}
-  maxDistance: 1
-  maxTime: 1
 --- !u!114 &2871355405900924456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2584,8 +2568,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2945cba586b4525b2dd396cffa2b5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 5054920052782304530}
+  agent: {fileID: 1142408978888442703}
   animationController: {fileID: 2871355405900924456}
+--- !u!114 &1142408978888442703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493914613880827488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff2918cd46044969965655e5c073aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <NavMeshAgent>k__BackingField: {fileID: 2170126740793085257}
 --- !u!1 &4710940672626480558
 GameObject:
   m_ObjectHideFlags: 0
