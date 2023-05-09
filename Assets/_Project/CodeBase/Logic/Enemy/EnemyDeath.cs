@@ -7,11 +7,13 @@ namespace _Project.CodeBase.Logic.Enemy
     {
         [SerializeField] private AIAgent agent;
         [SerializeField] private EnemyAnimationController animationController;
+        [SerializeField] private DissolveEffect dissolveEffect;
 
         protected override void ProduceHeroDeath()
         {
             agent.ChangeState(AIStateName.Death);
             animationController.TurnRagdoll();
+            dissolveEffect.ActivateEffect().Forget();
         }
     }
 }

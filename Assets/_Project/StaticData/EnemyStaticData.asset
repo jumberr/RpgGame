@@ -26,3 +26,5 @@ MonoBehaviour:
     <Multiplier>k__BackingField: 0.9
   - <Name>k__BackingField: 3
     <Multiplier>k__BackingField: 0.9
+  <InitialState>k__BackingField: 1
+  <States>k__BackingField: 010000000300000004000000
