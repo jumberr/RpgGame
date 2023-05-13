@@ -11,10 +11,7 @@ namespace _Project.CodeBase.Logic.Hero
             InvokeHealthChanged();
         }
 
-        public void UpdateProgress(PlayerProgress progress)
-        {
-            progress.HealthData.CurrentHp = Current;
-            progress.HealthData.MaxHp = Max;
-        }
+        public void UpdateProgress(PlayerProgress progress) => 
+            progress.HealthData = HealthData;
     }
 }

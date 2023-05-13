@@ -23,7 +23,7 @@ namespace _Project.CodeBase.Logic.Enemy
             for (var i = 0; i < Hit(); i++)
             {
                 if (Hits[i].transform.TryGetComponent<HeroHealth>(out var health)) 
-                    health.TakeDamage(Damage);
+                    health.TakeDamage(Damage).Forget();
             }
         }
     }

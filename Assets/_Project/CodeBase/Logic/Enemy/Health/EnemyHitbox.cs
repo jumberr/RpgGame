@@ -25,7 +25,7 @@ namespace _Project.CodeBase.Logic.Enemy
         public void Hit(float dmg)
         {
             var damage = _multiplier * dmg;
-            _enemyHealth.TakeDamage(damage);
+            _enemyHealth.TakeDamage(damage).Forget();
             Debug.Log($" [HitBox]: Hit! {damage}");
         }
 

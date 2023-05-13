@@ -9,8 +9,6 @@ namespace _Project.CodeBase.UI
     public class HeroHitEffect : MonoBehaviour
     {
         [SerializeField] private Image bloodSplatterImage;
-        
-        [Header("Hurt")]
         [SerializeField] private float maxHurtAlpha;
         [SerializeField] private Image hurtImage;
 
@@ -20,17 +18,31 @@ namespace _Project.CodeBase.UI
         public void Construct(HeroFacade.Factory factory)
         {
             _health = factory.Instance.Health;
-            _health.HealthChanged += UpdateBloodOverlay;
+            _health.HealthIncreased += UpdateBloodOverlay;
+            _health.HealthDropped += HandleHealthDrop;
         }
 
-        private void OnDestroy() => 
-            _health.HealthChanged -= UpdateBloodOverlay;
+        private void OnDestroy()
+        {
+            _health.HealthIncreased -= UpdateBloodOverlay;
+            _health.HealthDropped -= HandleHealthDrop;
+        }
+
+        private void HandleHealthDrop()
+        {
+            UpdateBloodOverlay();
+            PlayHitSound();
+        }
 
         private void UpdateBloodOverlay()
         {
             var current = _health.Current / _health.Max;
             UpdateImage(bloodSplatterImage, current, 1);
             UpdateImage(hurtImage, current, maxHurtAlpha);
+        }
+
+        private void PlayHitSound()
+        {
         }
 
         private void UpdateImage(Graphic image, float current, float max)
