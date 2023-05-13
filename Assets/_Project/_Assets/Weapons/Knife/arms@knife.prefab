@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2296806059854781804
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8773150008523575506}
-  m_Layer: 7
-  m_Name: StartPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8773150008523575506
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2296806059854781804}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0028, y: 0.1582, z: 0.0059}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2630403516024415084}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5747186760183001611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,6 +355,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5747186760183001611}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1447473631417090918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6617035187695219053, guid: 43b9cf5641b28c34a9c097353f0263d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 5747186760183001611}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2630403516024415084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7729032273879355751, guid: 43b9cf5641b28c34a9c097353f0263d8,
@@ -410,7 +386,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8788586523146174341
+--- !u!114 &7128988604791063830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -419,10 +395,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4828828816598372186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af34b5977a2743ce8aa75a71a52fec44, type: 3}
+  m_Script: {fileID: 11500000, guid: 287e88db736f451198df6c2f621b2885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPoint: {fileID: 8773150008523575506}
 --- !u!114 &8176054150794645594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,3 +419,30 @@ MonoBehaviour:
   HandsAnimator: {fileID: 4174346903778545322}
   MeleeWeapon: {fileID: 8788586523146174341}
   RevolverAnimation: {fileID: 0}
+--- !u!114 &8788586523146174341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828828816598372186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af34b5977a2743ce8aa75a71a52fec44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 2630403516024415084}
+  sphereCollider: {fileID: 3830216286090080275}
+--- !u!135 &3830216286090080275
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447473631417090918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0.0000000144956624, y: 0.16, z: -0.0034987642}

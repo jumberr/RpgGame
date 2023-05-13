@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "50a67d8f419b6cea0398eff6c19cf0bbe11ed609"
     },
+    "com.nomnom.raycast-visualization": {
+      "version": "https://github.com/nomnomab/RaycastVisualization.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "a511b1c8276dc16052153db4214af8f701289456"
+    },
     "com.unity.2d.pixel-perfect": {
       "version": "4.0.1",
       "depth": 0,

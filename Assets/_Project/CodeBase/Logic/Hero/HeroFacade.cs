@@ -9,12 +9,13 @@ using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.UI.Services;
 using _Project.CodeBase.Utils.Factory;
+using NTC.Global.Cache;
 using UnityEngine;
 using Zenject;
 
 namespace _Project.CodeBase.Logic.Hero
 {
-    public class HeroFacade : MonoBehaviour
+    public class HeroFacade : NightCache
     {
         [SerializeField] private WeaponController _weaponController;
         [SerializeField] private HeroInteraction _interaction;

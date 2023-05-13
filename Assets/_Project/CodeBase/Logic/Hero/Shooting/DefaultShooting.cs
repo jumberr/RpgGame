@@ -24,6 +24,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
             for (var i = 0; i < FractionCount; i++)
             {
                 var firePointPos = FirePoint.position;
+                Debug.DrawRay(firePointPos, dir[i], Color.red, 10);
                 if (Physics.Raycast(firePointPos, dir[i], out var hit, Range, LayerMask))
                 {
                     if (hit.transform.TryGetComponent<IHitBox>(out var hitbox)) 

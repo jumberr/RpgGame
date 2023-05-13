@@ -8,10 +8,10 @@ namespace _Project.CodeBase.Logic
     {
         private const string DissolveAmount = "_DissolveAmount";
         private const int DisabledEffect = 0;
-        private const int EnabledEffect = 1;
     
         [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
-        
+        [SerializeField] private int enabledEffect = 1;
+
         private readonly int _dissolveAmount = Shader.PropertyToID(DissolveAmount);
         private Material _material;
         
@@ -22,9 +22,9 @@ namespace _Project.CodeBase.Logic
         {
             var time = 0f;
 
-            while (time < EnabledEffect)
+            while (time < enabledEffect)
             {
-                _material.SetFloat(_dissolveAmount, Mathf.Lerp(DisabledEffect, EnabledEffect, time));
+                _material.SetFloat(_dissolveAmount, Mathf.Lerp(DisabledEffect, enabledEffect, time));
                 time += Time.deltaTime;
                 await UniTask.Yield();
             }

@@ -6,6 +6,7 @@ namespace _Project.CodeBase.Logic.Enemy.FSM
         Idle,
         Patrol,
         Chase,
+        Combat,
         Death
     }
 }

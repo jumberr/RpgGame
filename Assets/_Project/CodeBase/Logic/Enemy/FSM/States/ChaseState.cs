@@ -1,24 +1,23 @@
+using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.Utils.Extensions;
+using _Project.CodeBase.StaticData.Enemy;
 using UnityEngine;
-using UnityEngine.AI;
-using Zenject;
 
 namespace _Project.CodeBase.Logic.Enemy.FSM.States
 {
     public class ChaseState : IAIState
     {
-        private const float MaxDistance = 1f;
-        private const float MaxTime = 1f;
-        
-        private Transform _hero;
-        private float _timer;
+        private readonly Transform _hero;
+        private readonly EnemyStaticData _enemyStaticData;
+        private float _destinationTimer;
 
         public AIStateName StateName => AIStateName.Chase;
 
-        [Inject]
-        public void Construct(HeroFacade.Factory factory) => 
-            _hero = factory.Instance.transform;
+        public ChaseState(HeroFacade.Factory factory, IStaticDataService staticDataService)
+        {
+            _hero = factory.Instance.CachedTransform;
+            _enemyStaticData = staticDataService.ForEnemy();
+        }
 
         public void Enter(AIAgent agent)
         {
@@ -26,16 +25,33 @@ namespace _Project.CodeBase.Logic.Enemy.FSM.States
 
         public void Update(AIAgent agent)
         {
-            _timer -= Time.deltaTime;
-            if (!agent.NavMeshAgent.hasPath)
-                agent.NavMeshAgent.destination = _hero.position;
+            if (!agent.NavMeshAgent.enabled) return;
 
-            if (!(_timer < 0f)) return;
-            var direction =  _hero.position - agent.NavMeshAgent.destination;
-            direction.y = 0f;
-            if (direction.sqrMagnitude > MaxDistance * MaxDistance && agent.NavMeshAgent.pathStatus != NavMeshPathStatus.PathPartial) 
-                agent.NavMeshAgent.destination = _hero.position;
-            _timer = MaxTime;
+            var heroPosition = _hero.position;
+
+            if (_destinationTimer <= 0)
+            {
+                _destinationTimer = _enemyStaticData.DestinationCooldown;
+                agent.NavMeshAgent.SetDestination(heroPosition);
+            }
+            
+            var distance = agent.DistanceTo(heroPosition);
+            if (distance <= _enemyStaticData.AttackRange)
+            {
+                agent.ChangeState(AIStateName.Combat);
+                return;
+            }
+
+            if (distance > _enemyStaticData.SightDistance)
+            {
+                agent.ChangeState(AIStateName.Idle);
+                return;
+            }
+
+            _destinationTimer -= Time.deltaTime;
+
+            agent.RotateAI(heroPosition);
+            agent.EnemyAnimator.PlayMoveAnimation(agent.NavMeshAgent.velocity.magnitude / agent.NavMeshAgent.speed);
         }
 
         public void Exit(AIAgent agent)

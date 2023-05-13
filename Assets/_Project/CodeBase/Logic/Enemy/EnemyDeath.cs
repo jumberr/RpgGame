@@ -12,7 +12,7 @@ namespace _Project.CodeBase.Logic.Enemy
         protected override void ProduceHeroDeath()
         {
             agent.ChangeState(AIStateName.Death);
-            animationController.TurnRagdoll();
+            animationController.DisableAnimator();
             dissolveEffect.ActivateEffect().Forget();
         }
     }

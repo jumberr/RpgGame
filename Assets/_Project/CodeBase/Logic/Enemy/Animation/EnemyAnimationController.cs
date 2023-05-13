@@ -7,16 +7,16 @@ namespace _Project.CodeBase.Logic.Enemy
         [SerializeField] private EnemyAnimator animator;
         [SerializeField] private EnemyRagdoll ragdoll;
 
-        public void TurnAnimator() => 
+        public void EnableAnimator() => 
             SwitchComponents(true);
 
-        public void TurnRagdoll() => 
+        public void DisableAnimator() => 
             SwitchComponents(false);
 
         private void SwitchComponents(bool animatorValue)
         {
             animator.ToggleAnimator(animatorValue);
-            ragdoll.ToggleRagdoll(!animatorValue);
+            ragdoll.ToggleRagdoll(animatorValue);
         }
     }
 }

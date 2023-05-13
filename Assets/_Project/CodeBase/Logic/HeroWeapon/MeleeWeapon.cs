@@ -1,39 +1,30 @@
-﻿using _Project.CodeBase.Logic.Enemy;
-using _Project.CodeBase.StaticData;
+﻿using System.Collections.Generic;
+using _Project.CodeBase.Logic.Enemy;
 using JetBrains.Annotations;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
-    public class MeleeWeapon : MonoBehaviour
+    public class MeleeWeapon : BaseMeleeAttack
     {
-        [SerializeField] private Transform _startPoint;
-        
-        private readonly Collider[] _hits = new Collider[3];
-        private LayerMask _layerMask;
-
-        private float _damage;
-        private float _radius;
-
-        public void Construct(LayerMask mask, KnifeInfo knifeInfo)
-        {
-            _layerMask = mask;
-
-            _damage = knifeInfo.WeaponSpecs.Damage;
-            _radius = knifeInfo.KnifeSpecs.Radius;
-        }
+        private List<Transform> _dealtDamage = new List<Transform>();
 
         [UsedImplicitly]
         public void OnAttack()
         {
+            _dealtDamage.Clear();
+            
             for (var i = 0; i < Hit(); i++)
             {
-                if (_hits[i].transform.TryGetComponent<IHitBox>(out var hitBox)) 
-                    hitBox.Hit(_damage);
+                if (Hits[i].transform.TryGetComponent<IHitBox>(out var hitBox))
+                {
+                    var enemyRoot = Hits[i].transform.root;
+                    if (_dealtDamage.Contains(enemyRoot)) continue;
+
+                    _dealtDamage.Add(enemyRoot);
+                    hitBox.Hit(Damage);
+                }
             }
         }
-
-        private int Hit() => 
-            Physics.OverlapSphereNonAlloc(_startPoint.position, _radius, _hits, _layerMask);
     }
 }

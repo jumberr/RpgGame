@@ -11,12 +11,15 @@ namespace _Project.CodeBase.Logic.Enemy
         [SerializeField] private EnemyRagdoll ragdoll;
         
         [Inject]
-        public void Construct() => 
+        public void Construct()
+        {
+            transform.position = new Vector3(Random.Range(-20, 20), 2, Random.Range(-20, 20));
             InitializeEnemy();
+        }
 
         private void InitializeEnemy()
         {
-            animatorController.TurnAnimator();
+            animatorController.EnableAnimator();
             death.SetHealthComponent(health);
             ragdoll.Setup(health);
         }

@@ -33,6 +33,10 @@ namespace _Project.CodeBase.Infrastructure
             Container
                 .BindInterfacesAndSelfTo<ChaseState>()
                 .AsTransient();
+            
+            Container
+                .BindInterfacesAndSelfTo<CombatState>()
+                .AsTransient();
 
             Container
                 .BindInterfacesAndSelfTo<DeathState>()

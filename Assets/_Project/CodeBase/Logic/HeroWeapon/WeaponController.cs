@@ -119,7 +119,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         private void SetupKnife(KnifeInfo knifeInfo)
         {
-            _currentWeapon.WeaponConfiguration.MeleeWeapon.Construct(_attack.LayerMask, knifeInfo);
+            _currentWeapon.WeaponConfiguration.MeleeWeapon.Construct(_attack.LayerMask, knifeInfo.WeaponSpecs.Damage);
             _attack.ApplyKnife(knifeInfo);
             _reload.Construct(knifeInfo);
             _scoping.Construct(knifeInfo);

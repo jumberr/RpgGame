@@ -18,6 +18,8 @@ namespace _Project.CodeBase.UI
         public void Init()
         {
             _materialBlock = new MaterialPropertyBlock();
+            
+            // TODO: refactor
             _mainCamera = Camera.main.transform;
         }
 
