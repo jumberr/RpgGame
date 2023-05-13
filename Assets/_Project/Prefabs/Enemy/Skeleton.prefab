@@ -73,8 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d943b470d53b4bfe8f27d90496765d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 8868360271570249062}
   ragdoll: {fileID: 2999307179002613742}
+  <Animator>k__BackingField: {fileID: 8868360271570249062}
 --- !u!114 &8868360271570249062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +173,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1142408978888442703}
   animationController: {fileID: 2871355405900924456}
+  healthBar: {fileID: 4354513182271877659}
   dissolveEffect: {fileID: 8159572665199735066}
+  deathTime: 1
+  delayTime: 0.3
 --- !u!114 &1142408978888442703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 2678063640228830941}
-  enabledEffect: 1
+  minDuration: 2
+  maxDuration: 3
 --- !u!114 &6757831102487357451
 MonoBehaviour:
   m_ObjectHideFlags: 0

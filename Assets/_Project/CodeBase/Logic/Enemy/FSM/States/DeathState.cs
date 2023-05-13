@@ -6,8 +6,6 @@ namespace _Project.CodeBase.Logic.Enemy.FSM.States
         
         public void Enter(AIAgent agent)
         {
-            agent.NavMeshAgent.ResetPath();
-            agent.EnemyAnimator.PlayDeathAnimation();
         }
 
         public void Update(AIAgent agent)

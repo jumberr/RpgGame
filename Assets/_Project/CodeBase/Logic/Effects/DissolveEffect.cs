@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using NTC.Global.Cache;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Project.CodeBase.Logic
 {
@@ -10,7 +11,8 @@ namespace _Project.CodeBase.Logic
         private const int DisabledEffect = 0;
     
         [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
-        [SerializeField] private int enabledEffect = 1;
+        [SerializeField] private int minDuration = 1;
+        [SerializeField] private int maxDuration = 2;
 
         private readonly int _dissolveAmount = Shader.PropertyToID(DissolveAmount);
         private Material _material;
@@ -20,11 +22,12 @@ namespace _Project.CodeBase.Logic
 
         public async UniTaskVoid ActivateEffect()
         {
+            var duration = Random.Range(minDuration, maxDuration);
             var time = 0f;
 
-            while (time < enabledEffect)
+            while (time < duration)
             {
-                _material.SetFloat(_dissolveAmount, Mathf.Lerp(DisabledEffect, enabledEffect, time));
+                _material.SetFloat(_dissolveAmount, Mathf.Lerp(DisabledEffect, duration, time));
                 time += Time.deltaTime;
                 await UniTask.Yield();
             }

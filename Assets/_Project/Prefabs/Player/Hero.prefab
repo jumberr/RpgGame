@@ -560,6 +560,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9
   _rigidbodyPushForce: 1
+  animationThreshold: 0.1
 --- !u!114 &9040526684898629059
 MonoBehaviour:
   m_ObjectHideFlags: 0

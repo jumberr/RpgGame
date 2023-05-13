@@ -1,4 +1,5 @@
 using _Project.CodeBase.Logic;
+using _Project.CodeBase.Utils.Extensions;
 using NTC.Global.Cache;
 using UnityEngine;
 
@@ -27,13 +28,22 @@ namespace _Project.CodeBase.UI
             AlignCamera();
 
         private void OnDestroy() => 
-            _health.HealthChanged -= UpdateHealth;
+            Cleanup();
 
         public void Setup(IHealth health)
         {
             _health = health;
             _health.HealthChanged += UpdateHealth;
         }
+
+        public void Deactivate()
+        {
+            meshRenderer.Deactivate();
+            Cleanup();
+        }
+
+        private void Cleanup() => 
+            _health.HealthChanged -= UpdateHealth;
 
         private void UpdateHealth() 
         {
