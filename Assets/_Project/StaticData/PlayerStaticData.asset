@@ -23,8 +23,11 @@ MonoBehaviour:
       Z: 0
       W: 0
   <HealthData>k__BackingField:
-    CurrentHp: 100
-    MaxHp: 100
+    <CurrentHp>k__BackingField: 100
+    <MaxHp>k__BackingField: 100
+    <Regeneration>k__BackingField: 1
+    <RegenerationDelay>k__BackingField: 5
+    <RegenerationSpeed>k__BackingField: 0.033
   <InventoryData>k__BackingField:
     <HotBarSize>k__BackingField: 5
     <InventorySize>k__BackingField: 37

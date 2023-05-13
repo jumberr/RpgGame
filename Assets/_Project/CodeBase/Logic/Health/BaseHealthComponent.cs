@@ -9,9 +9,9 @@ namespace _Project.CodeBase.Logic
     public abstract class BaseHealthComponent : MonoBehaviour, IHealth
     {
         protected HealthData HealthData;
-        private UniTask _regenerationTask;
+        
         private CancellationTokenSource _cts;
-
+        private UniTask _regenerationTask;
         private bool _heal;
 
         public event Action HealthChanged;
@@ -23,14 +23,11 @@ namespace _Project.CodeBase.Logic
             get => HealthData.CurrentHp;
             set
             {
-                if (HealthData.CurrentHp < value) 
-                    HealthIncreased?.Invoke();
-                
-                if (HealthData.CurrentHp > value) 
-                    HealthDropped?.Invoke();
+                var healthStatus = GetHealthStatus(value);
 
                 HealthData.CurrentHp = Mathf.Clamp(value, 0, HealthData.MaxHp);
                 HealthChanged?.Invoke();
+                InvokeEventByStatus(healthStatus);
             }
         }
 
@@ -57,8 +54,27 @@ namespace _Project.CodeBase.Logic
             Current += health;
         }
 
+        public float GetNormalizedHealth() => 
+            Current / Max;
+
         protected void InvokeHealthChanged() =>
             HealthChanged?.Invoke();
+        
+        private HealthStatus GetHealthStatus(float value)
+        {
+            if (HealthData.CurrentHp < value) return HealthStatus.Increase;
+            return HealthData.CurrentHp > value 
+                ? HealthStatus.Drop 
+                : HealthStatus.None;
+        }
+
+        private void InvokeEventByStatus(HealthStatus status)
+        {
+            if (status == HealthStatus.Increase)
+                HealthIncreased?.Invoke();
+            else if (status == HealthStatus.Drop)
+                HealthDropped?.Invoke();
+        }
 
         private async UniTask WaitForRegeneration()
         {

@@ -12,5 +12,6 @@ namespace _Project.CodeBase.Logic
         float Max { get; set; }
         UniTaskVoid TakeDamage(float damage);
         void Heal(float health);
+        float GetNormalizedHealth();
     }
 }

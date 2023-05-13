@@ -15,8 +15,11 @@ MonoBehaviour:
   <EnemyPrefab>k__BackingField: {fileID: 2190050724543063877, guid: 43b25e2846d52ab4987957b6c0f03e61,
     type: 3}
   <HealthData>k__BackingField:
-    CurrentHp: 100
-    MaxHp: 100
+    <CurrentHp>k__BackingField: 100
+    <MaxHp>k__BackingField: 100
+    <Regeneration>k__BackingField: 0
+    <RegenerationDelay>k__BackingField: 0
+    <RegenerationSpeed>k__BackingField: 0
   <HitboxData>k__BackingField:
   - <Name>k__BackingField: 0
     <Multiplier>k__BackingField: 5
@@ -29,6 +32,7 @@ MonoBehaviour:
   <InitialState>k__BackingField: 1
   <States>k__BackingField: 01000000030000000400000005000000
   <SightDistance>k__BackingField: 10
+  <Damage>k__BackingField: 15
   <AttackRange>k__BackingField: 1
   <AttackCooldown>k__BackingField: 1
   <DestinationCooldown>k__BackingField: 0.25
