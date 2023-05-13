@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+    "com.gasgiant.camera-shake": "https://github.com/gasgiant/Camera-Shake.git#upm",
     "com.nomnom.raycast-visualization": "https://github.com/nomnomab/RaycastVisualization.git",
     "com.unity.2d.pixel-perfect": "4.0.1",
     "com.unity.2d.sprite": "1.0.0",

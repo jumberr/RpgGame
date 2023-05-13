@@ -4,6 +4,7 @@ using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Utils.Extensions;
+using CameraShake;
 using Cysharp.Threading.Tasks;
 using NTC.Global.Cache;
 using Sirenix.OdinInspector;
@@ -106,9 +107,6 @@ namespace _Project.CodeBase.Logic.Hero
         private void UpdateDirection(Vector2 dir) => 
             _input = dir;
 
-        private void ApplyMoveAnimation() => 
-            _heroAnimator.EnterMoveState(_input.y);
-
         private void MoveCharacter()
         {
             Vector2 frameInput = Vector3.ClampMagnitude(_input, 1.0f);
@@ -118,6 +116,7 @@ namespace _Project.CodeBase.Logic.Hero
 
             var applied = ApplyVelocity();
             _characterController.Move(applied);
+            ApplyMoveAnimation();
         }
 
         private Vector3 CalculateDirection(Vector2 frameInput)
@@ -146,6 +145,9 @@ namespace _Project.CodeBase.Logic.Hero
                 applied.y = -_stickToGroundForce;
             return applied;
         }
+
+        private void ApplyMoveAnimation() => 
+            _heroAnimator.EnterMoveState(_input.y);
 
         private void ResetVelocity()
         {
