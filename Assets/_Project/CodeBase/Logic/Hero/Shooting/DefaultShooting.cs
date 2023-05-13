@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using _Project.CodeBase.Constants;
 using _Project.CodeBase.Logic.Enemy;
+using _Project.CodeBase.Logic.Enemy.Health;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon.Effects;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero.Shooting
@@ -30,6 +32,9 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
                     if (hit.transform.TryGetComponent<IHitBox>(out var hitbox)) 
                         hitbox.Hit(Damage);
 
+                    if (hit.transform.root.TryGetComponent<EnemyHitEffect>(out var hitEffect))
+                        hitEffect.SpawnBloodParticles(hit).Forget();
+                    
                     HitParticles(hit, TagConstants.SandTag, Particles.SandParticlesFX);
                     HitParticles(hit, TagConstants.RockTag, Particles.RockParticlesFX);
                     SpawnBulletTrail(firePointPos, hit.point);

@@ -14,6 +14,7 @@ namespace _Project.CodeBase.Logic.Enemy
             agent.ChangeState(AIStateName.Death);
             animationController.DisableAnimator();
             dissolveEffect.ActivateEffect().Forget();
+            
         }
     }
 }

@@ -216,6 +216,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 4230964418422681727}
   animator: {fileID: 8868360271570249062}
+  bloodParticles: {fileID: 1850033487435682, guid: 2c4b2397ab17cce4bae0e99c1004869d,
+    type: 3}
 --- !u!114 &6424092650229399654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 2656529117730464909}
-  sphereCollider: {fileID: 7581847088258012887}
+  <SphereCollider>k__BackingField: {fileID: 7581847088258012887}
   layerMask:
     serializedVersion: 2
     m_Bits: 64

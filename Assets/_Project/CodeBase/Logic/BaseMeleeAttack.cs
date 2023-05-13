@@ -1,23 +1,16 @@
-using Nomnom.RaycastVisualization;
 using UnityEngine;
-#if UNITY_EDITOR
-using Physics = Nomnom.RaycastVisualization.VisualPhysics;
-
-#else
-using Physics = UnityEngine.Physics;
-#endif
 
 namespace _Project.CodeBase.Logic
 {
     public abstract class BaseMeleeAttack : MonoBehaviour
     {
         [SerializeField] private Transform weapon;
-        [SerializeField] private SphereCollider sphereCollider;
 
         protected readonly Collider[] Hits = new Collider[3];
         protected float Damage;
-
         private LayerMask _layerMask;
+
+        [field: SerializeField] public SphereCollider SphereCollider { get; private set; }
 
         public void Construct(LayerMask mask, float damage)
         {
@@ -27,11 +20,8 @@ namespace _Project.CodeBase.Logic
 
         protected int Hit()
         {
-            using (VisualLifetime.Create(3f))
-            {
-                var center = weapon.TransformPoint(sphereCollider.center);
-                return Physics.OverlapSphereNonAlloc(center, sphereCollider.radius, Hits, _layerMask);
-            }
+            var center = weapon.TransformPoint(SphereCollider.center);
+            return Physics.OverlapSphereNonAlloc(center, SphereCollider.radius, Hits, _layerMask);
         }
     }
 }

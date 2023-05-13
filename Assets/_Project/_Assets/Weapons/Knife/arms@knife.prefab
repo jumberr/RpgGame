@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 2630403516024415084}
-  sphereCollider: {fileID: 3830216286090080275}
+  <SphereCollider>k__BackingField: {fileID: 3830216286090080275}
 --- !u!135 &3830216286090080275
 SphereCollider:
   m_ObjectHideFlags: 0
