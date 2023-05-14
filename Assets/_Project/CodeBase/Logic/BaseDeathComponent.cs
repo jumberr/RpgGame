@@ -19,6 +19,9 @@ namespace _Project.CodeBase.Logic
         public void SetHealthComponent(IHealth health) => 
             _health = health;
 
+        public void Reinitialize() => 
+            _isDead = false;
+
         protected abstract void ProduceHeroDeath();
 
         private void HealthChanged()

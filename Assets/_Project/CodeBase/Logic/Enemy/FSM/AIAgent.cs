@@ -22,7 +22,8 @@ namespace _Project.CodeBase.Logic.Enemy.FSM
         {
             _stateMachine = stateMachine;
             _enemyStaticData = staticDataService.ForEnemy();
-            Init(staticDataService);
+            _stateMachine.SetAIAgent(this);
+            NavMeshAgent.stoppingDistance = _enemyStaticData.StoppingDistance;
         }
 
         public void Run() => 
@@ -39,17 +40,7 @@ namespace _Project.CodeBase.Logic.Enemy.FSM
                 Quaternion.LookRotation(heroPosition - CachedTransform.position),
                 _enemyStaticData.RotationModifier * Time.deltaTime);
 
-        private void Init(IStaticDataService staticDataService)
-        {
-            _stateMachine.SetAIAgent(this);
-            NavMeshAgent.stoppingDistance = _enemyStaticData.StoppingDistance;
-            EnterInitialState(staticDataService);
-        }
-
-        private void EnterInitialState(IStaticDataService staticDataService)
-        {
-            var initialState = staticDataService.ForEnemy().InitialState;
-            _stateMachine.ChangeState(initialState);
-        }
+        public void EnterInitialState() => 
+            _stateMachine.ChangeState(_enemyStaticData.InitialState);
     }
 }

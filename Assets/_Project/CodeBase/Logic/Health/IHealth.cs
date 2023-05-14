@@ -13,5 +13,6 @@ namespace _Project.CodeBase.Logic
         UniTaskVoid TakeDamage(float damage);
         void Heal(float health);
         float GetNormalizedHealth();
+        void Reinitialize();
     }
 }

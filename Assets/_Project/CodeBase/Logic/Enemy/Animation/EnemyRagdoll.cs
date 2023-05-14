@@ -12,12 +12,6 @@ namespace _Project.CodeBase.Logic.Enemy
                 hitbox.SetupHealth(health);
         }
 
-        public void EnableRagdoll() => 
-            ToggleRagdoll(true);
-
-        public void DisableRagdoll() => 
-            ToggleRagdoll(false);
-
         public void ToggleRagdoll(bool value)
         {
             foreach (var hitbox in hitboxes)

@@ -1,11 +1,10 @@
 ﻿using Cysharp.Threading.Tasks;
 using NTC.Global.Cache;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _Project.CodeBase.Logic
 {
-    public class DissolveEffect : NightCache, INightInit 
+    public class DissolveEffect : NightCache
     {
         private const string DissolveAmount = "_DissolveAmount";
         private const int DisabledEffect = 0;
@@ -16,24 +15,23 @@ namespace _Project.CodeBase.Logic
 
         private readonly int _dissolveAmount = Shader.PropertyToID(DissolveAmount);
         private Material _material;
-        
-        public void Init() => 
-            _material = skinnedMeshRenderer.material;
 
-        public async UniTaskVoid ActivateEffect()
+        private Material Material => _material ? _material : _material = skinnedMeshRenderer.material;
+
+        public async UniTask ActivateEffect()
         {
             var duration = Random.Range(minDuration, maxDuration);
             var time = 0f;
 
             while (time < duration)
             {
-                _material.SetFloat(_dissolveAmount, Mathf.Lerp(DisabledEffect, duration, time));
+                Material.SetFloat(_dissolveAmount, Mathf.Lerp(DisabledEffect, duration, time));
                 time += Time.deltaTime;
                 await UniTask.Yield();
             }
         }
 
         public void DisableEffect() => 
-            _material.SetFloat(_dissolveAmount, DisabledEffect);
+            Material.SetFloat(_dissolveAmount, DisabledEffect);
     }
 }

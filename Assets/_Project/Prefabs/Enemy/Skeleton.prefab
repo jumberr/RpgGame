@@ -57,10 +57,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f33cf8b648864e8c91b0feb0987635d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 1142408978888442703}
   death: {fileID: 3099600198521337191}
   health: {fileID: 4230964418422681727}
+  healthBar: {fileID: 4354513182271877659}
   animatorController: {fileID: 2871355405900924456}
   ragdoll: {fileID: 2999307179002613742}
+  dissolveEffect: {fileID: 8159572665199735066}
 --- !u!114 &2871355405900924456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2945cba586b4525b2dd396cffa2b5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facade: {fileID: 2190050724543063877}
   agent: {fileID: 1142408978888442703}
   animationController: {fileID: 2871355405900924456}
   healthBar: {fileID: 4354513182271877659}

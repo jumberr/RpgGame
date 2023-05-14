@@ -11,12 +11,12 @@ namespace _Project.CodeBase.Logic
         private const float DelayTime = 5f;
 
         private readonly EnemyProvider _enemyProvider;
-        private readonly EnemyFacade.Factory _enemyFactory;
+        private readonly EnemyObjectPool _pool;
 
-        public AIObserver(EnemyProvider enemyProvider, EnemyFacade.Factory enemyFactory)
+        public AIObserver(EnemyProvider enemyProvider, EnemyObjectPool pool)
         {
             _enemyProvider = enemyProvider;
-            _enemyFactory = enemyFactory;
+            _pool = pool;
         }
 
         public void Initialize() => 
@@ -28,7 +28,7 @@ namespace _Project.CodeBase.Logic
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(DelayTime));
                 if (_enemyProvider.Enemies.Count < MaxEnemies)
-                    _enemyFactory.Create();
+                    _pool.Spawn();
             }
         }
     }

@@ -31,6 +31,7 @@ namespace _Project.CodeBase.UI
 
         private void OnDestroy()
         {
+            _cts?.Cancel();
             _health.HealthChanged -= UpdateHealthBar;
             _health.HealthIncreased -= Restore;
             _health.HealthDropped -= ApplyDamageWrapper;

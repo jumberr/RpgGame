@@ -15,6 +15,10 @@ namespace _Project.CodeBase.Infrastructure
                 .FromFactory<EnemyFactory>();
 
             Container
+                .BindMemoryPool<EnemyFacade, EnemyObjectPool>()
+                .FromFactory<EnemyFactory>();
+
+            Container
                 .Bind<EnemyProvider>()
                 .AsSingle();
 

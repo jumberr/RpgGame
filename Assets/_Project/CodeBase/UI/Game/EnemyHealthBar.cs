@@ -36,11 +36,14 @@ namespace _Project.CodeBase.UI
             _health.HealthChanged += UpdateHealth;
         }
 
-        public void Deactivate()
+        public void Reinitialize()
         {
-            meshRenderer.Deactivate();
-            Cleanup();
+            meshRenderer.Activate();
+            UpdateHealth();
         }
+
+        public void Deactivate() => 
+            meshRenderer.Deactivate();
 
         private void Cleanup() => 
             _health.HealthChanged -= UpdateHealth;

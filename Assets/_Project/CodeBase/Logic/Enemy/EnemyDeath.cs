@@ -3,11 +3,13 @@ using _Project.CodeBase.Logic.Enemy.FSM;
 using _Project.CodeBase.UI;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.Logic.Enemy
 {
     public class EnemyDeath : BaseDeathComponent
     {
+        [SerializeField] private EnemyFacade facade;
         [SerializeField] private AIAgent agent;
         [SerializeField] private EnemyAnimationController animationController;
         [SerializeField] private EnemyHealthBar healthBar;
@@ -16,6 +18,12 @@ namespace _Project.CodeBase.Logic.Enemy
         [SerializeField] private DissolveEffect dissolveEffect;
         [SerializeField] private float deathTime;
         [SerializeField] private float delayTime;
+        
+        private EnemyObjectPool _objectPool;
+
+        [Inject]
+        public void Construct(EnemyObjectPool objectPool) => 
+            _objectPool = objectPool;
 
         protected override async void ProduceHeroDeath()
         {
@@ -23,7 +31,8 @@ namespace _Project.CodeBase.Logic.Enemy
             DeactivateComponents();
             await PlayDeathAnimation();
 
-            dissolveEffect.ActivateEffect().Forget();
+            await dissolveEffect.ActivateEffect();
+            _objectPool.Despawn(facade);
         }
 
         private void DeactivateComponents()

@@ -37,6 +37,9 @@ namespace _Project.CodeBase.Logic
             set => HealthData.MaxHp = value;
         }
 
+        private void OnDestroy() => 
+            _cts?.Cancel();
+
         public async UniTaskVoid TakeDamage(float damage)
         {
             if (Current <= 0) return;
@@ -56,6 +59,9 @@ namespace _Project.CodeBase.Logic
 
         public float GetNormalizedHealth() => 
             Current / Max;
+
+        public void Reinitialize() => 
+            Current = Max;
 
         protected void InvokeHealthChanged() =>
             HealthChanged?.Invoke();
