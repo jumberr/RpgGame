@@ -15,6 +15,7 @@ namespace _Project.CodeBase.StaticData.Enemy
         [field: SerializeField] public List<EnemyHitboxInfo> HitboxData { get; set; }
         [field: SerializeField] public AIStateName InitialState { get; private set; }
         [field: SerializeField] public List<AIStateName> States { get; private set; }
+        [field: SerializeField] public List<Vector3> SpawnPoints { get; private set; }
         [field: SerializeField] public float SightDistance { get; private set; }
         [field: SerializeField] public float Damage { get; private set; }
         [field: SerializeField] public float AttackRange { get; private set; }

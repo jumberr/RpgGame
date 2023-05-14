@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Enemy.FSM;
 using _Project.CodeBase.UI;
 using UnityEngine;
@@ -15,24 +17,30 @@ namespace _Project.CodeBase.Logic.Enemy
         [SerializeField] private EnemyAnimationController animatorController;
         [SerializeField] private EnemyRagdoll ragdoll;
         [SerializeField] private DissolveEffect dissolveEffect;
+        
+        private List<Vector3> _spawnPoints;
 
         [Inject]
-        public void Construct()
-        {
+        public void Construct(IStaticDataService staticDataService)
+        { 
+            _spawnPoints = staticDataService.ForEnemy().SpawnPoints;
             death.SetHealthComponent(health);
             ragdoll.Setup(health);
         }
 
         public void Reinitialize()
         {
-            transform.position = new Vector3(Random.Range(-20, 20), 2, Random.Range(-20, 20));
+            UpdatePosition();
+            animatorController.EnableAnimator();
             agent.EnterInitialState();
             health.Reinitialize();
             healthBar.Reinitialize();
             death.Reinitialize();
-            animatorController.EnableAnimator();
             dissolveEffect.DisableEffect();
        }
+
+        private void UpdatePosition() => 
+            transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Count - 1)];
 
         public class Factory : PlaceholderFactory<EnemyFacade>
         {
