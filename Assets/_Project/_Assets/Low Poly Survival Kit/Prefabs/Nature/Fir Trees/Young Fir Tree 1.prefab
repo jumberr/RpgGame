@@ -86,8 +86,8 @@ GameObject:
   m_Name: Young_Fir_Tree_1_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &8730303333635548530
 Transform:
@@ -168,8 +168,8 @@ GameObject:
   m_Name: Young_Fir_Tree_1_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &5869772560250177073
 Transform:
@@ -250,8 +250,8 @@ GameObject:
   m_Name: Young_Fir_Tree_1_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &6120172484370679352
 Transform:
@@ -332,8 +332,8 @@ GameObject:
   m_Name: Young_Fir_Tree_1_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &1257556436781774484
 Transform:
@@ -414,8 +414,8 @@ GameObject:
   m_Name: Young_Fir_Tree_1_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &720205696975346599
 Transform:

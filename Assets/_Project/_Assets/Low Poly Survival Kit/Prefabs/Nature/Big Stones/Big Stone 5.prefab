@@ -15,8 +15,8 @@ GameObject:
   m_Name: Big_Stone_5_LOD2
   m_TagString: Rock
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &3050170307713706182
 Transform:
@@ -167,8 +167,8 @@ GameObject:
   m_Name: Big_Stone_5_LOD0
   m_TagString: Rock
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &8191374300070873651
 Transform:
@@ -248,8 +248,8 @@ GameObject:
   m_Name: Big_Stone_5_LOD1
   m_TagString: Rock
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &9156774270558807586
 Transform:
@@ -329,8 +329,8 @@ GameObject:
   m_Name: Big_Stone_5_LOD3
   m_TagString: Rock
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &2730827825637090415
 Transform:
@@ -410,8 +410,8 @@ GameObject:
   m_Name: Big_Stone_5_LOD4
   m_TagString: Rock
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &467798563864005352
 Transform:

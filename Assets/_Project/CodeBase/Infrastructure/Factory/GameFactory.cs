@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure.AssetManagement;
-using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
-using _Project.CodeBase.Infrastructure.Services.StaticData;
+using _Project.CodeBase.Logic;
 using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.Logic.Interaction;
-using _Project.CodeBase.UI.Services;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.CodeBase.Infrastructure.Factory
@@ -14,11 +12,8 @@ namespace _Project.CodeBase.Infrastructure.Factory
     public class GameFactory : IGameFactory, IDisposable
     {
         private readonly IAssetProvider _assetProvider;
-        private readonly IUIFactory _uiFactory;
-        private readonly IStaticDataService _staticDataService;
         private readonly HeroFacade.Factory _heroFactory;
-        private readonly InteractableSpawner _interactableSpawner;
-        private readonly InputService _inputService;
+        private readonly AIObserver _aiObserver;
         private HeroFacade _heroFacade;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
@@ -27,35 +22,25 @@ namespace _Project.CodeBase.Infrastructure.Factory
         
         public GameFactory(
             IAssetProvider assetProvider,
-            IUIFactory uiFactory,
-            IStaticDataService staticDataService,
             HeroFacade.Factory heroFactory,
-            InteractableSpawner spawner,
-            InputService inputService)
+            AIObserver aiObserver)
         {
+            _aiObserver = aiObserver;
             _assetProvider = assetProvider;
-            _uiFactory = uiFactory;
-            _staticDataService = staticDataService;
             _heroFactory = heroFactory;
-            _interactableSpawner = spawner;
-            _inputService = inputService;
         }
 
         public void Dispose() => 
             Cleanup();
 
-        public void CreateHero()
+        public async UniTask CreateHero()
         {
-            _heroFacade = _heroFactory.Create();
+            _heroFacade = await _heroFactory.Create(AssetPath.HeroPath);
             RegisterProgressWatchers(_heroFacade.gameObject);
-            _heroFacade.Construct(_inputService, _staticDataService, _uiFactory.CreateDeathScreen);
         }
 
-        public void SetupInteractableSpawner() => 
-            _interactableSpawner.Setup(_heroFacade.Inventory);
-
-        public void AddProgressWatchers(GameObject go) => 
-            RegisterProgressWatchers(go);
+        public void InitializeAI() => 
+            _aiObserver.Initialize();
 
         public void Cleanup()
         {

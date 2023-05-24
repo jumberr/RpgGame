@@ -8,6 +8,7 @@ using Cysharp.Threading.Tasks;
 using NTC.Global.Cache;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Project.CodeBase.Logic.Hero
 {
@@ -53,6 +54,12 @@ namespace _Project.CodeBase.Logic.Hero
 
         [Title("Rigidbody Push")]
         [SerializeField] private float _rigidbodyPushForce;
+        
+        [Title("Animation")]
+        [SerializeField] private float animationThreshold;
+        [SerializeField] private int sprintAnimationValue = 1;
+        [SerializeField] private float walkAnimationValue = 0.85f;
+        [SerializeField] private float idleAnimationValue;
 
         private readonly Collider[] _buffer = new Collider[5];
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
@@ -106,9 +113,6 @@ namespace _Project.CodeBase.Logic.Hero
         private void UpdateDirection(Vector2 dir) => 
             _input = dir;
 
-        private void ApplyMoveAnimation() => 
-            _heroAnimator.EnterMoveState(_input.y);
-
         private void MoveCharacter()
         {
             Vector2 frameInput = Vector3.ClampMagnitude(_input, 1.0f);
@@ -118,6 +122,7 @@ namespace _Project.CodeBase.Logic.Hero
 
             var applied = ApplyVelocity();
             _characterController.Move(applied);
+            ApplyMoveAnimation(applied);
         }
 
         private Vector3 CalculateDirection(Vector2 frameInput)
@@ -145,6 +150,18 @@ namespace _Project.CodeBase.Logic.Hero
             if (_characterController.isGrounded && !_state.Jumping)
                 applied.y = -_stickToGroundForce;
             return applied;
+        }
+
+        private void ApplyMoveAnimation(Vector3 dir)
+        {
+            dir.y = 0f;
+            
+            if (_state.Running)
+                _heroAnimator.EnterMoveState(sprintAnimationValue);
+            else if (dir.magnitude >= animationThreshold)
+                _heroAnimator.EnterMoveState(walkAnimationValue);
+            else
+                _heroAnimator.EnterMoveState(idleAnimationValue);
         }
 
         private void ResetVelocity()

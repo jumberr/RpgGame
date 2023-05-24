@@ -27,7 +27,7 @@ MonoBehaviour:
     _description: Red Dot
   _payloadInfo:
     _itemType: 5
-    _actions: 0100000002000000
+    _actions: 02000000
     _groundPrefab: {fileID: 8166203817901748311, guid: 21fee3d59b5da8a44a752a5908621700,
       type: 3}
     _maxInContainer: 1

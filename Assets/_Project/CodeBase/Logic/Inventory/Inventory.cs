@@ -8,15 +8,14 @@ namespace _Project.CodeBase.Logic.Inventory
     public class Inventory
     {
         public const int ErrorIndex = -1;
-        private const int DefaultHotBarSlotsAmount = 4;
         
         public InventorySlot[] Slots;
         public int HotBarSlots;
 
-        public Inventory(int slotAmount)
+        public Inventory(InventoryData inventoryData)
         {
-            InitializeInventory(slotAmount);
-            HotBarSlots = DefaultHotBarSlotsAmount;
+            InitializeInventory(inventoryData.InventorySize);
+            HotBarSlots = inventoryData.HotBarSize;
         }
 
         public void InitializeInventory(int slotAmount)

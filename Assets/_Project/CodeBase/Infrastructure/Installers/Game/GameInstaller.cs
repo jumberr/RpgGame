@@ -1,16 +1,13 @@
 ﻿using _Project.CodeBase.Infrastructure.States;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Interaction;
-using UnityEngine;
+using Cysharp.Threading.Tasks;
 using Zenject;
 
 namespace _Project.CodeBase.Infrastructure
 {
     public class GameInstaller : MonoInstaller
     {
-        [SerializeField] private GameObject _player;
-        [SerializeField] private InteractableSpawner _interactableSpawner;
-
         public override void InstallBindings()
         {
             Container
@@ -28,12 +25,15 @@ namespace _Project.CodeBase.Infrastructure
                 .AsSingle();
 
             Container
-                .BindFactory<HeroFacade, HeroFacade.Factory>()
-                .FromComponentInNewPrefab(_player);
+                .BindFactory<string, UniTask<HeroFacade>, HeroFacade.Factory>()
+                .FromFactory<HeroFacadeFactory>();
 
             Container
-                .Bind<InteractableSpawner>()
-                .FromInstance(_interactableSpawner)
+                .Bind<GameStateComponentInitializer>()
+                .AsSingle();
+            
+            Container
+                .BindInterfacesAndSelfTo<InteractableSpawner>()
                 .AsSingle();
         }
     }

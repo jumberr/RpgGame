@@ -15,8 +15,8 @@ GameObject:
   m_Name: Fir_Tree_1_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &8757326793594663052
 Transform:
@@ -98,8 +98,8 @@ GameObject:
   m_Name: Fir_Tree_1_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &4349199928835504632
 Transform:
@@ -265,8 +265,8 @@ GameObject:
   m_Name: Fir_Tree_1_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &8511160296366665935
 Transform:
@@ -361,8 +361,8 @@ GameObject:
   m_Name: Fir_Tree_1_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &7763876946464392474
 Transform:
@@ -457,8 +457,8 @@ GameObject:
   m_Name: Fir_Tree_1_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967262
   m_IsActive: 1
 --- !u!4 &2257830576409417947
 Transform:

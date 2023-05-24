@@ -1,4 +1,5 @@
 ﻿using _Project.CodeBase.StaticData;
+using _Project.CodeBase.StaticData.Enemy;
 using _Project.CodeBase.StaticData.UI;
 using _Project.CodeBase.UI.Services.Windows;
 using Cysharp.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace _Project.CodeBase.Infrastructure.Services.StaticData
         ProjectSettings ForProjectSettings();
         ExceptionWindows ForWindowService();
         PlayerStaticData ForPlayer();
+        EnemyStaticData ForEnemy();
         ItemsInfo ForInventory();
         WindowConfig ForWindow(WindowId windowId);
     }

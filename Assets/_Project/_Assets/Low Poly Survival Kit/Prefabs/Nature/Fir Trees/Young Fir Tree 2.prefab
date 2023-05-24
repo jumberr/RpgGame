@@ -15,8 +15,8 @@ GameObject:
   m_Name: Young_Fi_ Tree_2_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6281102584086729006
 Transform:
@@ -97,8 +97,8 @@ GameObject:
   m_Name: Young_Fi_ Tree_2_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1775435706558742762
 Transform:
@@ -179,8 +179,8 @@ GameObject:
   m_Name: Young_Fi_ Tree_2_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &245986775857469607
 Transform:
@@ -261,8 +261,8 @@ GameObject:
   m_Name: Young_Fi_ Tree_2_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1709417122905834795
 Transform:
@@ -343,8 +343,8 @@ GameObject:
   m_Name: Young_Fi_ Tree_2_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &464686336437035558
 Transform:

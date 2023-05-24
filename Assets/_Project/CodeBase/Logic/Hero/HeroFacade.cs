@@ -1,5 +1,4 @@
-﻿using System;
-using _Project.CodeBase.Infrastructure.Services.InputService;
+﻿using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero.Cam;
 using _Project.CodeBase.Logic.Hero.Reload;
@@ -8,12 +7,15 @@ using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.Logic.Inventory;
+using _Project.CodeBase.UI.Services;
+using _Project.CodeBase.Utils.Factory;
+using NTC.Global.Cache;
 using UnityEngine;
 using Zenject;
 
 namespace _Project.CodeBase.Logic.Hero
 {
-    public class HeroFacade : MonoBehaviour
+    public class HeroFacade : NightCache
     {
         [SerializeField] private WeaponController _weaponController;
         [SerializeField] private HeroInteraction _interaction;
@@ -31,7 +33,8 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private HeroAmmo _ammo;
         
         private InputService _inputService;
-        
+        private IUIFactory _uiFactory;
+
         public HeroInventory Inventory => _inventory;
         public HeroCamera Camera => _camera;
         public IHealth Health => _health;
@@ -40,13 +43,20 @@ namespace _Project.CodeBase.Logic.Hero
         public HeroState HeroState => _state;
         public HeroInteraction Interaction => _interaction;
 
-        public void Construct(InputService inputService, IStaticDataService staticDataService, Action zeroHealthAction)
+        [Inject]
+        private void Construct(InputService inputService, IStaticDataService staticDataService, IUIFactory uiFactory)
         {
             _inputService = inputService;
+            _uiFactory = uiFactory;
             SetupItemDatabase(staticDataService);
             SetupInputService(_inputService);
-            _death.ZeroHealth += zeroHealthAction;
+            _death.SetHealthComponent(_health);
+            
+            _death.ZeroHealth += _uiFactory.ShowDeathScreen;
         }
+
+        private void OnDestroy() => 
+            _death.ZeroHealth -= _uiFactory.ShowDeathScreen;
 
         private void SetupItemDatabase(IStaticDataService staticDataService)
         {
@@ -63,10 +73,9 @@ namespace _Project.CodeBase.Logic.Hero
             _camera.SetInputService(inputService);
             _scoping.SetInputService(inputService);
             _reload.SetInputService(inputService);
-            _death.SetInputService(inputService);
         }
 
-        public class Factory : PlaceholderFactory<HeroFacade>
+        public class Factory : ComponentPlaceholderFactory<HeroFacade>
         {
         }
     }

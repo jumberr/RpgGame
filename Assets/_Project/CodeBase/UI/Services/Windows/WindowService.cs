@@ -12,11 +12,10 @@ namespace _Project.CodeBase.UI.Services.Windows
     public class WindowService : IWindowService
     {
         private readonly InputService _inputService;
-        private readonly IStaticDataService _staticDataService;
 
         private readonly Dictionary<WindowId, WindowBase> _windows = new Dictionary<WindowId, WindowBase>();
         private readonly List<WindowId> _backList = new List<WindowId>();
-        private ExceptionWindows _exceptionWindows;
+        private readonly ExceptionWindows _exceptionWindows;
         private WindowBase _currentWindow;
         private bool _isShown;
 
@@ -28,15 +27,12 @@ namespace _Project.CodeBase.UI.Services.Windows
         public WindowService(InputService inputService, IStaticDataService staticDataService)
         {
             _inputService = inputService;
-            _staticDataService = staticDataService;
+            _exceptionWindows = staticDataService.ForWindowService();
             Subscribe();
         }
         
         ~WindowService() => 
             Cleanup();
-
-        public void Setup() => 
-            _exceptionWindows = _staticDataService.ForWindowService();
 
         public void Show(WindowId id)
         {
