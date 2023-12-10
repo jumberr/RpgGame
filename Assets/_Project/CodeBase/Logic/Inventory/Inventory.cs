@@ -110,7 +110,7 @@ namespace _Project.CodeBase.Logic.Inventory
         public InventorySlot FindSlot(int id, int amount) => 
             Slots.FirstOrDefault(slot => slot.ID == id && slot.CommonItemPart.Amount == amount);
 
-        private int FindSlotOrEmpty(int dbId)
+        public int FindSlotOrEmpty(int dbId)
         {
             for (var i = 0; i < Slots.Length; i++)
             {
@@ -121,7 +121,7 @@ namespace _Project.CodeBase.Logic.Inventory
             return FindEmptySlot();
         }
 
-        private int FindSlotReversed(int dbId)
+        public int FindSlotReversed(int dbId)
         {
             for (var i = Slots.Length - 1; i >= 0; i--)
             {
@@ -131,7 +131,7 @@ namespace _Project.CodeBase.Logic.Inventory
             return ErrorIndex;
         }
 
-        private int FindEmptySlot()
+        public int FindEmptySlot()
         {
             for (var i = 0; i < Slots.Length; i++)
             {
