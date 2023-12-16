@@ -1,4 +1,6 @@
+using _Project.CodeBase.Infrastructure.Services.Game;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.Logic.Hero
 {
@@ -10,9 +12,14 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private float _minDamage;
         [SerializeField] private float _maxDamage;
 
+        private CameraShakerService _shakerService;
         private float _highestPoint;
-        
-        
+
+
+        [Inject]
+        private void Construct(CameraShakerService shakerService) => 
+            _shakerService = shakerService;
+
         public void ApplyFallDamage(float currentPos)
         {
             var fallHeight = _highestPoint - currentPos;
@@ -20,7 +27,8 @@ namespace _Project.CodeBase.Logic.Hero
             
             var fallHeightPercentage = Mathf.InverseLerp(_fallThreshold, _maxFallHeight, fallHeight);
             var damage = Mathf.Lerp(_minDamage, _maxDamage, fallHeightPercentage);
-                
+
+            _shakerService.Shake();
             _health.TakeDamage(damage).Forget();
         }
 

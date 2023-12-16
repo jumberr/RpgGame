@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure.AssetManagement;
+using _Project.CodeBase.Infrastructure.Services.Game;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Logic;
 using _Project.CodeBase.Logic.Hero;
@@ -14,6 +15,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
         private readonly IAssetProvider _assetProvider;
         private readonly HeroFacade.Factory _heroFactory;
         private readonly AIObserver _aiObserver;
+        private readonly CameraShakerService _shakerService;
         private HeroFacade _heroFacade;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
@@ -23,11 +25,13 @@ namespace _Project.CodeBase.Infrastructure.Factory
         public GameFactory(
             IAssetProvider assetProvider,
             HeroFacade.Factory heroFactory,
-            AIObserver aiObserver)
+            AIObserver aiObserver,
+            CameraShakerService shakerService)
         {
             _aiObserver = aiObserver;
             _assetProvider = assetProvider;
             _heroFactory = heroFactory;
+            _shakerService = shakerService;
         }
 
         public void Dispose() => 
@@ -36,6 +40,7 @@ namespace _Project.CodeBase.Infrastructure.Factory
         public async UniTask CreateHero()
         {
             _heroFacade = await _heroFactory.Create(AssetPath.HeroPath);
+            _shakerService.Initialize(_heroFacade);
             RegisterProgressWatchers(_heroFacade.gameObject);
         }
 

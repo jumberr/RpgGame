@@ -1,6 +1,4 @@
-﻿using _Project.CodeBase.Infrastructure.Services.InputService;
-using _Project.CodeBase.Infrastructure.Services.StaticData;
-using _Project.CodeBase.Logic.Hero.Cam;
+﻿using _Project.CodeBase.Logic.Hero.Cam;
 using _Project.CodeBase.Logic.Hero.Reload;
 using _Project.CodeBase.Logic.Hero.Shooting;
 using _Project.CodeBase.Logic.Hero.State;
@@ -41,7 +39,9 @@ namespace _Project.CodeBase.Logic.Hero
         public WeaponController WeaponController => _weaponController;
         public HeroState HeroState => _state;
         public HeroInteraction Interaction => _interaction;
+        [field: SerializeField] public Transform CameraTransform { get; private set; }
 
+        
         [Inject]
         private void Construct(IUIFactory uiFactory)
         {

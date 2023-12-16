@@ -692,6 +692,7 @@ MonoBehaviour:
   _death: {fileID: 6408951751477784948}
   _state: {fileID: 4068888587891572736}
   _ammo: {fileID: 5847949428352668782}
+  <CameraTransform>k__BackingField: {fileID: 1124464607595143062}
 --- !u!114 &9040526684898629062
 MonoBehaviour:
   m_ObjectHideFlags: 0

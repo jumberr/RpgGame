@@ -20,14 +20,13 @@ namespace _Project.CodeBase.Infrastructure.States
             IGameFactory gameFactory,
             IUIFactory uiFactory,
             IPersistentProgressService persistentProgressService,
-            GameStateComponentInitializer componentInitializer
-        )
+            GameStateComponentInitializer componentInitializer)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFactory;
             _persistentProgressService = persistentProgressService;
             _componentInitializer = componentInitializer;
-            
+
             OnWorldInitialized += _componentInitializer.RegisterProgressWatchers;
             OnProgressWatchersInformed += _componentInitializer.InitializeComponents;
         }
