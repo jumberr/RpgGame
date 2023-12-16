@@ -32,7 +32,6 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private HeroState _state;
         [SerializeField] private HeroAmmo _ammo;
         
-        private InputService _inputService;
         private IUIFactory _uiFactory;
 
         public HeroInventory Inventory => _inventory;
@@ -44,12 +43,9 @@ namespace _Project.CodeBase.Logic.Hero
         public HeroInteraction Interaction => _interaction;
 
         [Inject]
-        private void Construct(InputService inputService, IStaticDataService staticDataService, IUIFactory uiFactory)
+        private void Construct(IUIFactory uiFactory)
         {
-            _inputService = inputService;
             _uiFactory = uiFactory;
-            SetupItemDatabase(staticDataService);
-            SetupInputService(_inputService);
             _death.SetHealthComponent(_health);
             
             _death.ZeroHealth += _uiFactory.ShowDeathScreen;
@@ -57,23 +53,6 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void OnDestroy() => 
             _death.ZeroHealth -= _uiFactory.ShowDeathScreen;
-
-        private void SetupItemDatabase(IStaticDataService staticDataService)
-        {
-            var itemsDataBase = staticDataService.ForInventory();
-            _inventory.Construct(itemsDataBase);
-            _weaponController.Construct(itemsDataBase);
-        }
-
-        private void SetupInputService(InputService inputService)
-        {
-            _weaponController.Setup(inputService);
-            _movement.SetInputService(inputService);
-            _state.SetInputService(inputService);
-            _camera.SetInputService(inputService);
-            _scoping.SetInputService(inputService);
-            _reload.SetInputService(inputService);
-        }
 
         public class Factory : ComponentPlaceholderFactory<HeroFacade>
         {

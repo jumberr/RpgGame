@@ -6,6 +6,7 @@ using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Interaction;
 using _Project.CodeBase.StaticData;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.Logic.Inventory
 {
@@ -13,7 +14,6 @@ namespace _Project.CodeBase.Logic.Inventory
     {
         [SerializeField] private WeaponController _weaponController;
         
-        private IStaticDataService _staticDataService;
         private ItemsInfo _itemsInfo;
         private Inventory _inventory;
 
@@ -26,8 +26,10 @@ namespace _Project.CodeBase.Logic.Inventory
         public Inventory Inventory => _inventory;
         private int ErrorIndex => Inventory.ErrorIndex;
 
-        public void Construct(ItemsInfo itemsInfo) => 
-            _itemsInfo = itemsInfo;
+        
+        [Inject]
+        private void Construct(IStaticDataService staticDataService) => 
+            _itemsInfo = staticDataService.ForInventory();
 
         public InventorySlot GetSlot(int index) => 
             Inventory.Slots[index];

@@ -1,6 +1,7 @@
 ﻿using System;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.Logic.Hero.State
 {
@@ -39,14 +40,16 @@ namespace _Project.CodeBase.Logic.Hero.State
             }
         }
 
-        private void OnDestroy() => 
-            Cleanup();
 
-        public void SetInputService(InputService inputService)
+        [Inject]
+        private void Construct(InputService inputService)
         {
             _inputService = inputService;
             Subscribe();
         }
+        
+        private void OnDestroy() => 
+            Cleanup();
         
         private void Subscribe() => 
             _inputService.RunningAction.Event += Run;

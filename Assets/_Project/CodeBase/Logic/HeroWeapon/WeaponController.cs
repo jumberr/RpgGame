@@ -1,6 +1,7 @@
 ﻿using System;
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.InputService;
+using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Hero.Reload;
 using _Project.CodeBase.Logic.Hero.Shooting;
@@ -10,6 +11,7 @@ using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
@@ -35,21 +37,21 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         public event Action<bool> OnSwitch;
 
-        public void Construct(ItemsInfo itemsInfo) => 
-            _itemsInfo = itemsInfo;
 
+        [Inject]
+        private void Construct(InputService inputService, IStaticDataService staticDataService)
+        {
+            _inputService = inputService;
+            _attack.Construct(_state, _inputService, _ammo, _reload, _recoil, _animator);
+            _weaponSway.SetInputService(_inputService);
+            _itemsInfo = staticDataService.ForInventory();
+        }
+        
         private void OnEnable() => 
             _inventory.OnUpdate += OnInventoryUpdate;
 
         private void OnDisable() => 
             _inventory.OnUpdate -= OnInventoryUpdate;
-
-        public void Setup(InputService inputService)
-        {
-            _inputService = inputService;
-            _attack.Construct(_state, _inputService, _ammo, _reload, _recoil, _animator);
-            _weaponSway.SetInputService(_inputService);
-        }
 
         public async UniTask CreateNewWeapon(int slotID, CommonItemPart part, GunInfo gunInfo, GameObject prefab)
         {

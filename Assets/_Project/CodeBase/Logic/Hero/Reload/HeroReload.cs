@@ -5,6 +5,7 @@ using _Project.CodeBase.Logic.HeroWeapon.Animations;
 using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.Logic.Hero.Reload
 {
@@ -20,6 +21,26 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         private ReloadRevolver _reloadRevolver;
         private bool _isRevolver;
         private bool _isNeedReload;
+        
+        
+        [Inject]
+        public void Construct(InputService inputService)
+        {
+            _inputService = inputService;
+            _inputService.ReloadAction.Event += Reload;
+        }
+        
+        private void Start()
+        {
+            _defaultReload = new DefaultReload(_heroAnimator);
+            _reloadRevolver = new ReloadRevolver(_heroAnimator);
+        }
+
+        private void OnDestroy()
+        {
+            _inputService.ReloadAction.Event -= Reload;
+            _reloadRevolver.UnsubscribeRevolverEvents();
+        }
         
         public void Construct(GunInfo gunInfo, WeaponConfiguration config, RevolverAnimation revolverAnimation)
         {
@@ -38,24 +59,6 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         
         public void Construct(KnifeInfo knifeInfo) => 
             _isNeedReload = false;
-
-        private void Start()
-        {
-            _defaultReload = new DefaultReload(_heroAnimator);
-            _reloadRevolver = new ReloadRevolver(_heroAnimator);
-        }
-
-        private void OnDisable()
-        {
-            _inputService.ReloadAction.Event -= Reload;
-            _reloadRevolver.UnsubscribeRevolverEvents();
-        }
-
-        public void SetInputService(InputService inputService)
-        {
-            _inputService = inputService;
-            _inputService.ReloadAction.Event += Reload;
-        }
 
         public async void Reload()
         {

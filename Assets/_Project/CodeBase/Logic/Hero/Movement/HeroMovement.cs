@@ -8,6 +8,7 @@ using Cysharp.Threading.Tasks;
 using NTC.Global.Cache;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.Logic.Hero
 {
@@ -71,6 +72,16 @@ namespace _Project.CodeBase.Logic.Hero
 
         public CharacterController CharacterController => _characterController;
 
+        
+        [Inject]
+        private void Construct(InputService inputService)
+        {
+            _inputService = inputService;
+            _inputService.MoveAction.Event += UpdateDirection;
+            _inputService.JumpAction.Event += Jump;
+            _inputService.CrouchAction.Event += ToggleCrouch;
+        }
+        
         public void Init() => 
             _standingHeight = _characterController.height;
 
@@ -88,14 +99,6 @@ namespace _Project.CodeBase.Logic.Hero
             _inputService.MoveAction.Event -= UpdateDirection;
             _inputService.JumpAction.Event -= Jump;
             _inputService.CrouchAction.Event -= ToggleCrouch;
-        }
-
-        public void SetInputService(InputService inputService)
-        {
-            _inputService = inputService;
-            _inputService.MoveAction.Event += UpdateDirection;
-            _inputService.JumpAction.Event += Jump;
-            _inputService.CrouchAction.Event += ToggleCrouch;
         }
 
         public void LoadProgress(PlayerProgress progress) => 
