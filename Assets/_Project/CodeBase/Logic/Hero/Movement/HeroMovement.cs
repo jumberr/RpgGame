@@ -8,7 +8,6 @@ using Cysharp.Threading.Tasks;
 using NTC.Global.Cache;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _Project.CodeBase.Logic.Hero
 {
@@ -17,6 +16,7 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private HeroAnimator _heroAnimator;
         [SerializeField] private HeroState _state;
         [SerializeField] private CharacterController _characterController;
+        [SerializeField] private FallingDamage _fallingDamage;
 
         [Title("Acceleration")]
         [SerializeField] private float _acceleration;
@@ -60,7 +60,7 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private int sprintAnimationValue = 1;
         [SerializeField] private float walkAnimationValue = 0.85f;
         [SerializeField] private float idleAnimationValue;
-
+        
         private readonly Collider[] _buffer = new Collider[5];
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
         private InputService _inputService;
@@ -78,9 +78,7 @@ namespace _Project.CodeBase.Logic.Hero
         {
             _state.Grounded = _characterController.isGrounded;
 
-            if (_state.Grounded && !_state.WasGrounded)
-                _state.Jumping = false;
-            
+            ApplyFallDamage();
             MoveCharacter();
             _state.WasGrounded = _state.Grounded;
         }
@@ -112,6 +110,20 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void UpdateDirection(Vector2 dir) => 
             _input = dir;
+
+        private void ApplyFallDamage()
+        {
+            if (_state.Grounded && !_state.WasGrounded)
+            {
+                if (_state.WasGrounded) return;
+                
+                _fallingDamage.ApplyFallDamage(CachedTransform.position.y);
+                _fallingDamage.ResetHighestPoint();
+                _state.Jumping = false;
+            }
+            else
+                _fallingDamage.StorePosition(CachedTransform.position.y);
+        }
 
         private void MoveCharacter()
         {
