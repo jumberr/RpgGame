@@ -1,35 +1,51 @@
-﻿using _Project.CodeBase.Logic.Inventory;
-using Cysharp.Threading.Tasks;
+﻿using _Project.CodeBase.Logic.Hero;
+using _Project.CodeBase.Logic.Inventory;
+using _Project.CodeBase.UI.Services;
 using UnityEngine;
 
 namespace _Project.CodeBase.UI
 {
-    public class InventoriesHolderUI : MonoBehaviour
+    public class InventoriesHolderUI
     {
-        private WeaponStatsUI _weaponStatsUI;
-        private HotBarUI _hotBarUI;
-        private InventoryUI _inventoryUI;
+        private readonly HeroFacade.Factory _heroFactory;
+        private readonly IUIFactory _uiFactory;
+
         private HeroInventory _heroInventory;
+        private Transform _uiRoot;
+        private HotBarUI _hotBarUI;
+        private InventoryWindow _inventoryWindow;
 
-        public void Construct(HotBarUI hotBarUI, InventoryUI inventoryUI, HeroInventory heroInventory)
+        private InventoriesHolderUI(HeroFacade.Factory heroFactory, IUIFactory uiFactory)
         {
-            _heroInventory = heroInventory;
-            _hotBarUI = hotBarUI;
-            _inventoryUI = inventoryUI;
-            _inventoryUI.ItemDescription.Construct(heroInventory);
-            
-            ConstructInventories().Forget();
+            _heroFactory = heroFactory;
+            _uiFactory = uiFactory;
         }
 
-        private async UniTaskVoid ConstructInventories()
+        public void Initialize()
         {
-            await UniTask.WaitUntil(InventoryInitialized);
-            _hotBarUI.Construct(_heroInventory, _inventoryUI.ItemDescription, transform, HandleDrop);
-            _inventoryUI.Construct(_heroInventory, transform, HandleDrop);
+            InitializeUI();
+            InitializeInventory();
         }
 
-        private bool InventoryInitialized() => 
-            _heroInventory.Inventory != null;
+        private void InitializeInventory()
+        {
+            _heroInventory = _heroFactory.Instance.Inventory;
+            ConstructInventories();
+        }
+
+        private void InitializeUI()
+        {
+            _uiRoot = _uiFactory.UIRoot;
+            _hotBarUI = _uiFactory.ActorUI.HotBar;
+            _inventoryWindow = _uiFactory.InventoryWindow;
+        }
+
+        private void ConstructInventories()
+        {
+            _hotBarUI.Construct(_heroInventory, _inventoryWindow.ItemDescription, _uiRoot, HandleDrop);
+            _inventoryWindow.Construct(_heroInventory, _uiRoot, HandleDrop);
+            _inventoryWindow.ItemDescription.Construct(_heroInventory);
+        }
 
         private void HandleDrop(InventorySlot one, InventorySlot two)
         {
@@ -47,14 +63,14 @@ namespace _Project.CodeBase.UI
             UpdateSlot(first);
             UpdateSlot(second);
         }
-        
+
         private void UpdateSlot(int index)
         {
             if (index == Inventory.ErrorIndex) return;
             
             var slotsHolder = index < _heroInventory.Inventory.HotBarSlots 
                 ? _hotBarUI.SlotsHolder 
-                : _inventoryUI.SlotsHolder;
+                : _inventoryWindow.SlotsHolder;
 
             slotsHolder.UpdateSlot(index);
         }

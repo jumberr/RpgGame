@@ -15,8 +15,8 @@ GameObject:
   m_Name: Water_1_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 23
   m_IsActive: 1
 --- !u!4 &7651850829781625613
 Transform:
@@ -96,8 +96,8 @@ GameObject:
   m_Name: Water_1_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 23
   m_IsActive: 1
 --- !u!4 &5066807217755779755
 Transform:
@@ -177,8 +177,8 @@ GameObject:
   m_Name: Water_1_LOD4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 23
   m_IsActive: 1
 --- !u!4 &7657796055021119332
 Transform:
@@ -258,8 +258,8 @@ GameObject:
   m_Name: Water_1_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 23
   m_IsActive: 1
 --- !u!4 &6764393539954724285
 Transform:
@@ -339,8 +339,8 @@ GameObject:
   m_Name: Water_1_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 23
   m_IsActive: 1
 --- !u!4 &6749225534439501457
 Transform:

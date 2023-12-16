@@ -1,6 +1,7 @@
 ﻿using _Project.CodeBase.Infrastructure.Services.InputService;
 using NTC.Global.Cache;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.Logic.Hero.Cam
 {
@@ -19,6 +20,14 @@ namespace _Project.CodeBase.Logic.Hero.Cam
 
         private Vector2 Direction { get; set; }
 
+        
+        [Inject]
+        public void Construct(InputService inputService)
+        {
+            _inputService = inputService;
+            _inputService.RotateAction.Event += OnRotate;
+        }
+        
         public void Init()
         {
             _rotationCharacter = _player.localRotation;
@@ -54,14 +63,8 @@ namespace _Project.CodeBase.Logic.Hero.Cam
             CachedTransform.localRotation = localRotation;
         }
 
-        private void OnDisable() => 
+        private void OnDestroy() => 
             _inputService.RotateAction.Event -= OnRotate;
-
-        public void SetInputService(InputService inputService)
-        {
-            _inputService = inputService;
-            _inputService.RotateAction.Event += OnRotate;
-        }
 
         public void UpdateSensitivity(float sensitivity) => 
             _mouseSensitivity = sensitivity;

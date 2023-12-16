@@ -8,15 +8,14 @@ namespace _Project.CodeBase.Logic.Inventory
     public class Inventory
     {
         public const int ErrorIndex = -1;
-        private const int DefaultHotBarSlotsAmount = 4;
         
         public InventorySlot[] Slots;
         public int HotBarSlots;
 
-        public Inventory(int slotAmount)
+        public Inventory(InventoryData inventoryData)
         {
-            InitializeInventory(slotAmount);
-            HotBarSlots = DefaultHotBarSlotsAmount;
+            InitializeInventory(inventoryData.InventorySize);
+            HotBarSlots = inventoryData.HotBarSize;
         }
 
         public void InitializeInventory(int slotAmount)
@@ -111,7 +110,7 @@ namespace _Project.CodeBase.Logic.Inventory
         public InventorySlot FindSlot(int id, int amount) => 
             Slots.FirstOrDefault(slot => slot.ID == id && slot.CommonItemPart.Amount == amount);
 
-        private int FindSlotOrEmpty(int dbId)
+        public int FindSlotOrEmpty(int dbId)
         {
             for (var i = 0; i < Slots.Length; i++)
             {
@@ -122,7 +121,7 @@ namespace _Project.CodeBase.Logic.Inventory
             return FindEmptySlot();
         }
 
-        private int FindSlotReversed(int dbId)
+        public int FindSlotReversed(int dbId)
         {
             for (var i = Slots.Length - 1; i >= 0; i--)
             {
@@ -132,7 +131,7 @@ namespace _Project.CodeBase.Logic.Inventory
             return ErrorIndex;
         }
 
-        private int FindEmptySlot()
+        public int FindEmptySlot()
         {
             for (var i = 0; i < Slots.Length; i++)
             {

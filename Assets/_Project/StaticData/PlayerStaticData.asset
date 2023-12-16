@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c84acc8aaf04245a2fa9f524fd1e59d, type: 3}
   m_Name: PlayerStaticData
   m_EditorClassIdentifier: 
-  DefaultData:
+  <DefaultData>k__BackingField:
     Position:
       X: 82
       Y: 5
@@ -22,6 +22,12 @@ MonoBehaviour:
       Y: 0
       Z: 0
       W: 0
-  HealthData:
-    CurrentHp: 100
-    MaxHp: 100
+  <HealthData>k__BackingField:
+    <CurrentHp>k__BackingField: 100
+    <MaxHp>k__BackingField: 100
+    <Regeneration>k__BackingField: 1
+    <RegenerationDelay>k__BackingField: 5
+    <RegenerationSpeed>k__BackingField: 0.033
+  <InventoryData>k__BackingField:
+    <HotBarSize>k__BackingField: 5
+    <InventorySize>k__BackingField: 37

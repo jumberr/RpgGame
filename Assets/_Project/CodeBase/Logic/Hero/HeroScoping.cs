@@ -6,6 +6,7 @@ using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.Logic.Hero
 {
@@ -26,6 +27,23 @@ namespace _Project.CodeBase.Logic.Hero
         private TweenerCore<Vector3, Vector3, VectorOptions> _weaponTween;
         private TweenerCore<float, float, FloatOptions> _weaponCameraTween;
 
+        
+        [Inject]
+        public void Construct(InputService inputService)
+        {
+            _inputService = inputService;
+            _inputService.ScopeAction.Event += ScopeHandling;
+        }
+        
+        private void Start()
+        {
+            _startPos = _weaponHolder.localPosition;
+            _startFov = _weaponCamera.fieldOfView;
+        }
+
+        private void OnDestroy() =>
+            _inputService.ScopeAction.Event -= ScopeHandling;
+        
         public void Construct(GunInfo gunInfo, WeaponConfiguration config)
         {
             _config = config;
@@ -35,21 +53,6 @@ namespace _Project.CodeBase.Logic.Hero
 
         public void Construct(KnifeInfo knifeInfo) =>
             _isNeedScope = false;
-
-        private void Start()
-        {
-            _startPos = _weaponHolder.localPosition;
-            _startFov = _weaponCamera.fieldOfView;
-        }
-
-        private void OnDisable() =>
-            _inputService.ScopeAction.Event -= ScopeHandling;
-
-        public void SetInputService(InputService inputService)
-        {
-            _inputService = inputService;
-            _inputService.ScopeAction.Event += ScopeHandling;
-        }
 
         public void UnScope()
         {

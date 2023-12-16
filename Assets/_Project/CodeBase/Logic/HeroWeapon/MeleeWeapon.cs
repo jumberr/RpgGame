@@ -1,38 +1,41 @@
-﻿using _Project.CodeBase.StaticData;
+﻿using System.Collections.Generic;
+using _Project.CodeBase.Logic.Enemy;
+using _Project.CodeBase.Logic.Enemy.Health;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
-    public class MeleeWeapon : MonoBehaviour
+    public class MeleeWeapon : BaseMeleeAttack
     {
-        [SerializeField] private Transform _startPoint;
-        
-        private readonly Collider[] _hits = new Collider[3];
-        private LayerMask _layerMask;
-
-        private float _damage;
-        private float _radius;
-
-        public void Construct(LayerMask mask, KnifeInfo knifeInfo)
-        {
-            _layerMask = mask;
-
-            _damage = knifeInfo.WeaponSpecs.Damage;
-            _radius = knifeInfo.KnifeSpecs.Radius;
-        }
+        private readonly List<Transform> _dealtDamage = new List<Transform>();
 
         [UsedImplicitly]
         public void OnAttack()
         {
+            _dealtDamage.Clear();
+            
             for (var i = 0; i < Hit(); i++)
             {
-                if (_hits[i].transform.TryGetComponent<IHealth>(out var health)) 
-                    health.TakeDamage(_damage);
+                var hitTransform = Hits[i].transform;
+                if (hitTransform.TryGetComponent<IHitBox>(out var hitBox))
+                {
+                    var enemyRoot = hitTransform.root;
+                    if (_dealtDamage.Contains(enemyRoot)) continue;
+
+                    hitBox.Hit(Damage);
+                    SpawnBloodParticles(enemyRoot, hitTransform, i);
+                    _dealtDamage.Add(enemyRoot);
+                }
             }
         }
 
-        private int Hit() => 
-            Physics.OverlapSphereNonAlloc(_startPoint.position, _radius, _hits, _layerMask);
+        private void SpawnBloodParticles(Transform enemyRoot, Transform hitTransform, int index)
+        {
+            if (!enemyRoot.TryGetComponent<EnemyHitEffect>(out var hitEffect)) return;
+            var closest = Physics.ClosestPoint(SphereCollider.center, Hits[index], hitTransform.position, hitTransform.rotation);
+            hitEffect.SpawnBloodParticles(closest).Forget();
+        }
     }
 }

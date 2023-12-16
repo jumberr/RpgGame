@@ -33,8 +33,11 @@ namespace _Project.CodeBase.Logic.Hero
             OnChangeWeapon?.Invoke(BulletLeft, BulletAll, sprite);
         }
         
-        public void Construct(KnifeInfo knifeInfo) => 
-            SetupKnifeInfo();
+        public void Construct(KnifeInfo knifeInfo)
+        {
+            _magazineData = new MagazineData(MagazineData.Empty);
+            _bulletMaxMagazine = MagazineData.Empty;
+        }
 
         private void OnEnable() => 
             _inventory.OnUpdate += UpdateAmmoValue;
@@ -90,12 +93,6 @@ namespace _Project.CodeBase.Logic.Hero
         {
             _bulletMaxMagazine = gunInfo.GunSpecs.MagazineInfo.BulletsMax;
             _itemName = gunInfo.GunSpecs.AmmoType.ToItemName();
-        }
-        
-        private void SetupKnifeInfo()
-        {
-            _magazineData.BulletsLeft = MagazineData.Empty;
-            _bulletMaxMagazine = MagazineData.Empty;
         }
 
         private void UpdateAmmoValue()
