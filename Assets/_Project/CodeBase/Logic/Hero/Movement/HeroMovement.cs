@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using _Project.CodeBase.Data;
+using _Project.CodeBase.Infrastructure.Services;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Logic.Hero.State;
@@ -64,6 +65,7 @@ namespace _Project.CodeBase.Logic.Hero
         
         private readonly Collider[] _buffer = new Collider[5];
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
+        private SoundService _soundService;
         private InputService _inputService;
 
         private Vector3 _velocity;
@@ -74,8 +76,9 @@ namespace _Project.CodeBase.Logic.Hero
 
         
         [Inject]
-        private void Construct(InputService inputService)
+        private void Construct(SoundService soundService, InputService inputService)
         {
+            _soundService = soundService;
             _inputService = inputService;
             _inputService.MoveAction.Event += UpdateDirection;
             _inputService.JumpAction.Event += Jump;
@@ -137,7 +140,7 @@ namespace _Project.CodeBase.Logic.Hero
 
             var applied = ApplyVelocity();
             _characterController.Move(applied);
-            ApplyMoveAnimation(applied);
+            ApplyAnimationAndSound(applied);
         }
 
         private Vector3 CalculateDirection(Vector2 frameInput)
@@ -167,14 +170,20 @@ namespace _Project.CodeBase.Logic.Hero
             return applied;
         }
 
-        private void ApplyMoveAnimation(Vector3 dir)
+        private void ApplyAnimationAndSound(Vector3 dir)
         {
             dir.y = 0f;
-            
+
             if (_state.Running)
+            {
                 _heroAnimator.EnterMoveState(sprintAnimationValue);
+                _soundService.PlayMovementSound(GetSurfaceType(), MoveType.Run).Forget();
+            }
             else if (dir.magnitude >= animationThreshold)
+            {
                 _heroAnimator.EnterMoveState(walkAnimationValue);
+                _soundService.PlayMovementSound(GetSurfaceType(), MoveType.Walk).Forget();
+            }
             else
                 _heroAnimator.EnterMoveState(idleAnimationValue);
         }
@@ -204,11 +213,11 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void Jump()
         {
-            if (!_state.Grounded || _state.Crouching && !_canJumpWhileCrouching)
-                return;
+            if (!_state.Grounded || _state.Crouching && !_canJumpWhileCrouching) return;
 
             _state.Jumping = true;
             _velocity = new Vector3(_velocity.x, Mathf.Sqrt(2.0f * _jumpForce * _jumpGravity), _velocity.z);
+            _soundService.PlayMovementSound(GetSurfaceType(), MoveType.Jump).Forget();
         }
 
         private async void ToggleCrouch()
@@ -258,5 +267,8 @@ namespace _Project.CodeBase.Logic.Hero
             
             _characterController.enabled = true;
         }
+
+        private SurfaceType GetSurfaceType() => 
+            SurfaceType.Sand;
     }
 }

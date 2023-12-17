@@ -1,0 +1,234 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30bd2b25a616fea43a3bbbd88590e32c, type: 3}
+  m_Name: SurfaceSoundConfig
+  m_EditorClassIdentifier: 
+  _surfaceData:
+    list:
+    - Key: 0
+      Value:
+        list:
+        - Key: 0
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 557e96b16076cb84285c90941906b44c, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 93b5a4dc803c25c48a325a38b5617c33, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 752adf85de15e284ebf55d376e1f4276, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 1
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 82b9e7907a6c3154b86a53c1be46ff71, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: f43edb311d1c4d74fa9b4b86c9157fa6, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 9fa438d00f348394a8f0f6c053659a36, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 2
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 778bae15671a6c74c93c28c84cae9fe4, type: 3}
+            Volume: 1
+            Delay: 0
+        keyCollision: 0
+    - Key: 1
+      Value:
+        list:
+        - Key: 0
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 1f0199a4c6005ec4abbb302f71bc036d, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 53e2adf2ac488ef46bb2b4074de9e363, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: a03a96c5d1e99b4409ddd79098abd9ab, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 1
+          Value:
+          - AudioClip: {fileID: 8300000, guid: ecd647025e0a3c04fbd5829fff509e09, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 3bd1b93317b7a3a49b13011cdaa64d0b, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 7b4b6eb734482064c8c1e5fd45d4d76c, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 2
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 3d8f480d252db9449b2f978284506f8e, type: 3}
+            Volume: 1
+            Delay: 0
+        keyCollision: 0
+    - Key: 2
+      Value:
+        list:
+        - Key: 0
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 8e001351cd7065543a068386cde4c960, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: c41fb169b2991c247a5466e00faa6639, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 76c66b3ae15685a45a334b0628d1edd1, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 1
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 505a015d5525e0442ae4a62d5bac304d, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 7ffe843b3b9c8d14792d912d39646105, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 2802b1a72217c464ea0171ad67e835f7, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 2
+          Value:
+          - AudioClip: {fileID: 8300000, guid: bb5ec83ccc5c69f43b31f100278bff91, type: 3}
+            Volume: 1
+            Delay: 0
+        keyCollision: 0
+    - Key: 3
+      Value:
+        list:
+        - Key: 0
+          Value:
+          - AudioClip: {fileID: 8300000, guid: adf4e7fa93007bd49937217a0922f285, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: b9a5f4a46006d6f429a02ea0fadc4809, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 6755e20b5c79018438c8aed7439dcfed, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 1
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 3529918bd1dd74644ba7748b90343695, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 5cb5fe43bdf748744a0458fdffed8e70, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 5ca9e0641870f9341a75bcbda5787159, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 2
+          Value:
+          - AudioClip: {fileID: 8300000, guid: e8c82818ac04cf94c9c3a816122e9c4d, type: 3}
+            Volume: 1
+            Delay: 0
+        keyCollision: 0
+    - Key: 4
+      Value:
+        list:
+        - Key: 0
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 551d550ab98e3cc4bb7793e752fe8628, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 18e761ff5ef14fd4588d9283fcc9b829, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 9c0c1f9411026f749bcb3746cd557bec, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 1
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 9a30499e47789df48aa9bdb1ec7b0982, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 1d7e7e6569aab5a45a837f470eaddc8b, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 31be579b280d0bc459635877e8c45aee, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 2
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 6aeefb601c305f64487cebdfacae5b6c, type: 3}
+            Volume: 1
+            Delay: 0
+        keyCollision: 0
+    - Key: 5
+      Value:
+        list:
+        - Key: 0
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 05c42e498b8744744ad3fbf2055f3624, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: d82fc2cd4d9eb384ba34b3dc326990d9, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 2c90e80473cc930448770f8a996062cb, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 1
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 6ed60d26e9b63494aa186a23d910cfe8, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 2518f7ac3fb5c094eb7f3494547dca64, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 6d8cbeae1cc5dcb40bd1064681211059, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 2
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 63e0175a58364a14d874cf6a4602923b, type: 3}
+            Volume: 1
+            Delay: 0
+        keyCollision: 0
+    - Key: 6
+      Value:
+        list:
+        - Key: 0
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 5e265270fb85126479eef52d8fce3b08, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 3701a5fdf99882f40bc00eb9053eec92, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 2f949b40b7283404099a802630fb2077, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 1
+          Value:
+          - AudioClip: {fileID: 8300000, guid: b25225c72201cd740b16b95b86d57940, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 5e8e6e435e65fe146b588b8a9d2df461, type: 3}
+            Volume: 1
+            Delay: 0
+          - AudioClip: {fileID: 8300000, guid: 8900ae4b297a017448ddb78ea0c2d4da, type: 3}
+            Volume: 1
+            Delay: 0
+        - Key: 2
+          Value:
+          - AudioClip: {fileID: 8300000, guid: 37cdbcb02c3324849ac457dfc5b1058e, type: 3}
+            Volume: 1
+            Delay: 0
+        keyCollision: 0
+    keyCollision: 0
