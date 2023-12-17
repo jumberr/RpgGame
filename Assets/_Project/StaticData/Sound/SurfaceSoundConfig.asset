@@ -20,29 +20,29 @@ MonoBehaviour:
         - Key: 0
           Value:
           - AudioClip: {fileID: 8300000, guid: 557e96b16076cb84285c90941906b44c, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
           - AudioClip: {fileID: 8300000, guid: 93b5a4dc803c25c48a325a38b5617c33, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
           - AudioClip: {fileID: 8300000, guid: 752adf85de15e284ebf55d376e1f4276, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
         - Key: 1
           Value:
           - AudioClip: {fileID: 8300000, guid: 82b9e7907a6c3154b86a53c1be46ff71, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
           - AudioClip: {fileID: 8300000, guid: f43edb311d1c4d74fa9b4b86c9157fa6, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
           - AudioClip: {fileID: 8300000, guid: 9fa438d00f348394a8f0f6c053659a36, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
         - Key: 2
           Value:
           - AudioClip: {fileID: 8300000, guid: 778bae15671a6c74c93c28c84cae9fe4, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
         keyCollision: 0
     - Key: 1
@@ -51,29 +51,29 @@ MonoBehaviour:
         - Key: 0
           Value:
           - AudioClip: {fileID: 8300000, guid: 1f0199a4c6005ec4abbb302f71bc036d, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
           - AudioClip: {fileID: 8300000, guid: 53e2adf2ac488ef46bb2b4074de9e363, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
           - AudioClip: {fileID: 8300000, guid: a03a96c5d1e99b4409ddd79098abd9ab, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
         - Key: 1
           Value:
           - AudioClip: {fileID: 8300000, guid: ecd647025e0a3c04fbd5829fff509e09, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
           - AudioClip: {fileID: 8300000, guid: 3bd1b93317b7a3a49b13011cdaa64d0b, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
           - AudioClip: {fileID: 8300000, guid: 7b4b6eb734482064c8c1e5fd45d4d76c, type: 3}
-            Volume: 1
+            Volume: 0.8
             Delay: 0
         - Key: 2
           Value:
           - AudioClip: {fileID: 8300000, guid: 3d8f480d252db9449b2f978284506f8e, type: 3}
-            Volume: 1
+            Volume: 0.5
             Delay: 0
         keyCollision: 0
     - Key: 2
@@ -228,7 +228,7 @@ MonoBehaviour:
         - Key: 2
           Value:
           - AudioClip: {fileID: 8300000, guid: 37cdbcb02c3324849ac457dfc5b1058e, type: 3}
-            Volume: 1
+            Volume: 0.7
             Delay: 0
         keyCollision: 0
     keyCollision: 0

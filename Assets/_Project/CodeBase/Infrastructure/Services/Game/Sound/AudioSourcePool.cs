@@ -14,13 +14,8 @@ namespace _Project.CodeBase.Infrastructure.Services.Game.Sound
         public AudioSourcePool(AudioSourceWrapper.Pool pool) => 
             _audioSourcePool = pool;
 
-        public AudioSourceWrapper GetAudioSourceWrapper(AudioData data)
-        {
-            foreach (var wrapper in _audioSourcesWrappers.Where(wrapper => !wrapper.AudioSource.isPlaying))
-                return wrapper.Setup(data);
-
-            return AddToPool().Setup(data);
-        }
+        public AudioSourceWrapper GetAudioSourceWrapper(AudioData data) => 
+            AddToPool().Setup(data);
 
         public void ReturnToPool(AudioSourceWrapper wrapper)
         {

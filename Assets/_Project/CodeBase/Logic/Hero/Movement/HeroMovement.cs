@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using _Project.CodeBase.Data;
-using _Project.CodeBase.Infrastructure.Services;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Logic.Hero.State;
@@ -19,6 +18,7 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private HeroState _state;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private FallingDamage _fallingDamage;
+        [SerializeField] private FootstepsController _footstepsController;
 
         [Title("Acceleration")]
         [SerializeField] private float _acceleration;
@@ -65,7 +65,6 @@ namespace _Project.CodeBase.Logic.Hero
         
         private readonly Collider[] _buffer = new Collider[5];
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
-        private SoundService _soundService;
         private InputService _inputService;
 
         private Vector3 _velocity;
@@ -76,9 +75,8 @@ namespace _Project.CodeBase.Logic.Hero
 
         
         [Inject]
-        private void Construct(SoundService soundService, InputService inputService)
+        private void Construct(InputService inputService)
         {
-            _soundService = soundService;
             _inputService = inputService;
             _inputService.MoveAction.Event += UpdateDirection;
             _inputService.JumpAction.Event += Jump;
@@ -122,15 +120,20 @@ namespace _Project.CodeBase.Logic.Hero
             if (_state.Grounded && !_state.WasGrounded)
             {
                 if (_state.WasGrounded) return;
-                
-                _fallingDamage.ApplyFallDamage(CachedTransform.position.y);
-                _fallingDamage.ResetHighestPoint();
-                _state.Jumping = false;
+                JumpFinished();
             }
             else
                 _fallingDamage.StorePosition(CachedTransform.position.y);
         }
 
+        private void JumpFinished()
+        {
+            _fallingDamage.ApplyFallDamage(CachedTransform.position.y);
+            _fallingDamage.ResetHighestPoint();
+            _footstepsController.HandleJumpFootsteps();
+            _state.Jumping = false;
+        }
+        
         private void MoveCharacter()
         {
             Vector2 frameInput = Vector3.ClampMagnitude(_input, 1.0f);
@@ -140,7 +143,8 @@ namespace _Project.CodeBase.Logic.Hero
 
             var applied = ApplyVelocity();
             _characterController.Move(applied);
-            ApplyAnimationAndSound(applied);
+            ApplyAnimation(applied);
+            _footstepsController.HandleMoveFootsteps(frameInput);
         }
 
         private Vector3 CalculateDirection(Vector2 frameInput)
@@ -170,20 +174,14 @@ namespace _Project.CodeBase.Logic.Hero
             return applied;
         }
 
-        private void ApplyAnimationAndSound(Vector3 dir)
+        private void ApplyAnimation(Vector3 dir)
         {
             dir.y = 0f;
 
             if (_state.Running)
-            {
                 _heroAnimator.EnterMoveState(sprintAnimationValue);
-                _soundService.PlayMovementSound(GetSurfaceType(), MoveType.Run).Forget();
-            }
             else if (dir.magnitude >= animationThreshold)
-            {
                 _heroAnimator.EnterMoveState(walkAnimationValue);
-                _soundService.PlayMovementSound(GetSurfaceType(), MoveType.Walk).Forget();
-            }
             else
                 _heroAnimator.EnterMoveState(idleAnimationValue);
         }
@@ -217,7 +215,6 @@ namespace _Project.CodeBase.Logic.Hero
 
             _state.Jumping = true;
             _velocity = new Vector3(_velocity.x, Mathf.Sqrt(2.0f * _jumpForce * _jumpGravity), _velocity.z);
-            _soundService.PlayMovementSound(GetSurfaceType(), MoveType.Jump).Forget();
         }
 
         private async void ToggleCrouch()
@@ -267,8 +264,5 @@ namespace _Project.CodeBase.Logic.Hero
             
             _characterController.enabled = true;
         }
-
-        private SurfaceType GetSurfaceType() => 
-            SurfaceType.Sand;
     }
 }

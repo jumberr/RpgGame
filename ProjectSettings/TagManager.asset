@@ -19,6 +19,7 @@ TagManager:
   - InitialPoint
   - Rock
   - Sand
+  - Water
   layers:
   - Default
   - TransparentFX
