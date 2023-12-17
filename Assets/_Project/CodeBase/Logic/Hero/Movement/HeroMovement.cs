@@ -18,6 +18,7 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private HeroState _state;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private FallingDamage _fallingDamage;
+        [SerializeField] private FootstepsController _footstepsController;
 
         [Title("Acceleration")]
         [SerializeField] private float _acceleration;
@@ -119,15 +120,20 @@ namespace _Project.CodeBase.Logic.Hero
             if (_state.Grounded && !_state.WasGrounded)
             {
                 if (_state.WasGrounded) return;
-                
-                _fallingDamage.ApplyFallDamage(CachedTransform.position.y);
-                _fallingDamage.ResetHighestPoint();
-                _state.Jumping = false;
+                JumpFinished();
             }
             else
                 _fallingDamage.StorePosition(CachedTransform.position.y);
         }
 
+        private void JumpFinished()
+        {
+            _fallingDamage.ApplyFallDamage(CachedTransform.position.y);
+            _fallingDamage.ResetHighestPoint();
+            _footstepsController.HandleJumpFootsteps();
+            _state.Jumping = false;
+        }
+        
         private void MoveCharacter()
         {
             Vector2 frameInput = Vector3.ClampMagnitude(_input, 1.0f);
@@ -137,7 +143,8 @@ namespace _Project.CodeBase.Logic.Hero
 
             var applied = ApplyVelocity();
             _characterController.Move(applied);
-            ApplyMoveAnimation(applied);
+            ApplyAnimation(applied);
+            _footstepsController.HandleMoveFootsteps(frameInput);
         }
 
         private Vector3 CalculateDirection(Vector2 frameInput)
@@ -167,10 +174,10 @@ namespace _Project.CodeBase.Logic.Hero
             return applied;
         }
 
-        private void ApplyMoveAnimation(Vector3 dir)
+        private void ApplyAnimation(Vector3 dir)
         {
             dir.y = 0f;
-            
+
             if (_state.Running)
                 _heroAnimator.EnterMoveState(sprintAnimationValue);
             else if (dir.magnitude >= animationThreshold)
@@ -204,8 +211,7 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void Jump()
         {
-            if (!_state.Grounded || _state.Crouching && !_canJumpWhileCrouching)
-                return;
+            if (!_state.Grounded || _state.Crouching && !_canJumpWhileCrouching) return;
 
             _state.Jumping = true;
             _velocity = new Vector3(_velocity.x, Mathf.Sqrt(2.0f * _jumpForce * _jumpGravity), _velocity.z);

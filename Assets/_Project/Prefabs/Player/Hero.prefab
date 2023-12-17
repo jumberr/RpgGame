@@ -610,6 +610,7 @@ GameObject:
   - component: {fileID: 3831780928893133638}
   - component: {fileID: 9040526684898629062}
   - component: {fileID: 8103562212985447868}
+  - component: {fileID: 4059400667633588676}
   - component: {fileID: 9040526684898629059}
   - component: {fileID: 4244581671924312788}
   - component: {fileID: 6408951751477784948}
@@ -709,6 +710,7 @@ MonoBehaviour:
   _state: {fileID: 4068888587891572736}
   _characterController: {fileID: 9040526684898629060}
   _fallingDamage: {fileID: 8103562212985447868}
+  _footstepsController: {fileID: 4059400667633588676}
   _acceleration: 8
   _accelerationInAir: 1.7
   _deceleration: 11
@@ -753,6 +755,23 @@ MonoBehaviour:
   _maxFallHeight: 30
   _minDamage: 10
   _maxDamage: 100
+--- !u!114 &4059400667633588676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040526684898629064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae03fe9fa8358ac438453d809c6ba2e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _state: {fileID: 4068888587891572736}
+  _baseStepSpeed: 0.5
+  _crouchStepMultiplier: 1.5
+  _sprintStepMultiplier: 0.6
+  _raycastDistance: 3
 --- !u!114 &9040526684898629059
 MonoBehaviour:
   m_ObjectHideFlags: 0
