@@ -61,13 +61,13 @@ namespace _Project.CodeBase.Logic.Hero
             _state.Aiming = false;
         }
 
-        private void ScopeHandling()
+        private void ScopeHandling(bool value)
         {
             if (!_isNeedScope) return;
 
             KillTween();
 
-            if (!_state.Aiming)
+            if (!_state.Aiming && value)
                 Scope();
             else
                 UnScope();

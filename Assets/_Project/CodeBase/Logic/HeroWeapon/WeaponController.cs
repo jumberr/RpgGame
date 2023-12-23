@@ -36,8 +36,10 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private WeaponItem _weaponItem;
 
         public event Action<bool> OnSwitch;
+        
+        public CurrentWeapon CurrentWeapon => _currentWeapon;
 
-
+        
         [Inject]
         private void Construct(InputService inputService, IStaticDataService staticDataService)
         {
@@ -61,12 +63,14 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             
             _attachmentController.Construct(_currentWeapon, _weaponItem.WeaponData);
             SetupAttachments();
+            OnSwitch?.Invoke(true); // todo temporary here, but better refactor structure
         }
         
         public async UniTask CreateNewMeleeWeapon(GameObject prefab, KnifeInfo knifeInfo, int slotID)
         {
             await CreateGun(slotID, prefab);
             ConstructWeapon(knifeInfo);
+            OnSwitch?.Invoke(true); // todo temporary here, but better refactor structure
         }
         
         private async UniTask CreateGun(int slotID, GameObject prefab)
@@ -78,7 +82,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             _currentWeapon.Create(slotID, prefab, _parent);
             _animator.Construct(_currentWeapon.WeaponConfiguration.HandsAnimator);
             await _animator.ShowWeaponOnInit();
-            OnSwitch?.Invoke(true);
         }
 
         private async UniTask DestroyWeapon()

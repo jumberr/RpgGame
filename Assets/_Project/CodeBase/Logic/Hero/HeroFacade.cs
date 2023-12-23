@@ -40,6 +40,7 @@ namespace _Project.CodeBase.Logic.Hero
         public HeroState HeroState => _state;
         public HeroInteraction Interaction => _interaction;
         [field: SerializeField] public Transform CameraTransform { get; private set; }
+        [field: SerializeField] public TrajectoryView TrajectoryView { get; private set; }
 
         
         [Inject]
