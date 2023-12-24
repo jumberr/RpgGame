@@ -28,7 +28,7 @@ MonoBehaviour:
   _payloadInfo:
     _itemType: 6
     _actions: 000000000200000003000000
-    _groundPrefab: {fileID: 7720088766345086510, guid: c26f8d9f785e2c04092c0f9c9aa155d3,
+    _groundPrefab: {fileID: 3471285222035659691, guid: afe44ecacdc51ae4497e0d7faeacf820,
       type: 3}
     _maxInContainer: 10
     _dbId: 23
