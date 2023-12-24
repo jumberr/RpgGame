@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1828f76501a6cd5409439e7a0aebbbcc, type: 3}
+  m_Name: M67Grenade
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _uiInfo:
+    _name: 24
+    _icon: {fileID: 21300000, guid: 03e1e5731f17c334b864652196cb8931, type: 3}
+    _description: M67Grenade
+  _payloadInfo:
+    _itemType: 6
+    _actions: 000000000200000003000000
+    _groundPrefab: {fileID: 7720088766345086510, guid: c26f8d9f785e2c04092c0f9c9aa155d3,
+      type: 3}
+    _maxInContainer: 10
+    _dbId: 23
+  <ThrowData>k__BackingField:
+    ThrowForce: 10
+    MaxForce: 30
+  <ExplosionGrenadeData>k__BackingField:
+    ExplosionDelay: 2
+    ExplosionForce: 30
+    ExplosionRadius: 5

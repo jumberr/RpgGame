@@ -7,6 +7,7 @@
         Weapon,
         Armor,
         Food,
-        Attachment = 5
+        Attachment = 5,
+        Grenade = 6,
     }
 }

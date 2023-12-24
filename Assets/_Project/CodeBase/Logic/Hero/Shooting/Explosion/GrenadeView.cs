@@ -8,21 +8,21 @@ namespace _Project.CodeBase.Logic.Hero
     {
         [SerializeField] private GameObject _explosionPrefab;
         [SerializeField] private Vector3 _explosionOffset;
-        [SerializeField] private GrenadeData _grenadeData;
+        [SerializeField] private ExplosionGrenadeData _explosionGrenadeData;
         [SerializeField] private float _destroyTime;
 
-        private Collider[] _colliders = new Collider[20];
+        private readonly Collider[] _colliders = new Collider[20];
         
         
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position + _explosionOffset, _grenadeData.ExplosionRadius);
+            Gizmos.DrawWireSphere(transform.position + _explosionOffset, _explosionGrenadeData.ExplosionRadius);
         }
 
         public async UniTask Throw()
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(_grenadeData.ExplosionDelay));
+            await UniTask.Delay(TimeSpan.FromSeconds(_explosionGrenadeData.ExplosionDelay));
 
             var explosion = Instantiate(_explosionPrefab, transform.position + _explosionOffset, Quaternion.identity);
             Destroy(explosion, _destroyTime); // todo maybe move to pool
@@ -32,13 +32,13 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void NearbyForceApply()
         {
-            var overlappedAmount = Physics.OverlapSphereNonAlloc(transform.position, _grenadeData.ExplosionRadius, _colliders);
+            var overlappedAmount = Physics.OverlapSphereNonAlloc(transform.position, _explosionGrenadeData.ExplosionRadius, _colliders);
 
             for (var i = 0; i < overlappedAmount; i++)
             {
                 if (!_colliders[i].TryGetComponent<Rigidbody>(out var rb)) continue;
 
-                rb.AddExplosionForce(_grenadeData.ExplosionForce, transform.position, _grenadeData.ExplosionRadius);
+                rb.AddExplosionForce(_explosionGrenadeData.ExplosionForce, transform.position, _explosionGrenadeData.ExplosionRadius);
             }
             
             Array.Clear(_colliders, 0, _colliders.Length);
