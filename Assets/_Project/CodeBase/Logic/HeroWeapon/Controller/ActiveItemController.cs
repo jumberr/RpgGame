@@ -15,7 +15,7 @@ using Zenject;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
-    public class WeaponController : MonoBehaviour
+    public class ActiveItemController : MonoBehaviour
     {
         [SerializeField] private HeroInventory _inventory;
         [SerializeField] private HeroState _state;

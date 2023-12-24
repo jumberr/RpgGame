@@ -13,7 +13,7 @@ namespace _Project.CodeBase.Logic.Hero
         private readonly IGameFactory _gameFactory;
         private readonly TrajectoryDrawer _trajectoryDrawer;
         private readonly InputService _inputService;
-        private WeaponController _weaponController;
+        private ActiveItemController _activeItemController;
         private Transform _mainCamera;
         
         private Transform _throwPosition; // todo???
@@ -42,24 +42,24 @@ namespace _Project.CodeBase.Logic.Hero
         public void Dispose()
         {
             _inputService.ScopeAction.Event -= HandleThrowing;
-            _weaponController.OnSwitch -= ItemSwitched;
+            _activeItemController.OnSwitch -= ItemSwitched;
         }
 
         private void HeroCreated(HeroFacade heroFacade)
         {
             _gameFactory.HeroCreated -= HeroCreated;
-            _weaponController = heroFacade.WeaponController;
+            _activeItemController = heroFacade.ActiveItemController;
             _mainCamera = heroFacade.CameraTransform;
             
-            _weaponController.OnSwitch += ItemSwitched;
+            _activeItemController.OnSwitch += ItemSwitched;
         }
 
         private void ItemSwitched(bool value)
         {
             if (value)
             {
-                var weapon = _weaponController.CurrentWeapon;
-                if (weapon.GunInfo != null) // todo  && weapon.GunInfo.ThrowData != null
+                var weapon = _activeItemController.CurrentWeapon;
+                if (weapon.GunInfo != null)// && weapon.GunInfo.Throwable) // todo  && weapon.GunInfo.ThrowData != null
                     _canCharge = true;
             }
             else

@@ -12,7 +12,7 @@ namespace _Project.CodeBase.Logic.Inventory
 {
     public class HeroInventory : MonoBehaviour, ISavedProgress
     {
-        [SerializeField] private WeaponController _weaponController;
+        [SerializeField] private ActiveItemController _activeItemController;
         
         private ItemsInfo _itemsInfo;
         private Inventory _inventory;
@@ -49,6 +49,8 @@ namespace _Project.CodeBase.Logic.Inventory
                 EquipWeapon(slotID, slot.CommonItemPart, weapon);
             if (info is KnifeInfo knife) 
                 EquipWeapon(knife, slotID);
+            if (info is GrenadeInfo grenade)
+                EquipGrenade(grenade, slotID);
             //if (item is ArmorInfo armor) 
             //    EquipArmor(armor);
         }
@@ -152,10 +154,15 @@ namespace _Project.CodeBase.Logic.Inventory
             OnSpawnItemAtMap?.Invoke(part);
 
         private async void EquipWeapon(int slotID, CommonItemPart item, GunInfo gunInfo) => 
-            await _weaponController.CreateNewWeapon(slotID, item, gunInfo, gunInfo.Prefab);
+            await _activeItemController.CreateNewWeapon(slotID, item, gunInfo, gunInfo.Prefab);
 
         private async void EquipWeapon(KnifeInfo knifeInfo, int slotID) => 
-            await _weaponController.CreateNewMeleeWeapon(knifeInfo.Prefab, knifeInfo, slotID);
+            await _activeItemController.CreateNewMeleeWeapon(knifeInfo.Prefab, knifeInfo, slotID);
+
+        private void EquipGrenade(GrenadeInfo grenade, int slotID)
+        {
+            
+        }
 
         private void EquipArmor(ArmorInfo armorInfo)
         {

@@ -15,7 +15,7 @@ namespace _Project.CodeBase.Logic.Hero
 {
     public class HeroFacade : NightCache
     {
-        [SerializeField] private WeaponController _weaponController;
+        [SerializeField] private ActiveItemController _activeItemController;
         [SerializeField] private HeroInteraction _interaction;
         [SerializeField] private HeroInventory _inventory;
         [SerializeField] private HeroMovement _movement;
@@ -36,7 +36,7 @@ namespace _Project.CodeBase.Logic.Hero
         public HeroCamera Camera => _camera;
         public IHealth Health => _health;
         public HeroAmmo Ammo => _ammo;
-        public WeaponController WeaponController => _weaponController;
+        public ActiveItemController ActiveItemController => _activeItemController;
         public HeroState HeroState => _state;
         public HeroInteraction Interaction => _interaction;
         [field: SerializeField] public Transform CameraTransform { get; private set; }

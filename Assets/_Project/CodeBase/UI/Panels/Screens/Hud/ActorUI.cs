@@ -34,15 +34,15 @@ namespace _Project.CodeBase.UI
             var facade = factory.Instance;
 
             SetupAmmoUI(facade.Ammo);
-            SetupCrosshairUI(facade.WeaponController, _inputService, facade.HeroState);
+            SetupCrosshairUI(facade.ActiveItemController, _inputService, facade.HeroState);
             SetupInteractionUI(_inputService, facade.Interaction);
         }
 
         private void SetupAmmoUI(HeroAmmo heroAmmo) => 
             _ammoUI.Construct(heroAmmo);
 
-        private void SetupCrosshairUI(WeaponController weaponController, InputService inputService, HeroState heroState) => 
-            _crosshairAdapter.Construct(weaponController, inputService, heroState);
+        private void SetupCrosshairUI(ActiveItemController activeItemController, InputService inputService, HeroState heroState) => 
+            _crosshairAdapter.Construct(activeItemController, inputService, heroState);
 
         private void SetupInteractionUI(InputService inputService, HeroInteraction heroInteraction) => 
             _interactionUI.Construct(heroInteraction, inputService);
