@@ -8,18 +8,20 @@ namespace _Project.CodeBase.Logic.HeroWeapon
     public class AttachmentController
     {
         private readonly Dictionary<AttachmentType, GameObject> _attachments = new Dictionary<AttachmentType, GameObject>();
-        private CurrentWeapon _currentWeapon;
+        private CurrentItem _currentItem;
         private WeaponData _weaponData;
 
-        public void Construct(CurrentWeapon currentWeapon, WeaponData weaponData)
+        public void Setup(CurrentItem currentItem, WeaponData weaponData)
         {
-            _currentWeapon = currentWeapon;
+            _currentItem = currentItem;
             _weaponData = weaponData;
         }
 
         public void CreateAttachment(AttachmentInfo attachmentInfo)
         {
-            var attachmentPossibility = _currentWeapon.GunInfo.GetPossibility(attachmentInfo.Type);
+            if (_currentItem.Info is not GunInfo gunInfo) return;
+            
+            var attachmentPossibility = gunInfo.GetPossibility(attachmentInfo.Type);
             if (!attachmentPossibility.Possibility) return;
             if (_attachments.ContainsKey(attachmentInfo.Type))
             {
@@ -27,8 +29,9 @@ namespace _Project.CodeBase.Logic.HeroWeapon
                 return;
             }
 
-            var attachmentGO = Object.Instantiate(attachmentInfo.Prefab, attachmentPossibility.Position + attachmentInfo.OffsetPosition,
-                Quaternion.identity, _currentWeapon.WeaponConfiguration.AttachmentsParent);
+            var attachmentGO = Object.Instantiate(attachmentInfo.Prefab,
+                attachmentPossibility.Position + attachmentInfo.OffsetPosition,
+                Quaternion.identity, _currentItem.WeaponConfiguration.AttachmentsParent);
             AddAttachment(attachmentInfo, attachmentGO);
         }
 

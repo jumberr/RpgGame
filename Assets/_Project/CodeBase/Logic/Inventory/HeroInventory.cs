@@ -40,19 +40,12 @@ namespace _Project.CodeBase.Logic.Inventory
         public void UpdateProgress(PlayerProgress progress) => 
             progress.Inventory = _inventory;
 
-        public void EquipItem(int slotID)
+        public async void EquipItem(int slotID)
         {
             var slot = _inventory.Slots[slotID];
             var info = _itemsInfo.FindItem(slot.ID);
-            
-            if (info is GunInfo weapon) 
-                EquipWeapon(slotID, slot.CommonItemPart, weapon);
-            if (info is KnifeInfo knife) 
-                EquipWeapon(knife, slotID);
-            if (info is GrenadeInfo grenade)
-                EquipGrenade(grenade, slotID);
-            //if (item is ArmorInfo armor) 
-            //    EquipArmor(armor);
+
+            await _activeItemController.CreateNewItem(slotID, slot.CommonItemPart, info, info.PayloadInfo.ItemType, GetItemPrefab(info));
         }
 
         public void AddItem(InteractableGroundItem interactable)
@@ -153,20 +146,13 @@ namespace _Project.CodeBase.Logic.Inventory
         private void SpawnGroundItem(CommonItemPart part) => 
             OnSpawnItemAtMap?.Invoke(part);
 
-        private async void EquipWeapon(int slotID, CommonItemPart item, GunInfo gunInfo) => 
-            await _activeItemController.CreateNewWeapon(slotID, item, gunInfo, gunInfo.Prefab);
-
-        private async void EquipWeapon(KnifeInfo knifeInfo, int slotID) => 
-            await _activeItemController.CreateNewMeleeWeapon(knifeInfo.Prefab, knifeInfo, slotID);
-
-        private void EquipGrenade(GrenadeInfo grenade, int slotID)
+        private GameObject GetItemPrefab(ItemInfo info)
         {
+            GameObject prefab = null;
+            if (info is EquippableInfo equippableInfo)
+                prefab = equippableInfo.Prefab;
             
-        }
-
-        private void EquipArmor(ArmorInfo armorInfo)
-        {
-            
+            return prefab;
         }
     }
 }

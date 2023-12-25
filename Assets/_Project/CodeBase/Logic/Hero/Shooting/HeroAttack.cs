@@ -6,6 +6,7 @@ using _Project.CodeBase.Logic.HeroWeapon.Effects;
 using _Project.CodeBase.StaticData;
 using NTC.Global.Cache;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.Logic.Hero.Shooting
 {
@@ -15,6 +16,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         private const float TimeDestroyFX = 0.1f;
         private const int SecondsInMinute = 60;
 
+        [SerializeField] private HeroFacade _facade;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private LineFade _lineFade;
         [SerializeField] private WeaponLight _weaponLight;
@@ -38,14 +40,16 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
 
         public LayerMask LayerMask => _layerMask;
 
-        public void Construct(HeroState state, InputService inputService, HeroAmmo ammo, HeroReload reload, HeroRecoil recoil, HeroAnimator animator)
+        
+        [Inject]
+        public void Construct(InputService inputService)
         {
-            _state = state;
             _inputService = inputService;
-            _ammo = ammo;
-            _reload = reload;
-            _recoil = recoil;
-            _animator = animator;
+            _state = _facade.State;
+            _ammo = _facade.Ammo;
+            _reload = _facade.Reload;
+            _recoil = _facade.Recoil;
+            _animator = _facade.Animator;
             _inputService.AttackAction.Event += EnableDisableShoot;
 
             _defaultShooting = new DefaultShooting(_state, _lineFade, _layerMask, _particles);
@@ -55,7 +59,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         public void Run() => 
             HandleAttack();
 
-        private void OnDisable() =>
+        private void OnDestroy() => 
             _inputService.AttackAction.Event -= EnableDisableShoot;
 
         public void UpdateStatsAndConfig(GunInfo gunInfo, WeaponConfiguration config)

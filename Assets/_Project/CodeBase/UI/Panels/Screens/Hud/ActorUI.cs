@@ -26,6 +26,7 @@ namespace _Project.CodeBase.UI
 
         public HotBarUI HotBar => _hotBarUI;
 
+        
         [Inject]
         public void Construct(InputService inputService, HeroFacade.Factory factory)
         {
@@ -34,7 +35,7 @@ namespace _Project.CodeBase.UI
             var facade = factory.Instance;
 
             SetupAmmoUI(facade.Ammo);
-            SetupCrosshairUI(facade.ActiveItemController, _inputService, facade.HeroState);
+            SetupCrosshairUI(facade.ActiveItemController, _inputService, facade.State);
             SetupInteractionUI(_inputService, facade.Interaction);
         }
 
