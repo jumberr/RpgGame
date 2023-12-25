@@ -681,20 +681,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bef69419cb4e70829c7ad9fb0e6571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponController: {fileID: 5572233764286743302}
-  _interaction: {fileID: 4358505989521957567}
-  _inventory: {fileID: 4180412868393735830}
-  _movement: {fileID: 9040526684898629062}
-  _camera: {fileID: 6351203843811716005}
-  _animator: {fileID: 9040526684898629059}
-  _scoping: {fileID: 2611776295348647719}
-  _attack: {fileID: 4161488774437705111}
-  _reload: {fileID: 1314774897637019763}
-  _health: {fileID: 4244581671924312788}
-  _recoil: {fileID: 6818838000889462901}
-  _death: {fileID: 6408951751477784948}
-  _state: {fileID: 4068888587891572736}
-  _ammo: {fileID: 5847949428352668782}
+  <ActiveItemController>k__BackingField: {fileID: 5572233764286743302}
+  <Interaction>k__BackingField: {fileID: 4358505989521957567}
+  <Inventory>k__BackingField: {fileID: 4180412868393735830}
+  <Movement>k__BackingField: {fileID: 9040526684898629062}
+  <Camera>k__BackingField: {fileID: 6351203843811716005}
+  <Animator>k__BackingField: {fileID: 9040526684898629059}
+  <Scoping>k__BackingField: {fileID: 2611776295348647719}
+  <Attack>k__BackingField: {fileID: 4161488774437705111}
+  <Reload>k__BackingField: {fileID: 1314774897637019763}
+  <Health>k__BackingField: {fileID: 4244581671924312788}
+  <Recoil>k__BackingField: {fileID: 6818838000889462901}
+  <Death>k__BackingField: {fileID: 6408951751477784948}
+  <State>k__BackingField: {fileID: 4068888587891572736}
+  <Ammo>k__BackingField: {fileID: 5847949428352668782}
   <CameraTransform>k__BackingField: {fileID: 1124464607595143062}
   <TrajectoryView>k__BackingField: {fileID: 8312132338225918098}
 --- !u!114 &9040526684898629062
@@ -824,6 +824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feff99dd084442858551f520e1a26c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _facade: {fileID: 3831780928893133638}
   _layerMask:
     serializedVersion: 2
     m_Bits: 4104
@@ -918,7 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a3ec8de3a34a02b341be11c8aaf246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponController: {fileID: 5572233764286743302}
+  _activeItemController: {fileID: 5572233764286743302}
 --- !u!114 &5572233764286743302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,15 +932,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167d37f2de5d4e7e921170ce93917aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _facade: {fileID: 3831780928893133638}
   _inventory: {fileID: 4180412868393735830}
-  _state: {fileID: 4068888587891572736}
-  _attack: {fileID: 4161488774437705111}
-  _scoping: {fileID: 2611776295348647719}
-  _ammo: {fileID: 5847949428352668782}
-  _reload: {fileID: 1314774897637019763}
-  _recoil: {fileID: 6818838000889462901}
-  _animator: {fileID: 9040526684898629059}
-  _weaponSway: {fileID: 3156127009232929596}
   _parent: {fileID: 2670910214075773011}
 --- !u!114 &4358505989521957567
 MonoBehaviour:

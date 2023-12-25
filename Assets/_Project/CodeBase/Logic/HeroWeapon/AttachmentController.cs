@@ -11,6 +11,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private CurrentItem _currentItem;
         private WeaponData _weaponData;
 
+        
         public void Setup(CurrentItem currentItem, WeaponData weaponData)
         {
             _currentItem = currentItem;

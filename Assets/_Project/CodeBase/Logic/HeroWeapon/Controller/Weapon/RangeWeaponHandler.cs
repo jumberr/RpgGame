@@ -1,4 +1,5 @@
 using _Project.CodeBase.Data;
+using _Project.CodeBase.Logic.Hero.Shooting;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
@@ -6,79 +7,53 @@ using UnityEngine;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
-    public class WeaponItemHandler : BaseItemHandler
+    public class RangeWeaponHandler : BaseWeaponBuilder
     {
         private readonly AttachmentController _attachmentController;
         private WeaponItem _weaponItem;
         private GunInfo _gunInfo;
 
-        public override ItemType ItemType => ItemType.Weapon;
+        public override WeaponType Type => WeaponType.Default;
 
 
-        public WeaponItemHandler(AttachmentController attachmentController) => 
+        public RangeWeaponHandler(AttachmentController attachmentController) => 
             _attachmentController = attachmentController;
-
+        
         public override async UniTask CreateNewItem(int slotID, CommonItemPart part, ItemInfo info, GameObject prefab)
         {
-            _weaponItem = part.Item as WeaponItem;
-            await CreateGun(slotID, info, prefab);
-            _gunInfo = info as GunInfo; // todo remove this cast
-            ConstructWeapon(_gunInfo);
+            await base.CreateNewItem(slotID, part, info, prefab);
             
             _attachmentController.Setup(CurrentItem, _weaponItem.WeaponData);
             SetupAttachments();
         }
-        
-        private async UniTask CreateGun(int slotID, ItemInfo info, GameObject prefab)
-        {
-            if (CurrentItem.SlotID == slotID) return;
 
-            await Destroy();
-
-            CurrentItem.Create(slotID, info, prefab, Parent);
-            Animator.Construct(CurrentItem.WeaponConfiguration.HandsAnimator);
-            await Animator.ShowWeaponOnInit();
-        }
-        
-        private async UniTask AnimatorHideWeapon()
-        {
-            await Animator.HideWeapon();
-            Animator.SetEmptyAnimator();
-        }
-
-        protected override async UniTask CheckIfDestroy(ItemInfo itemInfo)
-        {
-            if (itemInfo != null && Inventory.FindFirstItemIndex(itemInfo.UIInfo.Name) == Logic.Inventory.Inventory.ErrorIndex)
-                await Destroy();
-        }
-
-        protected override async UniTask DestroyItem()
-        {
-            await base.DestroyItem();
-            await AnimatorHideWeapon();
-            Attack.SetWeaponTypeNone();
+        public override void FinishItemDestroy() => 
             DestroyWeaponAndAttachments();
-        }
-        
-        private void ConstructWeapon(GunInfo gunInfo)
+
+        protected override void PrepareData(CommonItemPart part, ItemInfo info)
         {
-            Ammo.Construct(_weaponItem.MagazineData, gunInfo);
-            Recoil.Construct(gunInfo);
-            SetupConfig(gunInfo);
+            _weaponItem = part.Item as WeaponItem;
+            _gunInfo = info as GunInfo;
+        }
+
+        protected override void ConstructWeapon<T>(T info)
+        {
+            base.ConstructWeapon(info);
+            
+            if (info is not GunInfo gunInfo) return;
+            
+            HeroFacade.Ammo.Construct(_weaponItem.MagazineData, gunInfo);
+            HeroFacade.Recoil.Construct(gunInfo);
+            var config = CurrentItem.WeaponConfiguration;
+            HeroFacade.Attack.UpdateStatsAndConfig(gunInfo, config);
+            HeroFacade.Reload.Construct(gunInfo, config, config.RevolverAnimation);
+            HeroFacade.Scoping.Construct(gunInfo, config);
         }
         
         private void DestroyWeaponAndAttachments()
         {
             _attachmentController.DestroyAllAttachments();
             CurrentItem.Destroy();
-        }
-
-        private void SetupConfig(GunInfo gunInfo)
-        {
-            var config = CurrentItem.WeaponConfiguration;
-            Attack.UpdateStatsAndConfig(gunInfo, config);
-            Reload.Construct(gunInfo, config, config.RevolverAnimation);
-            Scoping.Construct(gunInfo, config);
         }
 
         private void SetupAttachments()

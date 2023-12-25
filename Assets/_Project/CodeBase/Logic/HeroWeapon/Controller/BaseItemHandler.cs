@@ -1,6 +1,5 @@
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.Logic.Hero.Reload;
 using _Project.CodeBase.Logic.Hero.Shooting;
 using _Project.CodeBase.Logic.HeroWeapon.Data;
 using _Project.CodeBase.Logic.Inventory;
@@ -14,15 +13,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
     {
         protected HeroAttack Attack;
         protected HeroAmmo Ammo;
-        protected HeroAnimator Animator;
         protected HeroInventory Inventory;
-        protected HeroRecoil Recoil;
-        protected HeroReload Reload;
-        protected HeroScoping Scoping;
         
-        protected ItemsInfo ItemsInfo;
-        protected Transform Parent;
-
         public CurrentItem CurrentItem { get; } = new CurrentItem();
         public abstract ItemType ItemType { get; }
 
@@ -31,14 +23,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         {
             Attack = facade.Attack;
             Ammo = facade.Ammo;
-            Animator = facade.Animator;
             Inventory = facade.Inventory;
-            Recoil = facade.Recoil;
-            Reload = facade.Reload;
-            Scoping = facade.Scoping;
-
-            ItemsInfo = itemsInfo;
-            Parent = parent;
         }
 
         public abstract UniTask CreateNewItem(int slotID, CommonItemPart part, ItemInfo info, GameObject prefab); // todo prefab could be null
@@ -56,12 +41,13 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             await DestroyItem();
         }
 
-        protected virtual async UniTask DestroyItem()
-        {
-            Ammo.HideUI();
-        }
+        protected abstract UniTask DestroyItem();
 
-        protected abstract UniTask CheckIfDestroy(ItemInfo itemInfo);
+        private async UniTask CheckIfDestroy(ItemInfo itemInfo)
+        {
+            if (itemInfo != null && Inventory.FindFirstItemIndex(itemInfo.UIInfo.Name) == Logic.Inventory.Inventory.ErrorIndex)
+                await Destroy();
+        }
 
         private bool SlotIsEmpty() => 
             CurrentItem.SlotID == Logic.Inventory.Inventory.ErrorIndex;

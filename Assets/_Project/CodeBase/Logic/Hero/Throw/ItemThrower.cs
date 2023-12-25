@@ -58,8 +58,8 @@ namespace _Project.CodeBase.Logic.Hero
         {
             if (value)
             {
-                var weapon = _activeItemController.CurrentWeapon;
-                if (weapon.GunInfo != null)// && weapon.GunInfo.Throwable) // todo  && weapon.GunInfo.ThrowData != null
+                var item = _activeItemController.CurrentItem;
+                if (item != null && item.Info != null)// && weapon.GunInfo.Throwable) // todo  && weapon.GunInfo.ThrowData != null
                     _canCharge = true;
             }
             else

@@ -37,12 +37,13 @@ MonoBehaviour:
       type: 3}
     _maxInContainer: 1
     _dbId: 21
-  _durability: 0
   _prefab: {fileID: 1497449805113447852, guid: cd8a5181a62f6ec43940e0fcc792cfa6, type: 3}
+  _durability: 0
   _weaponSpecs:
     _damage: 60.318314
     _range: 18.264355
     _fireRate: 72.34304
+  <WeaponType>k__BackingField: 2
   _gunSpecs:
     _recoil: {x: -2.7, y: 2.7, z: 0.5}
     _aimRecoil: {x: -1.35, y: 1.35, z: 0.25}

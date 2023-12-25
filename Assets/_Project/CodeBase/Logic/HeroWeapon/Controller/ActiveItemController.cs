@@ -1,11 +1,8 @@
 ﻿using System;
+using System.Linq;
 using _Project.CodeBase.Data;
-using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.StaticData;
 using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.Logic.Hero.Reload;
-using _Project.CodeBase.Logic.Hero.Shooting;
-using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon.Data;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData;
@@ -17,169 +14,75 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 {
     public class ActiveItemController : MonoBehaviour
     {
+        [SerializeField] private HeroFacade _facade;
         [SerializeField] private HeroInventory _inventory;
-        [SerializeField] private HeroState _state;
-        [SerializeField] private HeroAttack _attack;
-        [SerializeField] private HeroScoping _scoping;
-        [SerializeField] private HeroAmmo _ammo;
-        [SerializeField] private HeroReload _reload;
-        [SerializeField] private HeroRecoil _recoil;
-        [SerializeField] private HeroAnimator _animator;
-        [SerializeField] private WeaponSway _weaponSway;
         [SerializeField] private Transform _parent;
-
-        private readonly AttachmentController _attachmentController = new AttachmentController();
-        private readonly CurrentWeapon _currentWeapon = new CurrentWeapon();
-
-        private InputService _inputService;
-        private ItemsInfo _itemsInfo;
+        
+        private IItemHandler[] _handlers;
         private WeaponItem _weaponItem;
+        private IItemHandler _currentHandler;
 
         public event Action<bool> OnSwitch;
         
-        public CurrentWeapon CurrentWeapon => _currentWeapon;
-
+        public CurrentItem CurrentItem => _currentHandler?.CurrentItem;
+        
         
         [Inject]
-        private void Construct(InputService inputService, IStaticDataService staticDataService)
+        private void Construct(IStaticDataService staticDataService, IItemHandler[] handlers)
         {
-            _inputService = inputService;
-            _attack.Construct(_state, _inputService, _ammo, _reload, _recoil, _animator);
-            _weaponSway.SetInputService(_inputService);
-            _itemsInfo = staticDataService.ForInventory();
+            _handlers = handlers;
+            
+            foreach (var itemHandler in _handlers)
+                itemHandler.Init(_facade, staticDataService.ForInventory(), _parent);
         }
         
         private void OnEnable() => 
-            _inventory.OnUpdate += OnInventoryUpdate;
+            _inventory.OnUpdate += InventoryUpdate;
 
         private void OnDisable() => 
-            _inventory.OnUpdate -= OnInventoryUpdate;
+            _inventory.OnUpdate -= InventoryUpdate;
 
-        public async UniTask CreateNewWeapon(int slotID, CommonItemPart part, GunInfo gunInfo, GameObject prefab)
+        public async UniTask CreateNewItem(int slotID, CommonItemPart part, ItemInfo info, ItemType type, GameObject prefab = null)
         {
-            _weaponItem = part.Item as WeaponItem;
-            await CreateGun(slotID, prefab);
-            ConstructWeapon(gunInfo);
-            
-            _attachmentController.Construct(_currentWeapon, _weaponItem.WeaponData);
-            SetupAttachments();
-            OnSwitch?.Invoke(true); // todo temporary here, but better refactor structure
-        }
-        
-        public async UniTask CreateNewMeleeWeapon(GameObject prefab, KnifeInfo knifeInfo, int slotID)
-        {
-            await CreateGun(slotID, prefab);
-            ConstructWeapon(knifeInfo);
-            OnSwitch?.Invoke(true); // todo temporary here, but better refactor structure
-        }
-        
-        private async UniTask CreateGun(int slotID, GameObject prefab)
-        {
-            if (_currentWeapon.SlotID == slotID) return;
-
-            await DestroyWeapon();
-
-            _currentWeapon.Create(slotID, prefab, _parent);
-            _animator.Construct(_currentWeapon.WeaponConfiguration.HandsAnimator);
-            await _animator.ShowWeaponOnInit();
-        }
-
-        private async UniTask DestroyWeapon()
-        {
-            if (_currentWeapon.SlotID == Inventory.Inventory.ErrorIndex) return;
-            
-            _ammo.HideUI();
-            await AnimatorHideWeapon();
-            _attack.SetWeaponTypeNone();
-            DestroyWeaponAndAttachments();
-
-            OnSwitch?.Invoke(false);
-        }
-
-        private void ConstructWeapon(GunInfo gunInfo)
-        {
-            _currentWeapon.GunInfo = gunInfo;
-
-            _ammo.Construct(_weaponItem.MagazineData, gunInfo);
-            _recoil.Construct(gunInfo);
-            SetupConfig(gunInfo);
-        }
-
-        private void ConstructWeapon(KnifeInfo knifeInfo)
-        {
-            _currentWeapon.KnifeInfo = knifeInfo;
-            
-            _ammo.Construct(knifeInfo);
-            _recoil.Construct(knifeInfo);
-            SetupKnife(knifeInfo);
-        }
-
-        private void SetupConfig(GunInfo gunInfo)
-        {
-            var config = _currentWeapon.WeaponConfiguration;
-            _attack.UpdateStatsAndConfig(gunInfo, config);
-            _reload.Construct(gunInfo, config, config.RevolverAnimation);
-            _scoping.Construct(gunInfo, config);
-        }
-
-        private void SetupKnife(KnifeInfo knifeInfo)
-        {
-            _currentWeapon.WeaponConfiguration.MeleeWeapon.Construct(_attack.LayerMask, knifeInfo.WeaponSpecs.Damage);
-            _attack.ApplyKnife(knifeInfo);
-            _reload.Construct(knifeInfo);
-            _scoping.Construct(knifeInfo);
-        }
-
-        private async UniTask AnimatorHideWeapon()
-        {
-            await _animator.HideWeapon();
-            _animator.SetEmptyAnimator();
-        }
-
-        private async void OnInventoryUpdate()
-        {
-            if (_currentWeapon.SlotID == Inventory.Inventory.ErrorIndex) return;
-            
-            await CheckIfDestroy(_currentWeapon.GunInfo);
-            await CheckIfDestroy(_currentWeapon.KnifeInfo);
-        }
-
-        private async UniTask CheckIfDestroy(WeaponInfo weaponInfo)
-        {
-            if (weaponInfo != null && _inventory.FindFirstItemIndex(weaponInfo.UIInfo.Name) == Inventory.Inventory.ErrorIndex)
-                await DestroyWeapon();
-        }
-
-        private void SetupAttachments()
-        {
-            if (_currentWeapon.GunInfo != null)
+            if (_currentHandler != null)
             {
-                if (!_weaponItem.WeaponData.Modified)
-                    CreateDefaultAttachments();
-                else
-                    CreateSavedAttachments();
+                _currentHandler.Destroy();
+                OnSwitch?.Invoke(false);
             }
+
+            _currentHandler = GetItemHandler(type);
+            await _currentHandler.CreateNewItem(slotID, part, info, prefab);
+            OnSwitch?.Invoke(true);
         }
 
-        private void CreateDefaultAttachments()
-        {
-            foreach (var itemName in _currentWeapon.GunInfo.DefaultAttachments) 
-                CreateAttachment(itemName);
-        }
+        private void InventoryUpdate() => 
+            _currentHandler?.InventoryUpdate();
 
-        private void CreateSavedAttachments()
-        {
-            foreach (var attachment in _weaponItem.WeaponData.Attachments) 
-                CreateAttachment(attachment.Value);
-        }
-
-        private void CreateAttachment(ItemName itemName) => 
-            _attachmentController.CreateAttachment((AttachmentInfo) _itemsInfo.FindItem(itemName));
-
-        private void DestroyWeaponAndAttachments()
-        {
-            _attachmentController.DestroyAllAttachments();
-            _currentWeapon.Destroy();
-        }
+        //public async UniTask CreateNewMeleeWeapon(GameObject prefab, KnifeInfo knifeInfo, int slotID)
+        //{
+        //    await CreateGun(slotID, prefab);
+        //    ConstructWeapon(knifeInfo);
+        //    //OnSwitch?.Invoke(true); // todo temporary here, but better refactor structure
+        //}
+        //
+        //private void ConstructWeapon(KnifeInfo knifeInfo)
+        //{
+        //    _currentWeapon.KnifeInfo = knifeInfo;
+        //    
+        //    _ammo.Construct(knifeInfo);
+        //    _recoil.Construct(knifeInfo);
+        //    SetupKnife(knifeInfo);
+        //}
+//
+        //private void SetupKnife(KnifeInfo knifeInfo)
+        //{
+        //    _currentWeapon.WeaponConfiguration.MeleeWeapon.Construct(_attack.LayerMask, knifeInfo.WeaponSpecs.Damage);
+        //    _attack.ApplyKnife(knifeInfo);
+        //    _reload.Construct(knifeInfo);
+        //    _scoping.Construct(knifeInfo);
+        //}
+        
+        private IItemHandler GetItemHandler(ItemType type) => 
+            _handlers.FirstOrDefault(itemHandler => itemHandler.ItemType == type);
     }
 }
