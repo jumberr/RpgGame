@@ -13,9 +13,9 @@ namespace _Project.CodeBase.Logic.HeroWeapon
     {
         protected HeroAttack Attack;
         protected HeroAmmo Ammo;
-        protected HeroInventory Inventory;
+        private HeroInventory _inventory;
         
-        public CurrentItem CurrentItem { get; } = new CurrentItem();
+        public abstract CurrentItem CurrentItem { get; }
         public abstract ItemType ItemType { get; }
 
 
@@ -23,7 +23,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         {
             Attack = facade.Attack;
             Ammo = facade.Ammo;
-            Inventory = facade.Inventory;
+            _inventory = facade.Inventory;
         }
 
         public abstract UniTask CreateNewItem(int slotID, CommonItemPart part, ItemInfo info, GameObject prefab); // todo prefab could be null
@@ -45,7 +45,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         private async UniTask CheckIfDestroy(ItemInfo itemInfo)
         {
-            if (itemInfo != null && Inventory.FindFirstItemIndex(itemInfo.UIInfo.Name) == Logic.Inventory.Inventory.ErrorIndex)
+            if (itemInfo != null && _inventory.FindFirstItemIndex(itemInfo.UIInfo.Name) == Logic.Inventory.Inventory.ErrorIndex)
                 await Destroy();
         }
 

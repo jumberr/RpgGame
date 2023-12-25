@@ -46,7 +46,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         {
             if (_currentHandler != null)
             {
-                _currentHandler.Destroy();
+                await _currentHandler.Destroy();
                 OnSwitch?.Invoke(false);
             }
 
@@ -57,30 +57,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         private void InventoryUpdate() => 
             _currentHandler?.InventoryUpdate();
-
-        //public async UniTask CreateNewMeleeWeapon(GameObject prefab, KnifeInfo knifeInfo, int slotID)
-        //{
-        //    await CreateGun(slotID, prefab);
-        //    ConstructWeapon(knifeInfo);
-        //    //OnSwitch?.Invoke(true); // todo temporary here, but better refactor structure
-        //}
-        //
-        //private void ConstructWeapon(KnifeInfo knifeInfo)
-        //{
-        //    _currentWeapon.KnifeInfo = knifeInfo;
-        //    
-        //    _ammo.Construct(knifeInfo);
-        //    _recoil.Construct(knifeInfo);
-        //    SetupKnife(knifeInfo);
-        //}
-//
-        //private void SetupKnife(KnifeInfo knifeInfo)
-        //{
-        //    _currentWeapon.WeaponConfiguration.MeleeWeapon.Construct(_attack.LayerMask, knifeInfo.WeaponSpecs.Damage);
-        //    _attack.ApplyKnife(knifeInfo);
-        //    _reload.Construct(knifeInfo);
-        //    _scoping.Construct(knifeInfo);
-        //}
         
         private IItemHandler GetItemHandler(ItemType type) => 
             _handlers.FirstOrDefault(itemHandler => itemHandler.ItemType == type);

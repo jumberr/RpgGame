@@ -37,10 +37,10 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         {
             await HeroFacade.Animator.HideWeapon();
             HeroFacade.Animator.SetEmptyAnimator();
-            CurrentItem.Destroy();
         }
 
-        public abstract void FinishItemDestroy();
+        public virtual void FinishItemDestroy() => 
+            CurrentItem?.Destroy();
 
         protected abstract void PrepareData(CommonItemPart part, ItemInfo info);
 

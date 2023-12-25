@@ -39,11 +39,12 @@ MonoBehaviour:
     _dbId: 20
   _prefab: {fileID: 7749649111390227278, guid: 56094bc7fe29773418b72fa178dbc5cf, type: 3}
   _durability: 0
+  <Throwable>k__BackingField: 0
   _weaponSpecs:
     _damage: 24.518534
     _range: 74.983284
     _fireRate: 125.414986
-  <WeaponType>k__BackingField: 1
+  <WeaponType>k__BackingField: 4
   _gunSpecs:
     _recoil: {x: -1, y: 1, z: 0.4}
     _aimRecoil: {x: -0.5, y: 0.5, z: 0.2}

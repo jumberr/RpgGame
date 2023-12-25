@@ -2,6 +2,7 @@ using System.Linq;
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Hero.Shooting;
+using _Project.CodeBase.Logic.HeroWeapon.Data;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
@@ -13,7 +14,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
     {
         private readonly IWeaponBuilder[] _builders;
         private WeaponType _currentType;
-        
+
+        public override CurrentItem CurrentItem => GetBuilder(_currentType)?.CurrentItem;
         public override ItemType ItemType => ItemType.Weapon;
 
 
@@ -37,16 +39,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             
             await builder.CreateNewItem(slotID, part, info, prefab);
         }
-
-        //protected override UniTask CheckIfDestroy(ItemInfo itemInfo)
-        //{
-        //    var builder = GetBuilder(_currentType);
-        //    if (builder == null) return;
-        //    
-        //    await builder.CheckIfDestroy(slotID, part, info, prefab);
-        //}
-
-        
 
         protected override async UniTask DestroyItem()
         {

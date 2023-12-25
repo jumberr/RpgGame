@@ -11,30 +11,34 @@ namespace _Project.CodeBase.Infrastructure
                 .Bind<AttachmentController>()
                 .AsSingle();
             
-            Container
-                .Bind<IItemHandler>()
-                .To<WeaponHandler>()
-                .AsSingle();
-            
-            Container
-                .Bind<IItemHandler>()
-                .To<FoodItemHandler>()
-                .AsSingle();
-            
+            BindItemHandlers();
             BindWeaponBuilders();
         }
 
+        private void BindItemHandlers()
+        {
+            BindItemHandler<WeaponHandler>();
+            BindItemHandler<FoodItemHandler>();
+        }
+        
         private void BindWeaponBuilders()
         {
+            BindWeaponBuilder<MeleeWeaponHandler>();
+            BindWeaponBuilder<RangeWeaponHandler>();
+            BindWeaponBuilder<ShotgunWeaponHandler>();
+            BindWeaponBuilder<RevolverWeaponHandler>();
+        }
+        
+        private void BindItemHandler<T>() where T : IItemHandler =>
             Container
-                .Bind<IWeaponBuilder>()
-                .To<MeleeWeaponHandler>()
+                .Bind<IItemHandler>()
+                .To<T>()
                 .AsSingle();
 
+        private void BindWeaponBuilder<T>() where T : IWeaponBuilder =>
             Container
                 .Bind<IWeaponBuilder>()
-                .To<RangeWeaponHandler>()
+                .To<T>()
                 .AsSingle();
-        }
     }
 }

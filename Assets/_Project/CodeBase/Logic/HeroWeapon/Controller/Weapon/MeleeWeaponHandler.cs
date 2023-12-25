@@ -8,11 +8,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
     {
         private KnifeInfo _knifeInfo;
         public override WeaponType Type => WeaponType.Knife;
-
-
-        public override void FinishItemDestroy()
-        {
-        }
+        
 
         protected override void PrepareData(CommonItemPart part, ItemInfo info) => 
             _knifeInfo = info as KnifeInfo;

@@ -14,6 +14,7 @@ namespace _Project.CodeBase.UI
         [SerializeField] private Button _respawnButton;
         private SceneLoader _sceneLoader;
         
+        
         [Inject]
         private void Construct(SceneLoader sceneLoader) => 
             _sceneLoader = sceneLoader;
@@ -21,22 +22,31 @@ namespace _Project.CodeBase.UI
         private void OnEnable() => 
             _respawnButton.onClick.AddListener(Respawn);
 
-        private void Start() =>
+        private void Start()
+        {
+            ToggleRespawnButton(false);
             Hide();
+        }
 
         private void OnDisable() => 
             _respawnButton.onClick.RemoveListener(Respawn);
 
-        public void Show() => 
+        public void Show()
+        {
+            ToggleRespawnButton(true);
             Fade.DoFadeIn(_canvasGroup).Forget();
+        }
 
         private void Hide() => 
             Fade.DoFadeOut(_canvasGroup).Forget();
 
         private async void Respawn()
         {
-            _respawnButton.interactable = false;
+            ToggleRespawnButton(false);
             await _sceneLoader.ReloadScene();
         }
+
+        private void ToggleRespawnButton(bool value) => 
+            _respawnButton.interactable = value;
     }
 }

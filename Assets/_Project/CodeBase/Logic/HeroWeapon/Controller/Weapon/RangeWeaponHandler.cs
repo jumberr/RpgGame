@@ -16,7 +16,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         public override WeaponType Type => WeaponType.Default;
 
 
-        public RangeWeaponHandler(AttachmentController attachmentController) => 
+        protected RangeWeaponHandler(AttachmentController attachmentController) => 
             _attachmentController = attachmentController;
         
         public override async UniTask CreateNewItem(int slotID, CommonItemPart part, ItemInfo info, GameObject prefab)
@@ -27,8 +27,11 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             SetupAttachments();
         }
 
-        public override void FinishItemDestroy() => 
-            DestroyWeaponAndAttachments();
+        public override void FinishItemDestroy()
+        {
+            base.FinishItemDestroy();
+            _attachmentController.DestroyAllAttachments();
+        }
 
         protected override void PrepareData(CommonItemPart part, ItemInfo info)
         {
@@ -48,12 +51,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             HeroFacade.Attack.UpdateStatsAndConfig(gunInfo, config);
             HeroFacade.Reload.Construct(gunInfo, config, config.RevolverAnimation);
             HeroFacade.Scoping.Construct(gunInfo, config);
-        }
-        
-        private void DestroyWeaponAndAttachments()
-        {
-            _attachmentController.DestroyAllAttachments();
-            CurrentItem.Destroy();
         }
 
         private void SetupAttachments()

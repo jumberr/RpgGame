@@ -6,6 +6,7 @@
         Default,
         Shotgun,
         Knife,
+        Revolver,
         Grenade,
     }
 }
