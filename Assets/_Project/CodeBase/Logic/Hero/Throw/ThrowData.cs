@@ -3,7 +3,7 @@ using System;
 namespace _Project.CodeBase.Logic.Hero
 {
     [Serializable]
-    public struct ThrowData
+    public class ThrowData
     {
         public float ThrowForce;
         public float MaxForce;

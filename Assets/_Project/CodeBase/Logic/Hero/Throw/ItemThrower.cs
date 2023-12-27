@@ -2,6 +2,7 @@ using System;
 using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.HeroWeapon;
+using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -13,14 +14,13 @@ namespace _Project.CodeBase.Logic.Hero
         private readonly IGameFactory _gameFactory;
         private readonly TrajectoryDrawer _trajectoryDrawer;
         private readonly InputService _inputService;
+        private readonly Vector3 _throwDirection = new Vector3();
+
         private ActiveItemController _activeItemController;
         private Transform _mainCamera;
-        
         private Transform _throwPosition; // todo???
-        private Vector3 _throwDirection; // todo???
         private ThrowData _throwData;
         private UniTask _chargeThrowTask;
-        private bool _canCharge;
         private bool _charge;
         private float _chargeTime;
 
@@ -56,21 +56,18 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void ItemSwitched(bool value)
         {
-            if (value)
-            {
-                var item = _activeItemController.CurrentItem;
-                if (item != null && item.Info != null)// && weapon.GunInfo.Throwable) // todo  && weapon.GunInfo.ThrowData != null
-                    _canCharge = true;
-            }
+            if (!value) return;
+            var item = _activeItemController.CurrentItem;
+            
+            if (item != null && item.Info is GrenadeInfo grenadeInfo)
+                _throwData = grenadeInfo.ThrowData;
             else
-            {
-                _canCharge = false;
-            }
+                _throwData = null;
         }
 
         private void HandleThrowing(bool value)
         {
-            if (!_canCharge) return;
+            if (_throwData is null) return;
 
             if (value)
                 ChargeThrow();

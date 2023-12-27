@@ -45,6 +45,9 @@ namespace _Project.CodeBase.Logic.Inventory
             var slot = _inventory.Slots[slotID];
             var info = _itemsInfo.FindItem(slot.ID);
 
+            var currentItem = _activeItemController.CurrentItem;
+            if (currentItem != null && currentItem.Info == info && currentItem.SlotID == slotID) return;
+            
             await _activeItemController.CreateNewItem(slotID, slot.CommonItemPart, info, info.PayloadInfo.ItemType, GetItemPrefab(info));
         }
 

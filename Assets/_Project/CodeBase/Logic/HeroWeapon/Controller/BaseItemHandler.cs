@@ -30,7 +30,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         
         public async void InventoryUpdate()
         {
-            if (CurrentItem.SlotID == Logic.Inventory.Inventory.ErrorIndex) return;
+            if (SlotIsEmpty()) return;
             
             await CheckIfDestroy(CurrentItem.Info);
         }
@@ -50,6 +50,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         }
 
         private bool SlotIsEmpty() => 
-            CurrentItem.SlotID == Logic.Inventory.Inventory.ErrorIndex;
+            CurrentItem?.SlotID == Logic.Inventory.Inventory.ErrorIndex;
     }
 }

@@ -49,6 +49,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             if (CurrentItem.SlotID == slotID) return;
 
             CurrentItem.Create(slotID, info, prefab, _parent);
+            if (CurrentItem.WeaponConfiguration == null) return;
+            
             HeroFacade.Animator.Construct(CurrentItem.WeaponConfiguration.HandsAnimator);
             await HeroFacade.Animator.ShowWeaponOnInit();
         }

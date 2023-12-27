@@ -26,12 +26,15 @@ MonoBehaviour:
     _icon: {fileID: 21300000, guid: 03e1e5731f17c334b864652196cb8931, type: 3}
     _description: M67Grenade
   _payloadInfo:
-    _itemType: 6
+    _itemType: 2
     _actions: 000000000200000003000000
     _groundPrefab: {fileID: 3471285222035659691, guid: afe44ecacdc51ae4497e0d7faeacf820,
       type: 3}
     _maxInContainer: 10
     _dbId: 23
+  _prefab: {fileID: 3099628758719846893, guid: b7802c84cb65e2b409c4933e059cd5d8, type: 3}
+  _durability: 0
+  <WeaponType>k__BackingField: 5
   <ThrowData>k__BackingField:
     ThrowForce: 10
     MaxForce: 30

@@ -27,6 +27,7 @@ namespace _Project.CodeBase.Infrastructure
             BindWeaponBuilder<RangeWeaponHandler>();
             BindWeaponBuilder<ShotgunWeaponHandler>();
             BindWeaponBuilder<RevolverWeaponHandler>();
+            BindWeaponBuilder<GrenadeWeaponHandler>();
         }
         
         private void BindItemHandler<T>() where T : IItemHandler =>

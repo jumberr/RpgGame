@@ -33,7 +33,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         public override async UniTask CreateNewItem(int slotID, CommonItemPart part, ItemInfo info, GameObject prefab)
         {
-            _currentType = (info as WeaponInfo).WeaponType;
+            _currentType = (info as BaseWeaponInfo).WeaponType;
             var builder = GetBuilder(_currentType);
             if (builder == null) return;
             
