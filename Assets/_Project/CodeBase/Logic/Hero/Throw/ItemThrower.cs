@@ -14,11 +14,10 @@ namespace _Project.CodeBase.Logic.Hero
         private readonly IGameFactory _gameFactory;
         private readonly TrajectoryDrawer _trajectoryDrawer;
         private readonly InputService _inputService;
-        private readonly Vector3 _throwDirection = new Vector3();
 
         private ActiveItemController _activeItemController;
         private Transform _mainCamera;
-        private Transform _throwPosition; // todo???
+        private ThrowView _throwView;
         private ThrowData _throwData;
         private UniTask _chargeThrowTask;
         private bool _charge;
@@ -58,9 +57,12 @@ namespace _Project.CodeBase.Logic.Hero
         {
             if (!value) return;
             var item = _activeItemController.CurrentItem;
-            
+
             if (item != null && item.Info is GrenadeInfo grenadeInfo)
+            {
                 _throwData = grenadeInfo.ThrowData;
+                item.GameObject.TryGetComponent(out _throwView);
+            }
             else
                 _throwData = null;
         }
@@ -87,7 +89,7 @@ namespace _Project.CodeBase.Logic.Hero
                 _chargeTime += deltaTime;                 // todo maybe add clamp
                 
                 var velocity = GetNormalizedThrowDirection() * Mathf.Min(_chargeTime * _throwData.ThrowForce, _throwData.MaxForce); 
-                _trajectoryDrawer.ShowTrajectory(_throwPosition.position + _throwPosition.forward, velocity);
+                _trajectoryDrawer.ShowTrajectory(_throwView.ThrowPosition.position + _throwView.ThrowPosition.forward, velocity);
                 
                 // todo update charge progress bar ui
             }
@@ -100,12 +102,12 @@ namespace _Project.CodeBase.Logic.Hero
             // if (ChargedEnough)
             ThrowItem();
             _chargeTime = 0f;
-            _trajectoryDrawer.HideTrajectory();
+            _trajectoryDrawer.ToggleTrajectory(false);
         }
 
         private void ThrowItem()
         {
-            var spawnPos = _throwPosition.position + CameraForward;
+            var spawnPos = _throwView.ThrowPosition.position + CameraForward;
             
             // todo spawn item
             var throwDirection = GetNormalizedThrowDirection();
@@ -113,6 +115,6 @@ namespace _Project.CodeBase.Logic.Hero
         }
 
         private Vector3 GetNormalizedThrowDirection() => 
-            (CameraForward + _throwDirection).normalized;
+            (CameraForward + _throwView.ThrowDirection).normalized;
     }
 }

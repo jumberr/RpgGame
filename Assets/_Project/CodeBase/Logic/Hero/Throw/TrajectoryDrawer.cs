@@ -1,4 +1,5 @@
 using _Project.CodeBase.Infrastructure.Factory;
+using _Project.CodeBase.Utils.Extensions;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
@@ -17,7 +18,7 @@ namespace _Project.CodeBase.Logic.Hero
 
         public void ShowTrajectory(Vector3 origin, Vector3 speed)
         {
-            _view.Activate();
+            ToggleTrajectory(true);
             
             var points = new Vector3[_view.DefaultPointsCount];
 
@@ -29,9 +30,9 @@ namespace _Project.CodeBase.Logic.Hero
             
             _view.SetPositions(points);
         }
-        
-        public void HideTrajectory() => 
-            _view.Deactivate();
+
+        public void ToggleTrajectory(bool value) =>
+            _view.ToggleTrajectory(value);
         
         private void HeroCreated(HeroFacade heroFacade)
         {

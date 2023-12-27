@@ -9,11 +9,8 @@ namespace _Project.CodeBase.Logic.Hero
         [field: SerializeField] public int DefaultPointsCount { get; private set; }
         
         
-        public void Activate() => 
-            Trajectory.Activate();
-        
-        public void Deactivate() =>
-            Trajectory.Deactivate();
+        public void ToggleTrajectory(bool value) => 
+            Trajectory.ToggleComponent(value);
 
         public void SetPositions(Vector3[] points)
         {
