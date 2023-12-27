@@ -1,13 +1,13 @@
 using System;
 using _Project.CodeBase.StaticData.Sound;
-using UnityEngine;
+using _Project.CodeBase.Utils;
 
 namespace _Project.CodeBase.Logic.Hero
 {
     [Serializable]
     public class ExplosiveGrenadeData
     {
-        public GameObject ExplosionPrefab;
+        public VSFXComponent ExplosionPrefab;
         public AudioData SoundData; 
         public float ExplosionDelay;
         public float ExplosionForce;

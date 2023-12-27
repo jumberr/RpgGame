@@ -4,6 +4,7 @@ using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
+using NTC.Global.Pool;
 using UnityEngine;
 using Zenject;
 
@@ -17,13 +18,14 @@ namespace _Project.CodeBase.Logic.Hero
 
         private ActiveItemController _activeItemController;
         private Transform _mainCamera;
-        private ThrowView _throwView;
-        private ThrowData _throwData;
+        private GrenadeInfo _grenadeInfo;
+        private GrenadeView _projectile;
         private UniTask _chargeThrowTask;
         private bool _charge;
         private float _chargeTime;
 
         private Vector3 CameraForward => _mainCamera.transform.forward;
+        private float Force => Mathf.Min(_chargeTime * _grenadeInfo.ThrowData.ThrowForce, _grenadeInfo.ThrowData.MaxForce);
 
 
         public ItemThrower(IGameFactory gameFactory, TrajectoryDrawer trajectoryDrawer, InputService inputService)
@@ -60,16 +62,22 @@ namespace _Project.CodeBase.Logic.Hero
 
             if (item != null && item.Info is GrenadeInfo grenadeInfo)
             {
-                _throwData = grenadeInfo.ThrowData;
-                item.GameObject.TryGetComponent(out _throwView);
+                _grenadeInfo = grenadeInfo;
+                _projectile = NightPool.Spawn(grenadeInfo.GrenadeProjectile, Vector3.zero, Quaternion.identity); // todo zero -> reference to hand
+                ToggleGravity(false);
+                //item.GameObject.TryGetComponent(out _throwView);
             }
             else
-                _throwData = null;
+            {
+                _grenadeInfo = null;
+                if (_projectile != null)
+                    NightPool.Despawn(_projectile);
+            }
         }
 
         private void HandleThrowing(bool value)
         {
-            if (_throwData is null) return;
+            if (_grenadeInfo is null) return;
 
             if (value)
                 ChargeThrow();
@@ -86,10 +94,10 @@ namespace _Project.CodeBase.Logic.Hero
                 var deltaTime = Time.deltaTime;
                 
                 await UniTask.Delay(TimeSpan.FromSeconds(deltaTime));
-                _chargeTime += deltaTime;                 // todo maybe add clamp
-                
-                var velocity = GetNormalizedThrowDirection() * Mathf.Min(_chargeTime * _throwData.ThrowForce, _throwData.MaxForce); 
-                _trajectoryDrawer.ShowTrajectory(_throwView.ThrowPosition.position + _throwView.ThrowPosition.forward, velocity);
+                _chargeTime += deltaTime;
+
+                var velocity = GetNormalizedThrowDirection() * Force; 
+                _trajectoryDrawer.ShowTrajectory(_projectile.ThrowView.ThrowPositionForward, velocity);
                 
                 // todo update charge progress bar ui
             }
@@ -100,21 +108,26 @@ namespace _Project.CodeBase.Logic.Hero
             _charge = false;
             
             // if (ChargedEnough)
-            ThrowItem();
+            ThrowItem(Force).Forget();
             _chargeTime = 0f;
             _trajectoryDrawer.ToggleTrajectory(false);
         }
 
-        private void ThrowItem()
+        private async UniTask ThrowItem(float force)
         {
-            var spawnPos = _throwView.ThrowPosition.position + CameraForward;
-            
-            // todo spawn item
+            //var spawnPosition = _projectile.ThrowView.ThrowPosition.position + CameraForward;
             var throwDirection = GetNormalizedThrowDirection();
-            // todo add force
+            
+            ToggleGravity(true);
+            _projectile.Rigidbody.AddForce(throwDirection * force, ForceMode.VelocityChange);
+            await _projectile.Throw(_grenadeInfo as ExplosiveGrenadeInfo); // todo ExplosiveGrenadeInfo can be null
+            NightPool.Despawn(_projectile);
         }
 
         private Vector3 GetNormalizedThrowDirection() => 
-            (CameraForward + _throwView.ThrowDirection).normalized;
+            (CameraForward + _projectile.ThrowView.ThrowDirection).normalized;
+        
+        private void ToggleGravity(bool value) => 
+            _projectile.Rigidbody.useGravity = value;
     }
 }

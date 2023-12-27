@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 7269072359369522173}
   - component: {fileID: 7691899002487243476}
   - component: {fileID: 1854452806513422147}
+  - component: {fileID: 8803769597803861563}
   m_Layer: 7
   m_Name: M67Grenade
   m_TagString: Untagged
@@ -175,10 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0bab1a983d85814abb27315fef216e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionPrefab: {fileID: 0}
   _audioSource: {fileID: 1854452806513422147}
   _explosionOffset: {x: 0, y: 0, z: 0}
-  _destroyTime: 3
+  <ThrowView>k__BackingField: {fileID: 7269072359369522173}
+  <Rigidbody>k__BackingField: {fileID: 8803769597803861563}
 --- !u!82 &1854452806513422147
 AudioSource:
   m_ObjectHideFlags: 0
@@ -275,3 +276,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &8803769597803861563
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099628758719846893}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

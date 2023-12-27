@@ -1,20 +1,25 @@
 using System;
+using _Project.CodeBase.Constants;
 using _Project.CodeBase.StaticData;
-using _Project.CodeBase.StaticData.Sound;
+using _Project.CodeBase.Utils;
 using Cysharp.Threading.Tasks;
+using NTC.Global.Pool;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
 {
-    [RequireComponent(typeof(ThrowView), typeof(AudioSource))]
+    [RequireComponent(typeof(ThrowView), typeof(AudioSource), typeof(Rigidbody))]
     public class GrenadeView : MonoBehaviour
     {
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private Vector3 _explosionOffset;
-        [SerializeField] private float _destroyTime;
 
         private readonly Collider[] _colliders = new Collider[20];
+        private ExplosiveGrenadeInfo _grenadeInfo;
         private ExplosiveGrenadeData _explosiveGrenadeData;
+
+        [field: SerializeField] public ThrowView ThrowView { get; private set; }
+        [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
         
 
         private void OnDrawGizmosSelected()
@@ -25,22 +30,22 @@ namespace _Project.CodeBase.Logic.Hero
             Gizmos.DrawWireSphere(transform.position + _explosionOffset, _explosiveGrenadeData.ExplosionRadius);
         }
 
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag(TagConstants.Player)) return;
+            
+            _audioSource.SetupAndPlay(_grenadeInfo.ImpactSoundData);
+        }
+
         public async UniTask Throw(ExplosiveGrenadeInfo grenadeInfo)
         {
+            _grenadeInfo = grenadeInfo;
             _explosiveGrenadeData = grenadeInfo.ExplosiveGrenadeData;
             
             await UniTask.Delay(TimeSpan.FromSeconds(_explosiveGrenadeData.ExplosionDelay));
 
-            Explode();
-        }
-
-        private void Explode()
-        {
-            var explosion = Instantiate(_explosiveGrenadeData.ExplosionPrefab, transform.position + _explosionOffset, Quaternion.identity);
-            PlayExplosionSound(_explosiveGrenadeData.SoundData);
-            
-            Destroy(explosion, _destroyTime); // todo maybe move to pool
-            Destroy(gameObject);
+            NearbyForceApply();
+            await Explode();
         }
 
         private void NearbyForceApply()
@@ -57,11 +62,11 @@ namespace _Project.CodeBase.Logic.Hero
             Array.Clear(_colliders, 0, _colliders.Length);
         }
 
-        private void PlayExplosionSound(AudioData data)
+        private async UniTask Explode()
         {
-            _audioSource.clip = data.AudioClip;
-            _audioSource.volume = data.Volume;
-            _audioSource.PlayDelayed(data.Delay);
+            var vsfx = NightPool.Spawn(_explosiveGrenadeData.ExplosionPrefab, transform.position + _explosionOffset, Quaternion.identity);
+            await vsfx.Play(_explosiveGrenadeData.SoundData);
+            NightPool.Despawn(vsfx);
         }
     }
 }
