@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
 {
-    [RequireComponent(typeof(ThrowView), typeof(AudioSource), typeof(Rigidbody))]
+    [RequireComponent(typeof(ThrowView), typeof(AudioSource))]
     public class GrenadeView : MonoBehaviour
     {
         [SerializeField] private AudioSource _audioSource;
