@@ -38,7 +38,12 @@ MonoBehaviour:
   <ThrowData>k__BackingField:
     ThrowForce: 10
     MaxForce: 30
-  <ExplosionGrenadeData>k__BackingField:
-    ExplosionDelay: 2
-    ExplosionForce: 30
-    ExplosionRadius: 5
+  <ExplosiveGrenadeData>k__BackingField:
+    ExplosionPrefab: {fileID: 100010, guid: d609d5ebc845aca409f72e9c6a56dc60, type: 3}
+    SoundData:
+      AudioClip: {fileID: 8300000, guid: fc96116dc3c141440aabb5605744fea2, type: 3}
+      Volume: 1
+      Delay: 0
+    ExplosionDelay: 0
+    ExplosionForce: 0
+    ExplosionRadius: 0

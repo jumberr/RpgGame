@@ -7,6 +7,6 @@ namespace _Project.CodeBase.StaticData
     [Serializable]
     public class ExplosiveGrenadeInfo : GrenadeInfo
     {
-        [field: SerializeField] public ExplosionGrenadeData ExplosionGrenadeData { get; private set; }
+        [field: SerializeField] public ExplosiveGrenadeData ExplosiveGrenadeData { get; private set; }
     }
 }
