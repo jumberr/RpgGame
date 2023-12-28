@@ -32,10 +32,10 @@ MonoBehaviour:
       type: 3}
     _maxInContainer: 10
     _dbId: 23
-  _prefab: {fileID: 3099628758719846893, guid: b7802c84cb65e2b409c4933e059cd5d8, type: 3}
+  _prefab: {fileID: 2171061987105811950, guid: 61dd71096e6ca9c4dbd7a3460c555623, type: 3}
   _durability: 0
   <WeaponType>k__BackingField: 5
-  <GrenadeProjectile>k__BackingField: {fileID: 7691899002487243476, guid: b7802c84cb65e2b409c4933e059cd5d8,
+  <GrenadeProjectile>k__BackingField: {fileID: 3280073778133096260, guid: 10d72060698c6c74380eb99bafb800c4,
     type: 3}
   <ThrowData>k__BackingField:
     ThrowForce: 10

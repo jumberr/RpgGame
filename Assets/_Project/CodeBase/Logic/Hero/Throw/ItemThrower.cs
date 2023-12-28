@@ -20,12 +20,14 @@ namespace _Project.CodeBase.Logic.Hero
         private Transform _mainCamera;
         private GrenadeInfo _grenadeInfo;
         private GrenadeView _projectile;
+        private GrenadeIKController _ikController;
         private UniTask _chargeThrowTask;
         private bool _charge;
         private float _chargeTime;
 
         private Vector3 CameraForward => _mainCamera.transform.forward;
         private float Force => Mathf.Min(_chargeTime * _grenadeInfo.ThrowData.ThrowForce, _grenadeInfo.ThrowData.MaxForce);
+        private Vector3 ThrowDirection { get; } = new Vector3(0, 1, 0);
 
 
         public ItemThrower(IGameFactory gameFactory, TrajectoryDrawer trajectoryDrawer, InputService inputService)
@@ -63,8 +65,9 @@ namespace _Project.CodeBase.Logic.Hero
             if (item != null && item.Info is GrenadeInfo grenadeInfo)
             {
                 _grenadeInfo = grenadeInfo;
-                _projectile = NightPool.Spawn(grenadeInfo.GrenadeProjectile, Vector3.zero, Quaternion.identity); // todo zero -> reference to hand
-                ToggleGravity(false);
+                item.GameObject.TryGetComponent(out _ikController);
+                _projectile = NightPool.Spawn(grenadeInfo.GrenadeProjectile, _ikController.SpawnPosition, Quaternion.identity);
+                TogglePhysics(false);
                 //item.GameObject.TryGetComponent(out _throwView);
             }
             else
@@ -96,8 +99,8 @@ namespace _Project.CodeBase.Logic.Hero
                 await UniTask.Delay(TimeSpan.FromSeconds(deltaTime));
                 _chargeTime += deltaTime;
 
-                var velocity = GetNormalizedThrowDirection() * Force; 
-                _trajectoryDrawer.ShowTrajectory(_projectile.ThrowView.ThrowPositionForward, velocity);
+                var velocity = GetNormalizedThrowDirection() * Force;
+                _trajectoryDrawer.ShowTrajectory(_ikController.ThrowPositionForward, velocity);
                 
                 // todo update charge progress bar ui
             }
@@ -118,16 +121,27 @@ namespace _Project.CodeBase.Logic.Hero
             //var spawnPosition = _projectile.ThrowView.ThrowPosition.position + CameraForward;
             var throwDirection = GetNormalizedThrowDirection();
             
-            ToggleGravity(true);
+            TogglePhysics(true);
             _projectile.Rigidbody.AddForce(throwDirection * force, ForceMode.VelocityChange);
             await _projectile.Throw(_grenadeInfo as ExplosiveGrenadeInfo); // todo ExplosiveGrenadeInfo can be null
             NightPool.Despawn(_projectile);
         }
 
         private Vector3 GetNormalizedThrowDirection() => 
-            (CameraForward + _projectile.ThrowView.ThrowDirection).normalized;
+            (CameraForward + ThrowDirection).normalized;
         
-        private void ToggleGravity(bool value) => 
+        private void TogglePhysics(bool value)
+        {
+            ToggleIKConstraints(value);
             _projectile.Rigidbody.useGravity = value;
+        }
+
+        private void ToggleIKConstraints(bool value)
+        {
+            if (value)
+                _ikController.Enable(_projectile.IKTargets);
+            else
+                _ikController.Disable();
+        }
     }
 }

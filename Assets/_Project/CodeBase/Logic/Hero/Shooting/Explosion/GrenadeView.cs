@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using _Project.CodeBase.Constants;
 using _Project.CodeBase.StaticData;
 using _Project.CodeBase.Utils;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero
 {
-    [RequireComponent(typeof(ThrowView), typeof(AudioSource))]
+    [RequireComponent(typeof(AudioSource))]
     public class GrenadeView : MonoBehaviour
     {
         [SerializeField] private AudioSource _audioSource;
@@ -18,9 +19,9 @@ namespace _Project.CodeBase.Logic.Hero
         private ExplosiveGrenadeInfo _grenadeInfo;
         private ExplosiveGrenadeData _explosiveGrenadeData;
 
-        [field: SerializeField] public ThrowView ThrowView { get; private set; }
         [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
-        
+        [field: SerializeField] public List<Transform> IKTargets { get; private set; }
+
 
         private void OnDrawGizmosSelected()
         {

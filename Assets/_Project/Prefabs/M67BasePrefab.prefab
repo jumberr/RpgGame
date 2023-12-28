@@ -123,11 +123,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4578427570373897335}
-  - component: {fileID: 7269072359369522173}
   - component: {fileID: 7691899002487243476}
   - component: {fileID: 1854452806513422147}
   m_Layer: 7
-  m_Name: M67Grenade
+  m_Name: M67BasePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,20 +148,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7269072359369522173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3099628758719846893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78f39d0459670ee49a55d2fe07befff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <ThrowPosition>k__BackingField: {fileID: 472604821537262886}
-  <ThrowDirection>k__BackingField: {x: 0, y: 1, z: 0}
 --- !u!114 &7691899002487243476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,8 +162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 1854452806513422147}
   _explosionOffset: {x: 0, y: 0, z: 0}
-  <ThrowView>k__BackingField: {fileID: 7269072359369522173}
   <Rigidbody>k__BackingField: {fileID: 6742691454039628939}
+  <IKTargets>k__BackingField: []
 --- !u!82 &1854452806513422147
 AudioSource:
   m_ObjectHideFlags: 0
