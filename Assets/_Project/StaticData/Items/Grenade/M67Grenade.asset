@@ -23,8 +23,10 @@ MonoBehaviour:
     SerializationNodes: []
   _uiInfo:
     _name: 24
-    _icon: {fileID: 21300000, guid: 03e1e5731f17c334b864652196cb8931, type: 3}
-    _description: M67Grenade
+    _icon: {fileID: 21300000, guid: 113c9047f2ba9b84790d53de22bcd74d, type: 3}
+    _description: Hand grenade, M67 model. Spherical and designed for hand-throwing,
+      it features a high-explosive fragmentation charge. Effective for clearing enemy
+      positions, it requires careful handling and timing.
   _payloadInfo:
     _itemType: 2
     _actions: 000000000200000003000000
