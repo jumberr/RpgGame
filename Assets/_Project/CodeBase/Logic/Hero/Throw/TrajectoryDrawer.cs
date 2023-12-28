@@ -31,9 +31,12 @@ namespace _Project.CodeBase.Logic.Hero
             _view.SetPositions(points);
         }
 
-        public void ToggleTrajectory(bool value) =>
+        public void ToggleTrajectory(bool value)
+        {
+            if (_view.Trajectory.enabled == value) return;
             _view.ToggleTrajectory(value);
-        
+        }
+
         private void HeroCreated(HeroFacade heroFacade)
         {
             _gameFactory.HeroCreated -= HeroCreated;

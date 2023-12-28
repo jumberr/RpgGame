@@ -52,8 +52,20 @@ namespace _Project.CodeBase.Logic.Hero
             await Explode();
         }
 
-        public void ResetTransform() => 
+        public void ResetTransform()
+        {
             transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(_initialRotation));
+            Rigidbody.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(Vector3.zero));
+        }
+        
+        public void TogglePhysics(bool value)
+        {
+            Rigidbody.useGravity = value;
+            
+            if (value) return;
+            Rigidbody.velocity = Vector3.zero;
+            Rigidbody.angularVelocity = Vector3.zero;
+        }
 
         private void NearbyForceApply()
         {
