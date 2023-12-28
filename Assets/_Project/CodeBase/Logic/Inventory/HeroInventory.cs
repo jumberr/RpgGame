@@ -114,10 +114,7 @@ namespace _Project.CodeBase.Logic.Inventory
         public int FindFirstItemIndex(ItemName itemName)
         {
             var dbIndex = _itemsInfo.FindIndex(itemName);
-            foreach (var slot in _inventory.Slots)
-                if (slot.ID == dbIndex)
-                    return slot.ID;
-            return ErrorIndex;
+            return Array.FindIndex(_inventory.Slots, slot => dbIndex == slot.CommonItemPart.DbId);
         }
 
         public int FindIndex(InventorySlot slot) => 

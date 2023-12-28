@@ -569,6 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8b53a23d8ef2e4fa912ce03daa8c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigBuilder: {fileID: 5210554915006446852}
   _constraints:
   - {fileID: 8295818594374677323}
   - {fileID: 8180775306326502536}

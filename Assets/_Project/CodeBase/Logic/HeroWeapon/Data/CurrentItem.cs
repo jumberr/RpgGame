@@ -8,7 +8,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon.Data
         public int SlotID { get; private set; } = -1;
         public GameObject GameObject { get; private set; }
         public WeaponConfiguration WeaponConfiguration { get; private set; }
-        public ItemInfo Info { get; set; }
+        public ItemInfo Info { get; private set; }
 
         public void Create(int slotID, ItemInfo itemInfo, GameObject prefab, Transform parent)
         {

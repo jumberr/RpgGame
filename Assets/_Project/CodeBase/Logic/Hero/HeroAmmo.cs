@@ -51,7 +51,6 @@ namespace _Project.CodeBase.Logic.Hero
         public void UseOneAmmo()
         {
             _magazineData.BulletsLeft -= 1;
-            _inventory.RemoveItemFromSlot(_itemName);
             UpdateUI();
         }
 

@@ -2,6 +2,7 @@ using System;
 using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.HeroWeapon;
+using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
 using NTC.Global.Pool;
@@ -17,6 +18,8 @@ namespace _Project.CodeBase.Logic.Hero
         private readonly InputService _inputService;
 
         private ActiveItemController _activeItemController;
+        private HeroInventory _inventory;
+        private HeroAnimator _animator;
         private Transform _mainCamera;
         private GrenadeInfo _grenadeInfo;
         private GrenadeView _projectile;
@@ -52,6 +55,8 @@ namespace _Project.CodeBase.Logic.Hero
         {
             _gameFactory.HeroCreated -= HeroCreated;
             _activeItemController = heroFacade.ActiveItemController;
+            _inventory = heroFacade.Inventory;
+            _animator = heroFacade.Animator;
             _mainCamera = heroFacade.CameraTransform;
             
             _activeItemController.OnSwitch += ItemSwitched;
@@ -66,16 +71,10 @@ namespace _Project.CodeBase.Logic.Hero
             {
                 _grenadeInfo = grenadeInfo;
                 item.GameObject.TryGetComponent(out _ikController);
-                _projectile = NightPool.Spawn(grenadeInfo.GrenadeProjectile, _ikController.SpawnPosition, Quaternion.identity);
-                TogglePhysics(false);
-                //item.GameObject.TryGetComponent(out _throwView);
+                SpawnProjectile(grenadeInfo);
             }
             else
-            {
-                _grenadeInfo = null;
-                if (_projectile != null)
-                    NightPool.Despawn(_projectile);
-            }
+                DespawnAndClearInfo();
         }
 
         private void HandleThrowing(bool value)
@@ -85,7 +84,7 @@ namespace _Project.CodeBase.Logic.Hero
             if (value)
                 ChargeThrow();
             else
-                ReleaseThrow();
+                ReleaseThrow().Forget();
         }
 
         private async void ChargeThrow()
@@ -100,39 +99,70 @@ namespace _Project.CodeBase.Logic.Hero
                 _chargeTime += deltaTime;
 
                 var velocity = GetNormalizedThrowDirection() * Force;
-                _trajectoryDrawer.ShowTrajectory(_ikController.ThrowPositionForward, velocity);
+                _trajectoryDrawer.ShowTrajectory(_ikController.SpawnPosition.position, velocity);
                 
                 // todo update charge progress bar ui
             }
         }
 
-        private void ReleaseThrow()
+        private async UniTask ReleaseThrow()
         {
             _charge = false;
             
             // if (ChargedEnough)
+            _inventory.RemoveItemFromSlot(_grenadeInfo.UIInfo.Name);
             ThrowItem(Force).Forget();
+            
             _chargeTime = 0f;
             _trajectoryDrawer.ToggleTrajectory(false);
+
+            await _animator.HideWeapon();
+            await ResupplyNewItem();
+        }
+
+        private async UniTask ResupplyNewItem()
+        {
+            if (_inventory.FindItemAmount(_grenadeInfo.UIInfo.Name) > 0)
+            {
+                await _animator.ShowWeapon();
+                SpawnProjectile(_grenadeInfo);
+            }
+            else
+                DespawnAndClearInfo();
         }
 
         private async UniTask ThrowItem(float force)
         {
-            //var spawnPosition = _projectile.ThrowView.ThrowPosition.position + CameraForward;
             var throwDirection = GetNormalizedThrowDirection();
             
             TogglePhysics(true);
             _projectile.Rigidbody.AddForce(throwDirection * force, ForceMode.VelocityChange);
             await _projectile.Throw(_grenadeInfo as ExplosiveGrenadeInfo); // todo ExplosiveGrenadeInfo can be null
-            NightPool.Despawn(_projectile);
+            DespawnProjectile();
+        }
+        
+        private void SpawnProjectile(GrenadeInfo grenadeInfo)
+        {
+            _projectile = NightPool.Spawn(grenadeInfo.GrenadeProjectile, _ikController.SpawnPosition, Quaternion.identity);
+            _projectile.ResetTransform();
+            TogglePhysics(false);
+        }
+        
+        private void DespawnAndClearInfo()
+        {
+            _grenadeInfo = null;
+            DespawnProjectile();
+        }
+        
+        private void DespawnProjectile()
+        {
+            if (_projectile != null)
+                NightPool.Despawn(_projectile);
         }
 
-        private Vector3 GetNormalizedThrowDirection() => 
-            (CameraForward + ThrowDirection).normalized;
-        
         private void TogglePhysics(bool value)
         {
-            ToggleIKConstraints(value);
+            ToggleIKConstraints(!value);
             _projectile.Rigidbody.useGravity = value;
         }
 
@@ -143,5 +173,8 @@ namespace _Project.CodeBase.Logic.Hero
             else
                 _ikController.Disable();
         }
+
+        private Vector3 GetNormalizedThrowDirection() => 
+            (CameraForward + ThrowDirection).normalized;
     }
 }
