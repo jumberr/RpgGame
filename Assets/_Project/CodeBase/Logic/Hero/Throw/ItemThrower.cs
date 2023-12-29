@@ -78,7 +78,7 @@ namespace _Project.CodeBase.Logic.Hero
                 SpawnProjectile(grenadeInfo);
             }
             else
-                DespawnAndClearInfo(_projectile);
+                ClearInfo();
         }
 
         private void HandleThrowing(bool value)
@@ -149,12 +149,6 @@ namespace _Project.CodeBase.Logic.Hero
             _projectile = NightPool.Spawn(grenadeInfo.GrenadeProjectile, _ikController.SpawnPosition, Quaternion.identity);
             _projectile.ResetTransform();
             TogglePhysics(_projectile, false);
-        }
-
-        private void DespawnAndClearInfo(GrenadeView projectile)
-        {
-            ClearInfo();
-            DespawnProjectile(projectile);
         }
 
         private void ClearInfo() => 

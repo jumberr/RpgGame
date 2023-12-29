@@ -60,11 +60,13 @@ namespace _Project.CodeBase.Logic.Inventory
             if (amountNotStored == 0)
             {
                 interactable.SetPickUpStatus(true);
-                var slot = _inventory.FindSlot(groundItem.DbID, groundItem.Amount);
-                OnItemPickup?.Invoke(slot, interactable);
+                FindSlotWithPickedItem(interactable, groundItem);
             }
             else
             {
+                if (amountNotStored < groundItem.Amount) 
+                    FindSlotWithPickedItem(interactable, groundItem);
+                
                 groundItem.UpdateAmount(amountNotStored);
                 Debug.Log("Inventory is full!");
             }
@@ -125,6 +127,13 @@ namespace _Project.CodeBase.Logic.Inventory
         public void SwapSlots(int one, int two) => 
             _inventory.SwapSlots(one, two);
 
+        private void FindSlotWithPickedItem(InteractableGroundItem interactable, ItemGround groundItem)
+        {
+            var slot = _inventory.GetLastSlot(groundItem.DbID);
+            if (slot != null)
+                OnItemPickup?.Invoke(slot, interactable);
+        }
+        
         private void RemoveItemFromSlot(int id)
         {
             _inventory.RemoveItemFromSlot(id);
