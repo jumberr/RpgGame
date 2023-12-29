@@ -30,15 +30,17 @@ namespace _Project.CodeBase.Logic.Hero
 
         private Vector3 CameraForward => _mainCamera.transform.forward;
         private float Force => Mathf.Min(_chargeTime * _grenadeInfo.ThrowData.ThrowForce, _grenadeInfo.ThrowData.MaxForce);
-        private Vector3 ThrowDirection { get; } = new Vector3(0, 1, 0);
 
 
-        public ItemThrower(IGameFactory gameFactory, TrajectoryDrawer trajectoryDrawer, InputService inputService)
+        public ItemThrower(
+            IGameFactory gameFactory,
+            TrajectoryDrawer trajectoryDrawer,
+            InputService inputService)
         {
             _gameFactory = gameFactory;
             _trajectoryDrawer = trajectoryDrawer;
             _inputService = inputService;
-            
+
             _gameFactory.HeroCreated += HeroCreated;
         }
 
@@ -103,9 +105,7 @@ namespace _Project.CodeBase.Logic.Hero
                 _chargeTime += deltaTime;
 
                 var velocity = GetNormalizedThrowDirection() * Force;
-                _trajectoryDrawer.ShowTrajectory(_ikController.SpawnPosition.position, velocity);
-                
-                // todo update charge progress bar ui
+                _trajectoryDrawer.ShowTrajectory(_ikController.SpawnPosition.position, velocity,Force / _grenadeInfo.ThrowData.MaxForce);
             }
         }
 
@@ -181,7 +181,7 @@ namespace _Project.CodeBase.Logic.Hero
         }
 
         private Vector3 GetNormalizedThrowDirection() => 
-            (CameraForward + ThrowDirection).normalized;
+            (CameraForward + Vector3.up).normalized;
 
         private void Cleanup()
         {

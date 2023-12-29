@@ -25,8 +25,9 @@ namespace _Project.CodeBase.UI
         private HeroInventory _heroInventory;
 
         public HotBarUI HotBar => _hotBarUI;
+        [field: SerializeField] public ActionProgressView ActionProgressView { get; private set; }
 
-        
+
         [Inject]
         public void Construct(InputService inputService, HeroFacade.Factory factory)
         {

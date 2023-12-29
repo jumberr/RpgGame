@@ -1,3 +1,4 @@
+using System;
 using _Project.CodeBase.Infrastructure.AssetManagement;
 using _Project.CodeBase.UI.Core;
 using _Project.CodeBase.UI.Services.Windows;
@@ -18,6 +19,7 @@ namespace _Project.CodeBase.UI.Services
         private ActorUI _actorUI;
         private InventoryWindow _inventoryWindow;
         private DeathScreen _deathScreen;
+        public event Action UICreated;
 
         public Transform UIRoot => _uiRoot;
         public ActorUI ActorUI => _actorUI;
@@ -38,6 +40,8 @@ namespace _Project.CodeBase.UI.Services
             await CreateUIRoot();
             await CreateScreens();
             CreateWindows();
+            
+            UICreated?.Invoke();
         }
 
         public void ShowDeathScreen() => 
