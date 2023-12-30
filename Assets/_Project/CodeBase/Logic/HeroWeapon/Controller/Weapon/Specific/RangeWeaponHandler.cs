@@ -23,6 +23,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         {
             await base.CreateNewItem(slotID, part, info, prefab);
             
+            if (_weaponItem is null) return;
             _attachmentController.Setup(CurrentItem, _weaponItem.WeaponData);
             SetupAttachments();
         }

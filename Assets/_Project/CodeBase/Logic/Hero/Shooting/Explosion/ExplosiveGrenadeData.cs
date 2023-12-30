@@ -12,5 +12,6 @@ namespace _Project.CodeBase.Logic.Hero
         public float ExplosionDelay;
         public float ExplosionForce;
         public float ExplosionRadius;
+        public float MaxDamage;
     }
 }

@@ -16,7 +16,7 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private Vector3 _initialRotation;
         [SerializeField] private Vector3 _explosionOffset;
 
-        private readonly Collider[] _colliders = new Collider[20];
+        private readonly Collider[] _hitColliders = new Collider[20];
         private ExplosiveGrenadeInfo _grenadeInfo;
         private ExplosiveGrenadeData _explosiveGrenadeData;
 
@@ -69,16 +69,24 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void NearbyForceApply()
         {
-            var overlappedAmount = Physics.OverlapSphereNonAlloc(Position, _explosiveGrenadeData.ExplosionRadius, _colliders);
+            var overlappedAmount = Physics.OverlapSphereNonAlloc(Position, _explosiveGrenadeData.ExplosionRadius, _hitColliders);
 
             for (var i = 0; i < overlappedAmount; i++)
             {
-                if (!_colliders[i].TryGetComponent<Rigidbody>(out var rb)) continue;
+                if (_hitColliders[i].TryGetComponent<Rigidbody>(out var rb))
+                    rb.AddExplosionForce(_explosiveGrenadeData.ExplosionForce, Position, _explosiveGrenadeData.ExplosionRadius);
 
-                rb.AddExplosionForce(_explosiveGrenadeData.ExplosionForce, Position, _explosiveGrenadeData.ExplosionRadius);
+                if (_hitColliders[i].TryGetComponent<IHealth>(out var health))
+                    DealDamage(_explosiveGrenadeData.MaxDamage, i, health);
             }
             
-            Array.Clear(_colliders, 0, _colliders.Length);
+            Array.Clear(_hitColliders, 0, _hitColliders.Length);
+        }
+
+        private void DealDamage(float maxDamage, int i, IHealth health)
+        {
+            var dmg = maxDamage - Vector3.Distance(Position, _hitColliders[i].transform.position) * (maxDamage / _explosiveGrenadeData.ExplosionRadius);
+            health.TakeDamage(dmg);
         }
 
         private async UniTask Explode()

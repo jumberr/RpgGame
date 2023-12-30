@@ -19,7 +19,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         [SerializeField] private Transform _parent;
         
         private IItemHandler[] _handlers;
-        private WeaponItem _weaponItem;
         private IItemHandler _currentHandler;
 
         public event Action<bool> OnSwitch;
