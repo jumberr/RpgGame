@@ -1,4 +1,5 @@
 using System;
+using _Project.CodeBase.StaticData.Sound;
 
 namespace _Project.CodeBase.Logic.Hero
 {
@@ -7,5 +8,6 @@ namespace _Project.CodeBase.Logic.Hero
     {
         public float ThrowForce;
         public float MaxForce;
+        public AudioData ThrowSoundData;
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using _Project.CodeBase.Infrastructure.Factory;
+using _Project.CodeBase.Infrastructure.Services;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.Inventory;
@@ -17,6 +18,7 @@ namespace _Project.CodeBase.Logic.Hero
         private readonly IGameFactory _gameFactory;
         private readonly TrajectoryDrawer _trajectoryDrawer;
         private readonly InputService _inputService;
+        private readonly SoundService _soundService;
 
         private ActiveItemController _activeItemController;
         private HeroInventory _inventory;
@@ -35,11 +37,13 @@ namespace _Project.CodeBase.Logic.Hero
         public ItemThrower(
             IGameFactory gameFactory,
             TrajectoryDrawer trajectoryDrawer,
-            InputService inputService)
+            InputService inputService,
+            SoundService soundService)
         {
             _gameFactory = gameFactory;
             _trajectoryDrawer = trajectoryDrawer;
             _inputService = inputService;
+            _soundService = soundService;
 
             _gameFactory.HeroCreated += HeroCreated;
         }
@@ -94,6 +98,7 @@ namespace _Project.CodeBase.Logic.Hero
         private async void ChargeThrow()
         {
             _cts = new CancellationTokenSource();
+            _soundService.PlaySound(_grenadeInfo.PullPinSoundData).Forget();
             
             while (Application.isPlaying)
             {
@@ -136,11 +141,12 @@ namespace _Project.CodeBase.Logic.Hero
 
         private async UniTask ThrowItem(GrenadeView projectile, float force)
         {
-            var throwDirection = GetNormalizedThrowDirection();
-            
             TogglePhysics(projectile, true);
-            projectile.Rigidbody.AddForce(throwDirection * force, ForceMode.VelocityChange);
-            await projectile.Throw(_grenadeInfo as ExplosiveGrenadeInfo); // todo ExplosiveGrenadeInfo can be null
+            
+            _soundService.PlaySound(_grenadeInfo.ThrowData.ThrowSoundData).Forget();
+            projectile.Rigidbody.AddForce(GetNormalizedThrowDirection() * force, ForceMode.VelocityChange);
+            
+            await projectile.Throw(_grenadeInfo as ExplosiveGrenadeInfo);
             DespawnProjectile(projectile);
         }
 

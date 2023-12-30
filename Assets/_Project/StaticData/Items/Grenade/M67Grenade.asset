@@ -42,8 +42,16 @@ MonoBehaviour:
   <ThrowData>k__BackingField:
     ThrowForce: 10
     MaxForce: 30
+    ThrowSoundData:
+      AudioClip: {fileID: 8300000, guid: 705d9285ed4fbf44bb8de3b4f75ff969, type: 3}
+      Volume: 1
+      Delay: 0
   <ImpactSoundData>k__BackingField:
     AudioClip: {fileID: 8300000, guid: 419336aa8912ae0468e104596863a0a1, type: 3}
+    Volume: 1
+    Delay: 0
+  <PullPinSoundData>k__BackingField:
+    AudioClip: {fileID: 8300000, guid: 7c5b749533c154045b549c2d0769f5ef, type: 3}
     Volume: 1
     Delay: 0
   <ExplosiveGrenadeData>k__BackingField:

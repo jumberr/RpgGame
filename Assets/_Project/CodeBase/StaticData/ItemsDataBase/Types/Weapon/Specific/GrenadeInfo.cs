@@ -11,5 +11,6 @@ namespace _Project.CodeBase.StaticData
         [field: SerializeField] public GrenadeView GrenadeProjectile { get; private set; }
         [field: SerializeField] public ThrowData ThrowData { get; private set; }
         [field: SerializeField] public AudioData ImpactSoundData { get; private set; }
+        [field: SerializeField] public AudioData PullPinSoundData { get; private set; }
     }
 }

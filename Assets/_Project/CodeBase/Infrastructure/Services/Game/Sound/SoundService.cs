@@ -20,7 +20,7 @@ namespace _Project.CodeBase.Infrastructure.Services
 
         public void Dispose() => 
             _audioSourcePool.Cleanup();
-
+        
         public async UniTask PlayMovementSound(SurfaceType surfaceType, MoveType moveType)
         {
             var sounds = _surfaceSoundConfig.GetSounds(surfaceType, moveType);
@@ -30,7 +30,7 @@ namespace _Project.CodeBase.Infrastructure.Services
             await PlaySound(audioData);
         }
 
-        private async UniTask PlaySound(AudioData data)
+        public async UniTask PlaySound(AudioData data)
         {
             var audioSourceWrapper = _audioSourcePool.GetAudioSourceWrapper(data);
             Play(data, audioSourceWrapper);
