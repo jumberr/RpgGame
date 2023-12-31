@@ -31,7 +31,6 @@ namespace _Project.CodeBase.Logic.Hero
         private float _chargeTime;
 
         private Vector3 CameraForward => _mainCamera.transform.forward;
-        private float Force => Mathf.Min(_chargeTime * _grenadeInfo.ThrowData.ThrowForce, _grenadeInfo.ThrowData.MaxForce);
 
 
         public ItemThrower(
@@ -54,7 +53,8 @@ namespace _Project.CodeBase.Logic.Hero
         public void Dispose()
         {
             _inputService.ScopeAction.Event -= HandleThrowing;
-            _activeItemController.OnSwitch -= ItemSwitched;
+            if (_activeItemController != null)
+                _activeItemController.OnSwitch -= ItemSwitched;
             
             Cleanup();
         }
@@ -104,13 +104,10 @@ namespace _Project.CodeBase.Logic.Hero
             {
                 var deltaTime = Time.deltaTime;
 
-                if (await UniTask.Delay(TimeSpan.FromSeconds(deltaTime), cancellationToken: _cts.Token)
-                        .SuppressCancellationThrow()) break;
+                if (await UniTask.Delay(TimeSpan.FromSeconds(deltaTime), cancellationToken: _cts.Token).SuppressCancellationThrow()) break;
 
                 _chargeTime += deltaTime;
-
-                var velocity = GetNormalizedThrowDirection() * Force;
-                _trajectoryDrawer.ShowTrajectory(_ikController.SpawnPosition.position, velocity,Force / _grenadeInfo.ThrowData.MaxForce);
+                _trajectoryDrawer.ShowTrajectory(_ikController.SpawnPosition.position, GetForceDirection(),GetForce() / _grenadeInfo.ThrowData.MaxForce);
             }
         }
 
@@ -119,7 +116,7 @@ namespace _Project.CodeBase.Logic.Hero
             Cleanup();
 
             _inventory.RemoveItemFromSlot(_grenadeInfo.UIInfo.Name);
-            ThrowItem(_projectile, Force).Forget();
+            ThrowItem(_projectile).Forget();
             
             _chargeTime = 0f;
             _trajectoryDrawer.ToggleTrajectory(false);
@@ -139,14 +136,13 @@ namespace _Project.CodeBase.Logic.Hero
                 ClearInfo();
         }
 
-        private async UniTask ThrowItem(GrenadeView projectile, float force)
+        private async UniTask ThrowItem(GrenadeView projectile)
         {
+            projectile.UnparentGrenade();
             TogglePhysics(projectile, true);
-            
             _soundService.PlaySound(_grenadeInfo.ThrowData.ThrowSoundData).Forget();
-            projectile.Rigidbody.AddForce(GetNormalizedThrowDirection() * force, ForceMode.VelocityChange);
             
-            await projectile.Throw(_grenadeInfo as ExplosiveGrenadeInfo);
+            await projectile.Throw(_grenadeInfo as ExplosiveGrenadeInfo, GetForceDirection());
             DespawnProjectile(projectile);
         }
 
@@ -180,8 +176,8 @@ namespace _Project.CodeBase.Logic.Hero
                 _ikController.Disable();
         }
 
-        private Vector3 GetNormalizedThrowDirection() => 
-            (CameraForward + Vector3.up).normalized;
+        private Vector3 GetForceDirection() => 
+            GetForce() * (CameraForward + Vector3.up).normalized;
 
         private void Cleanup()
         {
@@ -189,5 +185,8 @@ namespace _Project.CodeBase.Logic.Hero
             _cts?.Dispose();
             _cts = null;
         }
+        
+        private float GetForce() => 
+            Mathf.Min(_chargeTime * _grenadeInfo.ThrowData.ThrowForce, _grenadeInfo.ThrowData.MaxForce);
     }
 }

@@ -14,14 +14,12 @@ namespace _Project.CodeBase.Logic.Hero
     {
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private Vector3 _initialRotation;
-        [SerializeField] private Vector3 _explosionOffset;
 
         private readonly Collider[] _hitColliders = new Collider[20];
         private ExplosiveGrenadeInfo _grenadeInfo;
         private ExplosiveGrenadeData _explosiveGrenadeData;
 
         private Vector3 Position => Rigidbody.transform.position;
-        private Vector3 ExplosionEffectPosition => Position + _explosionOffset;
         [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
         [field: SerializeField] public List<Transform> IKTargets { get; private set; }
 
@@ -41,11 +39,12 @@ namespace _Project.CodeBase.Logic.Hero
             _audioSource.SetupAndPlay(_grenadeInfo.ImpactSoundData);
         }
 
-        public async UniTask Throw(ExplosiveGrenadeInfo grenadeInfo)
+        public async UniTask Throw(ExplosiveGrenadeInfo grenadeInfo, Vector3 force)
         {
             _grenadeInfo = grenadeInfo;
             _explosiveGrenadeData = grenadeInfo.ExplosiveGrenadeData;
             
+            Rigidbody.AddForce(force, ForceMode.VelocityChange);
             await UniTask.Delay(TimeSpan.FromSeconds(_explosiveGrenadeData.ExplosionDelay));
 
             NearbyForceApply();
@@ -58,6 +57,9 @@ namespace _Project.CodeBase.Logic.Hero
             Rigidbody.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(Vector3.zero));
         }
         
+        public void UnparentGrenade() => 
+            transform.SetParent(null);
+
         public void TogglePhysics(bool value)
         {
             Rigidbody.useGravity = value;
@@ -91,7 +93,7 @@ namespace _Project.CodeBase.Logic.Hero
 
         private async UniTask Explode()
         {
-            var vsfx = NightPool.Spawn(_explosiveGrenadeData.ExplosionPrefab, ExplosionEffectPosition, Quaternion.identity);
+            var vsfx = NightPool.Spawn(_explosiveGrenadeData.ExplosionPrefab, Position, Quaternion.identity);
             await vsfx.Play(_explosiveGrenadeData.SoundData);
             NightPool.Despawn(vsfx);
         }
