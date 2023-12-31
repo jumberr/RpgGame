@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _Project.CodeBase.Constants;
+using _Project.CodeBase.Logic.Enemy;
 using _Project.CodeBase.StaticData;
 using _Project.CodeBase.Utils;
 using Cysharp.Threading.Tasks;
@@ -53,7 +54,8 @@ namespace _Project.CodeBase.Logic.Hero
 
         public void ResetTransform()
         {
-            transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(_initialRotation));
+            ToggleGrenadeMesh(true);
+            transform.localRotation = Quaternion.Euler(_initialRotation);
             Rigidbody.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(Vector3.zero));
         }
         
@@ -63,8 +65,6 @@ namespace _Project.CodeBase.Logic.Hero
         public void TogglePhysics(bool value)
         {
             Rigidbody.useGravity = value;
-            
-            if (value) return;
             Rigidbody.velocity = Vector3.zero;
             Rigidbody.angularVelocity = Vector3.zero;
         }
@@ -78,24 +78,29 @@ namespace _Project.CodeBase.Logic.Hero
                 if (_hitColliders[i].TryGetComponent<Rigidbody>(out var rb))
                     rb.AddExplosionForce(_explosiveGrenadeData.ExplosionForce, Position, _explosiveGrenadeData.ExplosionRadius);
 
+                var dmg = CalculateDamage(_explosiveGrenadeData.MaxDamage, i);
                 if (_hitColliders[i].TryGetComponent<IHealth>(out var health))
-                    DealDamage(_explosiveGrenadeData.MaxDamage, i, health);
+                    health.TakeDamage(dmg);
+                
+                if (_hitColliders[i].TryGetComponent<IHitBox>(out var hitBox))
+                    hitBox.Hit(dmg);
             }
             
             Array.Clear(_hitColliders, 0, _hitColliders.Length);
         }
 
-        private void DealDamage(float maxDamage, int i, IHealth health)
-        {
-            var dmg = maxDamage - Vector3.Distance(Position, _hitColliders[i].transform.position) * (maxDamage / _explosiveGrenadeData.ExplosionRadius);
-            health.TakeDamage(dmg);
-        }
-
         private async UniTask Explode()
         {
+            ToggleGrenadeMesh(false);
             var vsfx = NightPool.Spawn(_explosiveGrenadeData.ExplosionPrefab, Position, Quaternion.identity);
             await vsfx.Play(_explosiveGrenadeData.SoundData);
             NightPool.Despawn(vsfx);
         }
+
+        private void ToggleGrenadeMesh(bool value) => 
+            Rigidbody.gameObject.SetActive(value);
+
+        private float CalculateDamage(float maxDamage, int i) => 
+            maxDamage - Vector3.Distance(Position, _hitColliders[i].transform.position) * (maxDamage / _explosiveGrenadeData.ExplosionRadius);
     }
 }
