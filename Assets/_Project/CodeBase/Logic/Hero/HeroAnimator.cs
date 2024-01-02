@@ -2,11 +2,14 @@
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Animations;
 
 namespace _Project.CodeBase.Logic.Hero
 {
     public class HeroAnimator : MonoBehaviour
     {
+        private const int DefaultLayer = 0;
+        
         private static readonly int Move = Animator.StringToHash("Move");
         private static readonly int Jump = Animator.StringToHash("Jump");
 
@@ -55,6 +58,9 @@ namespace _Project.CodeBase.Logic.Hero
         public async UniTask ShowWeapon() => 
             await ShowHide(Show);
 
+        public async UniTask WaitForEndOfTransition() => 
+            await UniTask.WaitUntil(() => !IsInTransition());
+
         public async UniTask ShowWeaponOnInit() => 
             await WaitForCurrentAnimation();
 
@@ -80,9 +86,12 @@ namespace _Project.CodeBase.Logic.Hero
 
         private async UniTask WaitForCurrentAnimation()
         {
-            var duration = _animator.GetCurrentAnimatorStateInfo(0).length;
+            var duration = _animator.GetCurrentAnimatorStateInfo(DefaultLayer).length;
             await UniTask.Delay(TimeSpan.FromSeconds(duration));
         }
+        
+        private bool IsInTransition() => 
+            _animator.IsInTransition(DefaultLayer);
 
         private bool IsAnimatorExists() => 
             _animator is { };

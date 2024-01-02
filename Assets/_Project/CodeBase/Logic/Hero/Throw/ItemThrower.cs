@@ -164,8 +164,16 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void TogglePhysics(GrenadeView projectile, bool value)
         {
-            ToggleIKConstraints(projectile, !value);
-            projectile.TogglePhysics(value);
+            if (value)
+            {
+                ToggleIKConstraints(projectile, false);
+                projectile.TogglePhysics(true);
+            }
+            else
+            {
+                projectile.TogglePhysics(false);
+                ToggleIKConstraints(projectile, true);
+            }
         }
 
         private void ToggleIKConstraints(GrenadeView projectile, bool value)
