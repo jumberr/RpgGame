@@ -92,7 +92,7 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void ApplyScopeSettings(GunInfo gunInfo)
         {
-            _isNeedScope = gunInfo.GunSpecs.Scoping;
+            _isNeedScope = gunInfo.GetSpecs().Scoping;
             _scopeSpecs = gunInfo.DefaultSettings.ScopeSpecs;
             _adsFov = _startFov / _scopeSpecs.ScopeMultiplier;
         }

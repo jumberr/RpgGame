@@ -90,8 +90,9 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void SetupWeaponInfo(GunInfo gunInfo)
         {
-            _bulletMaxMagazine = gunInfo.GunSpecs.MagazineInfo.BulletsMax;
-            _itemName = gunInfo.GunSpecs.AmmoType.ToItemName();
+            var specs = gunInfo.GetSpecs();
+            _bulletMaxMagazine = specs.MagazineInfo.BulletsMax;
+            _itemName = specs.AmmoType.ToItemName();
         }
 
         private void UpdateAmmoValue()

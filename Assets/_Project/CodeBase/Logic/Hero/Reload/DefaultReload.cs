@@ -7,18 +7,14 @@ namespace _Project.CodeBase.Logic.Hero.Reload
     public class DefaultReload : IReloadSystem
     {
         private readonly HeroAnimator _heroAnimator;
-        
-        private float _reloadTime;
-        private float _fullReloadTime;
+        private GunSpecs _gunSpecs;
+
 
         public DefaultReload(HeroAnimator heroAnimator) => 
             _heroAnimator = heroAnimator;
 
-        public void Construct(GunInfo gunInfo)
-        {
-            _reloadTime = gunInfo.GunSpecs.ReloadTime;
-            _fullReloadTime = gunInfo.GunSpecs.FullReloadTime;
-        }
+        public void Setup(GunSpecs gunSpecs) => 
+            _gunSpecs = gunSpecs;
 
         public async UniTask Reload((ReloadState, int, int) result)
         {
@@ -29,9 +25,9 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         }
         
         private async UniTask FullReloadAnimation() => 
-            await _heroAnimator.FullReloadAnimation(_fullReloadTime);
+            await _heroAnimator.FullReloadAnimation(_gunSpecs.FullReloadTime);
 
         private async UniTask ReloadAnimation() => 
-            await _heroAnimator.ReloadAnimation(_reloadTime);
+            await _heroAnimator.ReloadAnimation(_gunSpecs.ReloadTime);
     }
 }

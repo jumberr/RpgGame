@@ -64,31 +64,31 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
 
         public void UpdateStatsAndConfig(GunInfo gunInfo, WeaponConfiguration config)
         {
-            var gunData = gunInfo.GunSpecs;
-            var weaponData = gunInfo.WeaponSpecs;
+            var specs = gunInfo.GetSpecs();
             
-            _isAutomatic = gunData.IsAutomatic;
-            UpdateFireRate(weaponData);
-
-            var shotgun = gunInfo as ShotgunInfo;
-            if (shotgun != null)
-            {
-                _shotgunShooting.SetupConfig(weaponData.Damage, weaponData.Range, gunData.AccuracyDistance, gunData.AimAccuracy, gunData.Accuracy);
-                _shotgunShooting.SetupConfig(shotgun.ShotgunSpecs.FractionAmount);
-                _weaponType = WeaponType.Shotgun;
-            }
-            else
-            {
-                _defaultShooting.SetupConfig(weaponData.Damage, weaponData.Range, gunData.AccuracyDistance, gunData.AimAccuracy, gunData.Accuracy);
-                _weaponType = WeaponType.Default;
-            }
+            _isAutomatic = specs.IsAutomatic;
+            UpdateFireRate(specs);
+            
+            // todo
+            //var shotgun = gunInfo as ShotgunInfo;
+            //if (shotgun != null)
+            //{
+            //    _shotgunShooting.SetupConfig(specs.Damage, specs.Range, specs.AccuracyDistance, specs.AimAccuracy, specs.Accuracy);
+            //    _shotgunShooting.SetupConfig(shotgun.ShotgunSpecs.FractionAmount);
+            //    _weaponType = WeaponType.Shotgun;
+            //}
+            //else
+            //{
+            //    _defaultShooting.SetupConfig(specs.Damage, specs.Range, specs.AccuracyDistance, specs.AimAccuracy, specs.Accuracy);
+            //    _weaponType = WeaponType.Default;
+            //}
 
             SetupWeaponConfiguration(config);
         }
 
         public void ApplyKnife(KnifeInfo knifeInfo)
         {
-            UpdateFireRate(knifeInfo.WeaponSpecs);
+            UpdateFireRate(knifeInfo.GetSpecs());
             _weaponType = WeaponType.Knife;
         }
 

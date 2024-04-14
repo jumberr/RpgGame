@@ -20,8 +20,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             if (info is not KnifeInfo knifeInfo) return;
             
             HeroFacade.Ammo.Construct(knifeInfo);
-            HeroFacade.Recoil.Construct(knifeInfo);
-            CurrentItem.WeaponConfiguration.MeleeWeapon.Construct(HeroFacade.Attack.LayerMask, knifeInfo.WeaponSpecs.Damage);
+            HeroFacade.Recoil.Setup(knifeInfo);
+            CurrentItem.WeaponConfiguration.MeleeWeapon.Construct(HeroFacade.Attack.LayerMask, knifeInfo.GetSpecs().Damage);
             HeroFacade.Attack.ApplyKnife(knifeInfo);
             HeroFacade.Reload.Construct(knifeInfo);
             HeroFacade.Scoping.Construct(knifeInfo);

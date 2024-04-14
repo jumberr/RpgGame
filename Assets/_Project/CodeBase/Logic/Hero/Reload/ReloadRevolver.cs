@@ -25,7 +25,7 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         public ReloadRevolver(HeroAnimator heroAnimator) => 
             _heroAnimator = heroAnimator;
 
-        public void Construct(GunInfo gunInfo, WeaponConfiguration config, RevolverAnimation revolverAnimation)
+        public void Construct(RevolverInfo revolverInfo, WeaponConfiguration config, RevolverAnimation revolverAnimation)
         {
             if (_subscribed)
                 UnsubscribeRevolverEvents();
@@ -34,7 +34,7 @@ namespace _Project.CodeBase.Logic.Hero.Reload
             _revolverAnimation = revolverAnimation;
             SubscribeRevolverEvents();
 
-            var data = (gunInfo as RevolverInfo).RevolverSpecs;
+            var data = revolverInfo.GetSpecs(); // todo
             _startReloadAnimation = data.StartReloadDuration;
             _oneAmmoReload = data.OneAmmoReloadDuration;
             _endReloadAnimation = data.EndReloadAnimation;

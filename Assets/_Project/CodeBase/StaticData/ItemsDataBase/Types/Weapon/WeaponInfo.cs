@@ -1,13 +1,10 @@
 ﻿using System;
-using _Project.CodeBase.Logic.Hero.Shooting;
-using UnityEngine;
 
 namespace _Project.CodeBase.StaticData
 {
     [Serializable]
-    public class WeaponInfo : BaseWeaponInfo
+    public abstract class WeaponInfo<TSpecs> : EquippableInfo where TSpecs : WeaponSpecs
     {
-        [SerializeField] private WeaponSpecs _weaponSpecs;
-        public WeaponSpecs WeaponSpecs => _weaponSpecs;
+        public abstract TSpecs GetSpecs();
     }
 }

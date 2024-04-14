@@ -6,7 +6,7 @@ using UnityEngine;
 namespace _Project.CodeBase.StaticData
 {
     [Serializable]
-    public class GrenadeInfo : BaseWeaponInfo
+    public class GrenadeInfo : EquippableInfo
     {
         [field: SerializeField] public GrenadeView GrenadeProjectile { get; private set; }
         [field: SerializeField] public ThrowData ThrowData { get; private set; }

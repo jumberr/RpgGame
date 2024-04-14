@@ -4,7 +4,7 @@ using UnityEngine;
 namespace _Project.CodeBase.StaticData
 {
     [Serializable]
-    public class ShotgunSpecs
+    public class ShotgunSpecs : GunSpecs
     {
         [SerializeField] private int _fractionAmount;
         public int FractionAmount => _fractionAmount;

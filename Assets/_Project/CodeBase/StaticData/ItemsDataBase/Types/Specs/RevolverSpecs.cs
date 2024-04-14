@@ -4,7 +4,7 @@ using UnityEngine;
 namespace _Project.CodeBase.StaticData
 {
     [Serializable]
-    public class RevolverSpecs
+    public class RevolverSpecs : GunSpecs
     {
         [SerializeField] private float _startReloadDuration;
         [SerializeField] private float _oneAmmoReloadDuration;

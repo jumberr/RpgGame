@@ -47,7 +47,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             if (info is not GunInfo gunInfo) return;
             
             HeroFacade.Ammo.Construct(_weaponItem.MagazineData, gunInfo);
-            HeroFacade.Recoil.Construct(gunInfo);
+            HeroFacade.Recoil.Setup(gunInfo);
             var config = CurrentItem.WeaponConfiguration;
             HeroFacade.Attack.UpdateStatsAndConfig(gunInfo, config);
             HeroFacade.Reload.Construct(gunInfo, config, config.RevolverAnimation);

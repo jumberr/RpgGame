@@ -47,12 +47,13 @@ namespace _Project.CodeBase.Logic.Hero.Reload
             if (!(revolverAnimation is null))
             {
                 _isRevolver = true;
-                _reloadRevolver.Construct(gunInfo, config, revolverAnimation);
+                //_reloadRevolver.Construct(gunInfo, config, revolverAnimation); 
+                _reloadRevolver.Construct(new RevolverInfo(), config, revolverAnimation); // todo provide RevolverInfo
             }
             else
             {
                 _isRevolver = false;
-                _defaultReload.Construct(gunInfo);
+                _defaultReload.Setup(gunInfo.GetSpecs());
             }
             _isNeedReload = true;
         }
