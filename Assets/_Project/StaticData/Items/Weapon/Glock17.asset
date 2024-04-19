@@ -36,12 +36,10 @@ MonoBehaviour:
     _dbId: 12
   _prefab: {fileID: 2932715034025936234, guid: 77fa285f15caf4241b71fc1da4a0fcab, type: 3}
   _durability: 0
-  _weaponSpecs:
-    _damage: 7.912611
-    _range: 29.910067
-    _fireRate: 204.20969
-  <WeaponType>k__BackingField: 1
   _gunSpecs:
+    _damage: 7.964138
+    _range: 30.10484
+    _fireRate: 205.53949
     _recoil: {x: -0.6, y: 0.6, z: 0.3}
     _aimRecoil: {x: -0.3, y: 0.3, z: 0.15}
     _snappiness: 3.3078127
@@ -56,6 +54,7 @@ MonoBehaviour:
     _scoping: 1
     _magazineInfo:
       BulletsMax: 15
+    <FractionCount>k__BackingField: 1
   _possibleAttachments: 
   _defaultAttachments: 
   _defaultSettings:

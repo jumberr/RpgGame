@@ -36,7 +36,6 @@ MonoBehaviour:
     _dbId: 23
   _prefab: {fileID: 2171061987105811950, guid: 61dd71096e6ca9c4dbd7a3460c555623, type: 3}
   _durability: 0
-  <WeaponType>k__BackingField: 5
   <GrenadeProjectile>k__BackingField: {fileID: 3280073778133096260, guid: 10d72060698c6c74380eb99bafb800c4,
     type: 3}
   <ThrowData>k__BackingField:

@@ -3,6 +3,7 @@ using _Project.CodeBase.Data;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.HeroWeapon.Data;
 using _Project.CodeBase.StaticData;
+using _Project.CodeBase.Utils;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -24,13 +25,20 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             HeroFacade = heroFacade;
             _parent = parent;
         }
-        
+
         public virtual async UniTask CreateNewItem(int slotID, CommonItemPart part, ItemInfo info, GameObject prefab)
         {
             PrepareData(part, info);
-            
             await CreateWeapon(slotID, info, prefab);
-            ConstructWeapon(info);
+
+            if (ItemInfoUtils.IsKnife(info, out var knife))
+            {
+                ConstructWeapon(knife);
+                return;
+            }
+
+            if (ItemInfoUtils.IsGun(info, out var gun))
+                ConstructWeapon(gun);
         }
         
         public async UniTask AnimatorHideWeapon()

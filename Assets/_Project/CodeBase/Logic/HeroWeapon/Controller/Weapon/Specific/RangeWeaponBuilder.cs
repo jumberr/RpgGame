@@ -48,8 +48,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             HeroFacade.Recoil.Setup(gunInfo);
             var config = CurrentItem.WeaponConfiguration;
             HeroFacade.Attack.UpdateStatsAndConfig(gunInfo, config);
-            HeroFacade.Reload.Construct(gunInfo, config, config.RevolverAnimation);
-            HeroFacade.Scoping.Construct(gunInfo, config);
+            HeroFacade.Reload.Setup(gunInfo, config);
+            HeroFacade.Scoping.Setup(gunInfo, config);
         }
 
         private void SetupAttachments()

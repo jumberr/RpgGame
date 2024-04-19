@@ -44,7 +44,7 @@ namespace _Project.CodeBase.Logic.Hero
         private void OnDestroy() =>
             _inputService.ScopeAction.Event -= ScopeHandling;
         
-        public void Construct(GunInfo gunInfo, WeaponConfiguration config)
+        public void Setup(WeaponInfo<GunSpecs> gunInfo, WeaponConfiguration config)
         {
             _config = config;
             ApplyScopeSettings(gunInfo);
@@ -90,11 +90,11 @@ namespace _Project.CodeBase.Logic.Hero
                 .SetEase(Ease.OutQuad);
         }
 
-        private void ApplyScopeSettings(GunInfo gunInfo)
+        private void ApplyScopeSettings(WeaponInfo<GunSpecs> gunInfo)
         {
             _isNeedScope = gunInfo.GetSpecs().Scoping;
-            _scopeSpecs = gunInfo.DefaultSettings.ScopeSpecs;
-            _adsFov = _startFov / _scopeSpecs.ScopeMultiplier;
+            //_scopeSpecs = gunInfo.DefaultSettings.ScopeSpecs; // todo update scope settings
+            //_adsFov = _startFov / _scopeSpecs.ScopeMultiplier;
         }
 
         private void TurnScopeRender(bool value, float time)

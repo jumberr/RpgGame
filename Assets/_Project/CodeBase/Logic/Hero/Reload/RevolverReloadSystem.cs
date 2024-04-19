@@ -4,52 +4,55 @@ using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
 using _Project.CodeBase.Logic.HeroWeapon.Animations;
 using _Project.CodeBase.StaticData;
+using _Project.CodeBase.Utils;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero.Reload
 {
-    public class ReloadRevolver : IReloadSystem
+    public class RevolverReloadSystem : BaseReloadSystem, IDisposable
     {
-        private readonly HeroAnimator _heroAnimator;
         private RevolverAnimation _revolverAnimation;
         private List<GameObject> _revolverAmmo;
+        private RevolverSpecs _revolverInfo;
 
         private int _revolverRestoredAmmo;
         private bool _subscribed;
+        
+        
+        public void Dispose() => 
+            UnsubscribeRevolverEvents();
 
-        private float _startReloadAnimation;
-        private float _oneAmmoReload;
-        private float _endReloadAnimation;
+        public override bool Setup<T>(WeaponInfo<T> info, WeaponConfiguration config)
+        {
+            if (!ItemInfoUtils.IsRevolver(info, out var revolverInfo)) return false;
+            
+            Setup(revolverInfo, config);
+            return true;
+        }
 
-        public ReloadRevolver(HeroAnimator heroAnimator) => 
-            _heroAnimator = heroAnimator;
-
-        public void Construct(RevolverInfo revolverInfo, WeaponConfiguration config, RevolverAnimation revolverAnimation)
+        public override async UniTask Reload((ReloadState, int, int) result)
+        {
+            for (var i = 0; i < result.Item2; i++) 
+                _revolverAmmo[i].SetActive(false);
+            _revolverRestoredAmmo = result.Item3;
+            var time = _revolverInfo.StartReloadDuration + _revolverRestoredAmmo * _revolverInfo.OneAmmoReloadDuration;
+            await RevolverReloadAnimation(time);
+        }
+        
+        private void Setup(WeaponInfo<RevolverSpecs> revolverInfo, WeaponConfiguration config)
         {
             if (_subscribed)
                 UnsubscribeRevolverEvents();
 
             _revolverAmmo = config.RevolverAmmo;
-            _revolverAnimation = revolverAnimation;
+            _revolverAnimation = config.RevolverAnimation;
+            _revolverInfo = revolverInfo.GetSpecs();
+
             SubscribeRevolverEvents();
-
-            var data = revolverInfo.GetSpecs(); // todo
-            _startReloadAnimation = data.StartReloadDuration;
-            _oneAmmoReload = data.OneAmmoReloadDuration;
-            _endReloadAnimation = data.EndReloadAnimation;
         }
 
-        public async UniTask Reload((ReloadState, int, int) result)
-        {
-            for (var i = 0; i < result.Item2; i++) 
-                _revolverAmmo[i].SetActive(false);
-            _revolverRestoredAmmo = result.Item3;
-            var time = _startReloadAnimation + _revolverRestoredAmmo * _oneAmmoReload;
-            await RevolverReloadAnimation(time);
-        }
-
-        public void UnsubscribeRevolverEvents()
+        private void UnsubscribeRevolverEvents()
         {
             if (_revolverAnimation is null) return;
             _revolverAnimation.AmmoAdded -= OnAmmoAdded;
@@ -66,8 +69,8 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         
         private async UniTask RevolverReloadAnimation(float time)
         {
-            await _heroAnimator.ReloadAnimation(time);
-            await UniTask.Delay(TimeSpan.FromSeconds(_endReloadAnimation));
+            await ReloadAnimation(time);
+            await UniTask.Delay(TimeSpan.FromSeconds(_revolverInfo.EndReloadAnimation));
         }
 
         // Revolver Animation Callbacks
@@ -80,7 +83,7 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         private void OnAmmoAdded(int ammoIndex)
         {
             if (ammoIndex != _revolverRestoredAmmo - 1) return;
-            _heroAnimator.EndRevolverReloadAnimation();
+            HeroAnimator.EndRevolverReloadAnimation();
             _revolverRestoredAmmo = 0;
         }
     }
