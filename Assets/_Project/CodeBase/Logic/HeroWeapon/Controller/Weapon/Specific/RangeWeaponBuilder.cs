@@ -1,22 +1,22 @@
+using System;
 using _Project.CodeBase.Data;
-using _Project.CodeBase.Logic.Hero.Shooting;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData;
+using _Project.CodeBase.Utils;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
-    public class RangeWeaponHandler : BaseWeaponBuilder
+    public class RangeWeaponBuilder : BaseWeaponBuilder
     {
         private readonly AttachmentController _attachmentController;
         private WeaponItem _weaponItem;
         private GunInfo _gunInfo;
+        public override Type SupportedType => typeof(WeaponInfo<GunSpecs>);
 
-        public override WeaponType Type => WeaponType.Default;
 
-
-        protected RangeWeaponHandler(AttachmentController attachmentController) => 
+        protected RangeWeaponBuilder(AttachmentController attachmentController) => 
             _attachmentController = attachmentController;
         
         public override async UniTask CreateNewItem(int slotID, CommonItemPart part, ItemInfo info, GameObject prefab)
@@ -40,13 +40,11 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             _gunInfo = info as GunInfo;
         }
 
-        protected override void ConstructWeapon<T>(T info)
+        protected override void ConstructWeapon<T>(WeaponInfo<T> info)
         {
-            base.ConstructWeapon(info);
+            if (!ItemInfoUtils.IsGun(info, out var gunInfo)) return;
             
-            if (info is not GunInfo gunInfo) return;
-            
-            HeroFacade.Ammo.Construct(_weaponItem.MagazineData, gunInfo);
+            HeroFacade.Ammo.Setup(_weaponItem.MagazineData, gunInfo);
             HeroFacade.Recoil.Setup(gunInfo);
             var config = CurrentItem.WeaponConfiguration;
             HeroFacade.Attack.UpdateStatsAndConfig(gunInfo, config);

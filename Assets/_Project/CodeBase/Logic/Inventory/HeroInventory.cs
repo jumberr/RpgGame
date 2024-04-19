@@ -48,7 +48,7 @@ namespace _Project.CodeBase.Logic.Inventory
             var currentItem = _activeItemController.CurrentItem;
             if (currentItem != null && currentItem.Info == info && currentItem.SlotID == slotID) return;
             
-            await _activeItemController.CreateNewItem(slotID, slot.CommonItemPart, info, info.PayloadInfo.ItemType, GetItemPrefab(info));
+            await _activeItemController.CreateNewItem(slotID, slot.CommonItemPart, info, GetItemPrefab(info));
         }
 
         public void AddItem(InteractableGroundItem interactable)

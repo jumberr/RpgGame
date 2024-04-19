@@ -23,11 +23,10 @@ namespace _Project.CodeBase.Infrastructure
         
         private void BindWeaponBuilders()
         {
-            BindWeaponBuilder<MeleeWeaponHandler>();
-            BindWeaponBuilder<RangeWeaponHandler>();
-            BindWeaponBuilder<ShotgunWeaponHandler>();
-            BindWeaponBuilder<RevolverWeaponHandler>();
-            BindWeaponBuilder<GrenadeWeaponHandler>();
+            BindWeaponBuilder<MeleeWeaponBuilder>();
+            BindWeaponBuilder<RangeWeaponBuilder>();
+            BindWeaponBuilder<RevolverWeaponBuilder>();
+            BindWeaponBuilder<GrenadeWeaponBuilder>();
         }
         
         private void BindItemHandler<T>() where T : IItemHandler =>

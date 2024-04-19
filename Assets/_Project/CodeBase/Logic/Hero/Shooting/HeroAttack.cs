@@ -22,8 +22,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         [SerializeField] private WeaponLight _weaponLight;
         [SerializeField] private ShootingParticles _particles;
 
-        private DefaultShooting _defaultShooting;
-        private ShotgunShooting _shotgunShooting;
+        private IShootingSystem _shooting;
         private WeaponType _weaponType;
         private HeroState _state;
         private InputService _inputService;
@@ -52,8 +51,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
             _animator = _facade.Animator;
             _inputService.AttackAction.Event += EnableDisableShoot;
 
-            _defaultShooting = new DefaultShooting(_state, _lineFade, _layerMask, _particles);
-            _shotgunShooting = new ShotgunShooting(_state, _lineFade, _layerMask, _particles);
+            _shooting = new DefaultShooting(_state, _lineFade, _layerMask, _particles);
         }
 
         public void Run() => 
@@ -62,27 +60,16 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         private void OnDestroy() => 
             _inputService.AttackAction.Event -= EnableDisableShoot;
 
-        public void UpdateStatsAndConfig(GunInfo gunInfo, WeaponConfiguration config)
+        public void UpdateStatsAndConfig<T>(WeaponInfo<T> info, WeaponConfiguration config) where T : GunSpecs
         {
-            var specs = gunInfo.GetSpecs();
+            var specs = info.GetSpecs();
             
             _isAutomatic = specs.IsAutomatic;
             UpdateFireRate(specs);
             
-            // todo
-            //var shotgun = gunInfo as ShotgunInfo;
-            //if (shotgun != null)
-            //{
-            //    _shotgunShooting.SetupConfig(specs.Damage, specs.Range, specs.AccuracyDistance, specs.AimAccuracy, specs.Accuracy);
-            //    _shotgunShooting.SetupConfig(shotgun.ShotgunSpecs.FractionAmount);
-            //    _weaponType = WeaponType.Shotgun;
-            //}
-            //else
-            //{
-            //    _defaultShooting.SetupConfig(specs.Damage, specs.Range, specs.AccuracyDistance, specs.AimAccuracy, specs.Accuracy);
-            //    _weaponType = WeaponType.Default;
-            //}
-
+            _shooting.SetupConfig(specs);
+            _weaponType = WeaponType.Default;
+            
             SetupWeaponConfiguration(config);
         }
 
@@ -98,9 +85,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         private void SetupWeaponConfiguration(WeaponConfiguration config)
         {
             _weaponLight.Construct(config.LightPoint);
-            
-            _shotgunShooting.SetupFirePoint(config.FirePoint);
-            _defaultShooting.SetupFirePoint(config.FirePoint);
+            _shooting.SetupFirePoint(config.FirePoint);
         }
 
         private void HandleAttack()
@@ -154,16 +139,8 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
                 _ammo.UseOneAmmo();
                 _weaponLight.TurnOn(TimeDestroyFX);
                 _recoil.RecoilFire();
-
-                switch (_weaponType)
-                {
-                    case WeaponType.Default:
-                        _defaultShooting.Shoot();
-                        break;
-                    case WeaponType.Shotgun:
-                        _shotgunShooting.Shoot();
-                        break;
-                }
+                
+                _shooting.Shoot();
             }
         }
 

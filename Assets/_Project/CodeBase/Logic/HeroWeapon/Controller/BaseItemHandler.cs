@@ -1,3 +1,4 @@
+using System;
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.Hero.Shooting;
@@ -16,7 +17,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private HeroInventory _inventory;
         
         public abstract CurrentItem CurrentItem { get; }
-        public abstract ItemType ItemType { get; }
+        public abstract Type[] SupportedTypes { get; protected set; }
 
 
         public virtual void Init(HeroFacade facade, ItemsInfo itemsInfo, Transform parent)

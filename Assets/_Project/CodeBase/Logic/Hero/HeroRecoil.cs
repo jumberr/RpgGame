@@ -1,5 +1,6 @@
 ﻿using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.StaticData;
+using _Project.CodeBase.Utils;
 using NTC.Global.Cache;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace _Project.CodeBase.Logic.Hero
         private GunSpecs _gunSpecs;
         
         
-        public void Setup(GunInfo gunInfo) => 
+        public void Setup<T>(WeaponInfo<T> gunInfo) where T : GunSpecs => 
             _gunSpecs = gunInfo.GetSpecs();
 
         public void Setup(KnifeInfo knifeInfo) => 

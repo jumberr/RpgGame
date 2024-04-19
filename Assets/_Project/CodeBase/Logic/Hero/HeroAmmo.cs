@@ -23,11 +23,11 @@ namespace _Project.CodeBase.Logic.Hero
         private int BulletLeft => _magazineData.BulletsLeft;
         private int BulletAll { get; set; }
 
-        public void Construct(MagazineData magazineData, GunInfo gunInfo)
+        public void Setup<T>(MagazineData magazineData, WeaponInfo<T> info) where T : WeaponSpecs
         {
             _magazineData = magazineData;
             
-            SetupWeaponInfo(gunInfo);
+            SetupWeaponInfo(info);
             UpdateAmmoValue();
             var sprite = _inventory.ItemsInfo.FindItem(_itemName).UIInfo.Icon;
             OnChangeWeapon?.Invoke(BulletLeft, BulletAll, sprite);
@@ -88,11 +88,13 @@ namespace _Project.CodeBase.Logic.Hero
                 ReloadState.Reload, usedAmmo, grabbedFromInventory);
         }
 
-        private void SetupWeaponInfo(GunInfo gunInfo)
+        private void SetupWeaponInfo<T>(WeaponInfo<T> info) where T : WeaponSpecs
         {
-            var specs = gunInfo.GetSpecs();
-            _bulletMaxMagazine = specs.MagazineInfo.BulletsMax;
-            _itemName = specs.AmmoType.ToItemName();
+            var specs = info.GetSpecs();
+            if (specs is not GunSpecs gunSpecs) return;
+            
+            _bulletMaxMagazine = gunSpecs.MagazineInfo.BulletsMax;
+            _itemName = gunSpecs.AmmoType.ToItemName();
         }
 
         private void UpdateAmmoValue()

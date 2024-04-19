@@ -1,22 +1,20 @@
+using System;
 using _Project.CodeBase.Data;
-using _Project.CodeBase.Logic.Hero.Shooting;
 using _Project.CodeBase.StaticData;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
-    public class MeleeWeaponHandler : BaseWeaponBuilder
+    public class MeleeWeaponBuilder : BaseWeaponBuilder
     {
         private KnifeInfo _knifeInfo;
-        public override WeaponType Type => WeaponType.Knife;
-        
+        public override Type SupportedType => typeof(WeaponInfo<WeaponSpecs>);
+
 
         protected override void PrepareData(CommonItemPart part, ItemInfo info) => 
             _knifeInfo = info as KnifeInfo;
         
-        protected override void ConstructWeapon<T>(T info)
+        protected override void ConstructWeapon<T>(WeaponInfo<T> info)
         {
-            base.ConstructWeapon(info);
-            
             if (info is not KnifeInfo knifeInfo) return;
             
             HeroFacade.Ammo.Construct(knifeInfo);

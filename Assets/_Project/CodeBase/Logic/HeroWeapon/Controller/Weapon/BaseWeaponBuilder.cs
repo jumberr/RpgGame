@@ -1,6 +1,6 @@
+using System;
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Logic.Hero;
-using _Project.CodeBase.Logic.Hero.Shooting;
 using _Project.CodeBase.Logic.HeroWeapon.Data;
 using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private Transform _parent;
 
         public CurrentItem CurrentItem { get; } = new CurrentItem();
-        public abstract WeaponType Type { get; }
+        public abstract Type SupportedType { get; }
 
         
         public void Init(HeroFacade heroFacade, ItemsInfo itemsInfo, Transform parent)
@@ -32,7 +32,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             await CreateWeapon(slotID, info, prefab);
             ConstructWeapon(info);
         }
-
+        
         public async UniTask AnimatorHideWeapon()
         {
             await HeroFacade.Animator.HideWeapon();
@@ -43,6 +43,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             CurrentItem?.Destroy();
 
         protected abstract void PrepareData(CommonItemPart part, ItemInfo info);
+        protected abstract void ConstructWeapon<T>(WeaponInfo<T> info) where T : WeaponSpecs;
 
         private async UniTask CreateWeapon(int slotID, ItemInfo info, GameObject prefab)
         {
@@ -53,10 +54,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             
             HeroFacade.Animator.Construct(CurrentItem.WeaponConfiguration.HandsAnimator);
             await HeroFacade.Animator.ShowWeaponOnInit();
-        }
-
-        protected virtual void ConstructWeapon<T>(T info) where T : ItemInfo
-        {
         }
     }
 }

@@ -51,5 +51,6 @@ namespace _Project.CodeBase.StaticData
         public AmmoType AmmoType => _ammoType;
         public bool Scoping => _scoping;
         public MagazineInfo MagazineInfo => _magazineInfo;
+        [field: SerializeField] public int FractionCount { get; private set; } = 1;
     }
 }

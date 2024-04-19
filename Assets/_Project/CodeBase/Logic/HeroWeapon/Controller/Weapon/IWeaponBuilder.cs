@@ -1,11 +1,11 @@
-using _Project.CodeBase.Logic.Hero.Shooting;
+using System;
 using Cysharp.Threading.Tasks;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
     public interface IWeaponBuilder : IItemManipulator
     {
-        WeaponType Type { get; }
+        Type SupportedType { get; }
         UniTask AnimatorHideWeapon();
         void FinishItemDestroy();
     }

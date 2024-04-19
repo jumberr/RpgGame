@@ -1,6 +1,7 @@
 ﻿using System;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon.Effects;
+using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
 using NTC.Global.Pool;
 using UnityEngine;
@@ -8,7 +9,7 @@ using Random = UnityEngine.Random;
 
 namespace _Project.CodeBase.Logic.Hero.Shooting
 {
-    public class BaseShooting
+    public abstract class BaseShooting : IShootingSystem
     {
         private const float TimeDestroyFX = 0.1f;
         private const float TimeDestroyEnvFx = 2f;
@@ -18,6 +19,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
         protected Transform FirePoint;
         protected float Range;
         protected float Damage;
+        protected int FractionCount;
 
         private readonly HeroState _state;
         private readonly LineFade _lineFade;
@@ -32,18 +34,21 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
             LayerMask = layerMask;
             Particles = particles;
         }
-
+        
         public void SetupFirePoint(Transform firePoint) => 
             FirePoint = firePoint;
 
-        public void SetupConfig(float damage, float range, float accuracyDistance, float aimAccuracy, float accuracy)
+        public void SetupConfig<T>(T specs) where T : GunSpecs
         {
-            Damage = damage;
-            Range = range;
-            _accuracyDistance = accuracyDistance;
-            _aimAccuracy = aimAccuracy;
-            _accuracy = accuracy;
+            Damage = specs.Damage;
+            Range = specs.Range;
+            _accuracyDistance = specs.AccuracyDistance;
+            _aimAccuracy = specs.AimAccuracy;
+            _accuracy = specs.Accuracy;
+            FractionCount = specs.FractionCount;
         }
+        
+        public abstract void Shoot();
 
         protected async void HitParticles(RaycastHit hit, string tag, GameObject particles)
         {

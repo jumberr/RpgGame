@@ -9,16 +9,14 @@ using UnityEngine;
 
 namespace _Project.CodeBase.Logic.Hero.Shooting
 {
-    public class DefaultShooting : BaseShooting, IShootingSystem
+    public class DefaultShooting : BaseShooting
     {
-        protected int FractionCount = 1;
-
         public DefaultShooting(HeroState state, LineFade lineFade, LayerMask layerMask,
             ShootingParticles particles) : base(state, lineFade, layerMask, particles)
         {
         }
 
-        public void Shoot()
+        public override void Shoot()
         {
             var dir = GetRandomDirections();
             MuzzleFlash();

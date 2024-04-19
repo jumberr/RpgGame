@@ -41,7 +41,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private void OnDisable() => 
             _inventory.OnUpdate -= InventoryUpdate;
 
-        public async UniTask CreateNewItem(int slotID, CommonItemPart part, ItemInfo info, ItemType type, GameObject prefab = null)
+        public async UniTask CreateNewItem(int slotID, CommonItemPart part, ItemInfo info, GameObject prefab = null)
         {
             if (_currentHandler != null)
             {
@@ -49,15 +49,17 @@ namespace _Project.CodeBase.Logic.HeroWeapon
                 OnSwitch?.Invoke(false);
             }
 
-            _currentHandler = GetItemHandler(type);
+            _currentHandler = GetItemHandler(info.GetType()); // todo update getting type
+            if (_currentHandler == null) return;
+            
             await _currentHandler.CreateNewItem(slotID, part, info, prefab);
             OnSwitch?.Invoke(true);
         }
 
         private void InventoryUpdate() => 
             _currentHandler?.InventoryUpdate();
-        
-        private IItemHandler GetItemHandler(ItemType type) => 
-            _handlers.FirstOrDefault(itemHandler => itemHandler.ItemType == type);
+
+        private IItemHandler GetItemHandler(Type type) => 
+            _handlers.FirstOrDefault(itemHandler => Array.Exists(itemHandler.SupportedTypes, x=> x == type));
     }
 }
