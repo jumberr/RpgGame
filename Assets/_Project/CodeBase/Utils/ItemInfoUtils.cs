@@ -9,12 +9,16 @@ namespace _Project.CodeBase.Utils
             if (IsKnife(info, out var knifeInfo)) return true;
             if (IsGun(info, out var gunInfo)) return true;
             if (IsRevolver(info, out var revolverSpecs)) return true;
+            if (IsGrenade(info, out var grenadeSpecs)) return true;
             return false;
         }
 
         public static bool IsRangedWeapon(ItemInfo info) => 
             IsGun(info, out _) || IsRevolver(info, out _);
 
+        public static bool IsGrenade(ItemInfo info, out WeaponInfo<GrenadeSpecs> result) =>
+            (result = info as GrenadeInfo) is not null;
+        
         public static bool IsRevolver(ItemInfo info, out WeaponInfo<RevolverSpecs> result) =>
             (result = info as WeaponInfo<RevolverSpecs>) is not null;
 

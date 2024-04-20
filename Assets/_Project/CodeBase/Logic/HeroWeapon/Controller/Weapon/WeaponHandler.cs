@@ -26,12 +26,12 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             base.Init(facade, itemsInfo, parent);
             foreach (var builder in _builders)
                 builder.Init(facade, itemsInfo, parent);
-            SupportedTypes = _builders.Select(x => x.SupportedType).ToArray();
+            SupportedTypes = _builders.SelectMany(x => x.SupportedTypes).ToArray();
         }
 
         public override async UniTask CreateNewItem(int slotID, CommonItemPart part, ItemInfo info, GameObject prefab)
         {
-            _builder = GetBuilder(info.GetType()); // todo fix item type
+            _builder = GetBuilder(info.GetType());
             if (_builder == null) return;
             
             await _builder.CreateNewItem(slotID, part, info, prefab);
@@ -49,6 +49,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         }
 
         private IWeaponBuilder GetBuilder(Type type) => 
-            _builders.FirstOrDefault(x => x.SupportedType == type);
+            _builders.FirstOrDefault(builder => Array.Exists(builder.SupportedTypes, x => x == type));
     }
 }

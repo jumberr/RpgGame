@@ -13,7 +13,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private readonly AttachmentController _attachmentController;
         private WeaponItem _weaponItem;
         private GunInfo _gunInfo;
-        public override Type SupportedType => typeof(GunInfo);
+        public override Type[] SupportedTypes { get; } = {typeof(GunInfo)};
 
 
         protected RangeWeaponBuilder(AttachmentController attachmentController) => 

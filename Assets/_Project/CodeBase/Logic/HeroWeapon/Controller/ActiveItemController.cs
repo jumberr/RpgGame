@@ -69,6 +69,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
                 _currentHandler = GetItemHandler(gun.GetType());
             else if (ItemInfoUtils.IsRevolver(info, out var revolver))
                 _currentHandler = GetItemHandler(revolver.GetType());
+            else if (ItemInfoUtils.IsGrenade(info, out var grenade))
+                _currentHandler = GetItemHandler(grenade.GetType());
         }
 
         private IItemHandler GetItemHandler(Type type) => 

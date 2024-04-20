@@ -5,7 +5,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 {
     public interface IWeaponBuilder : IItemManipulator
     {
-        Type SupportedType { get; }
+        Type[] SupportedTypes { get; }
         UniTask AnimatorHideWeapon();
         void FinishItemDestroy();
     }

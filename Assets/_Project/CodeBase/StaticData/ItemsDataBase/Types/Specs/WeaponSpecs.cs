@@ -1,6 +1,4 @@
 ﻿using System;
-using Sirenix.OdinInspector;
-using UnityEngine;
 
 namespace _Project.CodeBase.StaticData
 {

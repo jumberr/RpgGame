@@ -5,7 +5,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 {
     public class GrenadeWeaponBuilder : RangeWeaponBuilder
     {
-        public override Type SupportedType => typeof(GrenadeInfo);
+        public override Type[] SupportedTypes { get; } = {typeof(GrenadeInfo), typeof(ExplosiveGrenadeInfo)};
 
 
         protected GrenadeWeaponBuilder(AttachmentController attachmentController) : base(attachmentController)

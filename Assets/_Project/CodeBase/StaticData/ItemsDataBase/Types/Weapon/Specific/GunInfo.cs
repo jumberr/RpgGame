@@ -14,7 +14,6 @@ namespace _Project.CodeBase.StaticData
         [SerializeField] private GunSettings _defaultSettings;
         [SerializeField] private AttachmentPossibilityContainer _attachmentPossibility;
         
-        
         public List<ItemName> PossibleAttachments => _possibleAttachments;
         public List<ItemName> DefaultAttachments => _defaultAttachments;
         public GunSettings DefaultSettings => _defaultSettings;

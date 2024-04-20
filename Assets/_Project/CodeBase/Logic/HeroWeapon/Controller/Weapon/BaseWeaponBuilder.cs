@@ -16,7 +16,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private Transform _parent;
 
         public CurrentItem CurrentItem { get; } = new CurrentItem();
-        public abstract Type SupportedType { get; }
+        public abstract Type[] SupportedTypes { get; }
 
         
         public void Init(HeroFacade heroFacade, ItemsInfo itemsInfo, Transform parent)
