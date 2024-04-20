@@ -42,6 +42,7 @@ MonoBehaviour:
     _damage: 100
     _range: 100
     _fireRate: 68.78809
+    <AudioClip>k__BackingField: {fileID: 0}
     _recoil: {x: -5, y: 5, z: 1}
     _aimRecoil: {x: -2.5, y: 2.5, z: 0.5}
     _snappiness: 8.00923
@@ -57,13 +58,12 @@ MonoBehaviour:
     _magazineInfo:
       BulletsMax: 5
     <FractionCount>k__BackingField: 1
-  _possibleAttachments: 
-  _defaultAttachments: 
-  _defaultSettings:
-    _scopeSpecs:
-      _aimingInTime: 0.2
-      _aimingOutTime: 0.2
-      _scopeMultiplier: 1.2
-    _shootSound: {fileID: 0}
-  _attachmentPossibility:
-    _list: []
+    <PossibleAttachments>k__BackingField: 
+    <DefaultAttachments>k__BackingField: 
+    <DefaultSettings>k__BackingField:
+      _scopeSpecs:
+        _aimingInTime: 0.2
+        _aimingOutTime: 0.2
+        _scopeMultiplier: 1.2
+    <AttachmentPossibility>k__BackingField:
+      _list: []

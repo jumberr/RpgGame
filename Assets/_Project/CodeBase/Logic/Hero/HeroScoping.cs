@@ -92,9 +92,12 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void ApplyScopeSettings(WeaponInfo<GunSpecs> gunInfo)
         {
-            _isNeedScope = gunInfo.GetSpecs().Scoping;
-            //_scopeSpecs = gunInfo.DefaultSettings.ScopeSpecs; // todo update scope settings
-            //_adsFov = _startFov / _scopeSpecs.ScopeMultiplier;
+            var gunSpecs = gunInfo.GetSpecs();
+            _isNeedScope = gunSpecs.Scoping;
+            if (!_isNeedScope) return;
+            
+            _scopeSpecs = gunSpecs.DefaultSettings.ScopeSpecs;
+            _adsFov = _startFov / _scopeSpecs.ScopeMultiplier;
         }
 
         private void TurnScopeRender(bool value, float time)

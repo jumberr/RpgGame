@@ -12,7 +12,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
     {
         private readonly AttachmentController _attachmentController;
         private WeaponItem _weaponItem;
-        private GunInfo _gunInfo;
+        private WeaponInfo<GunSpecs> _gunInfo;
         private GunSpecs _gunSpecs;
         public override Type[] SupportedTypes { get; } = {typeof(GunInfo)};
 
@@ -38,8 +38,10 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         protected override void PrepareData(CommonItemPart part, ItemInfo info)
         {
             _weaponItem = part.Item as WeaponItem;
-            _gunInfo = info as GunInfo;
-            _gunSpecs = _gunInfo.GetSpecs();
+            if (!ItemInfoUtils.IsGun(info, out var gunInfo)) return;
+
+            _gunInfo = gunInfo;
+            _gunSpecs = gunInfo.GetSpecs();
         }
 
         protected override void ConstructWeapon<T>(WeaponInfo<T> info)
