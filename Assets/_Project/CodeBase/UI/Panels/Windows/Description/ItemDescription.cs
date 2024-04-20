@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData;
+using _Project.CodeBase.Utils;
 using _Project.CodeBase.Utils.Extensions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ namespace _Project.CodeBase.UI
         private List<Component> _components = new List<Component>();
         private bool _hidden;
         private int _slotID;
+        private GunSpecs _gunSpecs;
 
         private void Start()
         {
@@ -58,8 +60,9 @@ namespace _Project.CodeBase.UI
         {
             _attachmentController.Turn(false);
 
-            if (!(info is GunInfo gun)) return;
-            var possibleTypes = gun.AttachmentPossibility.GetPossibleTypes();
+            if (!ItemInfoUtils.IsGun(info, out var gunInfo)) return;
+            _gunSpecs = gunInfo.GetSpecs();
+            var possibleTypes = _gunSpecs.AttachmentPossibility.GetPossibleTypes();
             if (possibleTypes.Count <= 0) return;
             // TODO: pass here IItem with attachments data or just possible types
             EnableAttachmentSlots(possibleTypes);

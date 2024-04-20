@@ -13,6 +13,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private readonly AttachmentController _attachmentController;
         private WeaponItem _weaponItem;
         private GunInfo _gunInfo;
+        private GunSpecs _gunSpecs;
         public override Type[] SupportedTypes { get; } = {typeof(GunInfo)};
 
 
@@ -38,6 +39,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         {
             _weaponItem = part.Item as WeaponItem;
             _gunInfo = info as GunInfo;
+            _gunSpecs = _gunInfo.GetSpecs();
         }
 
         protected override void ConstructWeapon<T>(WeaponInfo<T> info)
@@ -65,7 +67,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         private void CreateDefaultAttachments()
         {
-            foreach (var itemName in _gunInfo.DefaultAttachments) 
+            foreach (var itemName in _gunSpecs.DefaultAttachments) 
                 CreateAttachment(itemName);
         }
 
