@@ -7,7 +7,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
     public class MeleeWeaponBuilder : BaseWeaponBuilder
     {
         private KnifeInfo _knifeInfo;
-        public override Type SupportedType => typeof(WeaponInfo<WeaponSpecs>);
+        public override Type SupportedType => typeof(KnifeInfo);
 
 
         protected override void PrepareData(CommonItemPart part, ItemInfo info) => 

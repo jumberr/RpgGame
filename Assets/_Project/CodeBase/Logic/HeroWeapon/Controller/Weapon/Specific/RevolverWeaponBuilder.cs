@@ -5,7 +5,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 {
     public class RevolverWeaponBuilder : RangeWeaponBuilder
     {
-        public override Type SupportedType => typeof(WeaponInfo<RevolverSpecs>);
+        public override Type SupportedType => typeof(RevolverInfo);
         
 
         protected RevolverWeaponBuilder(AttachmentController attachmentController) : base(attachmentController)

@@ -1,6 +1,5 @@
 ﻿using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.StaticData;
-using _Project.CodeBase.Utils;
 using NTC.Global.Cache;
 using UnityEngine;
 
@@ -21,8 +20,11 @@ namespace _Project.CodeBase.Logic.Hero
         public void Setup(KnifeInfo knifeInfo) => 
             _gunSpecs = knifeInfo.GetDefaultGunSpecs();
 
-        public void Run() => 
+        public void Run()
+        {
+            if (_gunSpecs == null) return;
             ProceedRecoil();
+        }
 
         public void RecoilFire()
         {
