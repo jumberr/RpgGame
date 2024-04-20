@@ -18,6 +18,7 @@ namespace _Project.CodeBase.Logic.Hero
 
         private readonly Collider[] _hitColliders = new Collider[20];
         private ExplosiveGrenadeInfo _grenadeInfo;
+        private GrenadeSpecs _grenadeSpecs;
         private ExplosiveGrenadeData _explosiveGrenadeData;
 
         private Vector3 Position => Rigidbody.transform.position;
@@ -37,12 +38,13 @@ namespace _Project.CodeBase.Logic.Hero
         {
             if (other.gameObject.CompareTag(TagConstants.Player)) return;
             
-            _audioSource.SetupAndPlay(_grenadeInfo.ImpactSoundData);
+            _audioSource.SetupAndPlay(_grenadeSpecs.ImpactSoundData);
         }
 
         public async UniTask Throw(ExplosiveGrenadeInfo grenadeInfo, Vector3 force)
         {
             _grenadeInfo = grenadeInfo;
+            _grenadeSpecs = _grenadeInfo.GetSpecs();
             _explosiveGrenadeData = grenadeInfo.ExplosiveGrenadeData;
             
             Rigidbody.AddForce(force, ForceMode.VelocityChange);

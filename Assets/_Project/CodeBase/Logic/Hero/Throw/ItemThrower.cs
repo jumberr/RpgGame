@@ -25,6 +25,7 @@ namespace _Project.CodeBase.Logic.Hero
         private HeroAnimator _animator;
         private Transform _mainCamera;
         private GrenadeInfo _grenadeInfo;
+        private GrenadeSpecs _grenadeSpecs;
         private GrenadeView _projectile;
         private GrenadeIKController _ikController;
         private CancellationTokenSource _cts;
@@ -78,8 +79,9 @@ namespace _Project.CodeBase.Logic.Hero
             if (item != null && item.Info is GrenadeInfo grenadeInfo)
             {
                 _grenadeInfo = grenadeInfo;
+                _grenadeSpecs = _grenadeInfo.GetSpecs();
                 item.GameObject.TryGetComponent(out _ikController);
-                SpawnProjectile(grenadeInfo);
+                SpawnProjectile();
             }
             else
                 ClearInfo();
@@ -98,7 +100,7 @@ namespace _Project.CodeBase.Logic.Hero
         private async void ChargeThrow()
         {
             _cts = new CancellationTokenSource();
-            _soundService.PlaySound(_grenadeInfo.PullPinSoundData).Forget();
+            _soundService.PlaySound(_grenadeSpecs.PullPinSoundData).Forget();
             
             while (Application.isPlaying)
             {
@@ -107,7 +109,7 @@ namespace _Project.CodeBase.Logic.Hero
                 if (await UniTask.Delay(TimeSpan.FromSeconds(deltaTime), cancellationToken: _cts.Token).SuppressCancellationThrow()) break;
 
                 _chargeTime += deltaTime;
-                _trajectoryDrawer.ShowTrajectory(_ikController.SpawnPosition.position, GetForceDirection(),GetForce() / _grenadeInfo.ThrowData.MaxForce);
+                _trajectoryDrawer.ShowTrajectory(_ikController.SpawnPosition.position, GetForceDirection(),GetForce() / _grenadeSpecs.ThrowData.MaxForce);
             }
         }
 
@@ -130,7 +132,7 @@ namespace _Project.CodeBase.Logic.Hero
             if (_inventory.FindItemAmount(_grenadeInfo.UIInfo.Name) > 0)
             {
                 await _animator.ShowWeapon();
-                SpawnProjectile(_grenadeInfo);
+                SpawnProjectile();
             }
             else
                 ClearInfo();
@@ -140,15 +142,15 @@ namespace _Project.CodeBase.Logic.Hero
         {
             projectile.UnparentGrenade();
             TogglePhysics(projectile, true);
-            _soundService.PlaySound(_grenadeInfo.ThrowData.ThrowSoundData).Forget();
+            _soundService.PlaySound(_grenadeSpecs.ThrowData.ThrowSoundData).Forget();
             
             await projectile.Throw(_grenadeInfo as ExplosiveGrenadeInfo, GetForceDirection());
             DespawnProjectile(projectile);
         }
 
-        private void SpawnProjectile(GrenadeInfo grenadeInfo)
+        private void SpawnProjectile()
         {
-            _projectile = NightPool.Spawn(grenadeInfo.GrenadeProjectile, _ikController.SpawnPosition, Quaternion.identity);
+            _projectile = NightPool.Spawn(_grenadeSpecs.GrenadeProjectile, _ikController.SpawnPosition, Quaternion.identity);
             _projectile.ResetTransform();
             TogglePhysics(_projectile, false);
         }
@@ -195,6 +197,6 @@ namespace _Project.CodeBase.Logic.Hero
         }
         
         private float GetForce() => 
-            Mathf.Min(_chargeTime * _grenadeInfo.ThrowData.ThrowForce, _grenadeInfo.ThrowData.MaxForce);
+            Mathf.Min(_chargeTime * _grenadeSpecs.ThrowData.ThrowForce, _grenadeSpecs.ThrowData.MaxForce);
     }
 }

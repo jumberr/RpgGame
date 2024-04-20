@@ -6,7 +6,7 @@ using UnityEngine;
 namespace _Project.CodeBase.StaticData
 {
     [Serializable]
-    public class GunSpecs : WeaponSpecs
+    public class GunSpecs : KnifeSpecs
     {
         [SerializeField] private Vector3 _recoil;
         [SerializeField] private Vector3 _aimRecoil;

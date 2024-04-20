@@ -4,14 +4,14 @@ using UnityEngine;
 namespace _Project.CodeBase.StaticData
 {
     [Serializable]
-    public class KnifeInfo : WeaponInfo<WeaponSpecs>
+    public class KnifeInfo : WeaponInfo<KnifeSpecs>
     {
-        [SerializeField] private WeaponSpecs _weaponSpecs;
+        [SerializeField] private KnifeSpecs _knifeSpecs;
         private GunSpecs _defaultGunSpecs = new GunSpecs();
         
         
-        public override WeaponSpecs GetSpecs() => 
-            _weaponSpecs;
+        public override KnifeSpecs GetSpecs() => 
+            _knifeSpecs;
 
         public GunSpecs GetDefaultGunSpecs() => 
             _defaultGunSpecs;

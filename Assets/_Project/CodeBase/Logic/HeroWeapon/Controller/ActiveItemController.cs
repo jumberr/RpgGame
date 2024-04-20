@@ -6,6 +6,7 @@ using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.HeroWeapon.Data;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData;
+using _Project.CodeBase.Utils;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -49,7 +50,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
                 OnSwitch?.Invoke(false);
             }
 
-            _currentHandler = GetItemHandler(info.GetType()); // todo update getting type
+            GetItemHandler(info);
+            
             if (_currentHandler == null) return;
             
             await _currentHandler.CreateNewItem(slotID, part, info, prefab);
@@ -58,6 +60,16 @@ namespace _Project.CodeBase.Logic.HeroWeapon
 
         private void InventoryUpdate() => 
             _currentHandler?.InventoryUpdate();
+
+        private void GetItemHandler(ItemInfo info) // todo mb refactor
+        {
+            if (ItemInfoUtils.IsKnife(info, out var knife)) 
+                _currentHandler = GetItemHandler(knife.GetType());
+            else if (ItemInfoUtils.IsGun(info, out var gun))
+                _currentHandler = GetItemHandler(gun.GetType());
+            else if (ItemInfoUtils.IsRevolver(info, out var revolver))
+                _currentHandler = GetItemHandler(revolver.GetType());
+        }
 
         private IItemHandler GetItemHandler(Type type) => 
             _handlers.FirstOrDefault(itemHandler => Array.Exists(itemHandler.SupportedTypes, x=> x == type));

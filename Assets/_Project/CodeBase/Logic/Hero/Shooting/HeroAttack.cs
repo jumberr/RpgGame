@@ -154,7 +154,7 @@ namespace _Project.CodeBase.Logic.Hero.Shooting
                 _automaticFireTimer = 0;
         }
 
-        private void UpdateFireRate(WeaponSpecs weaponSpecs) => 
-            _fireSpeed = SecondsInMinute / weaponSpecs.FireRate;
+        private void UpdateFireRate<T>(T specs) where T : KnifeSpecs => 
+            _fireSpeed = SecondsInMinute / specs.FireRate;
     }
 }

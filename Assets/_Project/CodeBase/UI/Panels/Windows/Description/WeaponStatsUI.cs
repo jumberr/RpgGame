@@ -48,7 +48,7 @@ namespace _Project.CodeBase.UI
             UpdateWeaponView(knifeInfo.GetSpecs());
         }
 
-        private void UpdateWeaponView(WeaponSpecs specs)
+        private void UpdateWeaponView(KnifeSpecs specs)
         {
             _damage.UpdateView(specs.Damage, 100);
             _range.UpdateView(specs.Range, 100);
