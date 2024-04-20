@@ -4,6 +4,7 @@ using _Project.CodeBase.Data;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.HeroWeapon.Data;
 using _Project.CodeBase.StaticData;
+using _Project.CodeBase.Utils;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -49,6 +50,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         }
 
         private IWeaponBuilder GetBuilder(Type type) => 
-            _builders.FirstOrDefault(builder => Array.Exists(builder.SupportedTypes, x => x == type));
+            _builders.FirstOrDefault(builder => builder.IsContainsSupportedType(type));
     }
 }

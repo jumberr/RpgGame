@@ -1,11 +1,10 @@
-using System;
+using _Project.CodeBase.Utils;
 using Cysharp.Threading.Tasks;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
-    public interface IItemHandler : IItemManipulator
+    public interface IItemHandler : IItemManipulator, ITypeRestricted
     {
-        public Type[] SupportedTypes { get; }
         void InventoryUpdate();
         UniTask Destroy();
     }

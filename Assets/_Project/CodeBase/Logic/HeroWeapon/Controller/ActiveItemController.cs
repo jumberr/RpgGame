@@ -74,6 +74,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         }
 
         private IItemHandler GetItemHandler(Type type) => 
-            _handlers.FirstOrDefault(itemHandler => Array.Exists(itemHandler.SupportedTypes, x=> x == type));
+            _handlers.FirstOrDefault(handler => handler.IsContainsSupportedType(type));
     }
 }
