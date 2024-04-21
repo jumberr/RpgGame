@@ -241,6 +241,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 6811241282001189587}
   _initialRotation: {x: 0, y: 0, z: 54.33}
+  _grenadeInHandsLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _releasedGrenadeLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   <Rigidbody>k__BackingField: {fileID: 1921048008813005083}
   <IKTargets>k__BackingField:
   - {fileID: 1618553820706742535}

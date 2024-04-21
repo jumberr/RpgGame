@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.UI;
 using _Project.CodeBase.UI.Services;
@@ -25,15 +26,24 @@ namespace _Project.CodeBase.Logic.Hero
         {
             ToggleTrajectory(true);
             
-            var points = new Vector3[_view.DefaultPointsCount];
+            var points = new List<Vector3>();
 
-            for (var i = 0; i < points.Length; i++)
+            for (var i = 0; i < _view.DefaultPointsCount; i++)
             {
                 var time = i * 0.1f;
-                points[i] = origin + speed * time + Physics.gravity * time * time / 2f;
+                points.Add(origin + speed * time + Physics.gravity * time * time / 2f);
+
+                if (i <= 1) continue;
+                
+                var direction = points[i] - points[i - 1];
+                if (Physics.Raycast(new Ray(points[i - 1], direction), out var hit, direction.magnitude))
+                {
+                    points[i] = hit.point;
+                    if (hit.collider != null) break;
+                }
             }
             
-            _view.SetPositions(points);
+            _view.SetPositions(points.ToArray());
             _progressView.SetProgress(progress);
         }
 

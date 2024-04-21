@@ -31,14 +31,20 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             PrepareData(part, info);
             await CreateWeapon(slotID, info, prefab);
 
-            if (ItemInfoUtils.IsKnife(info, out var knife))
+            if (ItemInfoUtils.IsKnife(info, out var knife)) // todo refactor mb
             {
                 ConstructWeapon(knife);
                 return;
             }
 
             if (ItemInfoUtils.IsGun(info, out var gun))
+            {
                 ConstructWeapon(gun);
+                return;
+            }
+
+            if (ItemInfoUtils.IsGrenade(info, out var grenade))
+                ConstructWeapon(grenade);
         }
         
         public async UniTask AnimatorHideWeapon()

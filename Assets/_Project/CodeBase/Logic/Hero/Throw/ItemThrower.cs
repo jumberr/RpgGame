@@ -4,6 +4,7 @@ using _Project.CodeBase.Infrastructure.Factory;
 using _Project.CodeBase.Infrastructure.Services;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.HeroWeapon;
+using _Project.CodeBase.Logic.HeroWeapon.Data;
 using _Project.CodeBase.Logic.Inventory;
 using _Project.CodeBase.StaticData;
 using Cysharp.Threading.Tasks;
@@ -20,11 +21,10 @@ namespace _Project.CodeBase.Logic.Hero
         private readonly InputService _inputService;
         private readonly SoundService _soundService;
 
-        private ActiveItemController _activeItemController;
         private HeroInventory _inventory;
         private HeroAnimator _animator;
         private Transform _mainCamera;
-        private GrenadeInfo _grenadeInfo;
+        private WeaponInfo<GrenadeSpecs> _grenadeInfo;
         private GrenadeSpecs _grenadeSpecs;
         private GrenadeView _projectile;
         private GrenadeIKController _ikController;
@@ -54,29 +54,12 @@ namespace _Project.CodeBase.Logic.Hero
         public void Dispose()
         {
             _inputService.ScopeAction.Event -= HandleThrowing;
-            if (_activeItemController != null)
-                _activeItemController.OnSwitch -= ItemSwitched;
-            
             Cleanup();
         }
 
-        private void HeroCreated(HeroFacade heroFacade)
+        public void SetupItem(CurrentItem item, WeaponInfo<GrenadeSpecs> grenadeInfo)
         {
-            _gameFactory.HeroCreated -= HeroCreated;
-            _activeItemController = heroFacade.ActiveItemController;
-            _inventory = heroFacade.Inventory;
-            _animator = heroFacade.Animator;
-            _mainCamera = heroFacade.CameraTransform;
-            
-            _activeItemController.OnSwitch += ItemSwitched;
-        }
-
-        private void ItemSwitched(bool value)
-        {
-            if (!value) return;
-            var item = _activeItemController.CurrentItem;
-
-            if (item != null && item.Info is GrenadeInfo grenadeInfo)
+            if (item != null && grenadeInfo != null)
             {
                 _grenadeInfo = grenadeInfo;
                 _grenadeSpecs = _grenadeInfo.GetSpecs();
@@ -85,6 +68,21 @@ namespace _Project.CodeBase.Logic.Hero
             }
             else
                 ClearInfo();
+        }
+
+        private void SpawnProjectile()
+        {
+            _projectile = NightPool.Spawn(_grenadeSpecs.GrenadeProjectile, _ikController.SpawnPosition, Quaternion.identity);
+            _projectile.ResetTransform();
+            TogglePhysics(_projectile, false);
+        }
+        
+        private void HeroCreated(HeroFacade heroFacade)
+        {
+            _gameFactory.HeroCreated -= HeroCreated;
+            _inventory = heroFacade.Inventory;
+            _animator = heroFacade.Animator;
+            _mainCamera = heroFacade.CameraTransform;
         }
 
         private void HandleThrowing(bool value)
@@ -104,11 +102,9 @@ namespace _Project.CodeBase.Logic.Hero
             
             while (Application.isPlaying)
             {
-                var deltaTime = Time.deltaTime;
+                if (await UniTask.Yield(cancellationToken: _cts.Token).SuppressCancellationThrow()) break;
 
-                if (await UniTask.Delay(TimeSpan.FromSeconds(deltaTime), cancellationToken: _cts.Token).SuppressCancellationThrow()) break;
-
-                _chargeTime += deltaTime;
+                _chargeTime += Time.deltaTime;
                 _trajectoryDrawer.ShowTrajectory(_ikController.SpawnPosition.position, GetForceDirection(),GetForce() / _grenadeSpecs.ThrowData.MaxForce);
             }
         }
@@ -146,13 +142,6 @@ namespace _Project.CodeBase.Logic.Hero
             
             await projectile.Throw(_grenadeInfo as ExplosiveGrenadeInfo, GetForceDirection());
             DespawnProjectile(projectile);
-        }
-
-        private void SpawnProjectile()
-        {
-            _projectile = NightPool.Spawn(_grenadeSpecs.GrenadeProjectile, _ikController.SpawnPosition, Quaternion.identity);
-            _projectile.ResetTransform();
-            TogglePhysics(_projectile, false);
         }
 
         private void ClearInfo() => 
