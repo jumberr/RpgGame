@@ -10,6 +10,10 @@ namespace _Project.CodeBase.Infrastructure
             Container
                 .BindInterfacesAndSelfTo<ItemThrower>()
                 .AsSingle();
+            
+            Container
+                .BindInterfacesAndSelfTo<ThrowAnimation>()
+                .AsSingle();
 
             Container
                 .Bind<TrajectoryDrawer>()

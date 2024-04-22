@@ -69,9 +69,10 @@ namespace _Project.CodeBase.Logic.Hero
             transform.SetParent(null);
             UpdateLayer(_releasedGrenadeLayer);
         }
-
+        
         public void TogglePhysics(bool value)
         {
+            Rigidbody.isKinematic = !value;
             Rigidbody.useGravity = value;
             Rigidbody.velocity = Vector3.zero;
             Rigidbody.angularVelocity = Vector3.zero;

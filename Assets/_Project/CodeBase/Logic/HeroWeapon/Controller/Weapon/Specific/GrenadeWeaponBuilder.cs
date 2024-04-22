@@ -30,5 +30,11 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             
             _itemThrower.SetupItem(CurrentItem, grenadeInfo);
         }
+        
+        public override void FinishItemDestroy()
+        {
+            base.FinishItemDestroy();
+            _itemThrower.ClearInfo();
+        }
     }
 }

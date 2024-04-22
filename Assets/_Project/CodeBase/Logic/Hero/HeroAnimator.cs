@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Animations;
 
 namespace _Project.CodeBase.Logic.Hero
 {
@@ -19,7 +17,9 @@ namespace _Project.CodeBase.Logic.Hero
         private static readonly int Show = Animator.StringToHash("Show");
         private static readonly int Shoot = Animator.StringToHash("Shoot");
         private static readonly int EndRevolverReload = Animator.StringToHash("EndRevolverReload");
-
+        private static readonly int PrepareThrowKey = Animator.StringToHash("PrepareThrow");
+        private static readonly int ThrowKey = Animator.StringToHash("Throw");
+        
         private Animator _animator;
 
         public void Construct(Animator animator) => 
@@ -68,6 +68,15 @@ namespace _Project.CodeBase.Logic.Hero
         {
             if (!IsAnimatorExists()) return;
             _animator.SetTrigger(EndRevolverReload);
+        }
+
+        public void PrepareThrowing() => 
+            _animator.Play(PrepareThrowKey);
+
+        public async UniTask Throw()
+        {
+            _animator.Play(ThrowKey);
+            await WaitForCurrentAnimation();
         }
 
         private async UniTask ProceedReload(float reloadTime, int key)

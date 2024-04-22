@@ -17,6 +17,7 @@ namespace _Project.CodeBase.Logic.Hero
     public class ItemThrower : IInitializable, IDisposable
     {
         private readonly IGameFactory _gameFactory;
+        private readonly ThrowAnimation _throwAnimation;
         private readonly TrajectoryDrawer _trajectoryDrawer;
         private readonly InputService _inputService;
         private readonly SoundService _soundService;
@@ -36,11 +37,13 @@ namespace _Project.CodeBase.Logic.Hero
 
         public ItemThrower(
             IGameFactory gameFactory,
+            ThrowAnimation throwAnimation,
             TrajectoryDrawer trajectoryDrawer,
             InputService inputService,
             SoundService soundService)
         {
             _gameFactory = gameFactory;
+            _throwAnimation = throwAnimation;
             _trajectoryDrawer = trajectoryDrawer;
             _inputService = inputService;
             _soundService = soundService;
@@ -59,17 +62,17 @@ namespace _Project.CodeBase.Logic.Hero
 
         public void SetupItem(CurrentItem item, WeaponInfo<GrenadeSpecs> grenadeInfo)
         {
-            if (item != null && grenadeInfo != null)
-            {
-                _grenadeInfo = grenadeInfo;
-                _grenadeSpecs = _grenadeInfo.GetSpecs();
-                item.GameObject.TryGetComponent(out _ikController);
-                SpawnProjectile();
-            }
-            else
-                ClearInfo();
+            if (item == null || grenadeInfo == null) return;
+            
+            _grenadeInfo = grenadeInfo;
+            _grenadeSpecs = _grenadeInfo.GetSpecs();
+            item.GameObject.TryGetComponent(out _ikController);
+            SpawnProjectile();
         }
 
+        public void ClearInfo() => 
+            _grenadeInfo = null;
+        
         private void SpawnProjectile()
         {
             _projectile = NightPool.Spawn(_grenadeSpecs.GrenadeProjectile, _ikController.SpawnPosition, Quaternion.identity);
@@ -88,7 +91,7 @@ namespace _Project.CodeBase.Logic.Hero
         private void HandleThrowing(bool value)
         {
             if (_grenadeInfo is null) return;
-
+            
             if (value)
                 ChargeThrow();
             else
@@ -112,7 +115,8 @@ namespace _Project.CodeBase.Logic.Hero
         private async UniTask ReleaseThrow()
         {
             Cleanup();
-
+            
+            _throwAnimation.HandleThrowAnimation().Forget();
             _inventory.RemoveItemFromSlot(_grenadeInfo.UIInfo.Name);
             ThrowItem(_projectile).Forget();
             
@@ -143,9 +147,6 @@ namespace _Project.CodeBase.Logic.Hero
             await projectile.Throw(_grenadeInfo as ExplosiveGrenadeInfo, GetForceDirection());
             DespawnProjectile(projectile);
         }
-
-        private void ClearInfo() => 
-            _grenadeInfo = null;
 
         private void DespawnProjectile(GrenadeView projectile)
         {
