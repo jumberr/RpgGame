@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
@@ -95,7 +96,7 @@ namespace _Project.CodeBase.Logic.Hero
             _state.WasGrounded = _state.Grounded;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _inputService.MoveAction.Event -= UpdateDirection;
             _inputService.JumpAction.Event -= Jump;

@@ -3,6 +3,7 @@
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.gasgiant.camera-shake": "https://github.com/gasgiant/Camera-Shake.git#upm",
     "com.nomnom.raycast-visualization": "https://github.com/nomnomab/RaycastVisualization.git",
+    "com.tdw.better.statemachine": "0.1.4",
     "com.unity.2d.pixel-perfect": "5.0.3",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
@@ -56,5 +57,15 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "Better Plugins",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.uurha",
+        "com.tdw"
+      ]
+    }
+  ]
 }
