@@ -5,7 +5,7 @@ using Zenject;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
-    public class WeaponSway : NightCache, INightInit, INightRun
+    public class WeaponSway : NightCache, INightInit, INightRun // todo refactor
     {
         [Header("Weapon Sway")]
         [SerializeField] private float _swayAmount;

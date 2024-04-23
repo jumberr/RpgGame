@@ -14,7 +14,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         protected override void PrepareData(CommonItemPart part, ItemInfo info) => 
             _knifeInfo = info as KnifeInfo;
         
-        protected override void ConstructWeapon<T>(WeaponInfo<T> info)
+        protected override void ConstructWeapon(ItemInfo info)
         {
             if (info is not KnifeInfo knifeInfo) return;
             

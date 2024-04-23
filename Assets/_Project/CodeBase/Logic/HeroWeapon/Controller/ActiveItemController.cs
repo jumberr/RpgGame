@@ -50,8 +50,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
                 OnSwitch?.Invoke(false);
             }
 
-            GetItemHandler(info);
-            
+            _currentHandler = GetItemHandler(info);
             if (_currentHandler == null) return;
             
             await _currentHandler.CreateNewItem(slotID, part, info, prefab);
@@ -61,17 +60,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private void InventoryUpdate() => 
             _currentHandler?.InventoryUpdate();
 
-        private void GetItemHandler(ItemInfo info) // todo mb refactor
-        {
-            if (ItemInfoUtils.IsKnife(info, out var knife)) 
-                _currentHandler = GetItemHandler(knife.GetType());
-            else if (ItemInfoUtils.IsGun(info, out var gun))
-                _currentHandler = GetItemHandler(gun.GetType());
-            else if (ItemInfoUtils.IsRevolver(info, out var revolver))
-                _currentHandler = GetItemHandler(revolver.GetType());
-            else if (ItemInfoUtils.IsGrenade(info, out var grenade))
-                _currentHandler = GetItemHandler(grenade.GetType());
-        }
+        private IItemHandler GetItemHandler(ItemInfo info) => 
+            GetItemHandler(info.GetType());
 
         private IItemHandler GetItemHandler(Type type) => 
             _handlers.FirstOrDefault(handler => handler.IsContainsSupportedType(type));

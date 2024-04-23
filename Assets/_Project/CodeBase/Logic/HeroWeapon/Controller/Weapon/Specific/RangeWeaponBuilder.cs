@@ -44,7 +44,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             _gunSpecs = gunInfo.GetSpecs();
         }
 
-        protected override void ConstructWeapon<T>(WeaponInfo<T> info)
+        protected override void ConstructWeapon(ItemInfo info)
         {
             if (!ItemInfoUtils.IsGun(info, out var gunInfo)) return;
             

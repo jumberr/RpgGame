@@ -3,7 +3,6 @@ using _Project.CodeBase.Data;
 using _Project.CodeBase.Logic.Hero;
 using _Project.CodeBase.Logic.HeroWeapon.Data;
 using _Project.CodeBase.StaticData;
-using _Project.CodeBase.Utils;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -30,21 +29,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         {
             PrepareData(part, info);
             await CreateWeapon(slotID, info, prefab);
-
-            if (ItemInfoUtils.IsKnife(info, out var knife)) // todo refactor mb
-            {
-                ConstructWeapon(knife);
-                return;
-            }
-
-            if (ItemInfoUtils.IsGun(info, out var gun))
-            {
-                ConstructWeapon(gun);
-                return;
-            }
-
-            if (ItemInfoUtils.IsGrenade(info, out var grenade))
-                ConstructWeapon(grenade);
+            ConstructWeapon(info);
         }
         
         public async UniTask AnimatorHideWeapon()
@@ -57,7 +42,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             CurrentItem?.Destroy();
 
         protected abstract void PrepareData(CommonItemPart part, ItemInfo info);
-        protected abstract void ConstructWeapon<T>(WeaponInfo<T> info) where T : WeaponSpecs;
+        protected abstract void ConstructWeapon(ItemInfo info);
 
         private async UniTask CreateWeapon(int slotID, ItemInfo info, GameObject prefab)
         {

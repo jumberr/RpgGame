@@ -18,7 +18,7 @@ namespace _Project.CodeBase.StaticData
         
         public float Damage => _damage;
         public float Range => _range;
-        public float FireRate => _fireRate;
+        public float FireRate => _fireRate;// todo move to another class, KnifeSpecs inherits from that class, GunSpecs inherits from that class + extends
         
         [field: SerializeField] public AudioClip AudioClip { get; private set; }
     }

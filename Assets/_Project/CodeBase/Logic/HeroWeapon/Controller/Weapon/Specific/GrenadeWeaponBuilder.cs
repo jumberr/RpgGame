@@ -12,7 +12,8 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private WeaponInfo<GrenadeSpecs> _grenadeInfo;
         private GrenadeSpecs _grenadeSpecs;
         public override Type[] SupportedTypes { get; } = {typeof(GrenadeInfo), typeof(ExplosiveGrenadeInfo)};
-
+        // todo add to builder + handler IsSupporting method
+        
 
         public GrenadeWeaponBuilder(ItemThrower itemThrower) => 
             _itemThrower = itemThrower;
@@ -24,7 +25,7 @@ namespace _Project.CodeBase.Logic.HeroWeapon
             
         }
 
-        protected override void ConstructWeapon<T>(WeaponInfo<T> info)
+        protected override void ConstructWeapon(ItemInfo info)
         {
             if (!ItemInfoUtils.IsGrenade(info, out var grenadeInfo)) return;
             
