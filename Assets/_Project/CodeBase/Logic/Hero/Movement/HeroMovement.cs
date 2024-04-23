@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using _Project.CodeBase.Data;
 using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
@@ -54,9 +53,6 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField, ShowIf(nameof(_canCrouch))] private bool _canJumpWhileCrouching;
         [SerializeField, ShowIf(nameof(_canCrouch))] private float _crouchHeight;
         [SerializeField, ShowIf(nameof(_canCrouch))] private LayerMask _crouchOverlapsMask;
-
-        [Title("Rigidbody Push")]
-        [SerializeField] private float _rigidbodyPushForce;
         
         [Title("Animation")]
         [SerializeField] private float animationThreshold;
