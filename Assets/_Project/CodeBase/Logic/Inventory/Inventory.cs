@@ -121,6 +121,12 @@ namespace _Project.CodeBase.Logic.Inventory
             return FindEmptySlot();
         }
 
+        public InventorySlot GetLastSlot(int dbId)
+        {
+            var slotID = FindSlotReversed(dbId);
+            return slotID == ErrorIndex ? null : Slots[slotID];
+        }
+        
         public int FindSlotReversed(int dbId)
         {
             for (var i = Slots.Length - 1; i >= 0; i--)

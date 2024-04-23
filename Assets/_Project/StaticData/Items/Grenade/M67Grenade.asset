@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1828f76501a6cd5409439e7a0aebbbcc, type: 3}
+  m_Name: M67Grenade
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _uiInfo:
+    _name: 24
+    _icon: {fileID: 21300000, guid: 113c9047f2ba9b84790d53de22bcd74d, type: 3}
+    _description: Hand grenade, M67 model. Spherical and designed for hand-throwing,
+      it features a high-explosive fragmentation charge. Effective for clearing enemy
+      positions, it requires careful handling and timing.
+  _payloadInfo:
+    _itemType: 2
+    _actions: 000000000200000003000000
+    _groundPrefab: {fileID: 3471285222035659691, guid: afe44ecacdc51ae4497e0d7faeacf820,
+      type: 3}
+    _maxInContainer: 10
+    _dbId: 23
+  _prefab: {fileID: 2171061987105811950, guid: 61dd71096e6ca9c4dbd7a3460c555623, type: 3}
+  _durability: 0
+  _grenadeSpecs:
+    <GrenadeProjectile>k__BackingField: {fileID: 3280073778133096260, guid: 10d72060698c6c74380eb99bafb800c4,
+      type: 3}
+    <ThrowData>k__BackingField:
+      ThrowForce: 10
+      MaxForce: 30
+      ThrowSoundData:
+        AudioClip: {fileID: 8300000, guid: 705d9285ed4fbf44bb8de3b4f75ff969, type: 3}
+        Volume: 1
+        Delay: 0
+    <ImpactSoundData>k__BackingField:
+      AudioClip: {fileID: 8300000, guid: 419336aa8912ae0468e104596863a0a1, type: 3}
+      Volume: 1
+      Delay: 0
+    <PullPinSoundData>k__BackingField:
+      AudioClip: {fileID: 8300000, guid: 7c5b749533c154045b549c2d0769f5ef, type: 3}
+      Volume: 1
+      Delay: 0
+  <ExplosiveGrenadeData>k__BackingField:
+    ExplosionPrefab: {fileID: 4028330408657488574, guid: d609d5ebc845aca409f72e9c6a56dc60,
+      type: 3}
+    SoundData:
+      AudioClip: {fileID: 8300000, guid: fc96116dc3c141440aabb5605744fea2, type: 3}
+      Volume: 1
+      Delay: 0
+    ExplosionDelay: 3
+    ExplosionForce: 700
+    ExplosionRadius: 5
+    MaxDamage: 100

@@ -5,6 +5,8 @@
         None,
         Default,
         Shotgun,
-        Knife
+        Knife,
+        Revolver,
+        Grenade,
     }
 }

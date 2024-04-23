@@ -6,6 +6,8 @@ namespace _Project.CodeBase.Logic.Hero
 {
     public class HeroAnimator : MonoBehaviour
     {
+        private const int DefaultLayer = 0;
+        
         private static readonly int Move = Animator.StringToHash("Move");
         private static readonly int Jump = Animator.StringToHash("Jump");
 
@@ -15,7 +17,9 @@ namespace _Project.CodeBase.Logic.Hero
         private static readonly int Show = Animator.StringToHash("Show");
         private static readonly int Shoot = Animator.StringToHash("Shoot");
         private static readonly int EndRevolverReload = Animator.StringToHash("EndRevolverReload");
-
+        private static readonly int PrepareThrowKey = Animator.StringToHash("PrepareThrow");
+        private static readonly int ThrowKey = Animator.StringToHash("Throw");
+        
         private Animator _animator;
 
         public void Construct(Animator animator) => 
@@ -54,16 +58,25 @@ namespace _Project.CodeBase.Logic.Hero
         public async UniTask ShowWeapon() => 
             await ShowHide(Show);
 
-        public async UniTask ShowWeaponOnInit()
-        {
-            var duration = _animator.GetCurrentAnimatorStateInfo(0).length;
-            await UniTask.Delay(TimeSpan.FromSeconds(duration));
-        }
+        public async UniTask WaitForEndOfTransition() => 
+            await UniTask.WaitUntil(() => !IsInTransition());
+
+        public async UniTask ShowWeaponOnInit() => 
+            await WaitForCurrentAnimation();
 
         public void EndRevolverReloadAnimation()
         {
             if (!IsAnimatorExists()) return;
             _animator.SetTrigger(EndRevolverReload);
+        }
+
+        public void PrepareThrowing() => 
+            _animator.Play(PrepareThrowKey);
+
+        public async UniTask Throw()
+        {
+            _animator.Play(ThrowKey);
+            await WaitForCurrentAnimation();
         }
 
         private async UniTask ProceedReload(float reloadTime, int key)
@@ -77,9 +90,17 @@ namespace _Project.CodeBase.Logic.Hero
         {
             if (!IsAnimatorExists()) return;
             _animator.SetTrigger(id);
-            var duration = _animator.GetCurrentAnimatorStateInfo(0).length;
+            await WaitForCurrentAnimation();
+        }
+
+        private async UniTask WaitForCurrentAnimation()
+        {
+            var duration = _animator.GetCurrentAnimatorStateInfo(DefaultLayer).length;
             await UniTask.Delay(TimeSpan.FromSeconds(duration));
         }
+        
+        private bool IsInTransition() => 
+            _animator.IsInTransition(DefaultLayer);
 
         private bool IsAnimatorExists() => 
             _animator is { };

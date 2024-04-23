@@ -1,9 +1,9 @@
-﻿using _Project.CodeBase.Infrastructure.Services.InputService;
+﻿using System.Collections.Generic;
+using System.Linq;
+using _Project.CodeBase.Infrastructure.Services.InputService;
 using _Project.CodeBase.Logic.Hero.State;
 using _Project.CodeBase.Logic.HeroWeapon;
-using _Project.CodeBase.Logic.HeroWeapon.Animations;
 using _Project.CodeBase.StaticData;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -17,43 +17,34 @@ namespace _Project.CodeBase.Logic.Hero.Reload
         [SerializeField] private HeroState _state;
 
         private InputService _inputService;
-        private DefaultReload _defaultReload;
-        private ReloadRevolver _reloadRevolver;
+        private List<IReloadSystem> _reloadSystems;
+        private IReloadSystem _selectedReloadSystem;
         private bool _isRevolver;
         private bool _isNeedReload;
-        
-        
+
+
         [Inject]
-        public void Construct(InputService inputService)
+        public void Construct(InputService inputService, List<IReloadSystem> reloadSystems)
         {
             _inputService = inputService;
+            _reloadSystems = reloadSystems;
             _inputService.ReloadAction.Event += Reload;
-        }
-        
-        private void Start()
-        {
-            _defaultReload = new DefaultReload(_heroAnimator);
-            _reloadRevolver = new ReloadRevolver(_heroAnimator);
+
+            foreach (var reloadSystem in reloadSystems) 
+                reloadSystem.Init(_heroAnimator);
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() => 
             _inputService.ReloadAction.Event -= Reload;
-            _reloadRevolver.UnsubscribeRevolverEvents();
-        }
-        
-        public void Construct(GunInfo gunInfo, WeaponConfiguration config, RevolverAnimation revolverAnimation)
+
+        public void Setup(WeaponInfo<GunSpecs> gunInfo, WeaponConfiguration config)
         {
-            if (!(revolverAnimation is null))
+            foreach (var reloadSystem in _reloadSystems.Where(reloadSystem => reloadSystem.Setup(gunInfo, config)))
             {
-                _isRevolver = true;
-                _reloadRevolver.Construct(gunInfo, config, revolverAnimation);
+                _selectedReloadSystem = reloadSystem;
+                break;
             }
-            else
-            {
-                _isRevolver = false;
-                _defaultReload.Construct(gunInfo);
-            }
+
             _isNeedReload = true;
         }
         
@@ -72,17 +63,9 @@ namespace _Project.CodeBase.Logic.Hero.Reload
                 _heroScoping.UnScope();
             
             ChangeReloadingState(true);
-            await PlayReloadAnimation(reload);
+            await _selectedReloadSystem.Reload(reload);
             _ammo.UpdateUI();
             ChangeReloadingState(false);
-        }
-
-        private async UniTask PlayReloadAnimation((ReloadState, int, int) result)
-        {
-            if (_isRevolver)
-                await _reloadRevolver.Reload(result);
-            else
-                await _defaultReload.Reload(result);
         }
 
         private void ChangeReloadingState(bool value) => 

@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using _Project.CodeBase.Logic.HeroWeapon;
+using _Project.CodeBase.Logic.Inventory;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Project.CodeBase.StaticData
 {
     [Serializable]
-    public class GunSpecs
+    public class GunSpecs : KnifeSpecs
     {
         [SerializeField] private Vector3 _recoil;
         [SerializeField] private Vector3 _aimRecoil;
@@ -51,5 +53,14 @@ namespace _Project.CodeBase.StaticData
         public AmmoType AmmoType => _ammoType;
         public bool Scoping => _scoping;
         public MagazineInfo MagazineInfo => _magazineInfo;
+        [field: SerializeField] public int FractionCount { get; private set; } = 1;
+        [field: SerializeField] public List<ItemName> PossibleAttachments { get; private set; }
+        [field: SerializeField] public List<ItemName> DefaultAttachments { get; private set; }
+        [field: SerializeField] public GunSettings DefaultSettings { get; private set; }
+        [field: SerializeField] public AttachmentPossibilityContainer AttachmentPossibility { get; private set; }
+
+        
+        public AttachmentPossibility GetPossibility(AttachmentType type) => 
+            AttachmentPossibility.GetItemBy(type);
     }
 }

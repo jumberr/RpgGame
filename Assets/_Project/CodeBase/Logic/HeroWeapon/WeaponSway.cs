@@ -1,10 +1,11 @@
 ﻿using _Project.CodeBase.Infrastructure.Services.InputService;
 using NTC.Global.Cache;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.CodeBase.Logic.HeroWeapon
 {
-    public class WeaponSway : NightCache, INightInit, INightRun
+    public class WeaponSway : NightCache, INightInit, INightRun // todo refactor
     {
         [Header("Weapon Sway")]
         [SerializeField] private float _swayAmount;
@@ -47,6 +48,15 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         private Vector2 _viewInput;
         private Vector2 _moveInput;
 
+
+        [Inject]
+        public void Construct(InputService inputService)
+        {
+            _inputService = inputService;
+            _inputService.RotateAction.Event += OnRotate;
+            _inputService.MoveAction.Event += UpdateDirection;
+        }
+
         public void Init() => 
             _newRotation = transform.localRotation.eulerAngles;
 
@@ -63,13 +73,6 @@ namespace _Project.CodeBase.Logic.HeroWeapon
         {
             _inputService.RotateAction.Event -= OnRotate;
             _inputService.MoveAction.Event -= UpdateDirection;
-        }
-
-        public void SetInputService(InputService inputService)
-        {
-            _inputService = inputService;
-            _inputService.RotateAction.Event += OnRotate;
-            _inputService.MoveAction.Event += UpdateDirection;
         }
 
         private void MovementSway()

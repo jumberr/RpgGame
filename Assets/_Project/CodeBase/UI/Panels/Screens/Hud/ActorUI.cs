@@ -25,6 +25,8 @@ namespace _Project.CodeBase.UI
         private HeroInventory _heroInventory;
 
         public HotBarUI HotBar => _hotBarUI;
+        [field: SerializeField] public ActionProgressView ActionProgressView { get; private set; }
+
 
         [Inject]
         public void Construct(InputService inputService, HeroFacade.Factory factory)
@@ -34,15 +36,15 @@ namespace _Project.CodeBase.UI
             var facade = factory.Instance;
 
             SetupAmmoUI(facade.Ammo);
-            SetupCrosshairUI(facade.WeaponController, _inputService, facade.HeroState);
+            SetupCrosshairUI(facade.ActiveItemController, _inputService, facade.State);
             SetupInteractionUI(_inputService, facade.Interaction);
         }
 
         private void SetupAmmoUI(HeroAmmo heroAmmo) => 
             _ammoUI.Construct(heroAmmo);
 
-        private void SetupCrosshairUI(WeaponController weaponController, InputService inputService, HeroState heroState) => 
-            _crosshairAdapter.Construct(weaponController, inputService, heroState);
+        private void SetupCrosshairUI(ActiveItemController activeItemController, InputService inputService, HeroState heroState) => 
+            _crosshairAdapter.Construct(activeItemController, inputService, heroState);
 
         private void SetupInteractionUI(InputService inputService, HeroInteraction heroInteraction) => 
             _interactionUI.Construct(heroInteraction, inputService);

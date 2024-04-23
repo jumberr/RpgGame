@@ -34,13 +34,13 @@ MonoBehaviour:
       type: 3}
     _maxInContainer: 1
     _dbId: 16
-  _durability: 0
   _prefab: {fileID: 8533526131038480839, guid: 13e61282ab09b9546a8a1087b507380b, type: 3}
-  _weaponSpecs:
-    _damage: 25.381178
-    _range: 27.969112
-    _fireRate: 800.43494
+  _durability: 0
   _gunSpecs:
+    _damage: 24.027
+    _range: 28.368315
+    _fireRate: 802.47015
+    <AudioClip>k__BackingField: {fileID: 0}
     _recoil: {x: -1, y: 1, z: 0.2}
     _aimRecoil: {x: -0.5, y: 0.5, z: 0.1}
     _snappiness: 4.170458
@@ -55,13 +55,13 @@ MonoBehaviour:
     _scoping: 1
     _magazineInfo:
       BulletsMax: 30
-  _possibleAttachments: 
-  _defaultAttachments: 
-  _defaultSettings:
-    _scopeSpecs:
-      _aimingInTime: 0.2
-      _aimingOutTime: 0.2
-      _scopeMultiplier: 1.2
-    _shootSound: {fileID: 0}
-  _attachmentPossibility:
-    _list: []
+    <FractionCount>k__BackingField: 1
+    <PossibleAttachments>k__BackingField: 
+    <DefaultAttachments>k__BackingField: 
+    <DefaultSettings>k__BackingField:
+      _scopeSpecs:
+        _aimingInTime: 0.2
+        _aimingOutTime: 0.2
+        _scopeMultiplier: 1.2
+    <AttachmentPossibility>k__BackingField:
+      _list: []

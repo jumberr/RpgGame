@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0129e852884e422db7d73b32c6994c90, type: 3}
+  m_Script: {fileID: 11500000, guid: ba93958214444227a6cd35afa27d1657, type: 3}
   m_Name: TwoBarrelShotgun
   m_EditorClassIdentifier: 
   serializationData:
@@ -24,46 +24,44 @@ MonoBehaviour:
   _uiInfo:
     _name: 7
     _icon: {fileID: 21300000, guid: b99b0a9b84facda4886c0786ca070fe0, type: 3}
-    _description: A sawn-off BM-17 rifle. It is lighter and more compact then the
-      original two-barrel rifle, but it is effective only at a close range. One of
-      the weapons most commonly used by beginners.
+    _description: "A sawn-off BM-17 rifle. It is lighter and more compact then the\r
+      original two-barrel rifle, but it is effective only at a close range. One of\r
+      the weapons most commonly used by beginners"
   _payloadInfo:
     _itemType: 2
     _actions: 0000000002000000
     _groundPrefab: {fileID: 9185720882482234474, guid: d832494099aa64047908ba75dbcd4c70,
       type: 3}
     _maxInContainer: 1
-    _dbId: 22
-  _durability: 0
+    _dbId: 21
   _prefab: {fileID: 6322586335249049182, guid: 18466cc1393e8e149a35353350b20dad, type: 3}
-  _weaponSpecs:
-    _damage: 35.301598
-    _range: 14.16679
-    _fireRate: 110.318695
+  _durability: 0
   _gunSpecs:
+    _damage: 35.314415
+    _range: 14.476109
+    _fireRate: 110.03058
+    <AudioClip>k__BackingField: {fileID: 0}
     _recoil: {x: -1, y: 1, z: 0.2}
     _aimRecoil: {x: -0.5, y: 0.5, z: 0.1}
-    _snappiness: 5.982013
-    _returnSpeed: 1.9707127
+    _snappiness: 5.934142
+    _returnSpeed: 1.8967197
     _isAutomatic: 0
-    _reloadTime: 2.998447
-    _fullReloadTime: 3.030796
-    _accuracy: 0.7498328
-    _aimAccuracy: 0.6506286
-    _accuracyDistance: 14.38245
+    _reloadTime: 2.9528527
+    _fullReloadTime: 2.9528527
+    _accuracy: 0.7503744
+    _aimAccuracy: 0.6505242
+    _accuracyDistance: 14.476109
     _ammoType: 4
     _scoping: 1
     _magazineInfo:
       BulletsMax: 2
-  _possibleAttachments: 
-  _defaultAttachments: 
-  _defaultSettings:
-    _scopeSpecs:
-      _aimingInTime: 0.2
-      _aimingOutTime: 0.2
-      _scopeMultiplier: 1.2
-    _shootSound: {fileID: 0}
-  _attachmentPossibility:
-    _list: []
-  _shotgunSpecs:
-    _fractionAmount: 6
+    <FractionCount>k__BackingField: 6
+    <PossibleAttachments>k__BackingField: 
+    <DefaultAttachments>k__BackingField: 
+    <DefaultSettings>k__BackingField:
+      _scopeSpecs:
+        _aimingInTime: 0.2
+        _aimingOutTime: 0.2
+        _scopeMultiplier: 1.2
+    <AttachmentPossibility>k__BackingField:
+      _list: []

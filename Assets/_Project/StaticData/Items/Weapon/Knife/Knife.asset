@@ -34,11 +34,10 @@ MonoBehaviour:
       type: 3}
     _maxInContainer: 1
     _dbId: 19
-  _durability: 0
   _prefab: {fileID: 4828828816598372186, guid: fafa64bbfabcd47438f9aea0e04fb277, type: 3}
-  _weaponSpecs:
-    _damage: 30.143944
-    _range: 1.5664678
-    _fireRate: 60.001682
-  KnifeSpecs:
-    _radius: 0.3
+  _durability: 0
+  _knifeSpecs:
+    _damage: 35.44951
+    _range: 1.7895173
+    _fireRate: 107.3711
+    <AudioClip>k__BackingField: {fileID: 0}

@@ -1,0 +1,68 @@
+using System.Collections.Generic;
+using _Project.CodeBase.Infrastructure.Factory;
+using _Project.CodeBase.UI;
+using _Project.CodeBase.UI.Services;
+using UnityEngine;
+
+namespace _Project.CodeBase.Logic.Hero
+{
+    public class TrajectoryDrawer
+    {
+        private readonly IGameFactory _gameFactory;
+        private readonly IUIFactory _uiFactory;
+        private TrajectoryView _view;
+        private ActionProgressView _progressView;
+
+
+        public TrajectoryDrawer(IGameFactory gameFactory, IUIFactory uiFactory)
+        {
+            _gameFactory = gameFactory;
+            _uiFactory = uiFactory;
+            _gameFactory.HeroCreated += HeroCreated;
+            _uiFactory.UICreated += UICreated;
+        }
+
+        public void ShowTrajectory(Vector3 origin, Vector3 speed, float progress)
+        {
+            ToggleTrajectory(true);
+            
+            var points = new List<Vector3>();
+
+            for (var i = 0; i < _view.DefaultPointsCount; i++)
+            {
+                var time = i * 0.1f;
+                points.Add(origin + speed * time + Physics.gravity * time * time / 2f);
+
+                if (i <= 1) continue;
+                
+                var direction = points[i] - points[i - 1];
+                if (Physics.Raycast(new Ray(points[i - 1], direction), out var hit, direction.magnitude))
+                {
+                    points[i] = hit.point;
+                    if (hit.collider != null) break;
+                }
+            }
+            
+            _view.SetPositions(points.ToArray());
+            _progressView.SetProgress(progress);
+        }
+
+        public void ToggleTrajectory(bool value)
+        {
+            _progressView.ToggleProgressbar(value);
+            _view.ToggleTrajectory(value);
+        }
+
+        private void HeroCreated(HeroFacade heroFacade)
+        {
+            _gameFactory.HeroCreated -= HeroCreated;
+            _view = heroFacade.TrajectoryView;
+        }
+
+        private void UICreated()
+        {
+            _uiFactory.UICreated -= UICreated;
+            _progressView = _uiFactory.ActorUI.ActionProgressView;
+        }
+    }
+}

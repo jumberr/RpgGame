@@ -8,46 +8,36 @@ namespace _Project.CodeBase.Logic.Hero
     public class HeroRecoil : NightCache, INightRun
     {
         [SerializeField] private HeroState _state;
-
-        private Vector3 _recoil;
-        private Vector3 _aimRecoil;
-        private float _snappiness;
-        private float _returnSpeed;
         
         private Vector3 _currentRotation;
         private Vector3 _targetRotation;
-
-        public void Construct(GunInfo gunInfo)
-        {
-            _recoil = gunInfo.GunSpecs.Recoil;
-            _aimRecoil = gunInfo.GunSpecs.AimRecoil;
-            _snappiness = gunInfo.GunSpecs.Snappiness;
-            _returnSpeed = gunInfo.GunSpecs.ReturnSpeed;
-        }
+        private GunSpecs _gunSpecs;
         
-        public void Construct(KnifeInfo knifeInfo)
-        {
-            _recoil = Vector3.zero;
-            _aimRecoil = Vector3.zero;
-            _snappiness = 0;
-            _returnSpeed = 0;
-        }
+        
+        public void Setup<T>(WeaponInfo<T> gunInfo) where T : GunSpecs => 
+            _gunSpecs = gunInfo.GetSpecs();
 
-        public void Run() => 
+        public void Setup(KnifeInfo knifeInfo) => 
+            _gunSpecs = knifeInfo.GetDefaultGunSpecs();
+
+        public void Run()
+        {
+            if (_gunSpecs == null) return;
             ProceedRecoil();
+        }
 
         public void RecoilFire()
         {
             if (_state.Aiming)
-                _targetRotation += TargetRotation(_aimRecoil);
+                _targetRotation += TargetRotation(_gunSpecs.AimRecoil);
             else
-                _targetRotation += TargetRotation(_recoil);
+                _targetRotation += TargetRotation(_gunSpecs.Recoil);
         }
 
         private void ProceedRecoil()
         {
-            _targetRotation = Vector3.Lerp(_targetRotation, Vector3.zero, _returnSpeed * Time.deltaTime);
-            _currentRotation = Vector3.Slerp(_currentRotation, _targetRotation, _snappiness * Time.fixedDeltaTime);
+            _targetRotation = Vector3.Lerp(_targetRotation, Vector3.zero, _gunSpecs.ReturnSpeed * Time.deltaTime);
+            _currentRotation = Vector3.Slerp(_currentRotation, _targetRotation, _gunSpecs.Snappiness * Time.fixedDeltaTime);
             transform.localRotation = Quaternion.Euler(_currentRotation);
         }
 

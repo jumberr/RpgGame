@@ -9,6 +9,7 @@
     "com.unity.addressables": "1.19.19",
     "com.unity.ai.navigation.components": "https://github.com/Unity-Technologies/NavMeshComponents.git#package",
     "com.unity.analytics": "3.6.12",
+    "com.unity.animation.rigging": "1.1.1",
     "com.unity.burst": "1.6.6",
     "com.unity.cinemachine": "2.8.9",
     "com.unity.collab-proxy": "2.0.5",

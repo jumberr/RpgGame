@@ -16,7 +16,7 @@ namespace _Project.CodeBase.UI
         [SerializeField] private float _speed;
 
         private InputService _inputService;
-        private WeaponController _weaponController;
+        private ActiveItemController _activeItemController;
         private HeroState _heroState;
         private CrosshairState _state;
 
@@ -24,10 +24,10 @@ namespace _Project.CodeBase.UI
         private Vector2 _input;
         private float _currentSize;
 
-        public void Construct(WeaponController weaponController, InputService inputService, HeroState heroState)
+        public void Construct(ActiveItemController activeItemController, InputService inputService, HeroState heroState)
         {
             _inputService = inputService;
-            _weaponController = weaponController;
+            _activeItemController = activeItemController;
             _heroState = heroState;
             Subscribe();
             Switch(false);
@@ -50,14 +50,14 @@ namespace _Project.CodeBase.UI
 
         private void Subscribe()
         {
-            _weaponController.OnSwitch += Switch;
+            _activeItemController.OnSwitch += Switch;
             _inputService.MoveAction.Event += OnMove;
             _heroState.OnAimingChanged += AimingChange;
         }
 
         private void UnSubscribe()
         {
-            _weaponController.OnSwitch -= Switch;
+            _activeItemController.OnSwitch -= Switch;
             _inputService.MoveAction.Event -= OnMove;
             _heroState.OnAimingChanged -= AimingChange;
         }

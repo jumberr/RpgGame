@@ -34,24 +34,25 @@ namespace _Project.CodeBase.UI
 
         private void UpdateWeapon(GunInfo gunInfo)
         {
+            var specs = gunInfo.GetSpecs();
             _excludeList.ActivateComponents();
-            _accuracy.UpdateView(gunInfo.GunSpecs.Accuracy, 1);
-            _aimAccuracy.UpdateView(gunInfo.GunSpecs.AimAccuracy, 1);
-            _clipSize.UpdateView(gunInfo.GunSpecs.MagazineInfo.BulletsMax);
-            UpdateWeaponView(gunInfo);
+            _accuracy.UpdateView(specs.Accuracy, 1);
+            _aimAccuracy.UpdateView(specs.AimAccuracy, 1);
+            _clipSize.UpdateView(specs.MagazineInfo.BulletsMax);
+            UpdateWeaponView(specs);
         }
 
         private void UpdateKnife(KnifeInfo knifeInfo)
         {
             _excludeList.DeactivateComponents();
-            UpdateWeaponView(knifeInfo);
+            UpdateWeaponView(knifeInfo.GetSpecs());
         }
 
-        private void UpdateWeaponView(WeaponInfo gun)
+        private void UpdateWeaponView(KnifeSpecs specs)
         {
-            _damage.UpdateView(gun.WeaponSpecs.Damage, 100);
-            _range.UpdateView(gun.WeaponSpecs.Range, 100);
-            _fireRate.UpdateView(gun.WeaponSpecs.FireRate, 1000);
+            _damage.UpdateView(specs.Damage, 100);
+            _range.UpdateView(specs.Range, 100);
+            _fireRate.UpdateView(specs.FireRate, 1000);
         }
     }
 }

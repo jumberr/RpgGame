@@ -12,7 +12,7 @@ namespace _Project.CodeBase.Logic.Inventory
 {
     public class HeroInventory : MonoBehaviour, ISavedProgress
     {
-        [SerializeField] private WeaponController _weaponController;
+        [SerializeField] private ActiveItemController _activeItemController;
         
         private ItemsInfo _itemsInfo;
         private Inventory _inventory;
@@ -40,17 +40,15 @@ namespace _Project.CodeBase.Logic.Inventory
         public void UpdateProgress(PlayerProgress progress) => 
             progress.Inventory = _inventory;
 
-        public void EquipItem(int slotID)
+        public async void EquipItem(int slotID)
         {
             var slot = _inventory.Slots[slotID];
             var info = _itemsInfo.FindItem(slot.ID);
+
+            var currentItem = _activeItemController.CurrentItem;
+            if (currentItem != null && currentItem.Info == info && currentItem.SlotID == slotID) return;
             
-            if (info is GunInfo weapon) 
-                EquipWeapon(slotID, slot.CommonItemPart, weapon);
-            if (info is KnifeInfo knife) 
-                EquipWeapon(knife, slotID);
-            //if (item is ArmorInfo armor) 
-            //    EquipArmor(armor);
+            await _activeItemController.CreateNewItem(slotID, slot.CommonItemPart, info, GetItemPrefab(info));
         }
 
         public void AddItem(InteractableGroundItem interactable)
@@ -62,11 +60,13 @@ namespace _Project.CodeBase.Logic.Inventory
             if (amountNotStored == 0)
             {
                 interactable.SetPickUpStatus(true);
-                var slot = _inventory.FindSlot(groundItem.DbID, groundItem.Amount);
-                OnItemPickup?.Invoke(slot, interactable);
+                FindSlotWithPickedItem(interactable, groundItem);
             }
             else
             {
+                if (amountNotStored < groundItem.Amount) 
+                    FindSlotWithPickedItem(interactable, groundItem);
+                
                 groundItem.UpdateAmount(amountNotStored);
                 Debug.Log("Inventory is full!");
             }
@@ -116,10 +116,7 @@ namespace _Project.CodeBase.Logic.Inventory
         public int FindFirstItemIndex(ItemName itemName)
         {
             var dbIndex = _itemsInfo.FindIndex(itemName);
-            foreach (var slot in _inventory.Slots)
-                if (slot.ID == dbIndex)
-                    return slot.ID;
-            return ErrorIndex;
+            return Array.FindIndex(_inventory.Slots, slot => dbIndex == slot.CommonItemPart.DbId);
         }
 
         public int FindIndex(InventorySlot slot) => 
@@ -130,6 +127,13 @@ namespace _Project.CodeBase.Logic.Inventory
         public void SwapSlots(int one, int two) => 
             _inventory.SwapSlots(one, two);
 
+        private void FindSlotWithPickedItem(InteractableGroundItem interactable, ItemGround groundItem)
+        {
+            var slot = _inventory.GetLastSlot(groundItem.DbID);
+            if (slot != null)
+                OnItemPickup?.Invoke(slot, interactable);
+        }
+        
         private void RemoveItemFromSlot(int id)
         {
             _inventory.RemoveItemFromSlot(id);
@@ -151,15 +155,13 @@ namespace _Project.CodeBase.Logic.Inventory
         private void SpawnGroundItem(CommonItemPart part) => 
             OnSpawnItemAtMap?.Invoke(part);
 
-        private async void EquipWeapon(int slotID, CommonItemPart item, GunInfo gunInfo) => 
-            await _weaponController.CreateNewWeapon(slotID, item, gunInfo, gunInfo.Prefab);
-
-        private async void EquipWeapon(KnifeInfo knifeInfo, int slotID) => 
-            await _weaponController.CreateNewMeleeWeapon(knifeInfo.Prefab, knifeInfo, slotID);
-
-        private void EquipArmor(ArmorInfo armorInfo)
+        private GameObject GetItemPrefab(ItemInfo info)
         {
+            GameObject prefab = null;
+            if (info is EquippableInfo equippableInfo)
+                prefab = equippableInfo.Prefab;
             
+            return prefab;
         }
     }
 }

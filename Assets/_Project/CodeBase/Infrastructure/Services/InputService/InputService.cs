@@ -8,9 +8,9 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
         public readonly ActionBoolWrapper RunningAction;
         public readonly ActionVector2Wrapper RotateAction;
         public readonly ActionBoolWrapper AttackAction;
+        public readonly ActionBoolWrapper ScopeAction;
         public readonly ActionWrapper JumpAction;
         public readonly ActionWrapper CrouchAction;
-        public readonly ActionWrapper ScopeAction;
         public readonly ActionWrapper ReloadAction;
         public readonly ActionWrapper InteractAction;
         public readonly ActionWrapper BackAction;
@@ -32,7 +32,7 @@ namespace _Project.CodeBase.Infrastructure.Services.InputService
             CrouchAction = new ActionWrapper(_input.PlayerMovement.Crouch);
             
             AttackAction = new ActionBoolWrapper(_input.PlayerFight.Attack);
-            ScopeAction = new ActionWrapper(_input.PlayerFight.Scope);
+            ScopeAction = new ActionBoolWrapper(_input.PlayerFight.Scope);
             ReloadAction = new ActionWrapper(_input.PlayerFight.Reload);
             
             InteractAction = new ActionWrapper(_input.PlayerActions.Interact);

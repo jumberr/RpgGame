@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Project.CodeBase.Infrastructure.AssetManagement;
-using _Project.CodeBase.Infrastructure.Services.Game;
 using _Project.CodeBase.Infrastructure.Services.PersistentProgress;
 using _Project.CodeBase.Logic;
 using _Project.CodeBase.Logic.Hero;
@@ -15,8 +14,10 @@ namespace _Project.CodeBase.Infrastructure.Factory
         private readonly IAssetProvider _assetProvider;
         private readonly HeroFacade.Factory _heroFactory;
         private readonly AIObserver _aiObserver;
-        private readonly CameraShakerService _shakerService;
+        //private readonly CameraShakerService _shakerService;
         private HeroFacade _heroFacade;
+
+        public event Action<HeroFacade> HeroCreated;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
@@ -25,13 +26,14 @@ namespace _Project.CodeBase.Infrastructure.Factory
         public GameFactory(
             IAssetProvider assetProvider,
             HeroFacade.Factory heroFactory,
-            AIObserver aiObserver,
-            CameraShakerService shakerService)
+            AIObserver aiObserver
+            //CameraShakerService shakerService
+            )
         {
             _aiObserver = aiObserver;
             _assetProvider = assetProvider;
             _heroFactory = heroFactory;
-            _shakerService = shakerService;
+            //_shakerService = shakerService;
         }
 
         public void Dispose() => 
@@ -40,8 +42,9 @@ namespace _Project.CodeBase.Infrastructure.Factory
         public async UniTask CreateHero()
         {
             _heroFacade = await _heroFactory.Create(AssetPath.HeroPath);
-            _shakerService.Initialize(_heroFacade);
+            //_shakerService.Initialize(_heroFacade);
             RegisterProgressWatchers(_heroFacade.gameObject);
+            HeroCreated?.Invoke(_heroFacade);
         }
 
         public void InitializeAI() => 

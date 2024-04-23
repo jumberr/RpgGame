@@ -37,38 +37,37 @@ MonoBehaviour:
       type: 3}
     _maxInContainer: 1
     _dbId: 20
-  _durability: 0
   _prefab: {fileID: 7749649111390227278, guid: 56094bc7fe29773418b72fa178dbc5cf, type: 3}
-  _weaponSpecs:
-    _damage: 24.518534
-    _range: 74.983284
-    _fireRate: 125.414986
-  _gunSpecs:
-    _recoil: {x: -1, y: 1, z: 0.4}
+  _durability: 0
+  _revolverSpecs:
+    _damage: 24.678198
+    _range: 75.25451
+    _fireRate: 125.225174
+    <AudioClip>k__BackingField: {fileID: 0}
+    _recoil: {x: -1, y: -1, z: 0.4}
     _aimRecoil: {x: -0.5, y: 0.5, z: 0.2}
-    _snappiness: 6.6289973
-    _returnSpeed: 2.5314322
+    _snappiness: 6.7155786
+    _returnSpeed: 2.547917
     _isAutomatic: 0
-    _reloadTime: 6.9773984
-    _fullReloadTime: 7.0097475
-    _accuracy: 0.11147531
-    _aimAccuracy: 0.03168062
-    _accuracyDistance: 84.9037
+    _reloadTime: 6.957715
+    _fullReloadTime: 6.990275
+    _accuracy: 0.112201236
+    _aimAccuracy: 0.031886924
+    _accuracyDistance: 84.8054
     _ammoType: 3
     _scoping: 1
     _magazineInfo:
       BulletsMax: 6
-  _possibleAttachments: 
-  _defaultAttachments: 
-  _defaultSettings:
-    _scopeSpecs:
-      _aimingInTime: 0.2
-      _aimingOutTime: 0.2
-      _scopeMultiplier: 1.2
-    _shootSound: {fileID: 0}
-  _attachmentPossibility:
-    _list: []
-  _revolverSpecs:
+    <FractionCount>k__BackingField: 1
+    <PossibleAttachments>k__BackingField: 
+    <DefaultAttachments>k__BackingField: 
+    <DefaultSettings>k__BackingField:
+      _scopeSpecs:
+        _aimingInTime: 0.2
+        _aimingOutTime: 0.2
+        _scopeMultiplier: 1.2
+    <AttachmentPossibility>k__BackingField:
+      _list: []
     _startReloadDuration: 1.26
     _oneAmmoReloadDuration: 0.8
     _endReloadAnimation: 1.2

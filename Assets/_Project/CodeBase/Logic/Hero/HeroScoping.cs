@@ -44,7 +44,7 @@ namespace _Project.CodeBase.Logic.Hero
         private void OnDestroy() =>
             _inputService.ScopeAction.Event -= ScopeHandling;
         
-        public void Construct(GunInfo gunInfo, WeaponConfiguration config)
+        public void Setup(WeaponInfo<GunSpecs> gunInfo, WeaponConfiguration config)
         {
             _config = config;
             ApplyScopeSettings(gunInfo);
@@ -61,13 +61,13 @@ namespace _Project.CodeBase.Logic.Hero
             _state.Aiming = false;
         }
 
-        private void ScopeHandling()
+        private void ScopeHandling(bool value)
         {
             if (!_isNeedScope) return;
 
             KillTween();
 
-            if (!_state.Aiming)
+            if (!_state.Aiming && value)
                 Scope();
             else
                 UnScope();
@@ -90,10 +90,13 @@ namespace _Project.CodeBase.Logic.Hero
                 .SetEase(Ease.OutQuad);
         }
 
-        private void ApplyScopeSettings(GunInfo gunInfo)
+        private void ApplyScopeSettings(WeaponInfo<GunSpecs> gunInfo)
         {
-            _isNeedScope = gunInfo.GunSpecs.Scoping;
-            _scopeSpecs = gunInfo.DefaultSettings.ScopeSpecs;
+            var gunSpecs = gunInfo.GetSpecs();
+            _isNeedScope = gunSpecs.Scoping;
+            if (!_isNeedScope) return;
+            
+            _scopeSpecs = gunSpecs.DefaultSettings.ScopeSpecs;
             _adsFov = _startFov / _scopeSpecs.ScopeMultiplier;
         }
 

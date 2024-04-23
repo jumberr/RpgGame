@@ -26,5 +26,10 @@
         ShotgunAmmo = 21,
         FlameAmmo = 22,
         RedDot = 23,
+        M67Grenade = 24,
+        M26Grenade = 25,
+        MK2Grenade = 26,
+        SmokeGrenade = 27,
+        FlashGrenade = 28,
     }
 }

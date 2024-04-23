@@ -1,15 +1,10 @@
 ﻿using System;
-using UnityEngine;
 
 namespace _Project.CodeBase.StaticData
 {
     [Serializable]
-    public class WeaponInfo : EquippableInfo
+    public abstract class WeaponInfo<TSpecs> : EquippableInfo where TSpecs : WeaponSpecs
     {
-        [SerializeField] private GameObject _prefab;
-        [SerializeField] private WeaponSpecs _weaponSpecs;
-        
-        public GameObject Prefab => _prefab;
-        public WeaponSpecs WeaponSpecs => _weaponSpecs;
+        public abstract TSpecs GetSpecs();
     }
 }
