@@ -25,27 +25,27 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private float _accelerationInAir;
         [SerializeField] private float _deceleration;
         
-        [Title("Speeds")]
-        [SerializeField] private float _speedWalking;
-        [SerializeField] private float _speedAiming;
-        [SerializeField] private float _speedCrouching;
-        [SerializeField] private float _speedRunning;
+        //[Title("Speeds")]
+        //[SerializeField] private float _speedWalking;
+        //[SerializeField] private float _speedAiming;
+        //[SerializeField] private float _speedCrouching;
+        //[SerializeField] private float _speedRunning;
         
-        [Title("Walking Multipliers")]
-        [SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierForward;
-        [SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierSideways;
-        [SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierBackwards;
+        //[Title("Walking Multipliers")]
+        //[SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierForward;
+        //[SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierSideways;
+        //[SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierBackwards;
         
         [Title("Air")]
         [SerializeField, Range(0.0f, 1.0f)] private float _airControl;
         [SerializeField] private float _gravity;
         [SerializeField] private float _jumpGravity;
 
-        [Tooltip("The force of the jump.")]
-        [SerializeField] private float _jumpForce;
+        //[Tooltip("The force of the jump.")]
+        //[SerializeField] private float _jumpForce;
 
-        [Tooltip("Force applied to keep the character from flying away while descending slopes.")]
-        [SerializeField] private float _stickToGroundForce;
+        //[Tooltip("Force applied to keep the character from flying away while descending slopes.")]
+        //[SerializeField] private float _stickToGroundForce;
 
         [Title("Crouching")]
         [SerializeField] private bool _canCrouch;
@@ -75,7 +75,7 @@ namespace _Project.CodeBase.Logic.Hero
         private void Construct(InputService inputService)
         {
             _inputService = inputService;
-            _inputService.MoveAction.Event += UpdateDirection;
+            //_inputService.MoveAction.Event += UpdateDirection;
             _inputService.JumpAction.Event += Jump;
             _inputService.CrouchAction.Event += ToggleCrouch;
         }
@@ -94,7 +94,7 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void OnDestroy()
         {
-            _inputService.MoveAction.Event -= UpdateDirection;
+            //_inputService.MoveAction.Event -= UpdateDirection;
             _inputService.JumpAction.Event -= Jump;
             _inputService.CrouchAction.Event -= ToggleCrouch;
         }
@@ -109,9 +109,9 @@ namespace _Project.CodeBase.Logic.Hero
             progress.GameObjectData.Update(position, rotation);
         }
 
-        private void UpdateDirection(Vector2 dir) => 
-            _input = dir;
-
+        //private void UpdateDirection(Vector2 dir) => 
+        //    _input = dir;
+//
         private void ApplyFallDamage()
         {
             if (_state.Grounded && !_state.WasGrounded)
@@ -125,9 +125,9 @@ namespace _Project.CodeBase.Logic.Hero
 
         private void JumpFinished()
         {
-            _fallingDamage.ApplyFallDamage(CachedTransform.position.y);
-            _fallingDamage.ResetHighestPoint();
-            _footstepsController.HandleJumpFootsteps();
+            //_fallingDamage.ApplyFallDamage(CachedTransform.position.y);
+            //_fallingDamage.ResetHighestPoint();
+            //_footstepsController.HandleJumpFootsteps();
             _state.Jumping = false;
         }
         
@@ -211,7 +211,7 @@ namespace _Project.CodeBase.Logic.Hero
             if (!_state.Grounded || _state.Crouching && !_canJumpWhileCrouching) return;
 
             _state.Jumping = true;
-            _velocity = new Vector3(_velocity.x, Mathf.Sqrt(2.0f * _jumpForce * _jumpGravity), _velocity.z);
+            //_velocity = new Vector3(_velocity.x, Mathf.Sqrt(2.0f * _jumpForce * _jumpGravity), _velocity.z);
         }
 
         private async void ToggleCrouch()

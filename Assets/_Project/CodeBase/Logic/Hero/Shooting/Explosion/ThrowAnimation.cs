@@ -10,6 +10,7 @@ namespace _Project.CodeBase.Logic.Hero
         private readonly IGameFactory _gameFactory;
         private readonly InputService _inputService;
         private HeroAnimator _heroAnimator;
+        private bool _initialized;
         private bool _prepared;
 
 
@@ -33,11 +34,16 @@ namespace _Project.CodeBase.Logic.Hero
             await _heroAnimator.Throw();
         }
 
-        private void Init(HeroFacade facade) => 
+        private void Init(HeroFacade facade)
+        {
             _heroAnimator = facade.Animator;
+            _initialized = true;
+        }
 
         private void PrepareThrowAnimation(bool value)
         {
+            if (!_initialized) return;
+            
             if (value)
             {
                 if (_prepared) return;

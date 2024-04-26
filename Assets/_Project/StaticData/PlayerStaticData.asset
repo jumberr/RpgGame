@@ -31,3 +31,22 @@ MonoBehaviour:
   <InventoryData>k__BackingField:
     <HotBarSize>k__BackingField: 5
     <InventorySize>k__BackingField: 37
+  <MovementData>k__BackingField:
+    Gravity: 35
+    SpeedWalking: 3.5
+    SpeedAiming: 3
+    SpeedCrouching: 2
+    SpeedRunning: 6.8
+    WalkingMultiplierForward: 1
+    WalkingMultiplierSideways: 0.9
+    WalkingMultiplierBackwards: 0.9
+    StickToGroundForce: 0.3
+    JumpForce: 1.5
+    JumpGravity: 35
+    CanCrouch: 1
+    "\u0421anCrouchWhileFalling": 0
+    "\u0421anJumpWhileCrouching": 0
+    "\u0421rouchHeight": 1
+    "\u0421rouchOverlapsMask":
+      serializedVersion: 2
+      m_Bits: 9
