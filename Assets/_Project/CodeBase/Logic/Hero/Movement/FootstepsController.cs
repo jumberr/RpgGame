@@ -7,7 +7,7 @@ using Zenject;
 
 namespace _Project.CodeBase.Logic.Hero
 {
-    public class FootstepsController : MonoBehaviour
+    public class FootstepsController : MonoBehaviour // todo do it non-mono
     {
         [SerializeField] private HeroState _state;
         [Space]

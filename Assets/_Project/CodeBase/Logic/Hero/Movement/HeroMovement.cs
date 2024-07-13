@@ -25,27 +25,27 @@ namespace _Project.CodeBase.Logic.Hero
         [SerializeField] private float _accelerationInAir;
         [SerializeField] private float _deceleration;
         
-        //[Title("Speeds")]
-        //[SerializeField] private float _speedWalking;
-        //[SerializeField] private float _speedAiming;
-        //[SerializeField] private float _speedCrouching;
-        //[SerializeField] private float _speedRunning;
+        [Title("Speeds")]
+        [SerializeField] private float _speedWalking;
+        [SerializeField] private float _speedAiming;
+        [SerializeField] private float _speedCrouching;
+        [SerializeField] private float _speedRunning;
         
-        //[Title("Walking Multipliers")]
-        //[SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierForward;
-        //[SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierSideways;
-        //[SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierBackwards;
+        [Title("Walking Multipliers")]
+        [SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierForward;
+        [SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierSideways;
+        [SerializeField, Range(0.0f, 1.0f)] private float _walkingMultiplierBackwards;
         
         [Title("Air")]
         [SerializeField, Range(0.0f, 1.0f)] private float _airControl;
         [SerializeField] private float _gravity;
         [SerializeField] private float _jumpGravity;
 
-        //[Tooltip("The force of the jump.")]
-        //[SerializeField] private float _jumpForce;
+        [Tooltip("The force of the jump.")]
+        [SerializeField] private float _jumpForce;
 
-        //[Tooltip("Force applied to keep the character from flying away while descending slopes.")]
-        //[SerializeField] private float _stickToGroundForce;
+        [Tooltip("Force applied to keep the character from flying away while descending slopes.")]
+        [SerializeField] private float _stickToGroundForce;
 
         [Title("Crouching")]
         [SerializeField] private bool _canCrouch;

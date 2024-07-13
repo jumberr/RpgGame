@@ -8,38 +8,48 @@ namespace _Project.CodeBase.Logic.Hero
 {
     public class MoveState : ManeuverState, IDisposable
     {
-        private InputService _inputService;
+        private readonly InputService _inputService;
         private PlayerMonoComponentsProvider _componentsProvider;
+        private HeroAnimator _heroAnimator;
+        private FootstepsController _footstepsController;
         private Vector2 _input;
+        private bool _isRunning;
+        private bool _initialized;
+
 
         public MoveState(InputService inputService)
         {
             _inputService = inputService;
             _inputService.MoveAction.Event += UpdateDirection;
+            _inputService.RunningAction.Event += Run;
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
+            base.Dispose();
             _inputService.MoveAction.Event -= UpdateDirection;
+            _inputService.RunningAction.Event -= Run;
         }
 
         public override bool CanEnter()
         {
-            
+            return true;
         }
 
-        public override Task EnterAsync(CancellationToken token)
+        public override async Task EnterAsync(CancellationToken token)
         {
             
         }
 
-        public override Task ExitAsync(CancellationToken token)
+        public override async Task ExitAsync(CancellationToken token)
         {
             
         }
 
         public override void FixedUpdate()
         {
+            if (!_initialized) return;
+            
             base.FixedUpdate();
             
             Vector2 frameInput = Vector3.ClampMagnitude(_input, 1f);
@@ -53,8 +63,22 @@ namespace _Project.CodeBase.Logic.Hero
             _footstepsController.HandleMoveFootsteps(frameInput);
         }
 
+        protected override void OnHeroCreated(HeroFacade facade)
+        {
+            _componentsProvider = facade.ComponentsProvider;
+            _heroAnimator = facade.Animator;
+            _footstepsController = facade.FootstepsController;
+
+            _initialized = true;
+
+            // todo
+        }
+
         private void UpdateDirection(Vector2 input) => 
             _input = input;
+        
+        private void Run(bool isRunning) => 
+            _isRunning = isRunning;
 
         private Vector3 CalculateDirection(Vector2 frameInput)
         {
@@ -68,37 +92,53 @@ namespace _Project.CodeBase.Logic.Hero
             if (!_componentsProvider.IsGrounded)
             {
                 VelocityController.ResetVelocity();
-                _velocity += desiredDirection * _accelerationInAir * _airControl * Time.deltaTime;
-                _velocity.y -= (_velocity.y >= 0 ? _jumpGravity : _gravity) * Time.deltaTime;
+                VelocityController.AddVelocity(desiredDirection *
+                                               (MovementData.AccelerationInAir * MovementData.AirControl *
+                                                Time.deltaTime));
+                var yVelocity = (VelocityController.Velocity.y >= 0 ? MovementData.JumpGravity : MovementData.Gravity) *
+                                Time.deltaTime;
+                VelocityController.RemoveVelocity(new Vector3(0, yVelocity, 0));
             }
-            else if (!_state.Jumping)
-                _velocity = Vector3.Lerp(_velocity, new Vector3(desiredDirection.x, _velocity.y, desiredDirection.z), Time.deltaTime * (desiredDirection.sqrMagnitude > 0.0f ? _acceleration : _deceleration));
+            //else if (!_state.Jumping) todo
+            else
+            {
+                VelocityController.SetVelocity(Vector3.Lerp(VelocityController.Velocity, 
+                    new Vector3(desiredDirection.x, VelocityController.Velocity.y, desiredDirection.z),
+                    Time.deltaTime * (desiredDirection.sqrMagnitude > 0f ? MovementData.Acceleration : MovementData.Deceleration))); 
+            }
         }
-        
+
         private Vector3 ApplyVelocity()
         {
             var applied = VelocityController.Velocity * Time.deltaTime;
-            if (_componentsProvider.IsGrounded && !_state.Jumping)
+            //if (_componentsProvider.IsGrounded && !_state.Jumping) todo
+            if (_componentsProvider.IsGrounded)
                 applied.y = - MovementData.StickToGroundForce;
             return applied;
         }
         
-        private Vector3 ApplySpeed(Vector2 frameInput, Vector3 desiredDirection)
+        private Vector3 ApplySpeed(Vector2 frameInput, Vector3 desiredDirection) // todo
         {
-            if (_state.Running)
-                desiredDirection *= MovementData.SpeedRunning;
-            else if (_state.Crouching)
-                desiredDirection *= MovementData.SpeedCrouching;
-            else if (_state.Aiming)
-                desiredDirection *= MovementData.SpeedAiming;
-            else
-            {
+            //if (_isRunning)
+            //    desiredDirection *= MovementData.SpeedRunning;
+            //else if (_state.Crouching)
+            //    desiredDirection *= MovementData.SpeedCrouching;
+            //else if (_state.Aiming)
+            //    desiredDirection *= MovementData.SpeedAiming;
+            //else
+            //{
                 desiredDirection *= MovementData.SpeedWalking;
                 desiredDirection.x *= MovementData.WalkingMultiplierSideways;
                 desiredDirection.z *= frameInput.y > 0 ? MovementData.WalkingMultiplierForward : MovementData.WalkingMultiplierBackwards;
-            }
+            //}
             
             return desiredDirection;
+        }
+        
+        private void ApplyAnimation(Vector3 dir)
+        {
+            dir.y = 0f;
+            _heroAnimator.EnterMoveState(_isRunning, dir);
         }
     }
 }

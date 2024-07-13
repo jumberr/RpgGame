@@ -8,7 +8,13 @@ namespace _Project.CodeBase.Logic.Hero
         
         
         public void ResetVelocity() => 
-            Velocity = Vector3.zero;
+            SetVelocity(Vector3.zero);
+        
+        public void AddVelocity(Vector3 velocity) => 
+            Velocity += velocity;
+        
+        public void RemoveVelocity(Vector3 velocity) => 
+            Velocity -= velocity;
         
         public void SetVelocity(Vector3 velocity) => 
             Velocity = velocity;

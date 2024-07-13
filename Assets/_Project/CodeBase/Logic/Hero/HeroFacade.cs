@@ -31,6 +31,9 @@ namespace _Project.CodeBase.Logic.Hero
         [field: SerializeField] public HeroDeath Death { get; private set; }
         [field: SerializeField] public HeroState State { get; private set; }
         [field: SerializeField] public HeroAmmo Ammo { get; private set; }
+        [field: SerializeField] public FallingDamage FallingDamage { get; private set; }
+        [field: SerializeField] public PlayerMonoComponentsProvider ComponentsProvider { get; private set; }
+        [field: SerializeField] public FootstepsController FootstepsController { get; private set; }
         [field: SerializeField] public Transform CameraTransform { get; private set; }
         [field: SerializeField] public TrajectoryView TrajectoryView { get; private set; }
 

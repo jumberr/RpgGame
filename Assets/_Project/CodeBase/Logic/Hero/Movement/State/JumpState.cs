@@ -7,18 +7,17 @@ namespace _Project.CodeBase.Logic.Hero
     public class JumpState : ManeuverState
     {
         private const float FormulaValue = 2f;
-        private readonly FallingDamage _fallingDamage;
+        private FallingDamage _fallingDamage;
         private PlayerMonoComponentsProvider _componentsProvider;
+        private FootstepsController _footstepsController;
+        private bool _initialized;
 
-        
-        public JumpState(FallingDamage fallingDamage)
-        {
-            _fallingDamage = fallingDamage;
-        }
 
         public override bool CanEnter()
         {
-            return true; // todo
+            //if (!_componentsProvider.IsGrounded || _state.Crouching && !MovementData.СanJumpWhileCrouching) return false;  // todo
+            if (!_componentsProvider.IsGrounded) return false;
+            return true;
         }
 
         public override async Task EnterAsync(CancellationToken token)
@@ -28,9 +27,20 @@ namespace _Project.CodeBase.Logic.Hero
 
         public override async Task ExitAsync(CancellationToken token)
         {
+            if (!_initialized) return;
+            
             _fallingDamage.ApplyFallDamage(_componentsProvider.CachedTransform.position.y);
             _fallingDamage.ResetHighestPoint();
-            FootstepsController.HandleJumpFootsteps();
+            _footstepsController.HandleJumpFootsteps();
+        }
+
+        protected override void OnHeroCreated(HeroFacade facade)
+        {
+            _fallingDamage = facade.FallingDamage;
+            _componentsProvider = facade.ComponentsProvider;
+            _footstepsController = facade.FootstepsController;
+            
+            _initialized = true;
         }
     }
 }

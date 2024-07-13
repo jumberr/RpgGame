@@ -626,6 +626,7 @@ GameObject:
   - component: {fileID: 8312132338225918098}
   - component: {fileID: 6318436950963016304}
   - component: {fileID: 3244137332970927809}
+  - component: {fileID: 5530164611040149528}
   m_Layer: 6
   m_Name: Hero
   m_TagString: Player
@@ -695,6 +696,9 @@ MonoBehaviour:
   <Death>k__BackingField: {fileID: 6408951751477784948}
   <State>k__BackingField: {fileID: 4068888587891572736}
   <Ammo>k__BackingField: {fileID: 5847949428352668782}
+  <FallingDamage>k__BackingField: {fileID: 8103562212985447868}
+  <ComponentsProvider>k__BackingField: {fileID: 5530164611040149528}
+  <FootstepsController>k__BackingField: {fileID: 4059400667633588676}
   <CameraTransform>k__BackingField: {fileID: 1124464607595143062}
   <TrajectoryView>k__BackingField: {fileID: 8312132338225918098}
 --- !u!114 &9040526684898629062
@@ -736,7 +740,6 @@ MonoBehaviour:
   _crouchOverlapsMask:
     serializedVersion: 2
     m_Bits: 9
-  _rigidbodyPushForce: 1
   animationThreshold: 0.1
   sprintAnimationValue: 1
   walkAnimationValue: 0.85
@@ -787,6 +790,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e48439002bec349b70ee964cf03030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animationThreshold: 0.1
+  _sprintAnimationValue: 1
+  _walkAnimationValue: 0.85
+  _idleAnimationValue: 0
 --- !u!114 &4244581671924312788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1074,6 +1081,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &5530164611040149528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040526684898629064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1b4446b70349b4b5c5490314c26575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CharacterController>k__BackingField: {fileID: 9040526684898629060}
 --- !u!1001 &4556001122503990578
 PrefabInstance:
   m_ObjectHideFlags: 0

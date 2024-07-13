@@ -7,24 +7,31 @@ namespace _Project.CodeBase.Logic.Hero
     [Serializable]
     public struct MovementData
     {
-        public float Gravity; //35
+        [Header("Acceleration")]
+        public float Acceleration;
+        public float AccelerationInAir;
+        public float Deceleration;
+        
+        [Header("Air")]
+        [SerializeField, Range(0.0f, 1.0f)] public float AirControl;
+        public float Gravity;
         
         [Header("Move Speed")]
-        public float SpeedWalking; // 3.5
-        public float SpeedAiming; // 3
-        public float SpeedCrouching; // 2
-        public float SpeedRunning; // 6.8
+        public float SpeedWalking;
+        public float SpeedAiming;
+        public float SpeedCrouching;
+        public float SpeedRunning;
         
         [Header("Walking Multipliers")]
-        [Range(0.0f, 1.0f)] public float WalkingMultiplierForward; // 1
-        [Range(0.0f, 1.0f)] public float WalkingMultiplierSideways; // 0.9
-        [Range(0.0f, 1.0f)] public float WalkingMultiplierBackwards; // 0.9
+        [Range(0.0f, 1.0f)] public float WalkingMultiplierForward;
+        [Range(0.0f, 1.0f)] public float WalkingMultiplierSideways;
+        [Range(0.0f, 1.0f)] public float WalkingMultiplierBackwards;
         
-        public float StickToGroundForce; // 0.3
+        public float StickToGroundForce;
         
         [Header("Jump")]
-        public float JumpForce;//1.5
-        public float JumpGravity; //35
+        public float JumpForce;
+        public float JumpGravity;
         
         [Header("Crouching")]
         public bool CanCrouch;
